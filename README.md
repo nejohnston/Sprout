@@ -1,15 +1,15 @@
-## Project Title
+## 🌱 Project Title
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
 
-## General Info
+## ⭐ General Info
 1-2 sentence about our project
 
-## Technologies
+## ⚙ Technologies
 Technologies/languages used for this project:
 
-## Content
+## 📁 Content
 Content of the project folder:
 ```
  Top level of project folder: 
@@ -27,4 +27,4 @@ It has the following subfolders and files:
 
 ```
 
-## Resources
+## 📚 Resources
