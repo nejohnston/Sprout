@@ -1,4 +1,4 @@
-## 🌱 Project Title
+## 🌱 Sprout
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
@@ -8,6 +8,10 @@
 
 ## ⚙ Technologies
 Technologies/languages used for this project:
+### React
+React is a flexible, agile, Javascript library used to make UI Interfaces. It enables us to build small, static components that can display information passed down from parents of the components. This will be advantageous for us as we will be passing around a lot of information such as plant information, user data, and images.
+### Redux
+Redux is a state manager for React.
 
 ## 📁 Content
 Content of the project folder:
