@@ -1,8 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+const App = () => {
+  return (
+    <Provider>
+    <div className="App">
+      <header className="App-header">
+        <p>Sprout</p>
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+    </Provider>
+  );
+}
 
 ReactDOM.render(
   <React.StrictMode>
