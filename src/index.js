@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import AboutUs from './containers/About-Us/About-Us.js'
 
 const App = () => {
   return (
     <>
-      <p>Hello World!!</p>
+      <AboutUs/>
     </>
     // <Provider>
     // <div className="App">

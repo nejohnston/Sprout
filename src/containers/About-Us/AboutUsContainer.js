@@ -1,8 +1,10 @@
 import React from 'react';
-import AboutUs from './About-Us'
+import AboutUs from './About-Us';
 
 const AboutUsContainer = () => {
-  return <AboutUs />
+  return (
+  
+  <AboutUs />)
 }
 
 export default AboutUsContainer;
