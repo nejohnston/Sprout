@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles();
 
-const Alert = () => {
+const Alerts = () => {
   const classes = useStyles();
   return (
   <div>
@@ -13,4 +13,4 @@ const Alert = () => {
   </div>);
 };
 
-export default Alert;
+export default Alerts;
