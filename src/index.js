@@ -1,29 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import AlertsContainer from './containers/Alerts/';
 import LeaderboardContainer from './containers/Leaderboards/';
-import ProfileContainer from './containers/Profile/';
+import ProfileContainer from './containers/Profile';
 import SearchContainer from './containers/Search';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 const App = () => {
   return (
-    <Layout>
-      <Router>
-        <Switch>
-          <Route path='/alerts' component={AlertsContainer} />
-          <Route path='/leaderboards' component={LeaderboardContainer}/>
+    <Router>
+      <Switch>
+        <Layout>
           <Route path='/profile' component={ProfileContainer} />
+          <Route path='/alerts' component={AlertsContainer} />
+          <Route path='/leaderboards' component={LeaderboardContainer} />
           <Route path='/search' component={SearchContainer} />
-        </Switch>
-      </Router>
-    </Layout>
+        </Layout>
+      </Switch>
+    </Router>
   );
-}
+};
 
 ReactDOM.render(
   <React.StrictMode>

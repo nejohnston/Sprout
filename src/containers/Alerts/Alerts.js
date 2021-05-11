@@ -8,7 +8,7 @@ const Alerts = () => {
   return (
   <div>
     <p>
-      This is where components will reside
+      This is where Alert components will reside
     </p>
   </div>);
 };
