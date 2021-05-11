@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
@@ -9,18 +10,18 @@ const NavBar = () => {
     fixed='bottom'
   >
     <Nav.Item>
-      <Nav.Link href="/profile">Profile</Nav.Link>
+      <Link to="/profile">Profile</Link>
     </Nav.Item>
     <Nav.Item>
-      <Nav.Link href="/search">Search</Nav.Link>
+      <Link to="/search">Search</Link>
     </Nav.Item>
     <Nav.Item>
-      <Nav.Link href='/alerts'>Alerts</Nav.Link>
+      <Link to='/alerts'>Alerts</Link>
     </Nav.Item>
     <Nav.Item>
-      <Nav.Link href='/leaderboards'>
+      <Link to='/leaderboards'>
         Leaderboards
-      </Nav.Link>
+      </Link>
     </Nav.Item>
   </Navbar>
   )
