@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ loginError }) => {
   return (
     <>
       <div id="bg">
