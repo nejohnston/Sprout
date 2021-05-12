@@ -8,10 +8,9 @@ const Profile = () => {
   return (
   <div>
     <p>
-      This is where Profile components will reside
+      This is where components will reside
     </p>
-  </div>
-  );
+  </div>);
 };
 
 export default Profile;
