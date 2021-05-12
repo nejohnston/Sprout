@@ -6,14 +6,15 @@
 "team": "3",
 "points": 550,
 "sprouts": [ {
+              "id" : 0,
               "name": "Sokka the Aloe",
               "image_url": "https://plantdatabase.kpu.ca/images/bark/talvek.jpg"
             },
-            {
+            { "id" : 1,
               "name": "Katar-actus",
               "image_url": "https://plantdatabase.kpu.ca/images/habit/tfesph1.jpg"
             },
-            {
+            { "id" : 2,
               "name": "Best Boy Appa",
               "image_url": "https://plantdatabase.kpu.ca/images/habit/tcrfah1.jpg"
             } ]
