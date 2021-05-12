@@ -1,0 +1,97 @@
+#container {
+  margin: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+
+    font-size: 1.5rem;
+}
+
+
+@media only screen and (max-device-width: 767px) {
+
+    #vector-bg {
+
+        background-image: url("./images/bg-vector.svg");
+        position:absolute;
+        left:0;
+        bottom:0;
+        right:0;
+        height: 28rem;
+        z-index: -100;
+    
+    }
+    
+    .team-block {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .team-pic-bg {
+    
+        background-color: #5CA7A0;
+        height: 6rem;
+        width: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10rem;
+        margin: 0 auto;
+        margin-bottom: 0.5rem;
+        
+    }
+    
+    .team-pic {
+    
+        height: 4rem;
+    
+    }
+
+}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) {
+
+    #vector-bg {
+
+        background-image: url("./images/bg-vector.svg");
+        position:absolute;
+        left:0;
+        bottom:0;
+        right:0;
+        background-size: cover;
+        height: 45rem;
+        z-index: -100;
+        overflow-x: hidden;
+    }
+
+    .team-block {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .team-pic-bg {
+    
+        background-color: #5CA7A0;
+        height: 9rem;
+        width: 9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10rem;
+        margin: 0 auto;
+        margin-bottom: 0.5rem;
+        
+    }
+    
+    .team-pic {
+    
+        height: 5rem;
+    
+    }
+  }
