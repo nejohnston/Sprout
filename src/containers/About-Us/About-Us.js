@@ -39,17 +39,25 @@ const TeamList = () => {
 
     const members = [
       {name: "Mike Hwang",
-       plant: "Rosemary"},
+       img_src: "./images/mike.png",
+       plant: "Rosemary",
+       about: "Mike has recently started to love cooking as a new Vancouverite! (mainly because it is so expensive to eat out here!)"},
       {name: "Susan Li",
-       plant: "Spider Lilies"},
+       img_src: "./images/susan.jpg",
+       plant: "Spider Lilies",
+       about: "Susan only has one houseplant (which she constantly forgets to water)..."},
       {name: "Nicholas Johnston",
-       plant: "Fern"},
+       img_src: "./images/mike.png",
+       plant: "Fern",
+       about: "Fun Fact! The fronds of a native BC Sword Fern can grow up to 1.5 meters long and up to 25 centimetres wide."},
       {name: "Sally Poon",
-       plant: ""}
+       img_src: "./images/sally.jpg",
+       plant: "Sunflower",
+       about: "Sally enjoys knitting, picnics, and baking! She finds the latter extremely therapeutic."}
     ]
 
 
-    return <p>blah!</p>
+    return members.map
 
 }
 
