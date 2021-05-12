@@ -1,7 +1,12 @@
 .plant-list-img {
 
-    height: 8rem;
-    width: 8rem;
+    height: 5rem;
+    width: 5rem;
     border-radius: 20rem;
 
+}
+
+.plant-list-name {
+
+    font-size: 0.75rem;
 }

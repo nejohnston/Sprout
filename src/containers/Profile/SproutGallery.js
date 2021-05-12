@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const SproutGallery = ({sprouts}) => {
   return (
   <>
-    <SproutItem sprouts= {sprouts}/>
+    <SproutItem sprouts={sprouts}/>
   </>);
 };
 
