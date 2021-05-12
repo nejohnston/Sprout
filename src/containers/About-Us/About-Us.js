@@ -1,19 +1,20 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import './About-Us.css';
 
 /* Bootstrap components */
 
-
-const useStyles = makeStyles();
-
 const AboutUs = () => {
-  const classes = useStyles();
   return (
   <>
-    <h1>Nurturing the knowledge for plant life</h1>
+    <div class="hero-container">
+      <div>
+        <h1>Nurturing plant-life knowledge.</h1>
+      </div>
+    </div>
 
-    <div>
+    <section>
+
+    <div class="content">
     <h2>Our Story</h2>
     <p>Banded together by an interest to support sustainable living and gardening,
        our team came up with <em>Sprout</em>, a gardening application to promote
@@ -25,16 +26,27 @@ const AboutUs = () => {
     </p>
     </div>
 
-    <div>
+    <div class="content">
         <h2>Team Sprout</h2>
         <TeamList/>
     </div>
+    </section>
   </>
   );
 };
 
 const TeamList = () => {
 
+    const members = [
+      {name: "Mike Hwang",
+       plant: "Rosemary"},
+      {name: "Susan Li",
+       plant: "Spider Lilies"},
+      {name: "Nicholas Johnston",
+       plant: "Fern"},
+      {name: "Sally Poon",
+       plant: ""}
+    ]
 
 
     return <p>blah!</p>
