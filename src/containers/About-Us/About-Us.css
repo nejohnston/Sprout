@@ -1,8 +1,9 @@
 .hero-container {
     height: 50vh;
-    background: url('./images/hero.jpg') no-repeat center;
+    background: url('./images/full-hero.jpg') no-repeat center;
     box-shadow:inset 0 -10px 10px #3844282c;
     background-size: cover;
+    background-attachment: fixed;
 
 }
 
