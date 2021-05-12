@@ -1,0 +1,12 @@
+{
+  "name": "sprout-server",
+  "version": "1.0.0",
+  "description": "The server side of the app, Sprout.",
+  "main": "index.js",
+  "repository": "https://github.com/nejohnston/comp-2800-team-dtc-03-sprout.git",
+  "author": "Nicholas Johnston",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
