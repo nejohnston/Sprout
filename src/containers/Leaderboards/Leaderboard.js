@@ -8,7 +8,7 @@ const Leaderboard = () => {
   return (
   <div>
     <p>
-      This is where components will reside
+      This is where Leaderboard components will reside
     </p>
   </div>);
 };

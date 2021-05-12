@@ -1,9 +1,8 @@
 import React from 'react';
-import AboutUs from './About-Us';
+import AboutUs from './AboutUs';
 
 const AboutUsContainer = () => {
   return (
-  
   <AboutUs />)
 }
 
