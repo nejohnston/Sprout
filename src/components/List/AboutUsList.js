@@ -1,5 +1,4 @@
 import React from 'react';
-import susan from '../../containers/AboutUs/images/susan.jpg'
 
 const TeamList = ({members}) => {
 
@@ -25,8 +24,8 @@ const TeamList = ({members}) => {
       </>
       )
 
-    })
+    });
 
-} 
+}; 
 
 export default TeamList;
