@@ -12,10 +12,13 @@ h1 {
     top: 0.2%;
     position: absolute;
     margin-left: 1em;
+    font-weight: normal;
+    font-size: 2.5em;
 }
 
 h2 {
     color: #5BA8A0;
+    text-align: center;
 }
 
 section {
@@ -55,4 +58,32 @@ span {
     margin: 1em;
     box-shadow: 0px 1px 10px #00000038;
     border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+
+    .member-container {
+        flex-direction: row;
+    }
+
+    h1 {
+        font-size: 3.5em;
+    }
+
+    .member-description {
+        width: 350px;
+        margin: 2em;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+}
+
+@media (min-width: 1025px) {
+    .hero-container {
+        background: url('./images/side-hero.jpg') no-repeat center;
+        background-size: cover;
+        background-attachment: fixed;
+    }
 }

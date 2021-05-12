@@ -2,7 +2,8 @@ import React from 'react';
 import './About-Us.css';
 import mike_pic from './images/mike.png';
 import susan_pic from './images/susan.jpg';
-import sally_pic from './images/sally.jpg'
+import sally_pic from './images/sally.jpg';
+import guichon_pic from './images/patrick.jpg';
 
 /* Bootstrap components */
 
@@ -11,7 +12,7 @@ const AboutUs = () => {
   <>
     <div class="hero-container">
       <div>
-        <h1>Nurturing plant-life knowledge.</h1>
+        <h1>Behind Sprout.</h1>
       </div>
     </div>
 
@@ -62,7 +63,12 @@ const TeamList = () => {
        position: "Project Manager & Front End Developer",
        img: sally_pic,
        plant: "Sunflower",
-       about: "Sally enjoys knitting, picnics, and baking! She finds the latter extremely therapeutic."}
+       about: "Sally enjoys knitting, picnics, and baking! She finds the latter extremely therapeutic."},
+       {name: "Patrick Guichon",
+       position: "Supervisor",
+       img: guichon_pic,
+       plant: "Sunflower",
+       about: "Fantastic supervisor with all the git knowledge and support a team could ask for (this was written by Team Sprout)."}
     ]
 
 
@@ -72,13 +78,17 @@ const TeamList = () => {
       <>
         <div className="member-container">
           <img className="avatar" src={member.img} alt={member.name}/>
+
+          <div className="member-description">
           <h3>{member.name}</h3>
+
           {member.position}
           
           <p><span>My Sprout: {member.plant}</span>
           <br/>
           <br/>
           {member.about}</p>
+          </div>
         </div>
       </>
       )
