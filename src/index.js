@@ -1,8 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
-import Profile from './containers/Profile'
-=======
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import AboutUsContainer from './containers/AboutUs';
@@ -13,18 +10,11 @@ import JoinTeamContainer from './containers/JoinTeam'
 import ProfileContainer from './containers/Profile';
 import SearchContainer from './containers/Search';
 import reportWebVitals from './reportWebVitals';
-
->>>>>>> 2004ad4a4acf08ff3361224ca6e39af438cb088f
 import './index.css';
-import reportWebVitals from './reportWebVitals';
+
 
 const App = () => {
   return (
-<<<<<<< HEAD
-       <>
-        <Profile />
-       </>
-=======
     <Router>
       <Switch>
         <Layout>
@@ -38,7 +28,6 @@ const App = () => {
         </Layout>
       </Switch>
     </Router>
->>>>>>> 2004ad4a4acf08ff3361224ca6e39af438cb088f
   );
 }
 
