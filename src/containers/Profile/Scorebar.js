@@ -1,12 +1,19 @@
 import React from 'react';
+import "./styles/ScoreBar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Scorebar = () => {
+const Scorebar = ({user}) => {
   return (
-  <div>
-    <p>
-      This is where components will reside
-    </p>
+  <div id="my-sprouts-score-bar" className="shadow-sm">
+    <div className="my-sprouts-score-bar-item">
+    <span className="my-score-bar-item-value">{user.points}</span>
+    <span className="my-score-bar-item-title">Points</span>
+    </div>
+
+    <div className="my-sprouts-score-bar-item">
+    <span className="my-score-bar-item-value">{user.sprouts.length}</span>
+    <span className="my-score-bar-item-title">Sprouts</span>
+    </div>
   </div>);
 };
 
