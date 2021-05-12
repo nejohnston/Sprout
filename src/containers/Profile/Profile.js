@@ -1,15 +1,14 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles();
+import "bootstrap/dist/css/bootstrap.min.css";
+import userdata from "./user.json"
 
 const Profile = () => {
-  const classes = useStyles();
   return (
   <div>
     <p>
       This is where components will reside
     </p>
+    <p>{userdata["name"]}</p>
   </div>);
 };
 

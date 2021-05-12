@@ -2,8 +2,7 @@
 { 
 "username": "earth_bender12",
 "password": "password",
-"firstName": "Toph",
-"lastName": "Beifong",
+"name": "Toph Beifong",
 "team": "3",
 "points": 550,
 "sprouts": [ {
