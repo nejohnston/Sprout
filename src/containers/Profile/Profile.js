@@ -2,8 +2,8 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import SproutGallery from './SproutGallery';
 import ProfilePicture from './ProfilePicture';
+import ProfileModal from './ProfileModal'
 import userdata from "./user.json";
-import addButton from './images/addbutton.svg'
 import './styles/Profile.css'
 
 const Profile = () => {
@@ -14,7 +14,7 @@ const Profile = () => {
   <div id="container">
     <div id="profile-header">
       <h1 id="profile-h1">My Sprouts</h1>
-      <img src={addButton} id="profile-add-button"/>
+      <ProfileModal />
     </div>
     <hr />
     <ProfilePicture profilePic={userjson[0]["profile_pic"]}/>
