@@ -1,0 +1,22 @@
+[
+{ 
+"username": "earth_bender12",
+"password": "password",
+"firstName": "Toph",
+"lastName": "Beifong",
+"team": "3",
+"points": 550,
+"sprouts": [ {
+              "name": "Sokka the Aloe",
+              "image_url": "https://plantdatabase.kpu.ca/images/bark/talvek.jpg"
+            },
+            {
+              "name": "Katar-actus",
+              "image_url": "https://plantdatabase.kpu.ca/images/habit/tfesph1.jpg"
+            },
+            {
+              "name": "Best Boy Appa",
+              "image_url": "https://plantdatabase.kpu.ca/images/habit/tcrfah1.jpg"
+            } ]
+}
+]
