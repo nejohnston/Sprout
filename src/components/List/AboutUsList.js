@@ -4,7 +4,6 @@ const TeamList = ({members}) => {
 
     return members.map(member => {
 
-      console.log(member.img)
       return(
       <>
         <div className="member-container">

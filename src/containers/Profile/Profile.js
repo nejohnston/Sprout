@@ -17,7 +17,10 @@ const Profile = () => {
       <img src={addButton} id="profile-add-button"/>
     </div>
     <hr />
+    <div id="my-sprouts-user-container">
     <ProfilePicture profilePic={userjson[0]["profile_pic"]}/>
+    <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
+    </div>
     <SproutGallery sprouts={userjson[0]["sprouts"]}/>
     <div id="vector-bg"></div>
   </div>);
