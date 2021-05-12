@@ -1,14 +1,20 @@
 import React from 'react';
+import TeamList from '../../components/List/AboutUsList.js';
+import teamMembers from '../../config/data/teamList.json';
 import './AboutUs.css';
-
-/* Bootstrap components */
 
 const AboutUs = () => {
   return (
   <>
-    <h1>Nurturing the knowledge for plant life</h1>
+    <div class="hero-container">
+      <div>
+        <h1>Behind Sprout.</h1>
+      </div>
+    </div>
 
-    <div>
+    <section>
+
+    <div class="content">
     <h2>Our Story</h2>
     <p>Banded together by an interest to support sustainable living and gardening,
        our team came up with <em>Sprout</em>, a gardening application to promote
@@ -20,20 +26,15 @@ const AboutUs = () => {
     </p>
     </div>
 
-    <div>
+    <div class="content">
         <h2>Team Sprout</h2>
-        <TeamList/>
+        <div class="all-members-container">
+        <TeamList members={teamMembers} />
+        </div>
     </div>
+    </section>
   </>
   );
 };
-
-const TeamList = () => {
-
-
-
-    return <p>blah!</p>
-
-}
 
 export default AboutUs;
