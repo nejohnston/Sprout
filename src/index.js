@@ -1,31 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import './index.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import { Layout } from './components/Layout/Layout';
+import AboutUsContainer from './containers/AboutUs';
+import AlertsContainer from './containers/Alerts/';
+import LeaderboardContainer from './containers/Leaderboards/';
+import LoginContainer from './containers/Login';
+import ProfileContainer from './containers/Profile';
+import SearchContainer from './containers/Search';
 import reportWebVitals from './reportWebVitals';
+
+import './index.css';
 
 const App = () => {
   return (
-    <Provider>
-    <div className="App">
-      <header className="App-header">
-        <p>Sprout</p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-    </Provider>
+    <Router>
+      <Switch>
+        <Layout>
+          <Route path='/about-us' component={AboutUsContainer} />
+          <Route path='/alerts' component={AlertsContainer} />
+          <Route path='/leaderboards' component={LeaderboardContainer} />
+          <Route path='/login' component={LoginContainer} />
+          <Route path='/profile' component={ProfileContainer} />
+          <Route path='/search' component={SearchContainer} />
+        </Layout>
+      </Switch>
+    </Router>
   );
-}
+};
 
 ReactDOM.render(
   <React.StrictMode>
