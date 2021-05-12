@@ -2,6 +2,7 @@ import React from 'react';
 import './About-Us.css';
 import mike_pic from './images/mike.png';
 import susan_pic from './images/susan.jpg';
+import nicholas_pic from './images/nicholas.jpeg';
 import sally_pic from './images/sally.jpg';
 import guichon_pic from './images/patrick.jpg';
 
@@ -44,19 +45,19 @@ const AboutUs = () => {
 const TeamList = () => {
 
     const members = [
-      {name: "Mike Hwang",
-       img: mike_pic,
-       position: "Back-End Developer & Database Design",
-       plant: "Rosemary",
-       about: "Mike has recently started to love cooking as a new Vancouverite! (mainly because it is so expensive to eat out here!)"},
       {name: "Susan Li",
        img: susan_pic,
        position: "Front End Developer & UI/UX Professional",
        plant: "Spider Lilies",
        about: "Susan only has one houseplant (which she constantly forgets to water)..."},
+       {name: "Mike Hwang",
+       img: mike_pic,
+       position: "Back-End Developer & Database Design",
+       plant: "Rosemary",
+       about: "Mike has recently started to love cooking as a new Vancouverite! (mainly because it is so expensive to eat out here!)"},
       {name: "Nicholas Johnston",
        position: "Back End Developer & React Consultant",
-       img: mike_pic,
+       img: nicholas_pic,
        plant: "Fern",
        about: "Fun Fact! The fronds of a native BC Sword Fern can grow up to 1.5 meters long and up to 25 centimetres wide."},
       {name: "Sally Poon",
@@ -67,7 +68,7 @@ const TeamList = () => {
        {name: "Patrick Guichon",
        position: "Supervisor",
        img: guichon_pic,
-       plant: "Sunflower",
+       plant: "Hibiscus",
        about: "Fantastic supervisor with all the git knowledge and support a team could ask for (this was written by Team Sprout)."}
     ]
 

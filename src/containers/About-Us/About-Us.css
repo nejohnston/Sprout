@@ -62,6 +62,13 @@ span {
 
 @media (min-width: 768px) {
 
+    .hero-container {
+        background: url('./images/side-hero.jpg') no-repeat center;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+
     .member-container {
         flex-direction: row;
     }
@@ -86,4 +93,9 @@ span {
         background-size: cover;
         background-attachment: fixed;
     }
+
+    h1 {
+        font-size: 3.5em;
+    }
+
 }
