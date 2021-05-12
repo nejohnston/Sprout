@@ -6,8 +6,6 @@ import nicholas_pic from './images/nicholas.jpeg';
 import sally_pic from './images/sally.jpg';
 import guichon_pic from './images/patrick.jpg';
 
-/* Bootstrap components */
-
 const AboutUs = () => {
   return (
   <>
