@@ -1,0 +1,13 @@
+#profile-header {
+  display: flex;
+  flex-flow: row;
+}
+
+#profile-h1 {
+  flex: 1;
+  justify-self: flex-start;
+}
+#profile-add-button {
+  justify-self: flex-end;
+  width: 1.25rem;
+}
