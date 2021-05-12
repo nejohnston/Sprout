@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import { Layout } from './components/Layout/Layout';
+import AboutUsContainer from './containers/AboutUs';
 import AlertsContainer from './containers/Alerts/';
 import LeaderboardContainer from './containers/Leaderboards/';
+import LoginContainer from './containers/Login';
 import ProfileContainer from './containers/Profile';
 import SearchContainer from './containers/Search';
 import reportWebVitals from './reportWebVitals';
+
 import './index.css';
 
 const App = () => {
@@ -15,9 +18,11 @@ const App = () => {
     <Router>
       <Switch>
         <Layout>
-          <Route path='/profile' component={ProfileContainer} />
+          <Route path='/about-us' component={AboutUsContainer} />
           <Route path='/alerts' component={AlertsContainer} />
           <Route path='/leaderboards' component={LeaderboardContainer} />
+          <Route path='/login' component={LoginContainer} />
+          <Route path='/profile' component={ProfileContainer} />
           <Route path='/search' component={SearchContainer} />
         </Layout>
       </Switch>

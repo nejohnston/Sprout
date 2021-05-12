@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Leaderboard from './Leaderboard'
 
 const LeaderboardContainer = () => {
+  useEffect(() => {
+    getUsers();
+    });
+
   return <Leaderboard />
 }
 

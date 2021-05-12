@@ -1,7 +1,11 @@
-import React from 'react';
-import Login from './Login'
+import React, { useState } from 'react';
 
+import Login from './Login'
+const initialState = {
+  authenticated: false
+}
 const LoginContainer = () => {
+  const [authenticated, setauthenticated] = useState(initialState)
   return <Login />
 }
 

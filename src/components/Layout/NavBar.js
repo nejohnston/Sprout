@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
   return (
     <Navbar
-    activeKey="/profile"
+    activeKey='/profile'
     fixed='bottom'
   >
     <Nav.Item>
@@ -21,6 +21,16 @@ const NavBar = () => {
     <Nav.Item>
       <Link to='/leaderboards'>
         Leaderboards
+      </Link>
+    </Nav.Item>
+    <Nav.Item>
+      <Link to='/login'>
+        Login
+      </Link>
+    </Nav.Item>
+    <Nav.Item>
+      <Link to='/about-us'>
+        About Us
       </Link>
     </Nav.Item>
   </Navbar>

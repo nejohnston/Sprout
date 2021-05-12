@@ -1,14 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import './About-Us.css';
+import './AboutUs.css';
 
 /* Bootstrap components */
 
-
-const useStyles = makeStyles();
-
 const AboutUs = () => {
-  const classes = useStyles();
   return (
   <>
     <h1>Nurturing the knowledge for plant life</h1>
