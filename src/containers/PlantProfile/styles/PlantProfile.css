@@ -1,0 +1,21 @@
+.header_backarrow_container {
+    display: flex;
+    flex-flow: row;
+}
+
+.back-button {
+    width: 0.75rem;
+    margin-top: 0.75rem;
+    margin-right: 0.75rem;
+}
+
+#plant-profile-h1 {
+
+    flex: 1;
+    justify-self: flex-start;
+}
+
+#edit-button {
+    justify-self: flex-end;
+    width: 1.25rem;
+}
