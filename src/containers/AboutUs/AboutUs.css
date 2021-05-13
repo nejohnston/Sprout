@@ -1,3 +1,7 @@
+.link {
+    color: #94B447;
+}
+
 .about-us-hero-container {
     height: 50vh;
     background: url('./images/full-hero.jpg') no-repeat center;
