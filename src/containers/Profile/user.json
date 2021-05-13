@@ -18,6 +18,19 @@
             { "id" : 2,
               "name": "Best Boy Appa",
               "image_url": "https://plantdatabase.kpu.ca/images/habit/tcrfah1.jpg"
-            } ]
+            },
+            { "id" : 3,
+              "name": "Kyoshi",
+              "image_url": "https://plantdatabase.kpu.ca/images/habit/tdacnh1.jpg"
+            },
+            { "id" : 4,
+              "name": "Rose-mei-ry",
+              "image_url": "https://plantdatabase.kpu.ca/images/habit/troofh1.jpg"
+            },
+            {
+              "id" : 5,
+              "name": "Yue the Lily",
+              "image_url": "https://plantdatabase.kpu.ca/images/habit/tlilah1.jpg"
+            }  ]
 }
 ]
