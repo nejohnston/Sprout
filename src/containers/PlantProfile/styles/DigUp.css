@@ -1,0 +1,43 @@
+#dig-up-button {
+    background-color: #5D6E1E;
+    height: 3.5rem;
+    width: 3.5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 10rem;
+}
+
+#dig-up-icon {
+    width: 1.5rem;
+}
+
+#modal-dig-up-button {
+    background-color: #5D6E1E;
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 10rem;
+    margin: 0.75rem 0;
+}
+
+#modal-dig-up-icon {
+    width: 2rem;
+}
+
+.plant-profile-small-button-text {
+
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.plant-profile-small-button-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.custom-primary-button {
+    background-color: #5D6E1E !important;
+    border-style: none !important;
+}

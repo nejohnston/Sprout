@@ -5,6 +5,7 @@ import plantprofiledata from "./plant_profile.json";
 import BackButton from "./images/back_button.svg";
 import EditButton from "./images/pen.svg";
 import { Link } from "react-router-dom";
+import DigUp from "./DigUp";
 
 const PlantProfile = () => {
   let plantprofilejson = [];
@@ -20,6 +21,7 @@ const PlantProfile = () => {
         <img src={EditButton} id="edit-button" />
       </div>
       <hr />
+      <DigUp />
     </div>
   );
 };
