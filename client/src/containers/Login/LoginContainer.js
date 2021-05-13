@@ -5,7 +5,7 @@ const initialState = {
   authenticated: false
 }
 const LoginContainer = () => {
-  const [authenticated, setauthenticated] = useState(initialState)
+  // const [authenticated, setauthenticated] = useState(initialState)
   return <Login />
 }
 

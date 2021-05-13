@@ -13,7 +13,7 @@ const schema = yup.object().shape({
 
 const Login = ({ loginError }) => {
 
-  const [user, setUser] = useState(false);
+  // const [user, setUser] = useState(false);
   // useEffect(() => {
   //   getUser();
   // }, []);

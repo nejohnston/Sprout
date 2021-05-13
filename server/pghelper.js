@@ -2,12 +2,12 @@ const { Client } = require('pg');
 require('dotenv').config();
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.REACT_APP_DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
 });
-console.log(process.env.DATABASE_URL)
+console.log(process.env.REACT_APP_DATABASE_URL)
 
 client.connect();
 console.log('connected')
