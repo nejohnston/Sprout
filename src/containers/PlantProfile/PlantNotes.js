@@ -10,7 +10,6 @@ const PlantNotes = ({plantNotes}) => {
         <h5 id="plant-profile-subhead">Notes</h5>
         <p>{plantNotes}</p>
         </div>
-
         </>
     )
 }
