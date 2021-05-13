@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import DigUp from "./DigUp";
 import WaterPlant from "./WaterPlant";
 import PlantNotes from './PlantNotes';
+import PlantProfilePicture from './PlantProfilePicture';
 
 const PlantProfile = () => {
   let plantprofilejson = [];
@@ -24,6 +25,7 @@ const PlantProfile = () => {
       </div>
       <hr />
       <DigUp />
+      <PlantProfilePicture image_url={plantprofilejson[0]["image_url"]}/>
       <WaterPlant />
       <PlantNotes plantNotes={plantprofilejson[0].notes}/>
     </div>
