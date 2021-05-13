@@ -1,0 +1,10 @@
+#plant-profile-card {
+    margin: 1em;
+    padding: 1.25em;
+    border-radius: 20px;
+}
+
+#plant-profile-subhead {
+    font-size: 1.1rem;
+    color: #a3a3a3;
+}
