@@ -13,7 +13,7 @@ function ProfilePictureModal({profilePic}) {
   
     return (
       <>
-        <img id="user-profile-picture" class="shadow-sm" src={profilePic} alt="user image" onClick={handleShow}/>
+        <img id="user-profile-picture" className="shadow-sm" src={profilePic} alt="user-pic" onClick={handleShow}/>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>

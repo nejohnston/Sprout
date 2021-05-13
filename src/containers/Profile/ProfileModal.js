@@ -14,7 +14,7 @@ const ProfileModal = () => {
 
   return (
     <>
-      <img src={addButton} id="profile-add-button" onClick={handleShow} />
+      <img src={addButton} id="profile-add-button" alt="" onClick={handleShow} />
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

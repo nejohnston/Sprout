@@ -21,7 +21,7 @@
           left:0;
           bottom:0;
           right:0;
-          height: 28rem;
+          height: 29rem;
           z-index: -100;
       
       }
@@ -65,7 +65,7 @@
           bottom:0;
           right:0;
           background-size: cover;
-          height: 45rem;
+          height: 50rem;
           z-index: -100;
           overflow-x: hidden;
       }
