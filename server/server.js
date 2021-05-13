@@ -7,7 +7,7 @@ let app = express();
     app.use(express.static("client/build"));
     app.use(cors());
 
-app.get('/login', (req, res) => {
+app.get('/', (req, res) => {
   console.log('get / login')
   getUsers();
 });
