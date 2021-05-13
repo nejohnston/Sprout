@@ -6,15 +6,15 @@ import './AboutUs.css';
 const AboutUs = () => {
   return (
   <>
-    <div class="hero-container">
+    <div className="hero-container">
       <div>
-        <h1>Behind Sprout.</h1>
+        <h1 className="about-us-title">Behind Sprout.</h1>
       </div>
     </div>
 
     <section>
 
-    <div class="content">
+    <div className="content">
     <h2>Our Story</h2>
     <p>Banded together by an interest to support sustainable living and gardening,
        our team came up with <em>Sprout</em>, a gardening application to promote
@@ -26,9 +26,9 @@ const AboutUs = () => {
     </p>
     </div>
 
-    <div class="content">
+    <div className="content">
         <h2>Team Sprout</h2>
-        <div class="all-members-container">
+        <div className="all-members-container">
         <TeamList members={teamMembers} />
         </div>
     </div>
