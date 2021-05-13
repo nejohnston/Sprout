@@ -6,7 +6,7 @@ const TeamList = ({members}) => {
 
       return(
       <>
-        <div className="member-container">
+        <div className="member-container" key={member.id}>
           <img className="about-us-avatar" src={member.img} alt={member.name}/>
 
           <div className="member-description">

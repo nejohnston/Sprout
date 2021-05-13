@@ -6,7 +6,7 @@ import './AboutUs.css';
 const AboutUs = () => {
   return (
   <>
-    <div class="about-us-hero-container">
+    <div className="about-us-hero-container">
       <div>
         <h1 id="about-us-main-title">Behind Sprout.</h1>
       </div>
@@ -14,8 +14,8 @@ const AboutUs = () => {
 
     <section id="about-us-section">
 
-    <div class="about-us-content">
-    <h2 class="about-us-h2">Our Story</h2>
+    <div className="about-us-content">
+    <h2 className="about-us-h2">Our Story</h2>
     <p>Banded together by an interest to support sustainable living and gardening,
        our team came up with <em>Sprout</em>, a gardening application to promote
        bee-friendly and native gardens across the Greater Vancouver area.
@@ -26,15 +26,15 @@ const AboutUs = () => {
     </p>
     </div>
 
-    <div class="content">
+    <div className="content">
         <h2 class="about-us-h2">Team Sprout</h2>
         <div class="all-members-container">
         <TeamList members={teamMembers} />
         </div>
     </div>
 
-    <div class="about-us-content">
-    <h2 class="about-us-h2">Resources and Gratitude</h2>
+    <div className="about-us-content">
+    <h2 className="about-us-h2">Resources and Gratitude</h2>
     <p>Our team would like to sincerely thank Kwantlen Polytechnic University's School of Horticulture for 
       allowing us to reference from their very complete and fantastic <a className="link" href="https://plantdatabase.kpu.ca/">Plant Database</a> for this project.
       <br/><br/>
