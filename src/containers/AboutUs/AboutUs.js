@@ -15,7 +15,7 @@ const AboutUs = () => {
     <section>
 
     <div className="content">
-    <h2>Our Story</h2>
+    <h2 className="about-us-h2">Our Story</h2>
     <p>Banded together by an interest to support sustainable living and gardening,
        our team came up with <em>Sprout</em>, a gardening application to promote
        bee-friendly and native gardens across the Greater Vancouver area.
@@ -27,7 +27,7 @@ const AboutUs = () => {
     </div>
 
     <div className="content">
-        <h2>Team Sprout</h2>
+        <h2 className="about-us-h2">Team Sprout</h2>
         <div className="all-members-container">
         <TeamList members={teamMembers} />
         </div>
