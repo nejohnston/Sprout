@@ -1,5 +1,5 @@
 import React from 'react';
-import "./styles/ScoreBar.css";
+import "./styles/Scorebar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Scorebar = ({user}) => {

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SproutGallery from './SproutGallery';
 import ProfilePictureModal from './ProfilePictureModal';
 import ProfileModal from './ProfileModal'
-import ScoreBar from './ScoreBar';
+import Scorebar from './Scorebar';
 import userdata from "./user.json";
 import './styles/Profile.css'
 
@@ -25,7 +25,7 @@ const Profile = () => {
     <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
     </div>
 
-    <ScoreBar user={userjson[0]}/>
+    <Scorebar user={userjson[0]}/>
 
     <SproutGallery sprouts={userjson[0]["sprouts"]}/>
     <div id="vector-bg"></div>
