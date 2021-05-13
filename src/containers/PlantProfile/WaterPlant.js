@@ -1,12 +1,10 @@
 import { React, useState } from "react";
-import DigUpButton from "./images/dig_up.svg";
+import WaterButton from "./images/water_icon.svg";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import "./styles/PlantProfileSmallButtons.css";
 
-const DigUp = (props) => {
+const WaterPlant = (props) => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -14,40 +12,30 @@ const DigUp = (props) => {
     <>
       <div className="plant-profile-small-button-container">
         <div id="dig-up-button">
-          <img src={DigUpButton} id="dig-up-icon" onClick={handleShow} />
+          <img src={WaterButton} id="dig-up-icon" onClick={handleShow} />
         </div>
         <strong>
-          <p className="plant-profile-small-button-text">Dig Up</p>
+          <p className="plant-profile-small-button-text">Water</p>
         </strong>
       </div>
 
       <Modal show={show} onHide={handleClose} {...props} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Dig up your Sprout</Modal.Title>
+          <Modal.Title>Water your Sprout</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="plant-profile-small-button-container">
             <div id="modal-dig-up-button">
-              <img src={DigUpButton} id="modal-dig-up-icon" />
+              <img src={WaterButton} id="modal-dig-up-icon" />
             </div>
           </div>
           <p>
-            Do you want to dig up your sprout? It will be removed from your
-            garden.
+            You have watered your sprout and earned 10 points. Hurray!
           </p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant="primary"
-            onClick={handleClose}
-            className="custom-primary-button"
-          >
-            Confirm
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
 };
 
-export default DigUp;
+export default WaterPlant;

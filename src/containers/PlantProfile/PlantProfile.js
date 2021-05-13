@@ -6,6 +6,7 @@ import BackButton from "./images/back_button.svg";
 import EditButton from "./images/pen.svg";
 import { Link } from "react-router-dom";
 import DigUp from "./DigUp";
+import WaterPlant from "./WaterPlant";
 import PlantNotes from './PlantNotes';
 
 const PlantProfile = () => {
@@ -23,6 +24,7 @@ const PlantProfile = () => {
       </div>
       <hr />
       <DigUp />
+      <WaterPlant />
       <PlantNotes plantNotes={plantprofilejson[0].notes}/>
     </div>
   );
