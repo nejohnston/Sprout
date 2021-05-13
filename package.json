@@ -1,0 +1,33 @@
+{
+  "name": "sprout",
+  "version": "1.0.0",
+  "description": "The server side of the app, Sprout.",
+  "main": "server/index.js",
+  "scripts": {
+    "heroku-postbuild": "npm run build --prefix client",
+    "install": "npm --prefix server install server && npm --prefix client install client",
+    "dev:server": "npm install --prefix server start",
+    "dev:client": "npm install --prefix client start",
+    "sequelize": "npm run --prefix server sequelize",
+    "sequelize-cli": "npm run --prefix server sequelize-cli",
+    "start": "npm start --prefix server"
+  },
+  "repository": "https://github.com/nejohnston/comp-2800-team-dtc-03-sprout.git",
+  "author": "Nicholas Johnston",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "formik": "^2.2.6",
+    "per-env": "^1.0.2",
+    "pg": "^8.6.0",
+    "q": "^1.5.1",
+    "winston": "^3.3.3"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ]
+}

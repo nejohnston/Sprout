@@ -1,26 +1,34 @@
-const express = require('express')
-const app = express()
+
+const cors = require('cors');
+const express = require('express');
+
+const pool = require('./server')
+
+const app = express();
 const port = 3001
 
-const user_model = require('./config/pgConnect')
+// https://www.taniarascia.com/node-express-postgresql-heroku/
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}))
+app.use(cors());
+const getUser = (body) => {
+// https://blog.logrocket.com/getting-started-with-postgres-in-your-react-app/
+  const { username, password } = body  
+    pool.query(
+      `SELECT * FROM application_user;`, 
+      (error, results) => {
+        // https://www.taniarascia.com/node-express-postgresql-heroku/
+        if (error) throw error;
+        console.log(response.status(200).json(results.rows))
+        response.status(200).json(results.rows);
+      }
+      )
+    };
 
-app.use(express.json())
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
-  next();
-});
-
-app.get('/', (req, res) => {
-  user_model.getUser()
-  .then(response => {
-    res.status(200).send(response);
-  })
-  .catch(error => {
-    res.status(500).send(error);
-  })
-})
+    // app.route('/login')
+    // .get(getUser);
 
 // app.post('/merchants', (req, res) => {
 //   user_model.createMerchant(req.body)

@@ -8,7 +8,7 @@ const Search = () => {
   return (
   <div>
     <p>
-      This is where components will reside
+      This is where Search components will reside heloo
     </p>
   </div>);
 };
