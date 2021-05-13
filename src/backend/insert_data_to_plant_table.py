@@ -149,7 +149,7 @@ def connect_db(db_data: list) -> None:
     :param db_data: a list of a list that contains data that is scraped from the website
     :return: Nothing
     """
-    load_dotenv(verbose=True)
+    load_dotenv(verbose=True, dotenv_path='../../.env')
     DB_HOST = os.getenv('HOST')
     DB_USER = os.getenv('DB_USERNAME')     # Your username for DBMS here.
     DB_PASSWD = os.getenv('DB_PASSWORD')    # Your DBMS password here.
