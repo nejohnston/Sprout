@@ -14,7 +14,7 @@ const DigUp = (props) => {
     <>
       <div className="plant-profile-small-button-container">
         <div id="dig-up-button">
-          <img src={DigUpButton} id="dig-up-icon" onClick={handleShow} />
+          <img src={DigUpButton} id="dig-up-icon" alt="" onClick={handleShow} />
         </div>
         <strong>
           <p className="plant-profile-small-button-text">Dig Up</p>
@@ -28,7 +28,7 @@ const DigUp = (props) => {
         <Modal.Body>
           <div className="plant-profile-small-button-container">
             <div id="modal-dig-up-button">
-              <img src={DigUpButton} id="modal-dig-up-icon" />
+              <img src={DigUpButton} id="modal-dig-up-icon" alt=""/>
             </div>
           </div>
           <p>

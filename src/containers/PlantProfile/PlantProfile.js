@@ -18,10 +18,10 @@ const PlantProfile = () => {
     <div id="container">
       <div className="header_backarrow_container">
         <Link to="/profile">
-          <img src={BackButton} className="back-button" />
+          <img src={BackButton} className="back-button" alt=""/>
         </Link>
         <h1 id="plant-profile-h1">{plantprofilejson[0]["user_given_name"]}</h1>
-        <img src={EditButton} id="edit-button" />
+        <img src={EditButton} id="edit-button" alt=""/>
       </div>
       <hr />
       <DigUp />
