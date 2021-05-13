@@ -1,9 +1,9 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import SproutGallery from './SproutGallery';
-import ProfilePicture from './ProfilePicture';
+import ProfilePictureModal from './ProfilePictureModal';
 import ProfileModal from './ProfileModal'
-import ScoreBar from './ScoreBar.js';
+import ScoreBar from './ScoreBar';
 import userdata from "./user.json";
 import './styles/Profile.css'
 
@@ -21,7 +21,7 @@ const Profile = () => {
     <hr />
     
     <div id="my-sprouts-user-container">
-    <ProfilePicture profilePic={userjson[0]["profile_pic"]}/>
+    <ProfilePictureModal profilePic={userjson[0]["profile_pic"]}/>
     <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
     </div>
 
