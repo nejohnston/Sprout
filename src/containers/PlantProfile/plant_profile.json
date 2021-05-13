@@ -1,0 +1,12 @@
+[
+  {
+    "id": 0,
+    "user_given_name": "Sokka the Aloe",
+    "type": "Succulent",
+    "family": "Asphodelaceae",
+    "date_added": "03/05/2021",
+    "watering_interval": 3,
+    "last_watered": "03/04/2021",
+    "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+  }
+]
