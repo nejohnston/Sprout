@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import * as yup from 'yup';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
+import { isNull } from "lodash-es";
 
 const schema = yup.object().shape({
   username: yup.string().required(),
@@ -13,10 +14,6 @@ const schema = yup.object().shape({
 
 const Login = ({ loginError }) => {
 
-  // const [user, setUser] = useState(false);
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
   return (
     <>
       <div id="bg">
@@ -25,13 +22,12 @@ const Login = ({ loginError }) => {
           validationSchema={schema}
           onSubmit={
             async (values) => {
-              await fetch(`http://localhost:3000/login`)
+              await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
               .then(response => {
                 return response.text();
               })
               .then(data => {
-                console.log(data);
-                alert(data);
+                return (isNull(data) ? setUser(data[0]) : setNotValidated(true))
               })
             }
           }

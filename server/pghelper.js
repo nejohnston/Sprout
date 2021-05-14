@@ -7,21 +7,16 @@ const client = new Client({
     rejectUnauthorized: false
   }
 });
-console.log(process.env.REACT_APP_DATABASE_URL)
 
+console.log('not connected')
 client.connect();
 console.log('connected')
-let getUsers = async function(resolve, reject) {
-    // console.log(client)
-    await client
-    .query('SELECT * FROM application_user;', (err, res) => {
-      if (err) throw err;
-      
-      for (let row of res.rows) {
-        console.log(JSON.stringify(row));
-      }});
-  };
-// client.end();
+let getUsers = (username, password) => {
+  console.log(username, password)
+  client
+  .query(`SELECT * FROM application_user WHERE application_user_username = '${username}' AND application_user_password = '${password}';`)
+  .then(res => {res.rows ? res.rows : 'The username or password you entered is incorrect.'})
+  .catch(err => console.log(err));}
 module.exports = {
   getUsers
 }
