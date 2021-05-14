@@ -37,7 +37,7 @@ const App = () => {
           <Route path='/alerts' component={AlertsContainer} />
           <Route path='/join-team' component={JoinTeamContainer} />
           <Route path='/leaderboards' component={LeaderboardContainer} />
-          <Route path='/login' component={LoginContainer} />
+          <Route path='/' component={LoginContainer} />
           <Route path='/profile' component={ProfileContainer} />
           <Route path='/search' component={SearchContainer} />
           <Route path='/plant-profile' component={PlantProfileContainer} />
