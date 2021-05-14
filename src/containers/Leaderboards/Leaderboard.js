@@ -1,11 +1,10 @@
 import React from 'react';
+import UnderConstruction from '../../components/Layout/UnderConstruction';
 
 const Leaderboard = () => {
   return (
   <div>
-    <p>
-      This is where Leaderboard components will reside
-    </p>
+    <UnderConstruction />
   </div>);
 };
 

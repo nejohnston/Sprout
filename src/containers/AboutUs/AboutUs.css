@@ -1,4 +1,8 @@
-.hero-container {
+.link {
+    color: #94B447;
+}
+
+.about-us-hero-container {
     height: 50vh;
     background: url('./images/full-hero.jpg') no-repeat center;
     box-shadow:inset 0 -10px 10px #3844282c;
@@ -7,7 +11,7 @@
 
 }
 
-h1 {
+#about-us-main-title {
     color: #FFFFFF;
     top: 0.2%;
     position: absolute;
@@ -17,16 +21,16 @@ h1 {
     font-size: 2.5em;
 }
 
-h2 {
+.about-us-h2 {
     color: #5BA8A0;
     text-align: center;
 }
 
-section {
+#about-us-section {
     margin: 2.5em;
 }
 
-.content {
+.about-us-content {
     margin-top: 1.5em;
     margin-bottom: 5em;
 }
@@ -48,13 +52,13 @@ section {
     text-align: center;
 }
 
-span {
+.about-us-my-sprout {
     color: #5D6E1E;
     font-weight: bold;
 }
 
 /*---AVATAR---*/
-.avatar {
+.about-us-avatar {
     width: 250px;
     margin: 1em;
     box-shadow: 0px 1px 10px #00000038;
@@ -63,7 +67,7 @@ span {
 
 @media (min-width: 768px) {
 
-    .hero-container {
+    .about-us-hero-container {
         background: url('./images/side-hero.jpg') no-repeat center;
         background-size: cover;
         background-attachment: fixed;
@@ -74,7 +78,7 @@ span {
         flex-direction: row;
     }
 
-    h1 {
+    #about-us-main-title {
         font-size: 3.5em;
     }
 
@@ -88,6 +92,10 @@ span {
 
 }
 
+#about-us-nav-block {
+    height: 5.5em;
+}
+
 @media (min-width: 1025px) {
     .hero-container {
         background: url('./images/side-hero.jpg') no-repeat center;
@@ -95,8 +103,9 @@ span {
         background-attachment: fixed;
     }
 
-    h1 {
+    #about-us-main-title {
         font-size: 3.5em;
     }
 
 }
+

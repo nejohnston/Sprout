@@ -1,0 +1,58 @@
+.plant-profile-icon {
+    grid-area: icon;
+    height: 30px;
+    align-self: center;
+}
+
+.plant-profile-info-card {
+    margin: 1em 0em;
+    padding: 0.75em 1.25em;
+    border-radius: 20px;
+    display: grid;
+    align-items: center;
+    background-color: #FFFFFF;
+
+    grid-template-columns: 65px auto;
+    grid-template-areas: "icon info";
+
+    box-shadow: 0 .25rem 0.5rem rgba(0,0,0,.15)!important;
+}
+
+.plant-profile-info-section {
+    grid-template-areas: info;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+        "info-subhead1 value1"
+        "info-subhead2 value2";
+}
+
+.plant-profile-info-section p {
+    margin: 0.5em 0em;
+}
+
+.plant-profile-subhead {
+    color: #818181;
+}
+
+.plant-profile-subhead1 {
+    grid-area: info-subhead1;
+}
+
+.plant-profile-subhead2 {
+    grid-area: info-subhead2;
+}
+
+.plant-profile-value {
+    text-align: right;
+    font-weight: bold;
+}
+
+.plant-profile-value1 {
+    grid-area: value1;
+}
+
+.plant-profile-value2 {
+    grid-area: value2;
+}

@@ -1,11 +1,10 @@
 import React from 'react';
+import UnderConstruction from '../../components/Layout/UnderConstruction';
 
 const Alerts = () => {
   return (
   <div>
-    <p>
-      This is where Alert components will reside
-    </p>
+    <UnderConstruction />
   </div>);
 };
 
