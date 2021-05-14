@@ -35,9 +35,15 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: 0 1rem 0 1rem;
 }
 
 .custom-primary-button {
     background-color: #5D6E1E !important;
     border-style: none !important;
+}
+
+.plant-profile-small-button-height-fix {
+
+    margin-top: 2.25rem;
 }
