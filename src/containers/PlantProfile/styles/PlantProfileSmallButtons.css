@@ -43,7 +43,15 @@
     border-style: none !important;
 }
 
+.custom-primary-button:active {
+    background-color: #94B447 !important;
+}
+
 .plant-profile-small-button-height-fix {
 
     margin-top: 2.25rem;
+}
+
+.plant-profile-small-button-container:active {
+    color: #94B447;
 }
