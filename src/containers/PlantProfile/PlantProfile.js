@@ -5,12 +5,10 @@ import plantprofiledata from "./plant_profile.json";
 import BackButton from "./images/back_button.svg";
 import EditButton from "./images/pen.svg";
 import { Link } from "react-router-dom";
-import DigUp from "./DigUp";
-import WaterPlant from "./WaterPlant";
 import PlantInfo from './PlantInfo';
-import PlantProfilePicture from './PlantProfilePicture';
 import PlantNotes from "./PlantNotes";
 import PlantProfileTopOptions from "./PlantProfileTopOptions";
+import PlantDateAdded from './PlantDateAdded';
 
 const PlantProfile = () => {
   let plantprofilejson = [];
@@ -28,6 +26,7 @@ const PlantProfile = () => {
       <hr />
       <PlantProfileTopOptions image_url={plantprofilejson[0]["image_url"]} />
       <PlantInfo plant={plantprofilejson[0]}/>
+      <PlantDateAdded dateAdded={plantprofilejson[0].date_added}/>
       <PlantNotes plantNotes={plantprofilejson[0].notes}/>
 
     </div>
