@@ -3,6 +3,7 @@ import DigUpButton from "./images/dig_up.svg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./styles/PlantProfileSmallButtons.css";
+import { Link } from "react-router-dom";
 
 const DigUp = (props) => {
   const [show, setShow] = useState(false);
@@ -37,6 +38,7 @@ const DigUp = (props) => {
           </p>
         </Modal.Body>
         <Modal.Footer>
+          <Link to="/profile">
           <Button
             variant="primary"
             onClick={handleClose}
@@ -44,6 +46,7 @@ const DigUp = (props) => {
           >
             Confirm
           </Button>
+          </Link>
         </Modal.Footer>
       </Modal>
     </>
