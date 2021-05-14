@@ -15,16 +15,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const PlantGallery = ({sprouts}) => {
   return sprouts.map((sprout) => (
 
-    <Link to="/plant-profile">
 
     <div className="plant-list-item" key={sprout.id}>
+      <Link to="/plant-profile">
       <img src={sprout.image_url} className="plant-list-img" alt="plant"/>
+      </Link>
       <div className="plant-list-name-div">
       <strong><p className="plant-list-name">{sprout.name}</p></strong>
       </div>
     </div>
     
-    </Link>
 
   ));
 };
