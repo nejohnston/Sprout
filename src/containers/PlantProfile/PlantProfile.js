@@ -23,7 +23,7 @@ const PlantProfile = () => {
           <img src={BackButton} className="back-button" alt="" />
         </Link>
         <h1 id="plant-profile-h1">{plantprofilejson[0]["user_given_name"]}</h1>
-        <EditPlant />
+        <EditPlant plant={plantprofilejson[0]}/>
       </div>
       <hr />
       <PlantProfileTopOptions image_url={plantprofilejson[0]["image_url"]} />
