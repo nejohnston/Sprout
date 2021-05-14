@@ -27,8 +27,8 @@ const AboutUs = () => {
     </div>
 
     <div className="content">
-        <h2 class="about-us-h2">Team Sprout</h2>
-        <div class="all-members-container">
+        <h2 className="about-us-h2">Team Sprout</h2>
+        <div className="all-members-container">
         <TeamList members={teamMembers} />
         </div>
     </div>

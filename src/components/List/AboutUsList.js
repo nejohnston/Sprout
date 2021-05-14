@@ -14,7 +14,7 @@ const TeamList = ({members}) => {
 
           {member.position}
           
-          <p><span class="about-us-my-sprout">My Sprout: {member.plant}</span>
+          <p><span className="about-us-my-sprout">My Sprout: {member.plant}</span>
           <br/>
           <br/>
           {member.about}</p>

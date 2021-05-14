@@ -30,7 +30,7 @@ function ProfilePictureModal({props, profilePic}) {
                 
                 <Form.Group controlId="sprout-modal-text">
                     <Form.Label className="sprout-modal-text">Display Name</Form.Label>
-                    <Form.Control type="email" value="Toph Beifong" />
+                    <Form.Control type="email" defaultValue="Toph Beifong" />
                 </Form.Group>
 
               </Form>

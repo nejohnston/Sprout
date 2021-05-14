@@ -10,7 +10,7 @@ import Form from "react-bootstrap/Form";
 
 import "./styles/PlantProfileSmallButtons.css";
 
-const EditPlant = ({props, plant}) => {
+const EditPlant = ({plant}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,19 +29,19 @@ const EditPlant = ({props, plant}) => {
             <strong>
               <p className="sprout-modal-text">Name</p>
             </strong>
-            <Form.Control type="text" value={plant.user_given_name} />
+            <Form.Control type="text" defaultValue={plant.user_given_name} />
           </Form.Group>
           <Form.Group controlId="sproutFamily">
             <strong>
               <p className="sprout-modal-text">Family</p>
             </strong>
-            <Form.Control type="text" value={plant.family} />
+            <Form.Control type="text" defaultValue={plant.family} />
           </Form.Group>
           <Form.Group controlId="sproutType">
             <strong>
               <p className="sprout-modal-text">Type</p>
             </strong>
-            <Form.Control type="text" value={plant.type} />
+            <Form.Control type="text" defaultValue={plant.type} />
           </Form.Group>
           <Form.Group controlId="sproutType">
             <strong>
@@ -49,14 +49,14 @@ const EditPlant = ({props, plant}) => {
             </strong>
             <Form.Control
               type="number"
-              value={plant.watering_interval}
+              defaultValue={plant.watering_interval}
             />
           </Form.Group>
           <Form.Group controlId="sproutNotes">
             <strong>
               <p className="sprout-modal-text">Additional Notes</p>
             </strong>
-            <Form.Control as="textarea" rows={3} value={plant.notes} />
+            <Form.Control as="textarea" rows={3} defaultValue={plant.notes} />
           </Form.Group>
           <Form.Group>
             <strong>
