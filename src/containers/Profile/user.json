@@ -1,36 +1,42 @@
 [
-{ 
-"username": "earth_bender12",
-"password": "password",
-"name": "Toph Beifong",
-"profile_pic": "https://randomuser.me/api/portraits/women/44.jpg",
-"team": "3",
-"points": 550,
-"sprouts": [ {
-              "id" : 0,
-              "name": "Sokka the Aloe",
-              "image_url": "https://plantdatabase.kpu.ca/images/bark/talvek.jpg"
-            },
-            { "id" : 1,
-              "name": "Katar-actus",
-              "image_url": "https://plantdatabase.kpu.ca/images/habit/tfesph1.jpg"
-            },
-            { "id" : 2,
-              "name": "Best Boy Appa",
-              "image_url": "https://plantdatabase.kpu.ca/images/habit/tcrfah1.jpg"
-            },
-            { "id" : 3,
-              "name": "Kyoshi",
-              "image_url": "https://plantdatabase.kpu.ca/images/habit/tdacnh1.jpg"
-            },
-            { "id" : 4,
-              "name": "Rose-mei-ry",
-              "image_url": "https://plantdatabase.kpu.ca/images/habit/troofh1.jpg"
-            },
-            {
-              "id" : 5,
-              "name": "Yue the Lily",
-              "image_url": "https://plantdatabase.kpu.ca/images/habit/tlilah1.jpg"
-            }  ]
-}
+  {
+    "username": "earth_bender12",
+    "password": "password",
+    "name": "Toph Beifong",
+    "profile_pic": "https://randomuser.me/api/portraits/women/44.jpg",
+    "team": "3",
+    "points": 550,
+    "sprouts": [
+      {
+        "id": 0,
+        "name": "Sokka the Aloe",
+        "image_url": "https://plantdatabase.kpu.ca/images/bark/talvek.jpg"
+      },
+      {
+        "id": 1,
+        "name": "Katar-actus",
+        "image_url": "https://plantdatabase.kpu.ca/images/habit/tfesph1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Best Boy Appa",
+        "image_url": "https://plantdatabase.kpu.ca/images/habit/tcrfah1.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Kyoshi",
+        "image_url": "https://plantdatabase.kpu.ca/images/habit/tdacnh1.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Rose-mei-ry",
+        "image_url": "https://plantdatabase.kpu.ca/images/habit/troofh1.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Yue the Lily",
+        "image_url": "https://plantdatabase.kpu.ca/images/habit/tlilah1.jpg"
+      }
+    ]
+  }
 ]
