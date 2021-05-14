@@ -8,10 +8,10 @@ import PlantProfilePicture from "./PlantProfilePicture";
 const PlantProfileTopOptions = ({ image_url }) => {
   return (
     <>
-    <div id="plant-profile-top-container">
-      <DigUp />
-      <PlantProfilePicture image_url={image_url} />
-      <WaterPlant />
+      <div id="plant-profile-top-container">
+        <DigUp />
+        <PlantProfilePicture image_url={image_url} />
+        <WaterPlant />
       </div>
     </>
   );
