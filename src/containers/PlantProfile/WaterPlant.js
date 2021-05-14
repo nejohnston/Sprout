@@ -10,7 +10,7 @@ const WaterPlant = (props) => {
 
   return (
     <>
-      <div className="plant-profile-small-button-container">
+      <div className="plant-profile-small-button-container plant-profile-small-button-height-fix">
         <div id="dig-up-button">
           <img src={WaterButton} id="dig-up-icon" onClick={handleShow} alt=""/>
         </div>

@@ -7,7 +7,7 @@ const PlantNotes = ({plantNotes}) => {
     return (
         <>
         <div id="plant-profile-card" className="shadow">
-        <h5 id="plant-profile-subhead">Notes</h5>
+        <p id="plant-profile-subhead">Notes</p>
         <p>{plantNotes}</p>
         </div>
         </>

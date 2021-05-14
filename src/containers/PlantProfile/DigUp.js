@@ -12,7 +12,7 @@ const DigUp = (props) => {
 
   return (
     <>
-      <div className="plant-profile-small-button-container">
+      <div className="plant-profile-small-button-container plant-profile-small-button-height-fix">
         <div id="dig-up-button">
           <img src={DigUpButton} id="dig-up-icon" alt="" onClick={handleShow} />
         </div>
