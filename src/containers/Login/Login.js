@@ -22,13 +22,21 @@ const Login = ({ loginError }) => {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Enter Password" />
             </Form.Group>
-            <Button variant="primary" type="submit" className="custom-primary-button">
-              Login or Signup
-            </Button>
+            <Link to="/join-team">
+              <Button
+                variant="primary"
+                type="submit"
+                className="custom-primary-button"
+              >
+                Login or Signup
+              </Button>
+            </Link>
           </Form>
         </div>
       </div>
-      <Link to="/about-us" id="about-us-link"><p>About the Sprout Team</p></Link>
+      <Link to="/about-us" id="about-us-link">
+        <p>About the Sprout Team</p>
+      </Link>
     </div>
   );
 };
