@@ -7,6 +7,7 @@ import EditButton from "./images/pen.svg";
 /* Bootstrap imports */
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import "./styles/PlantProfileSmallButtons.css";
 
@@ -65,6 +66,15 @@ const EditPlant = ({plant}) => {
             <Form.File id="sproutUploadPicture" />
           </Form.Group>
         </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            onClick={handleClose}
+            className="custom-primary-button"
+          >
+            Save Changes
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );

@@ -39,9 +39,6 @@ function ProfilePictureModal({props, profilePic}) {
 
 
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
             <Button variant="primary" className="custom-primary-button" onClick={handleClose}>
               Save Changes
             </Button>
