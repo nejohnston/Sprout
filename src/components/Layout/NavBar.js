@@ -10,7 +10,7 @@ import "./styles.css";
 
 const NavBar = () => {
   return (
-    <Navbar activeKey="/profile" fixed="bottom" id="bottom-nav">
+    <Navbar activekey="/profile" fixed="bottom" id="bottom-nav">
       <Nav.Item>
         <Link to="/profile" className="bottom-nav-link">
           <img src={SproutsIcon} className="bottom-nav-icon" alt=""/>
