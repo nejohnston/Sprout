@@ -92,6 +92,10 @@
 
 }
 
+#about-us-nav-block {
+    height: 5.5em;
+}
+
 @media (min-width: 1025px) {
     .hero-container {
         background: url('./images/side-hero.jpg') no-repeat center;
