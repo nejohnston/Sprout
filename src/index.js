@@ -11,8 +11,8 @@ import ProfileContainer from './containers/Profile';
 import PlantProfileContainer from './containers/PlantProfile';
 import SearchContainer from './containers/Search';
 import reportWebVitals from './reportWebVitals';
-
 import './index.css';
+
 
 const App = () => {
   return (
@@ -31,7 +31,7 @@ const App = () => {
       </Switch>
     </Router>
   );
-};
+}
 
 ReactDOM.render(
   <React.StrictMode>

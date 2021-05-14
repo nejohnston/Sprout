@@ -3,12 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/PlantProfile.css";
 import plantprofiledata from "./plant_profile.json";
 import BackButton from "./images/back_button.svg";
-import EditButton from "./images/pen.svg";
 import { Link } from "react-router-dom";
 import PlantInfo from './PlantInfo';
 import PlantNotes from "./PlantNotes";
 import PlantProfileTopOptions from "./PlantProfileTopOptions";
 import PlantDateAdded from './PlantDateAdded';
+import EditPlant from './EditPlant';
 
 const PlantProfile = () => {
   let plantprofilejson = [];
@@ -23,7 +23,7 @@ const PlantProfile = () => {
           <img src={BackButton} className="back-button" alt="" />
         </Link>
         <h1 id="plant-profile-h1">{plantprofilejson[0]["user_given_name"]}</h1>
-        <img src={EditButton} id="edit-button" alt="" />
+        <EditPlant />
       </div>
       <hr />
       <PlantProfileTopOptions image_url={plantprofilejson[0]["image_url"]} />

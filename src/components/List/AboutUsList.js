@@ -4,18 +4,17 @@ const TeamList = ({members}) => {
 
     return members.map(member => {
 
-      console.log(member.img)
       return(
       <>
-        <div className="member-container">
-          <img className="avatar" src={member.img} alt={member.name}/>
+        <div className="member-container" key={member.id}>
+          <img className="about-us-avatar" src={member.img} alt={member.name}/>
 
           <div className="member-description">
           <h3>{member.name}</h3>
 
           {member.position}
           
-          <p><span>My Sprout: {member.plant}</span>
+          <p><span class="about-us-my-sprout">My Sprout: {member.plant}</span>
           <br/>
           <br/>
           {member.about}</p>
