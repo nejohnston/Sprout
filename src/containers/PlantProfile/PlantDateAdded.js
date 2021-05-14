@@ -7,7 +7,7 @@ const PlantNotes = ({dateAdded}) => {
 
     return (
         <>
-        <div id="plant-profile-card" className="shadow">
+        <div id="plant-profile-dateAdded-card">
             <div className="plant-profile-info-card">
                 <img src={seed} className="plant-profile-icon" alt="leaf-icon"></img>
                 <div className="plant-dateAdded-section">

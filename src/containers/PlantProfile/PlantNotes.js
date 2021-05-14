@@ -6,7 +6,7 @@ const PlantNotes = ({plantNotes}) => {
 
     return (
         <>
-        <div id="plant-profile-card" className="shadow">
+        <div className="plant-profile-notes-card">
         <p id="plant-profile-subhead">Notes</p>
         <p>{plantNotes}</p>
         </div>

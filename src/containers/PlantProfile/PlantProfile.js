@@ -15,6 +15,8 @@ const PlantProfile = () => {
   plantprofilejson.push(...plantprofiledata);
 
   return (
+    <>
+
     <div id="container">
       <div className="header_backarrow_container">
         <Link to="/profile">
@@ -29,7 +31,10 @@ const PlantProfile = () => {
       <PlantDateAdded dateAdded={plantprofilejson[0].date_added}/>
       <PlantNotes plantNotes={plantprofilejson[0].notes}/>
 
+      <div id="plant-profile-nav-block"></div>
+
     </div>
+    </>
   );
 };
 
