@@ -29,14 +29,26 @@ RETURNS TRIGGER
 AS
 $$
 DECLARE
+	calculated_date DATE;
 BEGIN
+	calculated_date := (
+						SELECT USER_SPROUTS_DATE_ADDED 
+						FROM USER_SPROUTS 
+						WHERE USER_SPROUTS_ID = new.USER_SPROUTS_ID
+					   );
+	WHILE calculated_date <= current_date LOOP
+		calculated_date := calculated_date + new.USER_SPROUTS_WATERING_INTERVALS;
+	END LOOP;
 	UPDATE USER_SPROUTS 
-	SET USER_SPROUTS_NEXT_ALERT_DATE = USER_SPROUTS_DATE_ADDED + USER_SPROUTS_WATERING_INTERVALS;
-    RETURN NULL;
+	SET USER_SPROUTS_NEXT_ALERT_DATE = calculated_date
+	WHERE USER_SPROUTS_ID = new.USER_SPROUTS_ID;
+	RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 -- After a user added a sprout, initialize the next alert date.
+DROP TRIGGER IF EXISTS initialize_alert ON USER_SPROUTS;
+
 CREATE TRIGGER initialize_alert
 AFTER INSERT ON USER_SPROUTS
 FOR EACH ROW EXECUTE PROCEDURE initialize_next_alert();
@@ -49,12 +61,14 @@ $$
 DECLARE
 BEGIN
 	UPDATE USER_SPROUTS 
-	SET USER_SPROUTS_NEXT_ALERT_DATE = NOW() + USER_SPROUTS_WATERING_INTERVALS;
+	SET USER_SPROUTS_NEXT_ALERT_DATE = current_date + USER_SPROUTS_WATERING_INTERVALS;
 	RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 -- After a user clicked the water button, reset the next alert date.
+DROP TRIGGER IF EXISTS after_plant_watered ON USER_SPROUTS;
+
 CREATE TRIGGER after_plant_watered
 AFTER UPDATE OF USER_SPROUTS_IS_WATERED ON USER_SPROUTS
 FOR EACH ROW EXECUTE PROCEDURE reset_next_alert();
