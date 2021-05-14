@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-function ProfilePictureModal({profilePic}) {
+function ProfilePictureModal({props, profilePic}) {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
@@ -15,7 +15,7 @@ function ProfilePictureModal({profilePic}) {
       <>
         <img id="user-profile-picture" className="shadow-sm" src={profilePic} alt="user-pic" onClick={handleShow}/>
   
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} {...props} centered>
           <Modal.Header closeButton>
             <Modal.Title>Profile Settings</Modal.Title>
           </Modal.Header>
@@ -30,7 +30,7 @@ function ProfilePictureModal({profilePic}) {
                 
                 <Form.Group controlId="sprout-modal-text">
                     <Form.Label className="sprout-modal-text">Display Name</Form.Label>
-                    <Form.Control type="email" placeholder="Toph Beifong" />
+                    <Form.Control type="email" value="Toph Beifong" />
                 </Form.Group>
 
               </Form>

@@ -20,7 +20,7 @@ const EditPlant = ({props, plant}) => {
       <img src={EditButton} id="edit-button" onClick={handleShow} alt=""/>
 
 
-      <Modal show={show} onHide={handleClose} {...props} centered>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Sprout</Modal.Title>
         </Modal.Header>
