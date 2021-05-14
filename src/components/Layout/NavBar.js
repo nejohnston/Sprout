@@ -13,25 +13,25 @@ const NavBar = () => {
     <Navbar activeKey="/profile" fixed="bottom" id="bottom-nav">
       <Nav.Item>
         <Link to="/profile" className="bottom-nav-link">
-          <img src={SproutsIcon} className="bottom-nav-icon"/>
+          <img src={SproutsIcon} className="bottom-nav-icon" alt=""/>
           <p>My Sprouts</p>
         </Link>
       </Nav.Item>
       <Nav.Item>
         <Link to="/search" className="bottom-nav-link">
-          <img src={SearchIcon} className="bottom-nav-icon"/>
+          <img src={SearchIcon} className="bottom-nav-icon" alt=""/>
           <p>Search</p>
         </Link>
       </Nav.Item>
       <Nav.Item>
         <Link to="/alerts" className="bottom-nav-link">
-          <img src={AlertsIcon} className="bottom-nav-icon"/>
+          <img src={AlertsIcon} className="bottom-nav-icon" alt=""/>
           <p>Alerts</p>
         </Link>
       </Nav.Item>
       <Nav.Item>
         <Link to="/leaderboards" className="bottom-nav-link">
-          <img src={LeaderboardsIcon} className="bottom-nav-icon"/>
+          <img src={LeaderboardsIcon} className="bottom-nav-icon" alt=""/>
           <p>Leaderboards</p>
         </Link>
       </Nav.Item>

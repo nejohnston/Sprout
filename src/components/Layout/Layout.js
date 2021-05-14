@@ -6,8 +6,8 @@ export const Layout = ({ children }) => {
   return (
     <div>
       <div className="appContent">{children}</div>
-      {window.location.pathname != "/login" &&
-      window.location.pathname != "/join-team" ? (
+      {window.location.pathname !== "/login" &&
+      window.location.pathname !== "/join-team" ? (
         <NavBar />
       ) : null}
     </div>

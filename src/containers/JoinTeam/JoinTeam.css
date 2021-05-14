@@ -19,6 +19,7 @@ h2 {
     right: 0;
     height: 28rem;
     z-index: -100;
+    opacity: 0.5;
   }
 
   .team-block {
@@ -53,7 +54,7 @@ h2 {
     background-size: cover;
     height: 45rem;
     z-index: -100;
-    overflow-x: hidden;
+    opacity: 0.5;
   }
 
   .team-block {
@@ -85,4 +86,19 @@ h2 {
   right: 0;
   text-align: center;
   color: #fff;
+}
+
+@media only screen and (min-device-width: 1025px) {
+  #vector-bg {
+    background-image: url("./images/bg-vector.svg");
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    height: 65rem;
+    z-index: -100;
+    opacity: 0.5;
+  }
+
 }
