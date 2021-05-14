@@ -5,6 +5,10 @@
 }
 
 .plant-profile-info-card {
+    margin: 1em 0em;
+    padding: 0.75em 1.25em;
+    border-radius: 20px;
+    box-shadow: 0 .25rem 0.5rem rgba(0,0,0,.15)!important;
     display: grid;
     align-items: center;
     grid-template-columns: 65px auto;

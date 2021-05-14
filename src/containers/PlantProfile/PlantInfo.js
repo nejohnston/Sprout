@@ -8,7 +8,7 @@ const PlantInfo = ({plant}) => {
 
     return (
         <>
-        <div id="plant-profile-card" className="shadow">
+        <div id="plant-profile-card">
             <div className="plant-profile-info-card">
                 <img src={leaf} className="plant-profile-icon" alt="leaf-icon"></img>
                 <div className="plant-profile-info-section">
@@ -21,7 +21,7 @@ const PlantInfo = ({plant}) => {
             </div>
         </div>
 
-        <div id="plant-profile-card" className="shadow">
+        <div id="plant-profile-card">
             <div className="plant-profile-info-card">
                 <img src={watercan} className="plant-profile-icon" alt="leaf-icon"></img>
                 <div className="plant-profile-info-section">

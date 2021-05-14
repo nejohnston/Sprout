@@ -29,6 +29,8 @@ const PlantProfile = () => {
       <PlantDateAdded dateAdded={plantprofilejson[0].date_added}/>
       <PlantNotes plantNotes={plantprofilejson[0].notes}/>
 
+      <div id="plant-profile-nav-block"></div>
+
     </div>
   );
 };
