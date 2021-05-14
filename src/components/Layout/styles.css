@@ -19,3 +19,23 @@
 .bottom-nav-icon {
   margin-bottom: 0.25rem;
 }
+
+#under-const-container {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 80vh;
+}
+
+#under-const-container h4 {
+  color: #5D6E1E;
+}
+
+#under-const-logo {
+  margin: 1rem;
+  height: 12rem;
+}
