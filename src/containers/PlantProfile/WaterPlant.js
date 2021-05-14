@@ -12,7 +12,7 @@ const WaterPlant = (props) => {
     <>
       <div className="plant-profile-small-button-container">
         <div id="dig-up-button">
-          <img src={WaterButton} id="dig-up-icon" onClick={handleShow} />
+          <img src={WaterButton} id="dig-up-icon" onClick={handleShow} alt=""/>
         </div>
         <strong>
           <p className="plant-profile-small-button-text">Water</p>
@@ -26,7 +26,7 @@ const WaterPlant = (props) => {
         <Modal.Body>
           <div className="plant-profile-small-button-container">
             <div id="modal-dig-up-button">
-              <img src={WaterButton} id="modal-dig-up-icon" />
+              <img src={WaterButton} id="modal-dig-up-icon" alt=""/>
             </div>
           </div>
           <p>
