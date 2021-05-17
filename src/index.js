@@ -15,6 +15,7 @@ import JoinTeamContainer from './containers/JoinTeam'
 import ProfileContainer from './containers/Profile';
 import PlantProfileContainer from './containers/PlantProfile';
 import SearchContainer from './containers/Search';
+import SearchPlantDetailContainer from './containers/SearchPlantDetail'
 
 // Web Vitals and Styling
 import reportWebVitals from './reportWebVitals';
@@ -40,6 +41,7 @@ const App = () => {
           <Route path='/login' component={LoginContainer} />
           <Route path='/profile' component={ProfileContainer} />
           <Route path='/search' component={SearchContainer} />
+          <Route path='/search-details' component={SearchPlantDetailContainer} />
           <Route path='/plant-profile' component={PlantProfileContainer} />
         </Layout>
       </Switch>
