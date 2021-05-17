@@ -23,8 +23,6 @@ const Search = () => {
 
     setInput(input);
     setPlantList(filterList);
-
-    console.log(filterList)
   }
 
   return (
