@@ -27,19 +27,6 @@ const Search = () => {
     console.log(filterList)
   }
 
-  const filerNativePlants = () => {
-    let nativePlants = document.getElementsByClassName("is-native");
-    for (let i = 1; i < nativePlants.length + 1; i++) {
-      if (plantJSON[i - 1]["PLANT_ORIGIN"].substring(0, 4) !== "B.C.") {
-        let isNative = document.getElementById("plant" + String(i));
-        isNative.remove();
-      }
-    }
-  };
-  useEffect(() => {
-    filerNativePlants();
-  });
-
   return (
     <div id="container">
       <div id="profile-header">

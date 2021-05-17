@@ -21,7 +21,11 @@ const SearchItem = ({ plantData }) => {
           <div className="plant-search-familytype">
           <p className="plant-search-family"><strong>Family: </strong>{plant["PLANT_FAMILY_NAME"]}</p>
           <p className="plant-search-type"><strong>Type: </strong>{plant["PLANT_TYPE"]}</p>
-          <p className="is-native" id={"plant" + plant["PLANT_ID"]}>Native Plant</p>
+
+          { plant['PLANT_ORIGIN'].includes("B.C") && 
+            <p className="is-native" id={"plant" + plant["PLANT_ID"]}>Native Plant</p>
+          }
+
           </div>
           
       </div>
