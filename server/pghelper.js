@@ -7,17 +7,19 @@ const client = new Client({
     rejectUnauthorized: false
   }
 });
-console.log(process.env.DATABASE_URL);
 console.log('not connected')
 client.connect();
 console.log('connected')
+
 let getUsers = async (username, password) => {
+    const query = {
+      text: 
+      'SELECT * FROM application_user WHERE application_user_username=$1 AND application_user_password=$2;',
+      values: [username, password]
+    }
   return (
     await client
-  .query(
-    `SELECT * FROM application_user 
-      WHERE username=${username} AND password=${password};`
-          )
+  .query(query)
   .then(res => res.rows[0])
   .catch(err => console.log(err))
   )
