@@ -1,3 +1,3 @@
-import AlertsContainer from './AlertsContainer';
+import SearchPlantDetailContainer from './SearchPlantDetailContainer';
 
-export default AlertsContainer;
+export default SearchPlantDetailContainer;
