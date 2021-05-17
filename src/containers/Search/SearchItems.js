@@ -15,10 +15,15 @@ const SearchItem = ({ plantData }) => {
       <div className="plant-search-name-div">
         <strong>
           <p className="plant-search-name">
-            {titleCase(plant["PLANT_COMMON_NAME"])}
+            {titleCase(plant["PLANT_COMMON_NAME"].split(", ")[0])}
           </p>
           </strong>
-          <p className="is-native" id={"plant" + plant["PLANT_ID"]}>Is Native</p>
+          <div className="plant-search-familytype">
+          <p className="plant-search-family"><strong>Family: </strong>{plant["PLANT_FAMILY_NAME"]}</p>
+          <p className="plant-search-type"><strong>Type: </strong>{plant["PLANT_TYPE"]}</p>
+          <p className="is-native" id={"plant" + plant["PLANT_ID"]}>Native Plant</p>
+          </div>
+          
       </div>
     </div>
   ));
