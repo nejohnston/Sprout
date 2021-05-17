@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import SproutGallery from './SproutGallery';
 import ProfilePictureModal from './ProfilePictureModal';
-import ProfileModal from './ProfileModal'
+import AddPlantModal from '../../components/Modals/AddPlantModal'
 import Scorebar from './Scorebar';
 import userdata from "./user.json";
 import './styles/Profile.css'
@@ -15,7 +15,7 @@ const Profile = () => {
   <div id="container">
     <div id="profile-header">
       <h1 id="profile-h1">My Sprouts</h1>
-      <ProfileModal />
+      <AddPlantModal />
     </div>
 
     <hr />

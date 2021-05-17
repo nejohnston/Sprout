@@ -1,12 +1,25 @@
+// ========================================
+//        Import Statements
+// ========================================
+
+// React
 import { React, useState } from "react";
+
+// Bootstrap and styling
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import addButton from "./images/addbutton.svg";
-import "./styles/ProfileModal.css";
+import "./styles/AddPlantModal.css";
 
-const ProfileModal = () => {
+
+// ========================================
+//        Component Code
+// ========================================
+
+
+const ProfileModal = ({ type, family }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -31,13 +44,13 @@ const ProfileModal = () => {
             <strong>
               <p className="sprout-modal-text">Family</p>
             </strong>
-            <Form.Control type="text" placeholder="Sprout Name..." />
+            <Form.Control type="text" placeholder="Sprout Name..." defaultValue={family}/>
           </Form.Group>
           <Form.Group controlId="sproutType">
             <strong>
               <p className="sprout-modal-text">Type</p>
             </strong>
-            <Form.Control type="text" placeholder="Sprout Type..." />
+            <Form.Control type="text" placeholder="Sprout Type..." defaultValue={type}/>
           </Form.Group>
           <Form.Group controlId="sproutType">
             <strong>
