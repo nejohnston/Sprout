@@ -24,17 +24,21 @@ const Login = ({ loginError }, props) => {
           onSubmit={
             async (values) => {
               await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
-              .then(response => {
+              .then(response => response.json()
+              // console.log(isValidCredentials)
                 // console.log(response.json())
-                let responseBody = response.text()
-                console.log(responseBody)
-                return responseBody
-              }
+                // let responseBody = response.json()
+                // console.log(responseBody)
+                // return responseBody
+              
               )
               .then(data => {
-                this.props.history.push('/profile')
+                typeof data === Boolean ? setIsValidCredentials(false) : null
+                &&
+                // setIsValidCredentials(false)
+                console.log(isValidCredentials)
               })
-              .catch(setIsValidCredentials(false));
+              .catch(err => console.log(err));
             }
           }
           initialValues={

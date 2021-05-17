@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
@@ -12,6 +12,8 @@ import SearchContainer from './containers/Search';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
+
+const Context = createContext();
 
 const App = () => {
   return (

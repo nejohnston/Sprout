@@ -20,8 +20,8 @@ let getUsers = async (username, password) => {
   return (
     await client
   .query(query)
-  .then(res => res.rows[0])
-  .catch(err => console.log(err))
+  .then(res => (res.rows[0]) ? res.rows[0] : false)
+  .catch(err => console.error())
   )
 }
 module.exports = {
