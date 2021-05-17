@@ -13,7 +13,9 @@ Technologies/languages used for this project:
 JSX allows us to render JS objects in HTML. This makes it easier to write React components and leverage props and states within the component's HTML.
 
 ### React
-React is a flexible, agile, Javascript library used to make UI Interfaces. It enables us to build small, static components that can display information passed down from parents of the components. This will be advantageous for us as we will be passing around a lot of information such as plant information, user data, and images.
+React is a flexible, agile, Javascript framework used to make UI Interfaces. It enables us to build small components that can display information based on props and state, which makes templating much easier. This will be advantageous for us as we will be passing around a lot of information such as plant information, user data, and images.
+
+For our implementation of React, we will be relying on React Hooks rather than the decprecated Class methods. The two Hooks we will be working with for this development will be the useState and useEffect Hooks. This will us to control our components based on dynamic variable handling, and will ensure that they retain maximum flexibility without bloat.
 
 #### Design
 For containers, the design we will be using is an encompassing component surrounding a single component. This makes passing props simple and building a page much easier as it separates.
@@ -21,7 +23,10 @@ For containers, the design we will be using is an encompassing component surroun
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### React State
-State is built in to React Components. Using state we can add value attributes to our components. When state is updated, the component rerenders. For example, this will be useful for Adding Sprouts in our application.
+State is built in to React Components. Using state we can add value attributes to our components. When state is updated, the component re-renders. For example, this will be useful for Adding Sprouts in our application. 
+
+### React Component Lifecycles
+Working hand in hand with state management is the useEffect hook, which we will be using to maintain and control our component lifecycles. The useEffect hook simply executes events depending on the current state, on mounting/unmounting a component, or if a specific state is changed. Furthermore, it allows us to clean up code (like event handlers) after a function is fired off, which prevents the application from crashing!
 
 ### Redux
 Redux is a state manager for React. Simply put, Redux dispatches actions that update the state. The state is stored in what is called the store. The store is where we 'store' states from across the application. To tie actions and store together we use reducers. Reducers are simply functions that take in an action and state and return the new state.

@@ -3344,7 +3344,7 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@4.6.0:
+bootstrap@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
   integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
@@ -5839,6 +5839,11 @@ fsevents@^2.1.2, fsevents@^2.1.3, fsevents@~2.3.1:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
+
+fslightbox-react@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/fslightbox-react/-/fslightbox-react-1.6.2.tgz#d4456843508f1a916277583204fb4d880057941f"
+  integrity sha512-rdWD+BkOhxHA6ZTEk4/ZHmdNwPuAmEVsF4Yfj75GivcI5YHkslf3G3pu7sf6lT5Yzy8l5UYfb2I5tC5fkNzNfQ==
 
 function-bind@^1.1.1:
   version "1.1.1"

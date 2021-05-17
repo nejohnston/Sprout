@@ -3,7 +3,7 @@
 // React
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 // Components
 import { Layout } from './components/Layout/Layout';
@@ -37,6 +37,9 @@ const App = () => {
           <Route path='/alerts' component={AlertsContainer} />
           <Route path='/join-team' component={JoinTeamContainer} />
           <Route path='/leaderboards' component={LeaderboardContainer} />
+          <Route exact path="/">
+            <Redirect to='/login' />
+          </Route>
           <Route path='/login' component={LoginContainer} />
           <Route path='/profile' component={ProfileContainer} />
           <Route path='/search' component={SearchContainer} />
