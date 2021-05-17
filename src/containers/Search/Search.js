@@ -36,7 +36,7 @@ const Search = () => {
       <hr/>
 
       <SearchBar input_keyword={input} updateInputKeyword={updateInput}/>
-      <SearchItem plantData={plantJSON} />
+      <SearchItem plantData={plantList} />
 
     </div>
   );

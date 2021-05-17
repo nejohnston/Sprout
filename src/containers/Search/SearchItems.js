@@ -5,7 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const SearchItem = ({ plantData }) => {
   const titleCase = (title) => title.charAt(0).toUpperCase() + title.slice(1);
-  return plantData.map((plant) => (
+
+  return plantData.map(plant => (
     <div className="plant-search-item" key={plant["PLANT_ID"]}>
       <img
         src={plant["PLANT_IMG_URL"]}
