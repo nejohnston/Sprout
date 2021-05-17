@@ -1,10 +1,9 @@
 import React from 'react';
-import UnderConstruction from '../../components/Layout/UnderConstruction';
 
 const Search = () => {
   return (
   <div>
-    <UnderConstruction />
+    <p>Hello World</p>
   </div>);
 };
 
