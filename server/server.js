@@ -9,9 +9,11 @@ let app = express();
 
 app.get('/login/:username/:password', async (req, res) => {
   let users = await getUsers(req.params.username, req.params.password);
-  res.json(
-    users
-    );
+  console.log('before')
+  console.log(users)
+  console.log('after')
+  res.json(users)
+  // res.json(users);
 });
 
 app.listen(port, () => {

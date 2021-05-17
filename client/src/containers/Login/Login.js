@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import { isNull } from "lodash-es";
+import { Redirect } from "react-router";
 
 const schema = yup.object().shape({
   username: yup.string().required(),
@@ -24,11 +25,16 @@ const Login = ({ loginError }) => {
             async (values) => {
               await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
               .then(response => {
-                return response.text();
-              })
+                // console.log(response.json())
+                let responseBody = response.text()
+                console.log(responseBody)
+                return responseBody
+              }
+              )
               .then(data => {
-                return (isNull(data) ? setUser(data[0]) : setNotValidated(true))
+                console.log(data);
               })
+              .catch(err => console.log(err));
             }
           }
           initialValues={
