@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Formik } from 'formik';
+import { ErrorMessage, Formik } from 'formik';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import * as yup from 'yup';
@@ -13,8 +13,8 @@ const schema = yup.object().shape({
   password: yup.string().required()
 })
 
-const Login = ({ loginError }) => {
-
+const Login = ({ loginError }, props) => {
+  const [isValidCredentials, setIsValidCredentials] = useState(true);
   return (
     <>
       <div id="bg">
@@ -32,9 +32,9 @@ const Login = ({ loginError }) => {
               }
               )
               .then(data => {
-                console.log(data);
+                this.props.history.push('/profile')
               })
-              .catch(err => console.log(err));
+              .catch(setIsValidCredentials(false));
             }
           }
           initialValues={
@@ -80,6 +80,9 @@ const Login = ({ loginError }) => {
                 isValid={touched.password && !errors.password}
               />
             </Form.Group>
+            {!isValidCredentials ? 
+            <ErrorMessage>That's an incorrect username or password, please try again.</ErrorMessage> : null
+          }
             <Button 
             variant="primary" 
             type="submit">
