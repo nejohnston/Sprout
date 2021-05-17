@@ -6,8 +6,8 @@ const SearchPlantDetail = () => {
   let plantJSON = [];
   plantJSON.push(...plantData);
   return (
-  <div>
-    <DetailCards plantInfo={plantJSON[0]}/>
+    <div id="container">
+    <DetailCards plantInfo={plantJSON[2]}/>
   </div>);
 };
 
