@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
 
 /* Component imports */
-import sproutLogo from "./components/Layout/images/sprout_logo_textless.png";
+import sproutLogo from "./components/Layout/images/sprout_logo.png";
 
 const Splash = () => {
   return (
