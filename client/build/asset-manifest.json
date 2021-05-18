@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.42315ac4.chunk.css",
+    "main.js": "/static/js/main.29b82caa.chunk.js",
+    "main.js.map": "/static/js/main.29b82caa.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.876b1e13.js",
+    "runtime-main.js.map": "/static/js/runtime-main.876b1e13.js.map",
+    "static/css/2.5c573378.chunk.css": "/static/css/2.5c573378.chunk.css",
+    "static/js/2.e10e4af2.chunk.js": "/static/js/2.e10e4af2.chunk.js",
+    "static/js/2.e10e4af2.chunk.js.map": "/static/js/2.e10e4af2.chunk.js.map",
+    "static/js/3.321b0f5d.chunk.js": "/static/js/3.321b0f5d.chunk.js",
+    "static/js/3.321b0f5d.chunk.js.map": "/static/js/3.321b0f5d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.5c573378.chunk.css.map": "/static/css/2.5c573378.chunk.css.map",
+    "static/css/main.42315ac4.chunk.css.map": "/static/css/main.42315ac4.chunk.css.map",
+    "static/js/2.e10e4af2.chunk.js.LICENSE.txt": "/static/js/2.e10e4af2.chunk.js.LICENSE.txt",
+    "static/media/JoinTeam.css": "/static/media/bg-vector.2017d62c.svg",
+    "static/media/AboutUs.css": "/static/media/side-hero.2e58e1c1.jpg",
+    "static/media/Login.css": "/static/media/login-bg.356fd12d.jpg",
+    "static/media/team1.f0fc5e48.svg": "/static/media/team1.f0fc5e48.svg",
+    "static/media/team2.e2c36a2e.svg": "/static/media/team2.e2c36a2e.svg",
+    "static/media/team3.1780e205.svg": "/static/media/team3.1780e205.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.876b1e13.js",
+    "static/css/2.5c573378.chunk.css",
+    "static/js/2.e10e4af2.chunk.js",
+    "static/css/main.42315ac4.chunk.css",
+    "static/js/main.29b82caa.chunk.js"
+  ]
+}
