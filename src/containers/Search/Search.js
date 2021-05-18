@@ -1,7 +1,10 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
+
+/* Bootstrap imports */
 import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/Search.css'
 
+/* Modules import */
 import SearchItem from "./SearchItems";
 import SearchBar from "./SearchBar";
 
