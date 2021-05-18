@@ -23,7 +23,20 @@ let getUsers = async (username, password) => {
   .then(res => res.rows[0])
   .catch(err => console.log(err)))
 }
-console.log(getUsers().then(response => console.log(response)))
+
+let createSprout = async (username, password) => {
+  const query = {
+    text: 
+    'SELECT * FROM application_user WHERE application_user_username=$1 AND application_user_password=$2;',
+    values: [username, password]
+  }
+return (
+  await client
+.query(query)
+.then(res => res.rows[0])
+.catch(err => console.log(err)))
+}
+
 module.exports = {
   getUsers
 }

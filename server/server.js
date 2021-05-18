@@ -17,6 +17,8 @@ app.get('/login/:username/:password', async (req, res) => {
   // res.json(users);
 });
 
+app.post('/profile/sprouts')
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })
