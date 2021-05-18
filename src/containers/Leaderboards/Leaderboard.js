@@ -1,16 +1,34 @@
+// =====================================
+//               IMPORTS
+// =====================================
+
+// React
 import React from 'react';
+
+// Data (temp)
 import teamsData from './team.json'
 import champions from './champions1.json';
-import './styles/Leaderboard.css';
 
+// Components
 import TopFive from './TopFive';
 import LeaderboardTogglers from './LeaderboardTogglers'
 
+// Styles
+import './styles/Leaderboard.css';
+
+// =====================================
+//          REACT COMPONENT
+// =====================================
+
 const Leaderboard = () => {
+
+  // Temp teams data
   let teamsDataJson = [];
   teamsDataJson.push(...teamsData);
-
+  // Sort for highest teams
   teamsDataJson.sort((a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"]));
+  
+  // Temp champions data, should be queried using useState/useEffect
   let championsJSON = [];
   championsJSON.push(...champions);
 
