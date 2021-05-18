@@ -16,7 +16,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    height: 60vh;
+    height: 80vh;
 
     padding: 1.25em;
     border-radius: 1.5rem;
@@ -37,4 +37,23 @@
 
 #profile-h1 {
     color: #FFF;
+}
+
+@media (min-width: 768px) {
+    
+
+    #top-five-container {
+        width: 30rem;
+        height: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #leaderboard-nav-block {
+        height: 2rem;
+    }
+
+    #leaderboard-accent-bg {
+        height: 100vh;
+    }
 }
