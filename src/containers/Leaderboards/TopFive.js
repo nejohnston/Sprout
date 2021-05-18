@@ -9,10 +9,9 @@ const TopFive = ({ topfive }) => {
         <div key={player.user_id} className="champion-container">
             <img className="champion-img shadow-sm" src={player.user_img} alt={player.username}/>
             
-            <div className="champion-info">
-            <p><strong>{player.username}</strong></p>
-            <p>{player.points}</p>
-            </div>
+            <p className="champion-username"><strong>{player.username}</strong></p>
+            <p className="champion-points">{player.points}</p>
+
 
         </div>
         <hr/>
