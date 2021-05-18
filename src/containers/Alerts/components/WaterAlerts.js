@@ -1,9 +1,28 @@
+// ====================================
+//            IMPORTS
+// ====================================
+
+// React
 import React from 'react';
 
+// Images
 import waterIcon from '../images/water-icon-circle.svg';
+
+// Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../styles/WaterAlerts.css';
 
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
+
+/**
+ * Return each plant in array plants as a WaterPlant alert.
+ * @param {Array} plants - an array of plant objects that must be watered.
+ * @returns - a complete set of WaterPlant components, one for each plant object in plant.
+ */
 const WaterAlert = ({plants}) => {
 
     const waterPlant = (plant_id) => {
