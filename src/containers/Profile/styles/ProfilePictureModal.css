@@ -1,0 +1,15 @@
+#user-profile-picture {
+    border-radius: 50%;
+    border: 5px solid white;
+    margin: 0.5em;
+}
+
+.custom-primary-button {
+    background-color: #5D6E1E !important;
+    border-style: none !important;
+}
+
+.sprout-modal-text {
+    font-weight: bold;
+    margin: 0.25rem 0em 0.25em 0em;
+}

@@ -1,32 +1,55 @@
+/*================== IMPORTS ===================== */
+
+// React
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+// Components
+import { Layout } from './components/Layout/Layout';
+import AboutUsContainer from './containers/AboutUs';
+import AlertsContainer from './containers/Alerts/';
+import LeaderboardContainer from './containers/Leaderboards/';
+import LoginContainer from './containers/Login';
+import JoinTeamContainer from './containers/JoinTeam'
+import ProfileContainer from './containers/Profile';
+import PlantProfileContainer from './containers/PlantProfile';
+import SearchContainer from './containers/Search';
+
+// Web Vitals and Styling
+import reportWebVitals from './reportWebVitals';
+import './index.css';
+
+
+/*================== APP PATHS AND RENDER ===================== */
+
+/**
+ * Associate the application's paths to specified components for rendering.
+ * 
+ * @returns - the routing for Sprout application
+ */
 const App = () => {
   return (
-    <Provider>
-    <div className="App">
-      <header className="App-header">
-        <p>Sprout</p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-    </Provider>
+    <Router>
+      <Switch>
+        <Layout>
+          <Route path='/about-us' component={AboutUsContainer} />
+          <Route path='/alerts' component={AlertsContainer} />
+          <Route path='/join-team' component={JoinTeamContainer} />
+          <Route path='/leaderboards' component={LeaderboardContainer} />
+          <Route path='/login' component={LoginContainer} />
+          <Route path='/profile' component={ProfileContainer} />
+          <Route path='/search' component={SearchContainer} />
+          <Route path='/plant-profile' component={PlantProfileContainer} />
+        </Layout>
+      </Switch>
+    </Router>
   );
 }
 
+/**
+ * Display specified path inside element at 'root'.
+ */
 ReactDOM.render(
   <React.StrictMode>
     <App />

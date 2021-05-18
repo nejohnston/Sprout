@@ -1,15 +1,34 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles();
+import "bootstrap/dist/css/bootstrap.min.css";
+import SproutGallery from './SproutGallery';
+import ProfilePictureModal from './ProfilePictureModal';
+import ProfileModal from './ProfileModal'
+import Scorebar from './Scorebar';
+import userdata from "./user.json";
+import './styles/Profile.css'
 
 const Profile = () => {
-  const classes = useStyles();
+  let userjson = []
+  userjson.push(...userdata);
+
   return (
-  <div>
-    <p>
-      This is where components will reside
-    </p>
+  <div id="container">
+    <div id="profile-header">
+      <h1 id="profile-h1">My Sprouts</h1>
+      <ProfileModal />
+    </div>
+
+    <hr />
+    
+    <div id="my-sprouts-user-container">
+    <ProfilePictureModal profilePic={userjson[0]["profile_pic"]}/>
+    <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
+    </div>
+
+    <Scorebar user={userjson[0]}/>
+
+    <SproutGallery sprouts={userjson[0]["sprouts"]}/>
+    <div id="vector-bg"></div>
   </div>);
 };
 
