@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "team_name": "Team 1",
+        "team_points": 203934
+    },
+    {
+        "id": 2,
+        "team_name": "Team 2",
+        "team_points": 103499
+    },
+    {
+        "id": 3,
+        "team_name": "Team 3",
+        "team_points": 153249
+    }
+]
