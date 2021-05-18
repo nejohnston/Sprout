@@ -1,13 +1,36 @@
+// ======================================
+//               Imports
+// ======================================
+
+// React
 import React from "react";
+
+// Images
 import leaf from './images/big-leaf.svg';
 import watercan from './images/water-can-slim.svg'
 import star from './images/star.svg'
 import flower from './images/flower.svg'
 import fruit from './images/fruit.svg'
+
+// Styling
 import './styles/SearchPlantDetail.css'
 
+
+// ======================================
+//            React Component
+// ======================================
+
 const DetailCards = ({ plantInfo }) => {
+
+  /**
+   * Title case a given string.
+   * @param {String} title - a string, the title
+   * @returns - a string title-cased
+   */
   const titleCase = (title) => title.charAt(0).toUpperCase() + title.slice(1);
+
+
+  // Component return
   return (
     <div id="detail-cards-container">
       <div id="plant-profile-dateAdded-card">
