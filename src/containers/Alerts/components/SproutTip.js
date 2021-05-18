@@ -1,12 +1,32 @@
+// ====================================
+//            IMPORTS
+// ====================================
+
+// React
 import React from 'react';
 
+// Images
 import closeBtn from '../images/x.svg';
 import sproutTipIcon from '../images/sprout-shadow-light.svg';
+
+// Styles
 import '../styles/SproutTip.css';
 
 
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
+
+/**
+ * Return a SproutTip component with a randomly selected tip from tips.
+ * @param {Array} tips - an array of tip objects, each tip object has a reference and a tip.
+ * @returns - a SproutTip React component.
+ */
 const SproutTip = ({ tips }) => {
 
+    // Randomly selects a tip from the given array of tips
     let random_tip = tips[Math.floor(Math.random()*tips.length)];
 
     const dismissTip = () => {
