@@ -45,7 +45,7 @@ const LeaderboardTogglers = ({ teams }) => {
               }}
             >
               <div className="leaderboard-points">
-                <p>{teams[0]["team_points"]}</p>
+                <p style={{fontSize:'1.25rem'}}>{teams[0]["team_points"]}</p>
                 <p>pts</p>
               </div>
             </div>
