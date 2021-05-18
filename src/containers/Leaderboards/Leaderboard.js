@@ -2,7 +2,7 @@ import React from 'react';
 import teamsData from './team.json'
 import champions from './champions1.json';
 import './styles/Leaderboard.css';
-import './styles/Leaderboard.css';
+
 import TopFive from './TopFive';
 import LeaderboardTogglers from './LeaderboardTogglers'
 
@@ -25,10 +25,15 @@ const Leaderboard = () => {
     <hr/>
    <LeaderboardTogglers teams={teamsDataJson}/>
     <div id="top-five-container">
+      <p id="top-five-header">Leading Gardeners</p>
       <TopFive topfive={championsJSON}/>
+
+      <div id="leaderboard-nav-block"></div>
+
     </div>
 
-    <div id="leaderboard-nav-block"></div>
+
+
 
     </div>
   );
