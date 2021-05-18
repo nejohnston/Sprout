@@ -1,11 +1,12 @@
 import { React, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import searchPlantData from "./plants.json";
+import './styles/Search.css'
+
 import SearchItem from "./SearchItems";
 import SearchBar from "./SearchBar";
 
 /* Data import */
-import plantData from './plants.json';
+import searchPlantData from "./plants.json";
 
 const Search = () => {
 
@@ -34,8 +35,9 @@ const Search = () => {
       <hr/>
 
       <SearchBar input_keyword={input} updateInputKeyword={updateInput}/>
+      <div id="search-items-container">
       <SearchItem plantData={plantList} />
-
+      </div>
     </div>
   );
 };
