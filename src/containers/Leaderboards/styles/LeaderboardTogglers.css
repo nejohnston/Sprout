@@ -1,36 +1,35 @@
-.leaderboard-team-bg {
-  background-color: #fff;
-  height: 6rem;
-  width: 6rem;
-  padding: 1rem;
-  border-radius: 50rem;
-  margin: 0 auto;
-  margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: center;
-  background-repeat: no-repeat;
-}
-
-.leaderboard-team-image {
-  opacity: 27%;
-  filter: blur(2px);
-}
-
 #leaderboard-togglers-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
 }
 
-.leaderboard-togglers-points {
-  font-size: 0.8rem;
-  font-weight: bold;
-  position: absolute;
-  text-align: center;
-  margin-top: -4.4rem;
-  margin-left: 1.6rem;
-  line-height: 70%;
+.leaderboard-points {
   color: #3b5284;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.leaderboard-points p {
+  margin-bottom: 0;
+}
+
+.leaderboard-white-bg {
+  background-color: #fff;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50rem;
+}
+
+#leaderboard-white-bg-first {
+    background-color: #fff;
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50rem;
+
 }
 
 .leaderboard-names {
