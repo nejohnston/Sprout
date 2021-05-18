@@ -19,10 +19,14 @@ import SearchContainer from './containers/Search';
 // Web Vitals and Styling
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import userEvent from '@testing-library/user-event';
+import HomeContainer from './containers/HomeContainer/HomeContainer';
 
 // UserContext
 export const UserContext = createContext();
-const userInitialValue = { 
+const userInitialValue = {
+  userId: 0,
+  teamId: 0,
   username: '',
   password: '',
   name: '',
@@ -41,6 +45,7 @@ const userInitialValue = {
  */
 const App = () => {
   const [user, setUser] = useState(userInitialValue)
+  console.log(user)
   return (
     <UserContext.Provider value={[user, setUser]}>
       <Router>
@@ -50,7 +55,7 @@ const App = () => {
             <Route path='/alerts' component={AlertsContainer} />
             <Route path='/join-team' component={JoinTeamContainer} />
             <Route path='/leaderboards' component={LeaderboardContainer} />
-            <Route path='/login' component={LoginContainer} />
+            <Route exact path='/' component={HomeContainer} />
             <Route path='/profile' component={ProfileContainer} />
             <Route path='/search' component={SearchContainer} />
             <Route path='/plant-profile' component={PlantProfileContainer} />

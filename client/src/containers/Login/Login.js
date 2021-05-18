@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import { UserContext } from "../../index";
+import { withRouter } from "react-router";
 
 const schema = yup.object().shape({
   username: yup.string().required(),
@@ -21,7 +22,6 @@ const schema = yup.object().shape({
 
 const Login = (props) => {
   const user = useContext(UserContext)[0]
-  const setUser = useContext(UserContext)[1]
   // console.log(setUser)
   console.log(user)
   return (
@@ -42,6 +42,7 @@ const Login = (props) => {
                 user.name = data.application_user_preferred_name
                 user.points = data.application_user_points
                 user.team = data.team_id
+                props.history.push('/profile')
               })
               .catch(err => console.log(err));
             }
@@ -106,4 +107,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

@@ -7,10 +7,10 @@ import Scorebar from './Scorebar';
 import userdata from "./user.json";
 import './styles/Profile.css'
 
-const Profile = () => {
+const Profile = ({userData}) => {
   let userjson = []
   userjson.push(...userdata);
-
+  const user = userData[0];
   return (
   <div id="container">
     <div id="profile-header">
@@ -21,13 +21,13 @@ const Profile = () => {
     <hr />
     
     <div id="my-sprouts-user-container">
-    <ProfilePictureModal profilePic={userjson[0]["profile_pic"]}/>
-    <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
+    <ProfilePictureModal profilePic={user.profilePic}/>
+    <h5 id="my-sprouts-user-name">{user.name}</h5>
     </div>
 
-    <Scorebar user={userjson[0]}/>
+    <Scorebar user={user}/>
 
-    <SproutGallery sprouts={userjson[0]["sprouts"]}/>
+    <SproutGallery sprouts={user.sprouts}/>
     <div id="vector-bg"></div>
   </div>);
 };
