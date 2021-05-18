@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import addButton from "./images/addbutton.svg";
 import "./styles/ProfileModal.css";
+import { values } from "lodash-es";
 
 const ProfileModal = () => {
   const [show, setShow] = useState(false);
@@ -18,7 +19,11 @@ const ProfileModal = () => {
   }
   const [sprout, setSprout] = useState(initialState);
 
-  const handleClose = () => setShow(false);
+  const handleClose = (e) => {
+    const { name } = e.target;
+    console.log(name)
+    setShow(false)
+  };
   const handleShow = () => setShow(true);
 
   return (
@@ -34,26 +39,26 @@ const ProfileModal = () => {
             <strong>
               <p className="sprout-modal-text">Name*</p>
             </strong>
-            <Form.Control value='' onChange={() => setSprout} type="text" placeholder="Sprout Name..." />
+            <Form.Control name="name" type="text" placeholder="Sprout Name..." />
           </Form.Group>
           <Form.Group controlId="sproutFamily">
             <strong>
               <p className="sprout-modal-text">Family</p>
             </strong>
-            <Form.Control value='' type="text" placeholder="Sprout Name..." />
+            <Form.Control name="family" type="text" placeholder="Sprout Name..." />
           </Form.Group>
           <Form.Group controlId="sproutType">
             <strong>
               <p className="sprout-modal-text">Type</p>
             </strong>
-            <Form.Control value='' type="text" placeholder="Sprout Type..." />
+            <Form.Control name="" type="text" placeholder="Sprout Type..." />
           </Form.Group>
-          <Form.Group controlId="sproutType">
+          <Form.Group controlId="sproutWateringInterval">
             <strong>
               <p className="sprout-modal-text">Watering Interval*</p>
             </strong>
             <Form.Control
-            value=""
+              name="wateringInterval"
               type="number"
               placeholder="Number of days between watering..."
             />
@@ -62,7 +67,7 @@ const ProfileModal = () => {
             <strong>
               <p className="sprout-modal-text">Additional Notes</p>
             </strong>
-            <Form.Control value="" as="textarea" rows={3} />
+            <Form.Control  name="notes" as="textarea" rows={3} />
           </Form.Group>
           <Form.Group>
             <strong>
@@ -74,7 +79,7 @@ const ProfileModal = () => {
         <Modal.Footer>
           <Button
             variant="primary"
-            onClick={handleClose}
+            onClick={(e) => handleClose(e)}
             className="custom-primary-button"
           >
             Add a New Sprout
