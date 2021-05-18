@@ -8,6 +8,7 @@ import "./styles/SearchItem.css";
  * Return the Search Items components
  * Takes the plant info and maps it to a search item card
  * Will only render the native plant pill if the plant is a native plant of BC
+ * @param {Array} plantData: array of the plant information
  * @returns Search Items components
  */
 
