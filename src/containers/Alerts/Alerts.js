@@ -1,5 +1,7 @@
 import React from 'react';
-import UnderConstruction from '../../components/Layout/UnderConstruction';
+import WaterAlerts from './WaterAlerts';
+
+import alertPlants from './alerts.json';
 
 const Alerts = () => {
 
@@ -12,6 +14,12 @@ const Alerts = () => {
     </div>
 
     <hr/>
+
+    <div id="alerts-container">
+    <WaterAlerts plants={alertPlants}/>
+
+  
+    </div>
 
   </div>);
 };
