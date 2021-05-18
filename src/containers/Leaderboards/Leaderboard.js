@@ -1,9 +1,15 @@
 import React from 'react';
-import UnderConstruction from '../../components/Layout/UnderConstruction';
+import teamsData from './team.json'
 import './styles/Leaderboard.css';
+import LeaderboardTogglers from './LeaderboardTogglers'
 
 const Leaderboard = () => {
+  let teamsDataJson = [];
+  teamsDataJson.push(...teamsData);
+  teamsDataJson.sort((a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"]));
+  console.log(teamsDataJson);
   return (
+
     <div id="container">
     <div id="leaderboard-accent-bg"></div>
     <div id="profile-header">
@@ -12,7 +18,7 @@ const Leaderboard = () => {
 
   <hr/>
 
-
+    <LeaderboardTogglers teams={teamsDataJson}/>
 
   </div>
   );
