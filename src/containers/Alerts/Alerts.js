@@ -1,7 +1,12 @@
 import React from 'react';
-import WaterAlerts from './WaterAlerts';
 
+import SproutTip from './components/SproutTip';
+import WaterAlerts from './components/WaterAlerts';
+
+import sproutTips from './sprout-tips.json';
 import alertPlants from './alerts.json';
+
+import './styles/Alerts.css';
 
 const Alerts = () => {
 
@@ -16,10 +21,14 @@ const Alerts = () => {
     <hr/>
 
     <div id="alerts-container">
+
+    <SproutTip tips={sproutTips}/>
     <WaterAlerts plants={alertPlants}/>
 
   
     </div>
+
+    <div id="nav-blocker"></div>
 
   </div>);
 };

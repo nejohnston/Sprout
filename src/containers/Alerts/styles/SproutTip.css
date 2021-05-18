@@ -1,0 +1,31 @@
+#alert-sprout-tip {
+    padding: 1.5em 1em 1em 1em;
+
+    border-radius: 10px;
+    box-shadow: 0 .25rem 0.5rem rgba(0,0,0,.15)!important;
+
+}
+
+#alert-sprout-tip h5 {
+    margin-bottom: 0em;
+}
+
+#sprout-tip-header {
+    color: #94B447;
+    margin-bottom: 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+#sprout-tip-close-btn {
+    float: right;
+    cursor: pointer;
+}
+
+#sprout-tip-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+}

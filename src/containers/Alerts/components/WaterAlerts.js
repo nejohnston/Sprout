@@ -1,8 +1,8 @@
 import React from 'react';
 
-import waterIcon from './images/water-icon-circle.svg';
+import waterIcon from '../images/water-icon-circle.svg';
 import "bootstrap/dist/css/bootstrap.min.css";
-import './styles/WaterAlerts.css';
+import '../styles/WaterAlerts.css';
 
 const WaterAlert = ({plants}) => {
 
