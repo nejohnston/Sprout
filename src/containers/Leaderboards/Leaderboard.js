@@ -9,6 +9,7 @@ import LeaderboardTogglers from './LeaderboardTogglers'
 const Leaderboard = () => {
   let teamsDataJson = [];
   teamsDataJson.push(...teamsData);
+
   teamsDataJson.sort((a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"]));
   let championsJSON = [];
   championsJSON.push(...champions);
@@ -25,12 +26,11 @@ const Leaderboard = () => {
    <LeaderboardTogglers teams={teamsDataJson}/>
     <div id="top-five-container">
       <TopFive topfive={championsJSON}/>
-
-      <div id="about-us-nav-block"></div>
     </div>
 
+    <div id="leaderboard-nav-block"></div>
 
-  </div>
+    </div>
   );
 };
 

@@ -1,0 +1,16 @@
+.champion-img {
+    width: 4rem;
+    height: 4rem;
+
+    border-radius: 50rem;
+    border: 3px solid #FFFFFF;
+}
+
+.champion-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.champion-container {
+    display: flex;
+}

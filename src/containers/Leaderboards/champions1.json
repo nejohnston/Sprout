@@ -1,28 +1,38 @@
 [
 
     {
-        "user": "best-boi-appa",
+        "user_id": 102,
+        "username": "best-boi-appa",
+        "user_img": "https://randomuser.me/api/portraits/men/38.jpg",
         "points": 567482
 
     },
 
     {
-        "user": "katara",
+        "user_id": 203,
+        "username": "toph_beibei",
+        "user_img": "https://randomuser.me/api/portraits/women/44.jpg",
         "points": 48789
     },
 
     {
-        "user": "fire_boi",
+        "user_id": 55,
+        "username": "momo-momo",
+        "user_img": "https://randomuser.me/api/portraits/women/46.jpg",
         "points": 35768
     },
 
     {
-        "user": "aang",
+        "user_id": 17,
+        "username": "aang",
+        "user_img": "https://randomuser.me/api/portraits/men/75.jpg",
         "points": 31549
     },
 
     {
-        "user": "zuko",
+        "user_id": 54,
+        "username": "zuko",
+        "user_img": "https://randomuser.me/api/portraits/men/51.jpg",
         "points": 23980
     }
 

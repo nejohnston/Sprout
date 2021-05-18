@@ -15,7 +15,12 @@
     right: 0;
     bottom: 0;
     height: 60vh;
-    z-index: 100;
+
+    padding: 1.25em;
     border-radius: 1.5rem;
     background-color: #FFFFFF;
+}
+
+#leaderboard-nav-block {
+    height: 5.5rem;
 }
