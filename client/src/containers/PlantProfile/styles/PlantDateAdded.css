@@ -1,0 +1,13 @@
+.plant-dateAdded-section {
+    background-color: #FFFFFF;
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "info-subhead1 value1";
+}
+
+.plant-dateAdded-section p {
+    margin: 0.5em 0em;
+}
