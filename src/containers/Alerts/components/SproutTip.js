@@ -41,6 +41,8 @@ const SproutTip = ({ tips }) => {
             <img id="sprout-tip-close-btn" src={closeBtn} alt="close-btn" onClick={dismissTip}/>
             </div>
             <p id="tip-text" >{random_tip.tip_text}</p>
+
+            <hr/>
             <p id="tip-reference" className="text-muted">{random_tip.tip_ref}</p>
         </div>
     )
