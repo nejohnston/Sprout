@@ -19,7 +19,7 @@ import "./styles/AddPlantModal.css";
 // ========================================
 
 
-const ProfileModal = ({ type, family }) => {
+const AddPlantModal = ({ type, family }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -88,4 +88,4 @@ const ProfileModal = ({ type, family }) => {
   );
 };
 
-export default ProfileModal;
+export default AddPlantModal;

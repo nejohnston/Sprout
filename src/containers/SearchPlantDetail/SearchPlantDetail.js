@@ -14,13 +14,12 @@ const SearchPlantDetail = () => {
   return (
   <div id="container">
     <div id="profile-header">
-      <h1 id="profile-h1">{firstCommonName(plantJSON[3])}</h1>
-      <AddPlantModal type={plantJSON[3]['PLANT_TYPE']} family={plantJSON[3]['PLANT_FAMILY_NAME']}/>
+      <h1 id="profile-h1">{firstCommonName(plantJSON[2])}</h1>
+      <AddPlantModal type={plantJSON[2]['PLANT_TYPE']} family={plantJSON[2]['PLANT_FAMILY_NAME']}/>
     </div>
 
     <hr />
-
-    <DetailCards plantInfo={plantJSON[0]}/>
+    <DetailCards plantInfo={plantJSON[2]}/>
   </div>);
 };
 
