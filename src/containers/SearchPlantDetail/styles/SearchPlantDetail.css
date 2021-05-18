@@ -1,3 +1,20 @@
 #detail-cards-container {
     margin-bottom: 6.5rem;
 }
+
+#search-details-img {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 50rem;
+}
+
+#search-details-img-container {
+    display: flex;
+    justify-content: center;
+}
+
+#header_backarrow_container {
+    display: flex;
+    flex-flow: row;
+}
