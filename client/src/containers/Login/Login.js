@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import { ErrorMessage, Formik } from 'formik';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -7,14 +7,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import { isNull } from "lodash-es";
 import { Redirect } from "react-router";
+import { UserContext } from "../..";
 
 const schema = yup.object().shape({
   username: yup.string().required(),
   password: yup.string().required()
 })
 
-const Login = ({ loginError }, props) => {
-  const [isValidCredentials, setIsValidCredentials] = useState(true);
+const Login = (props) => {
+  const user = useContext(UserContext)[0]
+  const setUser = useContext(UserContext)[1]
+  // console.log(setUser)
+  console.log(user)
   return (
     <>
       <div id="bg">
@@ -25,18 +29,14 @@ const Login = ({ loginError }, props) => {
             async (values) => {
               await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
               .then(response => response.json()
-              // console.log(isValidCredentials)
-                // console.log(response.json())
-                // let responseBody = response.json()
-                // console.log(responseBody)
-                // return responseBody
-              
               )
               .then(data => {
-                typeof data === Boolean ? setIsValidCredentials(false) : null
-                &&
-                // setIsValidCredentials(false)
-                console.log(isValidCredentials)
+                user.userId = data.application_user_id
+                user.username = data.application_user_username
+                user.password = data.application_user_password
+                user.name = data.application_user_preferred_name
+                user.points = data.application_user_points
+                user.team = data.team_id
               })
               .catch(err => console.log(err));
             }
@@ -84,9 +84,9 @@ const Login = ({ loginError }, props) => {
                 isValid={touched.password && !errors.password}
               />
             </Form.Group>
-            {!isValidCredentials ? 
+            {/* {!isValidCredentials ? 
             <ErrorMessage>That's an incorrect username or password, please try again.</ErrorMessage> : null
-          }
+          } */}
             <Button 
             variant="primary" 
             type="submit">

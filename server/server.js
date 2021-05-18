@@ -12,7 +12,8 @@ app.get('/login/:username/:password', async (req, res) => {
   console.log('before')
   console.log(users)
   console.log('after')
-  {users ? res.json(users) : res.send(false)}
+  res.json(users)
+  // {users ? res.json(users) : res.send(false)}
   // res.json(users);
 });
 

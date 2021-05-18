@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
@@ -13,23 +13,35 @@ import reportWebVitals from './reportWebVitals';
 
 import './index.css';
 
-const Context = createContext();
+export const UserContext = createContext();
+const userInitialValue = { 
+  username: '',
+  password: '',
+  name: '',
+  profilePicture:'',
+  team: 0,
+  points: 0,
+  sprouts: []
+}
 
 const App = () => {
+  const [user, setUser] = useState(userInitialValue)
   return (
-    <Router>
-      <Switch>
-        <Layout>
-          <Route path='/about-us' component={AboutUsContainer} />
-          <Route path='/alerts' component={AlertsContainer} />
-          <Route path='/join-team' component={JoinTeamContainer} />
-          <Route path='/leaderboards' component={LeaderboardContainer} />
-          <Route path='/login' component={LoginContainer} />
-          <Route path='/profile' component={ProfileContainer} />
-          <Route path='/search' component={SearchContainer} />
-        </Layout>
-      </Switch>
-    </Router>
+    <UserContext.Provider value={[user, setUser]}>
+      <Router>
+        <Switch>
+          <Layout>
+            <Route path='/about-us' component={AboutUsContainer} />
+            <Route path='/alerts' component={AlertsContainer} />
+            <Route path='/join-team' component={JoinTeamContainer} />
+            <Route path='/leaderboards' component={LeaderboardContainer} />
+            <Route path='/login' component={LoginContainer} />
+            <Route path='/profile' component={ProfileContainer} />
+            <Route path='/search' component={SearchContainer} />
+          </Layout>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 };
 
