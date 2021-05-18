@@ -1,0 +1,60 @@
+.leaderboard-team-bg {
+  background-color: #fff;
+  height: 6rem;
+  width: 6rem;
+  padding: 1rem;
+  border-radius: 50rem;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  background-repeat: no-repeat;
+}
+
+.leaderboard-team-image {
+  opacity: 27%;
+  filter: blur(2px);
+}
+
+#leaderboard-togglers-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.leaderboard-togglers-points {
+  font-size: 0.8rem;
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  margin-top: -4.4rem;
+  margin-left: 1.6rem;
+  line-height: 70%;
+  color: #3b5284;
+}
+
+.leaderboard-names {
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+}
+
+.leaderboard-team-lower {
+  margin-top: 2.5rem;
+}
+
+#leaderboard-first {
+  height: 8rem;
+  width: 8rem;
+}
+
+.leaderboard-togglers-points-first {
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  margin-top: -5.5rem;
+  margin-left: 2.35rem;
+  line-height: 70%;
+  color: #3b5284;
+}

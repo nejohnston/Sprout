@@ -1,17 +1,20 @@
 [
-    {
-        "id": 1,
-        "team_name": "Team 1",
-        "team_points": 203934
-    },
-    {
-        "id": 2,
-        "team_name": "Team 2",
-        "team_points": 103499
-    },
-    {
-        "id": 3,
-        "team_name": "Team 3",
-        "team_points": 153249
-    }
+  {
+    "id": 1,
+    "team_name": "Team 1",
+    "team_points": 203934,
+    "img_url": "https://i.imgur.com/GEBxvYB.png"
+  },
+  {
+    "id": 2,
+    "team_name": "Team 2",
+    "team_points": 103499,
+    "img_url": "https://i.imgur.com/7cknNDF.png"
+  },
+  {
+    "id": 3,
+    "team_name": "Team 3",
+    "team_points": 153249,
+    "img_url": "https://i.imgur.com/AqyWki1.png"
+  }
 ]

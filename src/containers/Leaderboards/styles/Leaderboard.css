@@ -6,7 +6,6 @@
     height: 50vh;
     z-index: -100;
     background: rgb(91,168,160);
-    background: linear-gradient(125deg, rgba(91,168,160,1) 0%, rgba(203,229,78,1) 97%);
 }
 
 #top-five-container {
