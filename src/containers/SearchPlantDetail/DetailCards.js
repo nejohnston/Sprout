@@ -1,5 +1,9 @@
 import React from "react";
 import leaf from './images/big-leaf.svg';
+import watercan from './images/water-can-slim.svg'
+import star from './images/star.svg'
+import flower from './images/flower.svg'
+import fruit from './images/fruit.svg'
 import './styles/SearchPlantDetail.css'
 
 const DetailCards = ({ plantInfo }) => {
@@ -8,7 +12,7 @@ const DetailCards = ({ plantInfo }) => {
     <div id="detail-cards-container">
       <div id="plant-profile-dateAdded-card">
         <div className="plant-profile-info-card">
-          <img src={leaf} className="plant-profile-icon" alt="leaf-icon"></img>
+          <img src={star} className="plant-profile-icon" alt="leaf-icon"></img>
           <div className="plant-dateAdded-section">
             <p className="plant-profile-subhead1 plant-profile-subhead">
               Common Names
@@ -41,7 +45,7 @@ const DetailCards = ({ plantInfo }) => {
 
       <div id="plant-profile-card">
         <div className="plant-profile-info-card">
-          <img src={leaf} className="plant-profile-icon" alt="leaf-icon"></img>
+          <img src={watercan} className="plant-profile-icon" alt="leaf-icon"></img>
           <div className="plant-profile-info-section">
             <p className="plant-profile-subhead1 plant-profile-subhead">Soil</p>
             <p className="plant-profile-value1 plant-profile-value">
@@ -60,7 +64,7 @@ const DetailCards = ({ plantInfo }) => {
 
       <div id="plant-profile-card">
         <div className="plant-profile-info-card">
-          <img src={leaf} className="plant-profile-icon" alt="leaf-icon"></img>
+          <img src={flower} className="plant-profile-icon" alt="leaf-icon"></img>
           <div className="plant-profile-info-section">
             <p className="plant-profile-subhead1 plant-profile-subhead">
               Flowering Time
@@ -81,7 +85,7 @@ const DetailCards = ({ plantInfo }) => {
 
       <div id="plant-profile-dateAdded-card">
         <div className="plant-profile-info-card">
-          <img src={leaf} className="plant-profile-icon" alt="leaf-icon"></img>
+          <img src={fruit} className="plant-profile-icon" alt="leaf-icon"></img>
           <div className="plant-dateAdded-section">
             <p className="plant-profile-subhead1 plant-profile-subhead">
               Fruiting Time
