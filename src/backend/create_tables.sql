@@ -1,4 +1,4 @@
-ALTER DATABASE daama3hr9d0osj SET timezone TO 'America/Vancouver';
+ALTER DATABASE [DATABASE_NAME] SET timezone TO 'America/Vancouver';
 
 CREATE TABLE TEAM (
     TEAM_ID 		SERIAL 		    PRIMARY KEY,
