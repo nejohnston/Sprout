@@ -15,8 +15,8 @@ const Leaderboard = () => {
   championsJSON.push(...champions);
 
   return (
-
-    <div id="container">
+    <>
+    <div id="leaderboard-top-container">
     <div id="leaderboard-accent-bg"></div>
     <div id="profile-header">
     <h1 id="profile-h1">Leaderboard</h1>
@@ -24,8 +24,11 @@ const Leaderboard = () => {
 
     <hr/>
    <LeaderboardTogglers teams={teamsDataJson}/>
+
+   </div>
+
     <div id="top-five-container">
-      <p id="top-five-header">Leading Gardeners</p>
+      <p id="top-five-header">Leading Sprout Gardeners</p>
       <TopFive topfive={championsJSON}/>
 
       <div id="leaderboard-nav-block"></div>
@@ -35,7 +38,8 @@ const Leaderboard = () => {
 
 
 
-    </div>
+
+    </>
   );
 };
 
