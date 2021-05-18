@@ -37,7 +37,7 @@ const Leaderboard = () => {
     <div id="leaderboard-top-container">
     <div id="leaderboard-accent-bg"></div>
     <div id="profile-header">
-    <h1 id="profile-h1">Leaderboard</h1>
+    <h1 id="leaderboard-h1">Leaderboard</h1>
     </div>
 
     <hr/>
