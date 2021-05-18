@@ -1,8 +1,8 @@
 import React from 'react';
-import Alerts from './Alerts'
+import AlertsPage from './AlertsPage'
 
 const AlertsContainer = () => {
-  return <Alerts />;
+  return <AlertsPage />;
 }
 
 export default AlertsContainer;

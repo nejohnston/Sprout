@@ -1,16 +1,29 @@
+// ====================================
+//            IMPORTS
+// ====================================
+
+// React
 import React from 'react';
 
+// Components
 import SproutTip from './components/SproutTip';
 import WaterAlerts from './components/WaterAlerts';
 
+// Data (temp)
 import sproutTips from './sprout-tips.json';
 import alertPlants from './alerts.json';
 
-import './styles/Alerts.css';
+// Styles
+import './styles/AlertsPage.css';
 
-const Alerts = () => {
 
-  
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
+const AlertsPage = () => {
+
   return (
   <div id="container">
 
@@ -23,8 +36,8 @@ const Alerts = () => {
     <div id="alerts-container">
 
     <SproutTip tips={sproutTips}/>
-    <WaterAlerts plants={alertPlants}/>
 
+    <WaterAlerts plants={alertPlants}/>
   
     </div>
 
@@ -33,4 +46,4 @@ const Alerts = () => {
   </div>);
 };
 
-export default Alerts;
+export default AlertsPage;
