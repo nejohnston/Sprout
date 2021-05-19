@@ -4,21 +4,21 @@ const TeamList = ({members}) => {
 
     return members.map(member => {
 
-      console.log(member.img)
+      console.log(member["img"])
       return(
       <>
         <div className="member-container">
-          <img className="avatar" src={member.img} alt={member.name}/>
+          <img className="avatar" src={member["img"]} alt={member["name"]}/>
 
           <div className="member-description">
-          <h3>{member.name}</h3>
+          <h3>{member["name"]}</h3>
 
-          {member.position}
+          {member["position"]}
           
-          <p><span>My Sprout: {member.plant}</span>
+          <p><span>My Sprout: {member["plant"]}</span>
           <br/>
           <br/>
-          {member.about}</p>
+          {member["about"]}</p>
           </div>
         </div>
       </>
