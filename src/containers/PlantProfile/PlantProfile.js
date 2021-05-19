@@ -1,9 +1,27 @@
+// =====================================
+//               IMPORTS
+// =====================================
+
+// React
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/PlantProfile.css";
-import plantprofiledata from "./plant_profile.json";
-import BackButton from "./images/back_button.svg";
 import { Link } from "react-router-dom";
+
+// Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// Styles
+import "./styles/PlantProfile.css";
+
+// Data (temp)
+import plantprofiledata from "./plant_profile.json";
+
+// Assets
+import BackButton from "./images/back_button.svg";
+
+// =====================================
+//          REACT COMPONENT
+// =====================================
+
 import PlantInfo from './PlantInfo';
 import PlantNotes from "./PlantNotes";
 import PlantProfileTopOptions from "./PlantProfileTopOptions";
@@ -11,6 +29,9 @@ import PlantDateAdded from './PlantDateAdded';
 import EditPlant from './EditPlant';
 
 const PlantProfile = () => {
+
+  // Push data to be used as prop
+  
   let plantprofilejson = [];
   plantprofilejson.push(...plantprofiledata);
 
