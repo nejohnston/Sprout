@@ -8,8 +8,8 @@ import React from 'react';
 // Components
 import SproutGallery from '../../components/Profile/SproutGallery';
 import ProfilePictureModal from '../../components/Profile/ProfilePictureModal';
-import ProfileModal from '../../components/Profile/ProfileModal'
 import Scorebar from '../../components/Profile/Scorebar';
+import AddPlantModal from '../../components/Modals/AddPlantModal'
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -36,7 +36,7 @@ const ProfilePage = () => {
   <div id="container">
     <div id="profile-header">
       <h1 id="profile-h1">My Sprouts</h1>
-      <ProfileModal />
+      <AddPlantModal />
     </div>
 
     <hr />
