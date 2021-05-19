@@ -5,10 +5,12 @@
 // React
 import React from "react";
 
-// Styles
+// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form"
-import './styles/SearchBar.css'
+
+// Styling
+import './styles/SearchBar.css';
 
 
 // ====================================

@@ -5,13 +5,15 @@
 // React
 import React, { useState } from "react";
 
-// Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
-import './styles/Search.css'
+// Bootsrap
+import "bootstrap/dist/css/bootstrap.min.css"; 
+
+// Styling
+import './Search.css'
 
 // Components
-import SearchItem from "./SearchItems";
-import SearchBar from "./SearchBar";
+import SearchItem from "../../components/Search/SearchItems";
+import SearchBar from "../../components/Search/SearchBar";
 
 // Data (Temp)
 import searchPlantData from "./plants.json";
