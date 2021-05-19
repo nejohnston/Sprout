@@ -1,9 +1,27 @@
+// =====================================
+//               IMPORT
+// =====================================
+
+// React
 import { React, useState } from "react";
-import DigUpButton from "./images/dig_up.svg";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import "./styles/PlantProfileSmallButtons.css";
 import { Link } from "react-router-dom";
+
+// Assets
+import DigUpButton from "../../config/assets/icons/dig_up.svg";
+
+// Bootstrap
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+
+// Styles
+import "./styles/PlantProfileSmallButtons.css";
+
+/**
+ * Return a component with modal popup which is triggered by the Dig Up button
+ * 
+ * @param {*} props - Bootstrap import
+ * @returns Dig Up component
+ */
 
 const DigUp = (props) => {
   const [show, setShow] = useState(false);

@@ -1,7 +1,30 @@
+// =====================================
+//               IMPORT
+// =====================================
+
+// React
 import { React, useState } from "react";
-import WaterButton from "./images/water_icon.svg";
+
+// Assets
+import WaterButton from "../../config/assets/icons/water_icon.svg";
+
+// Bootstrap
 import Modal from "react-bootstrap/Modal";
+
+// Styling
 import "./styles/PlantProfileSmallButtons.css";
+
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
+
+/**
+ * Return a component with modal popup which is triggered by the Water button
+ * 
+ * @param {*} props - Bootstrap import
+ * @returns Water component
+ */
 
 const WaterPlant = (props) => {
   const [show, setShow] = useState(false);
