@@ -1,3 +1,32 @@
+-- Encrypt the user's password.
+CREATE OR REPLACE FUNCTION encryption() RETURNS TRIGGER
+AS
+$$
+DECLARE
+	user_password TEXT;
+BEGIN
+	user_password := (
+					 SELECT APPLICATION_USER_PASSWORD 
+					 FROM APPLICATION_USER
+					 WHERE APPLICATION_USER_ID = new.APPLICATION_USER_ID
+					 );
+	UPDATE APPLICATION_USER
+	SET APPLICATION_USER_PASSWORD = encode(encrypt(convert_to(user_password, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+	WHERE APPLICATION_USER_ID = new.APPLICATION_USER_ID;
+	RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+-- When a user created an account, encrypt the user's password and store it to the database.
+DROP TRIGGER IF EXISTS password_encryption ON APPLICATION_USER;
+
+CREATE TRIGGER password_encryption
+AFTER INSERT
+ON APPLICATION_USER
+FOR EACH ROW
+EXECUTE PROCEDURE encryption();
+
+
 -- Calculate the team points.
 CREATE OR REPLACE FUNCTION calc_team_score() RETURNS TRIGGER
 AS
