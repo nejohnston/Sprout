@@ -5,7 +5,7 @@
 // React
 import React from "react";
 
-// Images
+// Assets
 import leaf from './images/big-leaf.svg';
 import watercan from './images/water-can-slim.svg'
 import star from './images/star.svg'

@@ -11,7 +11,7 @@ import plantData from './plants.json';
 import DetailCards from './DetailCards'
 import AddPlantModal from '../../components/Modals/AddPlantModal';
 
-// Images
+// Assets
 import backbutton from './images/back_button.svg';
 
 
@@ -20,7 +20,7 @@ import backbutton from './images/back_button.svg';
 // ======================================
 
 
-const SearchPlantDetail = () => {
+const SearchPlantDetailPage = () => {
 
   // Receive plant Data
   let plantJSON = [];
@@ -61,4 +61,4 @@ const SearchPlantDetail = () => {
   </div>);
 };
 
-export default SearchPlantDetail;
+export default SearchPlantDetailPage;

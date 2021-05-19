@@ -1,8 +1,8 @@
 import React from 'react';
-import SearchPlantDetail from './SearchPlantDetail'
+import SearchPlantDetailPage from './SearchPlantDetailPage'
 
 const SearchPlantDetailContainer = () => {
-  return <SearchPlantDetail />;
+  return <SearchPlantDetailPage />;
 }
 
 export default SearchPlantDetailContainer;
