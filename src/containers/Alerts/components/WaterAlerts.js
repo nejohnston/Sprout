@@ -34,13 +34,11 @@ const WaterAlert = ({plants}) => {
 
     return plants.map( plant => (
 
-        <div className="alert-water" key={plant.plant_id}>
-            <img className="alert-water-plant-img" src={plant.PLANT_IMG_URL} alt="plant-img"/>
-            <p><strong>{plant.plant_name}</strong> needs to be watered!</p>
+        <div className="alert-water" key={plant["plant_id"]}>
+            <img className="alert-water-plant-img" src={plant["PLANT_IMG_URL"]} alt="plant-img"/>
+            <p><strong>{plant["plant_name"]}</strong> needs to be watered!</p>
 
             <img className="alert-water-btn shadow-sm" src={waterIcon} alt="water-icon" onClick={waterPlant}/>
-
-
         </div>
 
     ));
