@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getUsers, createSprout } = require('./pghelper');
+const { getUsers, createSprout, getUserSprouts } = require('./pghelper');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
@@ -13,7 +13,9 @@ app.get('/login/:username/:password', async (req, res) => {
 });
 
 app.get('/sprouts/:userId', async (req, res) => {
+  console.log(req.params.userId)
   let userSprouts = await getUserSprouts(req.params.userId);
+  
   res.json(userSprouts)
 });
 

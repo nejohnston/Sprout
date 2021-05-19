@@ -7,11 +7,11 @@ import Scorebar from './Scorebar';
 import {UserContext} from '../../index'
 import './styles/Profile.css'
 
-const Profile = ({userData}) => {
+const Profile = ({userContext, userSprouts}) => {
   // const [user, setUser] = userData;
-  const [sprouts, setSprouts] = useState(userData[0].sprouts)
-  console.log("userData: " + userData)
-  const [user, setUser] = useContext(UserContext)
+  const [user, setUser] = userContext;
+  const [sprouts, setSprouts] = useState(user.sprouts)
+  console.log("userData: " + userContext)
   // console.log(user.sprouts)
   return (
   <div id="container">

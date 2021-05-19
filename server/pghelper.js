@@ -25,11 +25,11 @@ let getUsers = async (username, password) => {
   .catch(err => console.log(err)))
 }
 
-let getUserSprouts = async (username) => {
+let getUserSprouts = async (userId) => {
   const query = {
     text: 
     'SELECT * FROM user_sprouts WHERE application_user_id=$1;',
-    values: [username]
+    values: [userId]
   }
 return (
   await client
@@ -91,5 +91,7 @@ return (
 
 module.exports = {
   createSprout,
-  getUsers
+  getUsers,
+  getUserSprouts,
+  deleteSprout
 }

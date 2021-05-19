@@ -29,7 +29,6 @@ const Login = (props) => {
       .then(response => response.json())
       .then(data => {
         setUserData(data)
-        props.history.push('/profile')
       })
       .catch(err => console.log(err));
     }
@@ -42,6 +41,8 @@ const Login = (props) => {
           validationSchema={schema}
           onSubmit={(values) =>
             queryUser(values)
+            && 
+            props.history.push('/profile')
           }
           initialValues={
             {
