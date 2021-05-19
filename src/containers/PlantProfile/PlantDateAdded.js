@@ -1,8 +1,27 @@
+// ====================================
+//            	IMPORT
+// ====================================
+
+// React
 import React from 'react';
+
+// Styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PlantDateAdded.css';
+
+// Assets
 import seed from './images/seed.svg';
 
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
+
+/**
+ * Return the date added card of a given date specified.
+ * @param {String} dateAdded - string, the date that the plant was added to the Database. 
+ * @returns - card component for date added.
+ */
 const PlantNotes = ({dateAdded}) => {
 
     return (

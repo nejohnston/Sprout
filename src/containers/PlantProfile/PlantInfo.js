@@ -1,9 +1,28 @@
+// ====================================
+//            	IMPORT
+// ====================================
+
+// React
 import React from 'react';
+
+// Styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PlantInfo.css';
+
+// Assets
 import leaf from './images/big-leaf.svg';
 import watercan from './images/water-can-slim.svg';
 
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
+
+/**
+ * Return plant information (Family and Watering) for the passed plant object.
+ * @param {Object} plant - is the plant object for the current page. 
+ * @returns - the Family and Watering information for the passed plant.
+ */
 const PlantInfo = ({plant}) => {
 
     return (

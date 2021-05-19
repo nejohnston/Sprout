@@ -1,16 +1,32 @@
-/* React imports */
+// ====================================
+//            	IMPORT
+// ====================================
+
+// React
 import { React, useState } from "react";
 
-/* Component or image imports */
+// Assets
 import EditButton from "./images/pen.svg";
 
-/* Bootstrap imports */
+// Styling
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-
 import "./styles/PlantProfileSmallButtons.css";
 
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
+
+/**
+ * Return the modal component of editing plants with form fields filled in with the plant's current information.
+ * @param {Bootstrap} props - required parameter for Bootstrap modal to be vertically centered.
+ * @param {Object} plant - the object representation of the current page's plant.
+ * @returns - the edit modal of the current plant displayed on the page.
+ */
 const EditPlant = ({props, plant}) => {
+
+  // States for showing and hiding the modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
