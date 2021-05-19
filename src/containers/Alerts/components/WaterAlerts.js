@@ -5,7 +5,7 @@
 // React
 import React from 'react';
 
-// Images
+// Assets
 import waterIcon from '../images/water-icon-circle.svg';
 
 // Styles

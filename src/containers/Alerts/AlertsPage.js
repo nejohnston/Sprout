@@ -22,6 +22,10 @@ import './styles/AlertsPage.css';
 //          REACT COMPONENT
 // ====================================
 
+/**
+ * Return the components of the Alerts Page.
+ * @returns - the components of Alerts Page.
+ */
 const AlertsPage = () => {
 
   return (

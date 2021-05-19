@@ -5,7 +5,7 @@
 // React
 import React from 'react';
 
-// Images
+// Assets
 import closeBtn from '../images/x.svg';
 import sproutTipIcon from '../images/sprout-shadow-light.svg';
 
