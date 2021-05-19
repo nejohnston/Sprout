@@ -6,14 +6,14 @@
 import React from "react";
 
 // Assets
-import leaf from './images/big-leaf.svg';
-import watercan from './images/water-can-slim.svg'
-import star from './images/star.svg'
-import flower from './images/flower.svg'
-import fruit from './images/fruit.svg'
+import leaf from '../../config/assets/icons/big-leaf.svg';
+import watercan from '../../config/assets/icons/water-can-slim.svg';
+import star from '../../config/assets/icons/star.svg';
+import flower from '../../config/assets/icons/flower.svg';
+import fruit from '../../config/assets/icons/fruit.svg';
 
 // Styling
-import './styles/SearchPlantDetail.css'
+import './styles/DetailCards.css'
 
 
 // ======================================

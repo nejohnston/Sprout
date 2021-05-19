@@ -8,11 +8,11 @@ import { Link } from 'react-router-dom';
 
 // Components
 import plantData from './plants.json';
-import DetailCards from './DetailCards'
+import DetailCards from '../../components/SearchPlantDetail/DetailCards'
 import AddPlantModal from '../../components/Modals/AddPlantModal';
 
 // Assets
-import backbutton from './images/back_button.svg';
+import backbutton from '../../config/assets/icons/back_button.svg';
 
 
 // ======================================
