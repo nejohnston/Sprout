@@ -1,19 +1,28 @@
-//Import React components
-import { React, useState, useEffect } from "react";
+// =====================================
+//               IMPORTS
+// =====================================
 
-// Import Bootstrap components
+// React
+import { React, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+// Bootstrap
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-//Import Splash Screen
+// Splash Screen
 import Splash from "../../Splash";
 
-//Import stylesheet
+// Styles
 import "./Login.css";
 
-//Import linking
-import { Link } from "react-router-dom";
+/**
+ * Return the Login screen, which is its own component
+ * 
+ * @param {*} loginError - 
+ * @returns the Login screen
+ */
 
 const Login = ({ loginError }) => {
   const [splash, setSplash] = useState(true); //splash screen will always render upon initialization
