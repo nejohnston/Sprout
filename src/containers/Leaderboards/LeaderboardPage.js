@@ -20,7 +20,11 @@ import './styles/Leaderboard.css';
 //          REACT COMPONENT
 // =====================================
 
-const Leaderboard = () => {
+/**
+ * Return the components of the Leaderboard Page.
+ * @returns - the components of the Leaderboard Page.
+ */
+const LeaderboardPage = () => {
 
   // Temp teams data
   let teamsDataJson = [];
@@ -53,12 +57,8 @@ const Leaderboard = () => {
 
     </div>
 
-
-
-
-
     </>
   );
 };
 
-export default Leaderboard;
+export default LeaderboardPage;
