@@ -1,9 +1,25 @@
+// =====================================
+//               IMPORTS
+// =====================================
+
+// React
 import React from "react";
+import { Link } from "react-router-dom";
+
+// Bootstrap
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+// Styles
 import "./Login.css";
-import { Link } from "react-router-dom";
+
+/**
+ * Return the Login screen, which is its own component
+ * 
+ * @param {*} loginError - 
+ * @returns the Login screen
+ */
 
 const Login = ({ loginError }) => {
   return (
