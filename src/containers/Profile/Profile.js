@@ -1,13 +1,34 @@
+// ====================================
+//            	IMPORT
+// ====================================
+
+// React
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
+
+// Components
 import SproutGallery from './SproutGallery';
 import ProfilePictureModal from './ProfilePictureModal';
 import ProfileModal from './ProfileModal'
 import Scorebar from './Scorebar';
-import userdata from "./user.json";
+
+// Styles
+import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/Profile.css'
 
+// Data (temp)
+import userdata from "./user.json";
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
+
+/**
+ * Return the Profile Page components.
+ * @returns - components of Profile Page.
+ */
 const Profile = () => {
+
+  // Set up user data
   let userjson = []
   userjson.push(...userdata);
 
@@ -21,8 +42,8 @@ const Profile = () => {
     <hr />
     
     <div id="my-sprouts-user-container">
-    <ProfilePictureModal profilePic={userjson[0]["profile_pic"]}/>
-    <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
+      <ProfilePictureModal profilePic={userjson[0]["profile_pic"]}/>
+      <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
     </div>
 
     <Scorebar user={userjson[0]}/>
