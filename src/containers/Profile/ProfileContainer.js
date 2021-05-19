@@ -1,8 +1,8 @@
 import React from 'react';
-import Profile from './Profile'
+import ProfilePage from '../../containers/Profile/ProfilePage'
 
 const ProfileContainer = () => {
-  return <Profile />
+  return <ProfilePage />
 }
 
 export default ProfileContainer;

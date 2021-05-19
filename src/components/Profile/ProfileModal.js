@@ -1,10 +1,26 @@
-import { React, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// =====================================
+//               IMPORTS
+// =====================================
+
+// React
+import React, { useState } from "react";
+
+// Bootstrap
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import addButton from "./images/addbutton.svg";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// Styles
 import "./styles/ProfileModal.css";
+
+// Assets
+import addButton from "../../config/assets/icons/addbutton.svg";
+
+/**
+ * Returh the modal popup which allows the user to add a new sprout.
+ * @returns add sprout modal popup
+ */
 
 const ProfileModal = () => {
   const [show, setShow] = useState(false);
@@ -14,7 +30,12 @@ const ProfileModal = () => {
 
   return (
     <>
-      <img src={addButton} id="profile-add-button" alt="" onClick={handleShow} />
+      <img
+        src={addButton}
+        id="profile-add-button"
+        alt=""
+        onClick={handleShow}
+      />
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -25,7 +46,7 @@ const ProfileModal = () => {
             <strong>
               <p className="sprout-modal-text">Name*</p>
             </strong>
-            <Form.Control type="text" placeholder="Sprout Name..." />
+            <Form.Control type="text" placeholder="Sprout Name..." required/>
           </Form.Group>
           <Form.Group controlId="sproutFamily">
             <strong>
@@ -46,6 +67,7 @@ const ProfileModal = () => {
             <Form.Control
               type="number"
               placeholder="Number of days between watering..."
+              required
             />
           </Form.Group>
           <Form.Group controlId="sproutNotes">

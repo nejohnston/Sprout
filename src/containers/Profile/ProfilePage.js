@@ -6,14 +6,14 @@
 import React from 'react';
 
 // Components
-import SproutGallery from './SproutGallery';
-import ProfilePictureModal from './ProfilePictureModal';
-import ProfileModal from './ProfileModal'
-import Scorebar from './Scorebar';
+import SproutGallery from '../../components/Profile/SproutGallery';
+import ProfilePictureModal from '../../components/Profile/ProfilePictureModal';
+import ProfileModal from '../../components/Profile/ProfileModal'
+import Scorebar from '../../components/Profile/Scorebar';
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
-import './styles/Profile.css'
+import './Profile.css'
 
 // Data (temp)
 import userdata from "./user.json";
@@ -26,7 +26,7 @@ import userdata from "./user.json";
  * Return the Profile Page components.
  * @returns - components of Profile Page.
  */
-const Profile = () => {
+const ProfilePage = () => {
 
   // Set up user data
   let userjson = []
@@ -53,4 +53,4 @@ const Profile = () => {
   </div>);
 };
 
-export default Profile;
+export default ProfilePage;
