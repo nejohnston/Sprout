@@ -15,7 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/ProfileModal.css";
 
 // Assets
-import addButton from "./images/addbutton.svg";
+import addButton from "../../config/assets/icons/addbutton.svg";
 
 /**
  * Returh the modal popup which allows the user to add a new sprout.
