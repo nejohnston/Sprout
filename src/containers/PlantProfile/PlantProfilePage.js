@@ -1,8 +1,11 @@
+// ====================================
+//            	IMPORT
+// ====================================
+
+// React
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/PlantProfile.css";
-import plantprofiledata from "./plant_profile.json";
-import BackButton from "./images/back_button.svg";
+
+// Components
 import { Link } from "react-router-dom";
 import PlantInfo from './PlantInfo';
 import PlantNotes from "./PlantNotes";
@@ -10,13 +13,32 @@ import PlantProfileTopOptions from "./PlantProfileTopOptions";
 import PlantDateAdded from './PlantDateAdded';
 import EditPlant from './EditPlant';
 
-const PlantProfile = () => {
+// Styles
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/PlantProfile.css";
+
+// Assets
+import BackButton from "./images/back_button.svg";
+
+// Data (temp)
+import plantprofiledata from "./plant_profile.json";
+
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
+
+/**
+ * Return the components of the Plant Profile Page.
+ * @returns - the components of the Plant Profile Page.
+ */
+const PlantProfilePage = () => {
+
+  // Prepare plant data
   let plantprofilejson = [];
   plantprofilejson.push(...plantprofiledata);
 
   return (
-    <>
-
     <div id="container">
       <div className="header_backarrow_container">
         <Link to="/profile">
@@ -34,8 +56,7 @@ const PlantProfile = () => {
       <div id="plant-profile-nav-block"></div>
 
     </div>
-    </>
   );
 };
 
-export default PlantProfile;
+export default PlantProfilePage;

@@ -1,5 +1,5 @@
 import React from 'react';
-import PlantProfile from './PlantProfile'
+import PlantProfile from './PlantProfilePage'
 
 const PlantProfileContainer = () => {
   return <PlantProfile />
