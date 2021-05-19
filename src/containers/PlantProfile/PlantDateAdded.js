@@ -1,12 +1,31 @@
+// ====================================
+//            	IMPORT
+// ====================================
+
+// React
 import React from 'react';
+
+// Styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PlantDateAdded.css';
+
+// Assets
 import seed from './images/seed.svg';
 
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
+
+/**
+ * Return the date added card of a given date specified.
+ * @param {String} dateAdded - string, the date that the plant was added to the Database. 
+ * @returns - card component for date added.
+ */
 const PlantNotes = ({dateAdded}) => {
 
     return (
-        <>
+
         <div id="plant-profile-dateAdded-card">
             <div className="plant-profile-info-card">
                 <img src={seed} className="plant-profile-icon" alt="leaf-icon"></img>
@@ -16,7 +35,7 @@ const PlantNotes = ({dateAdded}) => {
                 </div>
             </div>
         </div>
-        </>
+
     )
 }
 
