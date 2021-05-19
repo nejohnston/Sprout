@@ -1,11 +1,11 @@
 // ====================================
-//            REACT IMPORTS
+//            IMPORTS
 // ====================================
+
+// React
 import React from "react";
 
-// ====================================
-//          STYLESHEET IMPORTS
-// ====================================
+// Styles
 import "./styles/SearchItem.css";
 
 /**
@@ -18,7 +18,10 @@ import "./styles/SearchItem.css";
 
 const SearchItem = ({ plantData }) => {
 
-  const titleCase = (title) => title.charAt(0).toUpperCase() + title.slice(1); // Convert plant's name to titlecase
+  // Convert plant's name to titlecase
+  const titleCase = (title) => title.charAt(0).toUpperCase() + title.slice(1);
+
+  // Map the plant data to a component with conditional rendering for the "Native Plant" pill
 
   return plantData.map((plant) => (
     <div className="plant-search-item" key={plant["PLANT_ID"]}>
