@@ -1,6 +1,7 @@
 // ====================================
-//            IMPORTS
+//            IMPORT
 // ====================================
+
 // React
 import React from 'react';
 
@@ -10,7 +11,7 @@ import TeamList from '../../components/AboutUs/AboutUsList.js';
 // Data
 import teamMembers from '../../config/data/teamList.json';
 
-// Styles
+// Styling
 import './AboutUs.css';
 
 
@@ -19,8 +20,8 @@ import './AboutUs.css';
 // ====================================
 
 /**
- * 
- * @returns 
+ * Return About Us page components.
+ * @returns - components for About Us page.
  */
 
 const AboutUs = () => {
