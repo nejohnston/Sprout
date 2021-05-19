@@ -1,27 +1,31 @@
-// =====================================
-//               IMPORTS
-// =====================================
-
-// React
+// ====================================
+//            REACT IMPORTS
+// ====================================
 import React from "react";
 import { Link } from "react-router-dom";
 
-// Bootstrap
+// ====================================
+//          BOOTSTRAP IMPORTS
+// ====================================
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// Styles
+// ====================================
+//         STYLESHEET IMPORTS
+// ====================================
 import "./JoinTeam.css";
 
-// Assets
+// ====================================
+//          ASSET IMPORTS
+// ====================================
 import team1 from "./images/team1.svg";
 import team2 from "./images/team2.svg";
 import team3 from "./images/team3.svg";
 
 /**
- * Return the Join Teams page
- * 
- * @returns the Join Teams page
+ * Returns the Join Team page, which is itself a component
+ *
+ * @returns the Join Team page component
  */
 
 const JoinTeam = () => {

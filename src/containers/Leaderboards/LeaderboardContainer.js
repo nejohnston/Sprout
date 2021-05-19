@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import Leaderboard from './Leaderboard'
+import React from 'react';
+import Leaderboard from './LeaderboardPage'
 
 const LeaderboardContainer = () => {
   return <Leaderboard />
