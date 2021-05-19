@@ -55,7 +55,7 @@ const SearchPlantDetailPage = () => {
     <hr />
 
     <div id="search-details-img-container">
-    <img id="search-details-img" src={plantJSON[2]['PLANT_IMG_URL']}></img>
+    <img id="search-details-img" src={plantJSON[2]['PLANT_IMG_URL']} alt=""></img>
     </div>
 
     <DetailCards plantInfo={plantJSON[2]}/>
