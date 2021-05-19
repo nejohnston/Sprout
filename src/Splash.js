@@ -1,12 +1,21 @@
-/* React imports */
+// =====================================
+//               IMPORTS
+// =====================================
+
+// React
 import React from "react";
 
-/* Bootstrap imports */
+// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
 
-/* Component imports */
+// Assets
 import sproutLogo from "./components/Layout/images/sprout_logo.png";
+
+/**
+ * Return the splash screen component to be used for loading screens
+ * @returns splash screen component
+ */
 
 const Splash = () => {
   return (
