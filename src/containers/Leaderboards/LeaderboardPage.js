@@ -10,11 +10,11 @@ import teamsData from './team.json'
 import champions from './champions1.json';
 
 // Components
-import TopFive from './TopFive';
-import LeaderboardTogglers from './LeaderboardTogglers'
+import TopFive from '../../components/Leaderboard/TopFive';
+import LeaderboardTogglers from '../../components/Leaderboard/LeaderboardTogglers'
 
 // Styles
-import './styles/Leaderboard.css';
+import './Leaderboard.css';
 
 // =====================================
 //          REACT COMPONENT
