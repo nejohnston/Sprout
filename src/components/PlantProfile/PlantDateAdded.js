@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PlantDateAdded.css';
 
 // Assets
-import seed from './images/seed.svg';
+import seed from '../../config/assets/icons/seed.svg';
 
 
 // ====================================

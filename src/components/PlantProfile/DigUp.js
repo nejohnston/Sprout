@@ -1,5 +1,5 @@
 // =====================================
-//               IMPORTS
+//               IMPORT
 // =====================================
 
 // React
@@ -7,7 +7,7 @@ import { React, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Assets
-import DigUpButton from "./images/dig_up.svg";
+import DigUpButton from "../../config/assets/icons/dig_up.svg";
 
 // Bootstrap
 import Button from "react-bootstrap/Button";

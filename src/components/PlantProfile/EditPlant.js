@@ -6,7 +6,7 @@
 import { React, useState } from "react";
 
 // Assets
-import EditButton from "./images/pen.svg";
+import EditButton from "../../config/assets/icons/pen.svg";
 
 //Bootstrap
 import Button from 'react-bootstrap/Button';

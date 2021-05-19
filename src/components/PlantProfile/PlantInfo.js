@@ -1,5 +1,5 @@
 // ====================================
-//            	IMPORT
+//               IMPORT
 // ====================================
 
 // React
@@ -10,8 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PlantInfo.css';
 
 // Assets
-import leaf from './images/big-leaf.svg';
-import watercan from './images/water-can-slim.svg';
+import leaf from '../../config/assets/icons/big-leaf.svg';
+import watercan from '../../config/assets/icons/water-can-slim.svg';
 
 
 // ====================================

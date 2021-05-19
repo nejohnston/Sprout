@@ -7,18 +7,18 @@ import React from "react";
 
 // Components
 import { Link } from "react-router-dom";
-import PlantInfo from './PlantInfo';
-import PlantNotes from "./PlantNotes";
-import PlantProfileTopOptions from "./PlantProfileTopOptions";
-import PlantDateAdded from './PlantDateAdded';
-import EditPlant from './EditPlant';
+import PlantInfo from '../../components/PlantProfile/PlantInfo';
+import PlantNotes from "../../components/PlantProfile/PlantNotes";
+import PlantProfileTopOptions from "../../components/PlantProfile/PlantProfileTopOptions";
+import PlantDateAdded from '../../components/PlantProfile/PlantDateAdded';
+import EditPlant from '../../components/PlantProfile/EditPlant';
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/PlantProfile.css";
+import "./PlantProfile.css";
 
 // Assets
-import BackButton from "./images/back_button.svg";
+import BackButton from "../../config/assets/icons/back_button.svg";
 
 // Data (temp)
 import plantprofiledata from "./plant_profile.json";
