@@ -1,0 +1,16 @@
+#nav-blocker {
+    height: 5.5em;
+}
+
+@media (min-width: 768px) {
+    #alerts-container {
+        margin: 0em 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    #alerts-container {
+        width: 50rem;
+        margin: 0em auto;
+    }
+}

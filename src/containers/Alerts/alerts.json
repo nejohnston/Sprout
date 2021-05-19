@@ -1,0 +1,24 @@
+[{
+        "plant_id": 1,
+        "plant_name": "Mike",
+        "PLANT_IMG_URL" : "https://plantdatabase.kpu.ca/images/habit/tabcoh1.jpg"
+    },
+    {
+        "plant_id": 2,
+        "plant_name": "Susan",
+        "PLANT_IMG_URL" : "https://plantdatabase.kpu.ca/images/habit/tackoh1.jpg"
+
+    },
+    {
+        "plant_id": 3,
+        "plant_name": "Sally",
+        "PLANT_IMG_URL" : "https://plantdatabase.kpu.ca/images/habit/tacpgh1.jpg"
+
+    },
+    {
+        "plant_id": 4,
+        "plant_name": "Nicholas",
+        "PLANT_IMG_URL" : "https://plantdatabase.kpu.ca/images/habit/tacplh1.jpg"
+    }
+
+]
