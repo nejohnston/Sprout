@@ -25,8 +25,7 @@ const LeaderboardTogglers = ({ teams }) => {
     <>
       <div id="leaderboard-togglers-container">
         <div
-          className="team-toggler-container"
-          className="leaderboard-team-lower"
+          className="team-toggler-container leaderboard-team-lower"
         >
           <div className="leaderboard-white-bg">
             <div
@@ -75,8 +74,7 @@ const LeaderboardTogglers = ({ teams }) => {
         </div>
 
         <div
-          className="team-toggler-container"
-          className="leaderboard-team-lower"
+          className="team-toggler-container leaderboard-team-lower"
         >
           <div className="leaderboard-white-bg">
             <div
