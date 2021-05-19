@@ -25,7 +25,7 @@ import seed from './images/seed.svg';
 const PlantNotes = ({dateAdded}) => {
 
     return (
-        <>
+
         <div id="plant-profile-dateAdded-card">
             <div className="plant-profile-info-card">
                 <img src={seed} className="plant-profile-icon" alt="leaf-icon"></img>
@@ -35,7 +35,7 @@ const PlantNotes = ({dateAdded}) => {
                 </div>
             </div>
         </div>
-        </>
+
     )
 }
 
