@@ -17,6 +17,7 @@ import './styles/SproutItem.css'
  * @param {Array} sprouts - an array of sprout objects belonging to a user
  * @returns - plant gallery component with each sprout rendered as its own individual component
  */
+
 const PlantGallery = ({sprouts}) => {
   return sprouts.map((sprout) => (
 
