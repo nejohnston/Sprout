@@ -26,7 +26,7 @@ import userdata from "./user.json";
  * Return the Profile Page components.
  * @returns - components of Profile Page.
  */
-const Profile = () => {
+const ProfilePage = () => {
 
   // Set up user data
   let userjson = []
@@ -53,4 +53,4 @@ const Profile = () => {
   </div>);
 };
 
-export default Profile;
+export default ProfilePage;
