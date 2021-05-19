@@ -5,7 +5,7 @@
 import React from 'react';
 
 // Components
-import TeamList from '../../components/List/AboutUsList.js';
+import TeamList from '../../components/AboutUs/AboutUsList.js';
 
 // Data
 import teamMembers from '../../config/data/teamList.json';
