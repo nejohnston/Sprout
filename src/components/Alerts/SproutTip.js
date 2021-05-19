@@ -6,11 +6,11 @@
 import React from 'react';
 
 // Assets
-import closeBtn from '../images/x.svg';
-import sproutTipIcon from '../images/sprout-shadow-light.svg';
+import closeBtn from '../../config/assets/icons/x.svg';
+import sproutTipIcon from '../../config/assets/icons/sprout-shadow-light.svg';
 
 // Styles
-import '../styles/SproutTip.css';
+import './styles/SproutTip.css';
 
 
 

@@ -6,15 +6,15 @@
 import React from 'react';
 
 // Components
-import SproutTip from './components/SproutTip';
-import WaterAlerts from './components/WaterAlerts';
+import SproutTip from '../../components/Alerts/SproutTip';
+import WaterAlerts from '../../components/Alerts/WaterAlerts';
 
 // Data (temp)
 import sproutTips from './sprout-tips.json';
 import alertPlants from './alerts.json';
 
 // Styles
-import './styles/AlertsPage.css';
+import './AlertsPage.css';
 
 
 

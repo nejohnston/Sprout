@@ -6,11 +6,11 @@
 import React from 'react';
 
 // Assets
-import waterIcon from '../images/water-icon-circle.svg';
+import waterIcon from '../../config/assets/icons/water-icon-circle.svg';
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
-import '../styles/WaterAlerts.css';
+import './styles/WaterAlerts.css';
 
 
 // ====================================
