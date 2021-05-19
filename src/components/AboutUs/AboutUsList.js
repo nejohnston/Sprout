@@ -1,4 +1,21 @@
+// ====================================
+//            IMPORTS
+// ====================================
+
+// React
 import React from 'react';
+
+
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
+/**
+ * Return a list of components using the list of member objects.
+ * @param {Array} members - array of member objects.
+ * @returns - each object in members as a component.
+ */
 
 const TeamList = ({members}) => {
 

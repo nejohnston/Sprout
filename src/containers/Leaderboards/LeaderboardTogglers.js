@@ -1,13 +1,25 @@
-// Importing React
+// =====================================
+//               IMPORTS
+// =====================================
+
+// React
 import React from "react";
 
-// Importing stylesheet
+// Styles
 import "./styles/LeaderboardTogglers.css";
+
+/**
+ * Return the top component of the Leaderboard screen
+ * 
+ * Based on which team has the most points, the images will be rendered with the appropriate team data
+ * @param {Array} teams - a sorted array containing objects with team data (points in descending order), to be used as props
+ * @returns the top component of the Leaderboard screen
+ */
 
 const LeaderboardTogglers = ({ teams }) => {
   // All the styles are inline because they have to accept a prop as a background image url, and there is no way to pass this directly into an external stylesheet. Furthermore, as they need the prop passed in, they also can't be defined at the top of the page above this rendering component. The only way to style was to do it inline.
 
-  //Based on the team with the most points, the positions will change, which is why all 3 of the components accept props.
+  // Based on the team with the most points, the positions will change, which is why all 3 of the components accept props.
 
   return (
     <>
