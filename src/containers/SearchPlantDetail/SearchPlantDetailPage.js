@@ -19,7 +19,10 @@ import backbutton from './images/back_button.svg';
 //            React Component
 // ======================================
 
-
+/**
+ * Return the components for Search Details page.
+ * @returns - the components for Search Details page.
+ */
 const SearchPlantDetailPage = () => {
 
   // Receive plant Data
@@ -37,8 +40,6 @@ const SearchPlantDetailPage = () => {
     return firstName.charAt(0).toUpperCase() + firstName.slice(1);
   }
 
-
-  // Component Return
   return (
 
   <div id="container">

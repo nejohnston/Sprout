@@ -29,8 +29,6 @@ const DetailCards = ({ plantInfo }) => {
    */
   const titleCase = (title) => title.charAt(0).toUpperCase() + title.slice(1);
 
-
-  // Component return
   return (
     <div id="detail-cards-container">
       <div id="plant-profile-dateAdded-card">
