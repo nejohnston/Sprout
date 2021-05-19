@@ -46,7 +46,7 @@ const ProfileModal = () => {
             <strong>
               <p className="sprout-modal-text">Name*</p>
             </strong>
-            <Form.Control type="text" placeholder="Sprout Name..." />
+            <Form.Control type="text" placeholder="Sprout Name..." required/>
           </Form.Group>
           <Form.Group controlId="sproutFamily">
             <strong>
@@ -67,6 +67,7 @@ const ProfileModal = () => {
             <Form.Control
               type="number"
               placeholder="Number of days between watering..."
+              required
             />
           </Form.Group>
           <Form.Group controlId="sproutNotes">
