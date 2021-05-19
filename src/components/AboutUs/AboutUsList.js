@@ -6,7 +6,6 @@
 import React from 'react';
 
 
-
 // ====================================
 //          REACT COMPONENT
 // ====================================
@@ -23,18 +22,18 @@ const TeamList = ({members}) => {
 
       return(
       <>
-        <div className="member-container" key={member.id}>
-          <img className="about-us-avatar" src={member.img} alt={member.name}/>
+        <div className="member-container" key={member["id"]}>
+          <img className="about-us-avatar" src={member["img"]} alt={member["name"]}/>
 
           <div className="member-description">
-          <h3>{member.name}</h3>
+          <h3>{member["name"]}</h3>
 
-          {member.position}
+          {member["position"]}
           
-          <p><span className="about-us-my-sprout">My Sprout: {member.plant}</span>
+          <p><span className="about-us-my-sprout">My Sprout: {member["plant"]}</span>
           <br/>
           <br/>
-          {member.about}</p>
+          {member["about"]}</p>
           </div>
         </div>
       </>
