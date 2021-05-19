@@ -21,7 +21,7 @@ const TeamList = ({members}) => {
     return members.map(member => {
 
       return(
-      <>
+
         <div className="member-container" key={member["id"]}>
           <img className="about-us-avatar" src={member["img"]} alt={member["name"]}/>
 
@@ -36,7 +36,7 @@ const TeamList = ({members}) => {
           {member["about"]}</p>
           </div>
         </div>
-      </>
+
       )
 
     });
