@@ -37,13 +37,13 @@ const SproutTip = ({ tips }) => {
         <div id="alert-sprout-tip">
             <div id="sprout-tip-header">
 
-            <h5><img id="sprout-tip-icon" src={sproutTipIcon}/>Sprout Tip of the Day</h5>
+            <h5><img id="sprout-tip-icon" src={sproutTipIcon} alt="sprout-tip"/>Sprout Tip of the Day</h5>
             <img id="sprout-tip-close-btn" src={closeBtn} alt="close-btn" onClick={dismissTip}/>
             </div>
-            <p id="tip-text" >{random_tip.tip_text}</p>
+            <p id="tip-text" >{random_tip["tip_text"]}</p>
 
             <hr/>
-            <p id="tip-reference" className="text-muted">{random_tip.tip_ref}</p>
+            <p id="tip-reference" className="text-muted">{random_tip["tip_ref"]}</p>
         </div>
     )
 }
