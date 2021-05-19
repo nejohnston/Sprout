@@ -1,15 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles();
+import UnderConstruction from '../../components/Layout/UnderConstruction';
 
 const Leaderboard = () => {
-  const classes = useStyles();
   return (
   <div>
-    <p>
-      This is where Leaderboard components will reside
-    </p>
+    <UnderConstruction />
   </div>);
 };
 

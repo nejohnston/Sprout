@@ -1,3 +1,8 @@
+#login-container {
+    height: 100vh;
+    background-color: #94B447;
+}
+
 #bg {
     background-image: url("./images/login-bg.jpg");
     height: 30rem;
@@ -14,7 +19,11 @@
     width: 21rem;
     height: 22rem;
     padding: 2rem;
-    margin-top: 13rem;
+    margin-top: 14rem;
     box-shadow: 0 0.1rem 0.5rem 0 rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
+}
+.custom-primary-button {
+    background-color: #5D6E1E !important;
+    border-style: none !important;
 }
