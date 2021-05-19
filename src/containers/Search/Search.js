@@ -1,20 +1,29 @@
-import { React, useState } from "react";
+// ====================================
+//            REACT IMPORTS
+// ====================================
+import React, { useState } from "react";
 
-/* Bootstrap imports */
+// ====================================
+//          BOOTSTRAP IMPORTS
+// ====================================
 import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/Search.css'
 
-/* Modules import */
+// ====================================
+//          REACT COMPONENTS
+// ====================================
 import SearchItem from "./SearchItems";
 import SearchBar from "./SearchBar";
 
-/* Data import */
+// ====================================
+//            DATA IMPORTS
+// ====================================
 import searchPlantData from "./plants.json";
 
 const Search = () => {
 
   let plantJSON = [];
-  plantJSON.push(...searchPlantData);
+  plantJSON.push(...searchPlantData); // Push data to be used as prop
 
   const [input, setInput] = useState('')
   const [plantListDefault, setPlantListDefault] = useState(plantJSON);
