@@ -1,7 +1,11 @@
-/* React Imports */
+// ====================================
+//            REACT IMPORTS
+// ====================================
 import React from "react";
 
-/* Stylesheet import */
+// ====================================
+//          STYLESHEET IMPORTS
+// ====================================
 import "./styles/SearchItem.css";
 
 /**
@@ -14,9 +18,7 @@ import "./styles/SearchItem.css";
 
 const SearchItem = ({ plantData }) => {
 
-  // Convert plant's name to titlecase
-
-  const titleCase = (title) => title.charAt(0).toUpperCase() + title.slice(1);
+  const titleCase = (title) => title.charAt(0).toUpperCase() + title.slice(1); // Convert plant's name to titlecase
 
   return plantData.map((plant) => (
     <div className="plant-search-item" key={plant["PLANT_ID"]}>
