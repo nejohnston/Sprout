@@ -19,8 +19,8 @@ import SearchContainer from './containers/Search';
 // Web Vitals and Styling
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import userEvent from '@testing-library/user-event';
-import HomeContainer from './containers/HomeContainer/HomeContainer';
+// import userEvent from '@testing-library/user-event';
+// import HomeContainer from './containers/HomeContainer/HomeContainer';
 
 // UserContext
 export const UserContext = createContext();

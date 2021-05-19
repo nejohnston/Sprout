@@ -1,26 +1,14 @@
-import { React, useContext, useState } from "react";
+import { React, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import addButton from "./images/addbutton.svg";
 import "./styles/ProfileModal.css";
-import { values } from "lodash-es";
 import { Formik } from "formik";
-import { UserContext } from "../..";
 
-const ProfileModal = ({userId, userSprouts}) => {
+const ProfileModal = ({user, userSprouts, setSprouts}) => {
   const [show, setShow] = useState(false);
-  const initialState = {
-    name: '',
-    family: '',
-    type: '',
-    wateringInterval: 0,
-    notes: '',
-    image: '',
-  }
-  const [sprout, setSprout] = useState(initialState);
-  // const user = useContext(UserContext)[0]
   const handleClose = (e) => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -35,6 +23,7 @@ const ProfileModal = ({userId, userSprouts}) => {
           <Formik 
           onSubmit={
             (values) => {
+              // console.log(values.wateringInterval) && 
               fetch('http://localhost:3001/profile/',
               {
                 method: 'POST',
@@ -43,15 +32,15 @@ const ProfileModal = ({userId, userSprouts}) => {
                   "Content-Type": "application/json"
                 },
               })
-              .then(response => response.json() && console.log(values.userId))
+              .then(response => response.json())
               .then(result => console.log('Successful Sprout Add: ', result))
               .catch(error => console.log('Error creating Sprout: ', error))
-              && userSprouts.push(values)
+              && setSprouts([...userSprouts, values])
         } 
         }
           initialValues={
             { 
-              userId: userId,
+              userId: user.userId,
               name: '',
               family: '',
               type: '',
@@ -131,7 +120,7 @@ const ProfileModal = ({userId, userSprouts}) => {
         <Modal.Footer>
           <Button
             variant="primary"
-            // onClick={(e) => handleClose(e)}
+            onClick={handleClose}
             type="submit"
             className="custom-primary-button"
           >

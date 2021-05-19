@@ -16,28 +16,32 @@ const schema = yup.object().shape({
 const Login = (props) => {
   const user = useContext(UserContext)[0]
   // console.log(setUser)
-  console.log(user)
+  const setUserData = (data) => {
+    user.userId = data.application_user_id
+    user.username = data.application_user_username
+    user.password = data.application_user_password
+    user.name = data.application_user_preferred_name
+    user.points = data.application_user_points
+    user.team = data.team_id
+  }
+  const queryUser = async (values) => {
+      await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
+      .then(response => response.json())
+      .then(data => {
+        setUserData(data)
+        props.history.push('/profile')
+      })
+      .catch(err => console.log(err));
+    }
+
   return (
     <>
       <div id="bg">
         <div id="login-card">
           <Formik
           validationSchema={schema}
-          onSubmit={
-            async (values) => {
-              await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
-              .then(response => response.json())
-              .then(data => {
-                user.userId = data.application_user_id
-                user.username = data.application_user_username
-                user.password = data.application_user_password
-                user.name = data.application_user_preferred_name
-                user.points = data.application_user_points
-                user.team = data.team_id
-                props.history.push('/profile')
-              })
-              .catch(err => console.log(err));
-            }
+          onSubmit={(values) =>
+            queryUser(values)
           }
           initialValues={
             {

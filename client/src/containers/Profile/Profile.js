@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import SproutGallery from './SproutGallery';
 import ProfilePictureModal from './ProfilePictureModal';
 import ProfileModal from './ProfileModal'
 import Scorebar from './Scorebar';
+import {UserContext} from '../../index'
 import './styles/Profile.css'
 
 const Profile = ({userData}) => {
-  const user = userData[0];
+  // const [user, setUser] = userData;
+  const [sprouts, setSprouts] = useState(userData[0].sprouts)
+  console.log("userData: " + userData)
+  const [user, setUser] = useContext(UserContext)
+  // console.log(user.sprouts)
   return (
   <div id="container">
     <div id="profile-header">
       <h1 id="profile-h1">My Sprouts</h1>
       <ProfileModal 
-      userId={user.userId} 
-      userSprouts={user.sprouts} 
+      user={user} 
+      userSprouts={sprouts}
+      setSprouts={setSprouts}
       />
     </div>
 
@@ -32,7 +38,7 @@ const Profile = ({userData}) => {
     />
 
     <SproutGallery 
-    sprouts={user.sprouts}
+    sprouts={sprouts}
     />
     <div id="vector-bg"></div>
   </div>);

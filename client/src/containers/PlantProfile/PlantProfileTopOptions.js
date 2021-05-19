@@ -5,7 +5,7 @@ import DigUp from "./DigUp";
 import WaterPlant from "./WaterPlant";
 import PlantProfilePicture from "./PlantProfilePicture";
 
-const PlantProfileTopOptions = ({ image_url }) => {
+const PlantProfileTopOptions = ({ image_url, sprout }) => {
   return (
     <>
       <div id="plant-profile-top-container">

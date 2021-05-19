@@ -5,10 +5,15 @@ import Button from "react-bootstrap/Button";
 import "./styles/PlantProfileSmallButtons.css";
 import { Link } from "react-router-dom";
 
-const DigUp = (props) => {
+const DigUp = (props, sprout) => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    fetch(`http://localhost3001/api/deleteSprout/${sprout.userId}/${sprout.name}`)
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
+    &&
+    setShow(false)};
   const handleShow = () => setShow(true);
 
   return (

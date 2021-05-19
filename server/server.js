@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getUsers } = require('./pghelper');
+const { getUsers, createSprout } = require('./pghelper');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
@@ -12,8 +12,15 @@ app.get('/login/:username/:password', async (req, res) => {
   res.json(users)
 });
 
-app.post('/profile/', (req, res) => {
-  console.log(req.body)
+app.get('/sprouts/:userId', async (req, res) => {
+  let userSprouts = await getUserSprouts(req.params.userId);
+  res.json(userSprouts)
+});
+
+app.post('/profile/', async (req, res) => {
+  let addSprout = await createSprout(req.body)
+  // res.json(addSprout)
+  console.log(req.body.wateringInterval)
 })
 
 app.listen(port, () => {

@@ -26,7 +26,8 @@ const PlantProfile = () => {
         <EditPlant plant={plantprofilejson[0]}/>
       </div>
       <hr />
-      <PlantProfileTopOptions image_url={plantprofilejson[0]["image_url"]} />
+      <PlantProfileTopOptions 
+      image_url={plantprofilejson[0]["image_url"]}  />
       <PlantInfo plant={plantprofilejson[0]}/>
       <PlantDateAdded dateAdded={plantprofilejson[0].date_added}/>
       <PlantNotes plantNotes={plantprofilejson[0].notes}/>
