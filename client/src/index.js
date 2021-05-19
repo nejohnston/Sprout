@@ -45,7 +45,6 @@ const userInitialValue = {
  */
 const App = () => {
   const [user, setUser] = useState(userInitialValue)
-  console.log(user)
   return (
     <UserContext.Provider value={[user, setUser]}>
       <Router>

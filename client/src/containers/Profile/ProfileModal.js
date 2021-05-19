@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -7,8 +7,9 @@ import addButton from "./images/addbutton.svg";
 import "./styles/ProfileModal.css";
 import { values } from "lodash-es";
 import { Formik } from "formik";
+import { UserContext } from "../..";
 
-const ProfileModal = () => {
+const ProfileModal = ({userId, userSprouts}) => {
   const [show, setShow] = useState(false);
   const initialState = {
     name: '',
@@ -19,7 +20,7 @@ const ProfileModal = () => {
     image: '',
   }
   const [sprout, setSprout] = useState(initialState);
-
+  // const user = useContext(UserContext)[0]
   const handleClose = (e) => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -42,12 +43,15 @@ const ProfileModal = () => {
                   "Content-Type": "application/json"
                 },
               })
-              .then(response => response.json())
+              .then(response => response.json() && console.log(values.userId))
               .then(result => console.log('Successful Sprout Add: ', result))
               .catch(error => console.log('Error creating Sprout: ', error))
-          }}
+              && userSprouts.push(values)
+        } 
+        }
           initialValues={
-            {
+            { 
+              userId: userId,
               name: '',
               family: '',
               type: '',

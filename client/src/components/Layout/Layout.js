@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <div className="appContent">{children}</div>
-      {window.location.pathname !== "/login" &&
+      {window.location.pathname !== "/" &&
       window.location.pathname !== "/join-team" ? (
         <NavBar />
       ) : null}

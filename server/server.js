@@ -9,12 +9,7 @@ let app = express();
     app.use(express.json())
 app.get('/login/:username/:password', async (req, res) => {
   let users = await getUsers(req.params.username, req.params.password);
-  console.log('before')
-  console.log(users)
-  console.log('after')
   res.json(users)
-  // {users ? res.json(users) : res.send(false)}
-  // res.json(users);
 });
 
 app.post('/profile/', (req, res) => {
