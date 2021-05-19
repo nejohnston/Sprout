@@ -12,13 +12,6 @@ const schema = yup.object().shape({
   username: yup.string().required(),
   password: yup.string().required()
 })
-// import { isNull } from "lodash-es";
-// import { Redirect } from "react-router";
-
-// const schema = yup.object().shape({
-//   username: yup.string().required(),
-//   password: yup.string().required()
-// })
 
 const Login = (props) => {
   const user = useContext(UserContext)[0]
@@ -33,8 +26,7 @@ const Login = (props) => {
           onSubmit={
             async (values) => {
               await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
-              .then(response => response.json()
-              )
+              .then(response => response.json())
               .then(data => {
                 user.userId = data.application_user_id
                 user.username = data.application_user_username

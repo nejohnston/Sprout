@@ -24,11 +24,18 @@ let getUsers = async (username, password) => {
   .catch(err => console.log(err)))
 }
 
-let createSprout = async (username, password) => {
+let createSprout = async (sprout) => {
   const query = {
     text: 
     'SELECT * FROM application_user WHERE application_user_username=$1 AND application_user_password=$2;',
-    values: [username, password]
+    values: [
+      sprout.name, 
+      sprout.family,
+      sprout.type,
+      sprout.waterInterval,
+      sprout.notes,
+      sprout.image
+    ]
   }
 return (
   await client
