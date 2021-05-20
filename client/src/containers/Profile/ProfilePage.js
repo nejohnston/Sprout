@@ -3,13 +3,14 @@
 // ====================================
 
 // React
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 
 // Components
 import SproutGallery from '../../components/Profile/SproutGallery';
 import ProfilePictureModal from '../../components/Profile/ProfilePictureModal';
 import Scorebar from '../../components/Profile/Scorebar';
 import AddPlantModal from '../../components/Modals/AddPlantModal'
+import { SproutContext } from "../../componentsLayout/Layout";
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,9 +27,9 @@ import userdata from "./user.json";
  * Return the Profile Page components.
  * @returns - components of Profile Page.
  */
-const ProfilePage = ({ userContext, userSprouts }) => {
+const ProfilePage = ({ userContext }) => {
+  const [sprouts, setSprouts] = useContext(SproutContext);
   const [user, setUser] = userContext;
-  const [sprouts, setSprouts] = userSprouts;
   console.log(sprouts)
   // Set up user data
   let userjson = []
@@ -39,8 +40,8 @@ const ProfilePage = ({ userContext, userSprouts }) => {
     <div id="profile-header">
       <h1 id="profile-h1">My Sprouts</h1>
       <AddPlantModal 
-      user={user} 
-      userSprouts={sprouts}
+      user={user}
+      sprouts={sprouts}
       setSprouts={setSprouts}
       />
     </div>

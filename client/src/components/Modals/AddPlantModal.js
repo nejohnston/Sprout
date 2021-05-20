@@ -3,7 +3,7 @@
 // ========================================
 
 // React
-import { React, useState } from "react";
+import React, { useContext, useState } from "react";
 
 // Bootstrap and styling
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,9 +19,8 @@ import "./styles/AddPlantModal.css";
 //        Component Code
 // ========================================
 
-const AddPlantModal = ({ user, userSprouts, setSprouts, type, family }) => {
+const AddPlantModal = ({ user, sprouts, setSprouts, type, family }) => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -50,10 +49,8 @@ const AddPlantModal = ({ user, userSprouts, setSprouts, type, family }) => {
                   "Content-Type": "application/json"
                 },
               })
-              .then(result => result.ok ? setSprouts([...userSprouts, values]) : result)
+              .then(result => result.ok ? setSprouts([...sprouts, values]) : result)
               .catch(error => console.log('Error creating Sprout: ', error))
-              && console.log("set sprouts nont running" + userSprouts)
-              
         }
         }
           initialValues={

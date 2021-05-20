@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import * as yup from 'yup';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
-import { UserContext } from "../../index";
+import { UserContext } from "../../components/Layout/Layout.js";
 import { withRouter } from "react-router";
 // import { queryUser } from "../../api/apiQueries";
 import reducer from '../../components/Layout/GlobalReducer'
