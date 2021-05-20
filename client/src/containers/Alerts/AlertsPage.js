@@ -10,7 +10,7 @@ import SproutTip from '../../components/Alerts/SproutTip';
 import WaterAlerts from '../../components/Alerts/WaterAlerts';
 
 // Data (temp)
-import sproutTips from './sprout-tips.json';
+import sproutTips from '../../config/data/sprout-tips.json';
 import alertPlants from './alerts.json';
 
 // Styles
