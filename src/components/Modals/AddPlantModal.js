@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import addButton from "./images/addbutton.svg";
+import addButton from "../../config/assets/icons/addbutton.svg";
 import "./styles/AddPlantModal.css";
 
 
@@ -51,6 +51,8 @@ const AddPlantModal = ({ type, family }) => {
       "https://api.cloudinary.com/v1_1/sprout03/image/upload",
       imageData
     ).then (res => {
+
+
       console.log(res.data.secure_url);
     }).catch (err => console.log(err))
   }
