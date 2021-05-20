@@ -20,8 +20,8 @@ import './styles/TopFive.css';
  */
 const TopFive = ({ topfive }) => {
     return topfive.map( player => (
-        <>
-        <div key={player["user_id"]} className="champion-container">
+        <div key={player["user_id"]}>
+        <div className="champion-container">
             <img className="champion-img shadow-sm" src={player["user_img"]} alt={player["username"]}/>
             
             <p className="champion-username"><strong>{player["username"]}</strong></p>
@@ -29,7 +29,7 @@ const TopFive = ({ topfive }) => {
 
         </div>
         <hr/>
-        </>
+        </div>
     ));
 };
 
