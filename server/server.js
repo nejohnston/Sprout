@@ -8,6 +8,16 @@ let app = express();
     app.use(cors());
     app.use(express.json())
     
+// ====================================
+//           EXPRESS QUERIES
+// ====================================
+
+// GET USER DATA
+/**
+ * @params username, password
+ * Return a user's data.
+ * @returns - components of Profile Page.
+ */
 app.get('/login/:username/:password', async (req, res) => {
   let users = await getUsers(req.params.username, req.params.password);
   res.json(users)
