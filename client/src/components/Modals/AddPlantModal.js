@@ -3,7 +3,7 @@
 // ========================================
 
 // React
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 // Bootstrap and styling
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,15 +14,20 @@ import Form from "react-bootstrap/Form";
 import addButton from "./images/addbutton.svg";
 import "./styles/AddPlantModal.css";
 
+// Other imports
+import {UserContext, SproutContext} from '../Layout/Layout';
+
 
 // ========================================
 //        Component Code
 // ========================================
 
-const AddPlantModal = ({ user, sprouts, setSprouts, type, family }) => {
+const AddPlantModal = ({ type, family }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [user, setUser] = useContext(UserContext);
+  const [sprouts, setSprouts] = useContext(SproutContext);
 
   return (
     <>
@@ -87,6 +92,7 @@ const AddPlantModal = ({ user, sprouts, setSprouts, type, family }) => {
             onChange={handleChange}
             type="text" 
             placeholder="Sprout Name..." 
+            required
             />
           </Form.Group>
           <Form.Group controlId="sproutFamily">

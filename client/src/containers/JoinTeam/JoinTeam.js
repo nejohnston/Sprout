@@ -18,9 +18,9 @@ import "./JoinTeam.css";
 // ====================================
 //          ASSET IMPORTS
 // ====================================
-import team1 from "./images/team1.svg";
-import team2 from "./images/team2.svg";
-import team3 from "./images/team3.svg";
+import team1 from "../../config/assets/icons/team1.svg";
+import team2 from "../../config/assets/icons/team2.svg";
+import team3 from "../../config/assets/icons/team3.svg";
 
 /**
  * Returns the Join Team page, which is itself a component

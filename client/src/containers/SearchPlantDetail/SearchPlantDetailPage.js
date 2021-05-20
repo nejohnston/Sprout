@@ -7,7 +7,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import plantData from './plants.json';
+import plantData from '../../config/data/plants.json';
 import DetailCards from '../../components/SearchPlantDetail/DetailCards'
 import AddPlantModal from '../../components/Modals/AddPlantModal';
 
