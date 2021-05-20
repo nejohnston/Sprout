@@ -33,7 +33,7 @@ let getUser = async (username, password) => {
   return (
     await client
   .query(query)
-  .then(res => res.rows[0] && console.log(res.rows[0]))
+  .then(res => res.rows[0])
   .catch(err => console.log(err)))
 }
 

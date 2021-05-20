@@ -28,13 +28,30 @@ const initialState = {
   sprouts: []
 }
 }
+// userId: 0,
+// teamId: 0,
+// username: '',
+// password: '',
+// name: '',
+// profilePicture:'',
+// team: 0,
+// points: 0,
+// sprouts: []
 const Login = (props) => {
-  const setUser = useContext(UserContext)[1]
+  // const setUser = useContext(UserContext)[1]
+  // const user = useContext(UserContext)[0]
+  const [user, setUser] = useContext(UserContext)
   const [state, dispatch] = useReducer(reducer, initialState)
   const queryUser = async (values) => {
     await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+      user.username = data.application_user_username,
+      user.password = data.application_user_password,
+      user.name = data.application_user_name,
+      user.
+    }
+      )
     .catch(err => console.log(err));
   }
   return (
@@ -52,10 +69,10 @@ const Login = (props) => {
              */   
             async (values) => {
               console.log(values)
-              dispatch()
-              // let userResponse = await queryUser(values)
-              // console.log("userrespsonse: " + userResponse)
-              // setUser(userResponse)
+              // dispatch()
+              let userResponse = await queryUser(values)
+              console.log("userResponse: " + userResponse)
+              setUser(userResponse)
               // NEED VALIDATION HERE ?
               &&
               // redirect to profile

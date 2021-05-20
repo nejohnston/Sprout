@@ -1,0 +1,33 @@
+.champion-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: 
+        "image username points";
+
+    align-items: center;
+}
+
+.champion-container p {
+    margin-bottom: 0em;
+}
+
+.champion-img {
+    grid-area: image;
+
+    display: inline;
+    width: 3rem;
+    height: 3rem;
+
+    border-radius: 50rem;
+    border: 3px solid #FFFFFF;
+}
+
+.champion-username {
+    grid-area: username;
+    color: #5BA8A0;
+}
+
+.champion-points {
+    grid-area: points;
+    justify-self: right;
+}

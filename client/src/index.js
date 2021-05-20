@@ -60,6 +60,7 @@ sprouts: []
  */
 const App = () => {
   const [user, setUser] = useState(userInitialValue)
+  // const [user, se]
   return (
     <UserContext.Provider value={[user, setUser]}>
       <Router>

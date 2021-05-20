@@ -12,6 +12,7 @@
     "lodash": "^4.17.21",
     "pg": "^7.18.1",
     "pg-native": "^3.0.0",
+    "fslightbox-react": "^1.6.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
@@ -45,8 +46,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "fslightbox-react": "^1.6.2"
   }
 }
