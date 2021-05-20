@@ -7,7 +7,7 @@ import Scorebar from './Scorebar';
 import {UserContext} from '../../index'
 import './styles/Profile.css'
 
-const Profile = ({userContext, userSprouts}) => {
+const Profile = ({ userContext, userSprouts }) => {
   const [user, setUser] = userContext;
   const [sprouts, setSprouts] = useState(user.sprouts)
   return (

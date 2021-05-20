@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import { UserContext } from "../../index";
 import { withRouter } from "react-router";
+import { queryUser } from "../../config/api/apiQueries";
 
 const schema = yup.object().shape({
   username: yup.string().required(),
@@ -14,36 +15,27 @@ const schema = yup.object().shape({
 })
 
 const Login = (props) => {
-  const user = useContext(UserContext)[0]
-  // console.log(setUser)
-  const setUserData = (data) => {
-    user.userId = data.application_user_id
-    user.username = data.application_user_username
-    user.password = data.application_user_password
-    user.name = data.application_user_preferred_name
-    user.points = data.application_user_points
-    user.team = data.team_id
-  }
-  const queryUser = async (values) => {
-      await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
-      .then(response => response.json())
-      .then(data => {
-        setUserData(data)
-        && console.log(user)
-      })
-      .catch(err => console.log(err));
-    }
-
+  const setUser = useContext(UserContext)[1]
   return (
     <>
       <div id="bg">
         <div id="login-card">
           <Formik
           validationSchema={schema}
-          onSubmit={(values) =>
-            queryUser(values)
-            && 
-            props.history.push('/profile')
+          onSubmit={
+            // QUERY USER DATA
+            /**
+             * @params username, password
+             * Return a user's data.
+             * @returns - components of Profile Page.
+             */   
+            (values) => {
+              let userResponse = queryUser(values)
+              setUser(userResponse)
+              // NEED VALIDATION HERE ?
+              &&
+              // redirect to profile
+              props.history.push('/profile')}
           }
           initialValues={
             {

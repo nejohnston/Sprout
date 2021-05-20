@@ -4,7 +4,6 @@ const { getUser, createSprout, getUserSprouts } = require('./pghelper');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
-    app.use(express.static("../client/build"));
     app.use(cors());
     app.use(express.json())
     

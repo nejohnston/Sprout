@@ -1,9 +1,9 @@
 const Reducer = (state, action) => {
   switch (action.type) {
-      case 'SET_POSTS':
+      case 'SET_USER':
           return {
               ...state,
-              posts: action.payload
+              user: action.payload
           };
       case 'ADD_POST':
           return {
