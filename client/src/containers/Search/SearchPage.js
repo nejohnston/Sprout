@@ -16,7 +16,7 @@ import SearchItem from "../../components/Search/SearchItems";
 import SearchBar from "../../components/Search/SearchBar";
 
 // Data (Temp)
-import searchPlantData from "./plants.json";
+import searchPlantData from "../../backend/plants.json";
 
 
 
@@ -26,6 +26,9 @@ import searchPlantData from "./plants.json";
 
 /**
  * Return components of the Search Page.
+ * 
+ * Search code adapted from @pradityadhitama from Medium.
+ * 
  * @returns - components of the Search Page.
  */
 const SearchPage = () => {
