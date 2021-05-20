@@ -1,4 +1,4 @@
-import React, {useContext } from "react";
+import React, { useContext, useReducer } from "react";
 import { Formik } from 'formik';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,14 +8,29 @@ import "./Login.css";
 import { UserContext } from "../../index";
 import { withRouter } from "react-router";
 import { queryUser } from "../../config/api/apiQueries";
+import reducer from '../../components/Layout/GlobalReducer'
 
 const schema = yup.object().shape({
   username: yup.string().required(),
   password: yup.string().required()
 })
 
+const initialState = {
+  user: {
+  userId: 0,
+  teamId: 0,
+  username: '',
+  password: '',
+  name: '',
+  profilePicture:'',
+  team: 0,
+  points: 0,
+  sprouts: []
+}
+}
 const Login = (props) => {
   const setUser = useContext(UserContext)[1]
+  const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <>
       <div id="bg">

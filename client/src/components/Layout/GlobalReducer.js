@@ -1,19 +1,10 @@
+import getUsers from '../../api/expressFetch'
 const reducer = (state, action) => {
   switch (action.type) {
       case 'SET_USER':
           return {
               ...state,
-              user: action.payload
-          };
-      case 'ADD_POST':
-          return {
-              ...state,
-              posts: state.posts.concat(action.payload)
-          };
-      case 'REMOVE_POST':
-          return {
-              ...state,
-              posts: state.posts.filter(post => post.id !== action.payload)
+              user: getUsers(action.payload)
           };
       case 'SET_ERROR':
           return {
