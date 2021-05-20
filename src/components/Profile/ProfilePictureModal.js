@@ -28,17 +28,18 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
   const handleShow = () => setShow(true);
   // State to store the image being uploaded
   const [imageSelected, setImageSelected] = useState("");
-  /**
-   * Store the image to Cloudinary, and save the URL to database - code adapted from PedroTech (YouTube)
-   * Use Axios to handle the API fetch request
-   */
+
+ // Store the image to Cloudinary, and save the URL to database - code adapted from PedroTech (YouTube)
+
   const uploadImage = () => {
-    const formData = new FormData();
-    formData.append("file", imageSelected);
-    formData.append("upload_preset", "sproutUser");
+
+    // Create a new formData object for the file to be uploaded
+    const imageData = new FormData();
+    imageData.append("file", imageSelected);
+    imageData.append("upload_preset", "sproutUser"); // Cloudinary image upload presets
     Axios.post(
       "https://api.cloudinary.com/v1_1/sprout03/image/upload/",
-      formData
+      imageData
     )
       .then((response) => console.log(response["data"]["secure_url"]))
       .catch((error) => console.log(error));
@@ -83,13 +84,14 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
         </Modal.Body>
 
         <Modal.Footer>
+          <div onClick={handleClose}>
           <Button
             variant="primary"
             className="custom-primary-button"
             onClick={uploadImage}
           >
             Save Changes
-          </Button>
+          </Button></div>
         </Modal.Footer>
       </Modal>
     </>
