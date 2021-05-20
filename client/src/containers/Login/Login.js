@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Formik, ErrorMessage } from 'formik';
 import Form from "react-bootstrap/Form";
@@ -8,8 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import { UserContext } from "../../components/Layout/Layout.js";
 import { withRouter } from "react-router";
-// import { queryUser } from "../../api/apiQueries";
-import reducer from '../../components/Layout/GlobalReducer'
 
 // Splash Screen
 import Splash from "../../Splash";
@@ -22,30 +20,7 @@ const schema = yup.object().shape({
   password: yup.string().required()
 })
 
-const initialState = {
-  user: {
-  userId: 0,
-  teamId: 0,
-  username: '',
-  password: '',
-  name: '',
-  profilePicture:'',
-  team: 0,
-  points: 0
-}
-}
-// userId: 0,
-// teamId: 0,
-// username: '',
-// password: '',
-// name: '',
-// profilePicture:'',
-// team: 0,
-// points: 0,
-// sprouts: []
 const Login = (props) => {
-  // const setUser = useContext(UserContext)[1]
-  // const user = useContext(UserContext)[0]
   const [splash, setSplash] = useState(true); //splash screen will always render upon initialization
   const user = useContext(UserContext)[0]
   // const [state, dispatch] = useReducer(reducer, initialState)
@@ -54,18 +29,7 @@ const Login = (props) => {
   useEffect(() => {
     setTimeout(() => setSplash(false), 2000); //after 2 seconds the state will be switched to false
   }, []);
-  // const queryUser = async (values) => {
-  //   await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     user.username = data.application_user_username,
-  //     user.password = data.application_user_password,
-  //     user.name = data.application_user_name,
-  //     user.
-  //   }
-  //     )
-  //   .catch(err => console.log(err));
-  // }
+  
   return (
     <>
     {splash === false ? (

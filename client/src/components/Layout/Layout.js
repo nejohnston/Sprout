@@ -2,17 +2,17 @@ import React, {createContext, useState} from "react";
 import PropTypes from "prop-types";
 import NavBar from "./NavBar";
 
-const userInitialValue = {
-  userId: 0,
-  teamId: 0,
-  username: '',
-  password: '',
-  name: '',
-  profilePicture:'',
-  team: 0,
-  points: 0,
-  sprouts: []
-}
+// const userInitialValue = {
+//   userId: 0,
+//   teamId: 0,
+//   username: '',
+//   password: '',
+//   name: '',
+//   profilePicture:'',
+//   team: 0,
+//   points: 0,
+//   sprouts: []
+// }
 const initialState = {
   user: {
   userId: 0,

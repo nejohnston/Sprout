@@ -3,7 +3,7 @@
 // ========================================
 
 // React
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 // Bootstrap and styling
 import "bootstrap/dist/css/bootstrap.min.css";

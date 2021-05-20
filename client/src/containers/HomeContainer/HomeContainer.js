@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { Redirect, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 import { UserContext } from '../..';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';

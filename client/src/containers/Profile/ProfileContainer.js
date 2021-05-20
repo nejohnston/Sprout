@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../../components/Layout/Layout';
-import reducer from '../../components/Layout/GlobalReducer'
 import ProfilePage from './ProfilePage'
 
 const initialState = {
@@ -20,7 +19,7 @@ sprouts: []
 
 const ProfileContainer = () => {
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  // const [state, dispatch] = useReducer(reducer, initialState)
   const user = useContext(UserContext);
   const sproutState = useState(initialState.sprouts)
   

@@ -1,14 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import SproutGallery from './SproutGallery';
 import ProfilePictureModal from './ProfilePictureModal';
 import ProfileModal from './ProfileModal'
 import Scorebar from './Scorebar';
-import {UserContext} from '../../index'
 import './styles/Profile.css'
 
 const Profile = ({ userContext, userSprouts }) => {
-  const [user, setUser] = userContext;
+  const user = userContext[0];
   const [sprouts, setSprouts] = useState(user.sprouts)
   return (
   <div id="container">

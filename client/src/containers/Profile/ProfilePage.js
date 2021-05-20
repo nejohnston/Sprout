@@ -3,21 +3,20 @@
 // ====================================
 
 // React
-import React, {useState, useContext} from 'react';
+import React, { useContext} from 'react';
 
 // Components
 import SproutGallery from '../../components/Profile/SproutGallery';
 import ProfilePictureModal from '../../components/Profile/ProfilePictureModal';
 import Scorebar from '../../components/Profile/Scorebar';
 import AddPlantModal from '../../components/Modals/AddPlantModal'
+
+// Sprout Context from Layout.js Provider
 import { SproutContext } from "../../components/Layout/Layout";
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Profile.css'
-
-// Data (temp)
-import userdata from "./user.json";
 
 // ====================================
 //           REACT COMPONENT
@@ -29,11 +28,7 @@ import userdata from "./user.json";
  */
 const ProfilePage = ({ userContext }) => {
   const [sprouts, setSprouts] = useContext(SproutContext);
-  const [user, setUser] = userContext;
-  console.log(sprouts)
-  // Set up user data
-  let userjson = []
-  userjson.push(...userdata);
+  const user = userContext[0];
 
   return (
   <div id="container">
