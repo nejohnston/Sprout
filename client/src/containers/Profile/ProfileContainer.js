@@ -24,9 +24,9 @@ const ProfileContainer = () => {
   const user = useContext(UserContext);
   const [sprouts, setSprouts] = useState(user[0].sprouts)
 
-  useEffect(() => {
-    querySprouts(user)
-  }, [])
+  // useEffect(() => {
+  //   querySprouts(user)
+  // }, [])
   return <Profile userContext={user} userSprouts={sprouts} />
 }
 

@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import { UserContext } from "../../index";
 import { withRouter } from "react-router";
-import { queryUser } from "../../config/api/apiQueries";
+// import { queryUser } from "../../api/apiQueries";
 import reducer from '../../components/Layout/GlobalReducer'
 
 const schema = yup.object().shape({
@@ -31,6 +31,12 @@ const initialState = {
 const Login = (props) => {
   const setUser = useContext(UserContext)[1]
   const [state, dispatch] = useReducer(reducer, initialState)
+  const queryUser = async (values) => {
+    await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  }
   return (
     <>
       <div id="bg">
@@ -44,9 +50,12 @@ const Login = (props) => {
              * Return a user's data.
              * @returns - components of Profile Page.
              */   
-            (values) => {
-              let userResponse = queryUser(values)
-              setUser(userResponse)
+            async (values) => {
+              console.log(values)
+              dispatch()
+              // let userResponse = await queryUser(values)
+              // console.log("userrespsonse: " + userResponse)
+              // setUser(userResponse)
               // NEED VALIDATION HERE ?
               &&
               // redirect to profile
