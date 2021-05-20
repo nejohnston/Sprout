@@ -49,7 +49,7 @@ const SearchItem = ({ plantData }) => {
               {plant["PLANT_TYPE"]}
             </p>
 
-            {plant["PLANT_ORIGIN"].includes("B.C") && (
+            {plant["PLANT_ORIGIN"] != null && plant["PLANT_ORIGIN"].includes("B.C") && (
               <p className="is-native" id={"plant" + plant["PLANT_ID"]}>
                 Native Plant
               </p>
