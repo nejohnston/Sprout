@@ -10,7 +10,7 @@ import SproutGallery from '../../components/Profile/SproutGallery';
 import ProfilePictureModal from '../../components/Profile/ProfilePictureModal';
 import Scorebar from '../../components/Profile/Scorebar';
 import AddPlantModal from '../../components/Modals/AddPlantModal'
-import { SproutContext } from "../../componentsLayout/Layout";
+import { SproutContext } from "../../components/Layout/Layout";
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";

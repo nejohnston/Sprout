@@ -29,7 +29,6 @@ import './index.css';
  * @returns - the routing for Sprout application
  */
 const App = () => {
-  // const [user, se]
   return (
       <Router>
         <Switch>

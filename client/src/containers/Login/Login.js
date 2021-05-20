@@ -31,8 +31,7 @@ const initialState = {
   name: '',
   profilePicture:'',
   team: 0,
-  points: 0,
-  sprouts: []
+  points: 0
 }
 }
 // userId: 0,
@@ -48,8 +47,8 @@ const Login = (props) => {
   // const setUser = useContext(UserContext)[1]
   // const user = useContext(UserContext)[0]
   const [splash, setSplash] = useState(true); //splash screen will always render upon initialization
-  const [user, setUser] = useContext(UserContext)
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const user = useContext(UserContext)[0]
+  // const [state, dispatch] = useReducer(reducer, initialState)
   const [validation, setValidation] = useState(true)
 
   useEffect(() => {

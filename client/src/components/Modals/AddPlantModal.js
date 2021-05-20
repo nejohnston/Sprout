@@ -49,7 +49,7 @@ const AddPlantModal = ({ user, sprouts, setSprouts, type, family }) => {
                   "Content-Type": "application/json"
                 },
               })
-              .then(result => result.ok ? setSprouts([...sprouts, values]) : result)
+              .then(result => (result.ok ? setSprouts([...sprouts, values]) : result && console.log(sprouts)))
               .catch(error => console.log('Error creating Sprout: ', error))
         }
         }
