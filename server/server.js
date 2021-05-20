@@ -7,6 +7,7 @@ let app = express();
     app.use(express.static("../client/build"));
     app.use(cors());
     app.use(express.json())
+    
 app.get('/login/:username/:password', async (req, res) => {
   let users = await getUsers(req.params.username, req.params.password);
   res.json(users)

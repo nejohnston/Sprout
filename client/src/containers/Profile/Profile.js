@@ -8,11 +8,8 @@ import {UserContext} from '../../index'
 import './styles/Profile.css'
 
 const Profile = ({userContext, userSprouts}) => {
-  // const [user, setUser] = userData;
   const [user, setUser] = userContext;
   const [sprouts, setSprouts] = useState(user.sprouts)
-  console.log("userData: " + userContext)
-  // console.log(user.sprouts)
   return (
   <div id="container">
     <div id="profile-header">
@@ -38,7 +35,7 @@ const Profile = ({userContext, userSprouts}) => {
     />
 
     <SproutGallery 
-    sprouts={sprouts}
+    sprouts={userSprouts}
     />
     <div id="vector-bg"></div>
   </div>);

@@ -29,6 +29,7 @@ const Login = (props) => {
       .then(response => response.json())
       .then(data => {
         setUserData(data)
+        && console.log(user)
       })
       .catch(err => console.log(err));
     }
