@@ -29,10 +29,9 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
   // State to store the image being uploaded
   const [imageSelected, setImageSelected] = useState("");
 
- // Store the image to Cloudinary, and save the URL to database - code adapted from PedroTech (YouTube)
+  // Store the image to Cloudinary, and save the URL to database - code adapted from PedroTech (YouTube)
 
   const uploadImage = () => {
-
     // Create a new formData object for the file to be uploaded
     const imageData = new FormData();
     imageData.append("file", imageSelected);
@@ -85,13 +84,14 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
 
         <Modal.Footer>
           <div onClick={handleClose}>
-          <Button
-            variant="primary"
-            className="custom-primary-button"
-            onClick={uploadImage}
-          >
-            Save Changes
-          </Button></div>
+            <Button
+              variant="primary"
+              className="custom-primary-button"
+              onClick={uploadImage}
+            >
+              Save Changes
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
     </>
