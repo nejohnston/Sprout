@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getUsers, createSprout, getUserSprouts } = require('./pghelper');
+const { getUser, createSprout, getUserSprouts } = require('./pghelper');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
@@ -19,7 +19,7 @@ let app = express();
  * @returns - response from database.
  */
 app.get('/login/:username/:password', async (req, res) => {
-  let user = await getUsers(req.params.username, req.params.password);
+  let user = await getUser(req.params.username, req.params.password);
   res.json(user)
 });
 
