@@ -1,8 +1,14 @@
 {
+  "name": "sprout",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "start": "nodemon server.js"
   },
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
   }
 }

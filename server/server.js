@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getUser, createSprout, getUserSprouts } = require('./pghelper');
+const { getUser, createSprout, getUserSprouts } = require('./pgHelper');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));

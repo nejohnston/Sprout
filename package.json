@@ -1,0 +1,8 @@
+{
+  "name": "sprout",
+  "version": "0.1.0",
+  "private": true,  "scripts": {
+    "start client": "cd client && yarn install && yarn start ",
+    "start server": "cd server && yarn install && yarn start"
+  }
+}
