@@ -12,13 +12,12 @@ import Axios from "axios";
 import EditButton from "../../config/assets/icons/pen.svg";
 
 //Bootstrap
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 // Styling
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "./styles/PlantProfileSmallButtons.css";
-
 
 // ====================================
 //           REACT COMPONENT
@@ -30,42 +29,41 @@ import "./styles/PlantProfileSmallButtons.css";
  * @param {Object} plant - the object representation of the current page's plant.
  * @returns - the edit modal of the current plant displayed on the page.
  */
-const EditPlant = ({props, plant}) => {
-
+const EditPlant = ({ props, plant }) => {
   // States for showing and hiding the modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [imageSelected, setImageSelected] = useState("")  // image selected states for file input
+  const [imageSelected, setImageSelected] = useState(""); // image selected states for file input
 
   const submitForm = () => {
-
     // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
-    let imageData = new FormData()
-    imageData.append("file", imageSelected);         // File is current image selected
-    imageData.append("upload_preset", "sproutPlant") // Cloudinary upload preset
+    let imageData = new FormData();
+    imageData.append("file", imageSelected); // File is current image selected
+    imageData.append("upload_preset", "sproutPlant"); // Cloudinary upload preset
 
     // Reach Sprout Cloudinary API and upload image - code snippet adapted from PedroTech
     Axios.post(
       "https://api.cloudinary.com/v1_1/sprout03/image/upload",
       imageData
-    ).then (res => {
-      console.log(res.data.secure_url);
-    }).catch (err => console.log(err))
-  }
+    )
+      .then((res) => {
+        console.log(res.data.secure_url);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
-      <img src={EditButton} id="edit-button" onClick={handleShow} alt=""/>
-
+      <img src={EditButton} id="edit-button" onClick={handleShow} alt="" />
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Sprout</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form.Group controlId="sproutName">
+          <Form.Group controlId="sproutName">
             <strong>
               <p className="sprout-modal-text">Name</p>
             </strong>
@@ -96,23 +94,33 @@ const EditPlant = ({props, plant}) => {
             <strong>
               <p className="sprout-modal-text">Additional Notes</p>
             </strong>
-            <Form.Control as="textarea" rows={3} defaultValue={plant["notes"]} />
+            <Form.Control
+              as="textarea"
+              rows={3}
+              defaultValue={plant["notes"]}
+            />
           </Form.Group>
           <Form.Group>
             <strong>
               <p className="sprout-modal-text">Upload Sprout Picture</p>
             </strong>
-            <input type="file" id="sproutUploadPicture" onChange={event => setImageSelected(event.target.files[0])}/>
+            <input
+              type="file"
+              id="sproutUploadPicture"
+              onChange={(event) => setImageSelected(event.target.files[0])}
+            />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="primary"
-            onClick={submitForm}
-            className="custom-primary-button"
-          >
-            Save Changes
-          </Button>
+          <div onClick={handleClose}>
+            <Button
+              variant="primary"
+              onClick={submitForm}
+              className="custom-primary-button"
+            >
+              Save Changes
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
     </>
