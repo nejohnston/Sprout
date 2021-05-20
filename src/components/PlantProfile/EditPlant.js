@@ -5,6 +5,9 @@
 // React
 import { React, useState } from "react";
 
+// Axios
+import Axios from "axios";
+
 // Assets
 import EditButton from "../../config/assets/icons/pen.svg";
 
@@ -34,6 +37,24 @@ const EditPlant = ({props, plant}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [imageSelected, setImageSelected] = useState("")  // image selected states for file input
+
+  const submitForm = () => {
+
+    // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
+    let imageData = new FormData()
+    imageData.append("file", imageSelected);         // File is current image selected
+    imageData.append("upload_preset", "sproutPlant") // Cloudinary upload preset
+
+    // Reach Sprout Cloudinary API and upload image - code snippet adapted from PedroTech
+    Axios.post(
+      "https://api.cloudinary.com/v1_1/sprout03/image/upload",
+      imageData
+    ).then (res => {
+      console.log(res.data.secure_url);
+    }).catch (err => console.log(err))
+  }
+
   return (
     <>
       <img src={EditButton} id="edit-button" onClick={handleShow} alt=""/>
@@ -48,19 +69,19 @@ const EditPlant = ({props, plant}) => {
             <strong>
               <p className="sprout-modal-text">Name</p>
             </strong>
-            <Form.Control type="text" value={plant["user_given_name"]} />
+            <Form.Control type="text" defaultValue={plant["user_given_name"]} />
           </Form.Group>
           <Form.Group controlId="sproutFamily">
             <strong>
               <p className="sprout-modal-text">Family</p>
             </strong>
-            <Form.Control type="text" value={plant["family"]} />
+            <Form.Control type="text" defaultValue={plant["family"]} />
           </Form.Group>
           <Form.Group controlId="sproutType">
             <strong>
               <p className="sprout-modal-text">Type</p>
             </strong>
-            <Form.Control type="text" value={plant["type"]} />
+            <Form.Control type="text" defaultValue={plant["type"]} />
           </Form.Group>
           <Form.Group controlId="sproutType">
             <strong>
@@ -68,26 +89,26 @@ const EditPlant = ({props, plant}) => {
             </strong>
             <Form.Control
               type="number"
-              value={plant["watering_interval"]}
+              defaultValue={plant["watering_interval"]}
             />
           </Form.Group>
           <Form.Group controlId="sproutNotes">
             <strong>
               <p className="sprout-modal-text">Additional Notes</p>
             </strong>
-            <Form.Control as="textarea" rows={3} value={plant["notes"]} />
+            <Form.Control as="textarea" rows={3} defaultValue={plant["notes"]} />
           </Form.Group>
           <Form.Group>
             <strong>
               <p className="sprout-modal-text">Upload Sprout Picture</p>
             </strong>
-            <Form.File id="sproutUploadPicture" />
+            <input type="file" id="sproutUploadPicture" onChange={event => setImageSelected(event.target.files[0])}/>
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="primary"
-            onClick={handleClose}
+            onClick={submitForm}
             className="custom-primary-button"
           >
             Save Changes
