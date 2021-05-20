@@ -17,9 +17,9 @@ let app = express();
  * return a user's data.
  * @returns - response from database.
  */
-app.get('/login/:username/:password', async (req, res) => {
-  let user = await getUser(req.params.username, req.params.password);
-  res.json(user)
+app.get('/login/:username/:password', async (request, response) => {
+  let user = await getUser(request.params.username, request.params.password);
+  response.json(user)
 });
 
 // GET USER SPROUTS
@@ -28,10 +28,10 @@ app.get('/login/:username/:password', async (req, res) => {
  * get a user's sprouts.
  * @returns - sprouts of user.
  */
-app.get('/sprouts/:userId', async (req, res) => {
-  console.log(req.params.userId)
-  let userSprouts = await getUserSprouts(req.params.userId);
-  res.json(userSprouts)
+app.get('/sprouts/:userId', async (request, response) => {
+  console.log(request.params.userId)
+  let userSprouts = await getUserSprouts(request.params.userId);
+  response.json(userSprouts)
 });
 
 // POST NEW USER SPROUT
@@ -40,9 +40,10 @@ app.get('/sprouts/:userId', async (req, res) => {
  * create new user sprout.
  * @returns - success or fail message.
  */
-app.post('/profile/', async (req, res) => {
-  let addSprout = await createSprout(req.body)
-  console.log(req.body.wateringInterval)
+app.post('/profile/', async (request, response) => {
+  await createSprout(request.body)
+  response.status(200).send(`200: Sprout added successfully.`);
+  // response.status(500).send(`500: server.js could not handle response.`);
 })
 
 app.listen(port, () => {

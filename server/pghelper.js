@@ -52,7 +52,7 @@ let getUserSprouts = async (userId) => {
 return (
   await client
 .query(query)
-.then(res => res.rows[0])
+.then(res => res.rows && console.log("res.rows in pghelper" + res.rows))
 .catch(err => console.log(err)))
 }
 
@@ -63,7 +63,6 @@ return (
  * @returns - success response.
  */
 let createSprout = async (sprout) => {
-  console.log("waterInterval" + sprout.userId)
   const query = {
     text: 
       `INSERT INTO USER_SPROUTS(
@@ -88,7 +87,7 @@ let createSprout = async (sprout) => {
 return (
   await client
 .query(query)
-.then(res => res.send('Sprout Added Successfully'))
+.then(res => console.log(res))
 .catch(err => console.log(err)))
 }
 

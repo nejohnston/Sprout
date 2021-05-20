@@ -1,5 +1,6 @@
-import React, { useContext, useReducer } from "react";
-import { Formik } from 'formik';
+import React, { useContext, useReducer, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Formik, ErrorMessage } from 'formik';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import * as yup from 'yup';
@@ -9,6 +10,12 @@ import { UserContext } from "../../index";
 import { withRouter } from "react-router";
 // import { queryUser } from "../../api/apiQueries";
 import reducer from '../../components/Layout/GlobalReducer'
+
+// Splash Screen
+import Splash from "../../Splash";
+
+// Styles
+import "./Login.css";
 
 const schema = yup.object().shape({
   username: yup.string().required(),
@@ -40,22 +47,30 @@ const initialState = {
 const Login = (props) => {
   // const setUser = useContext(UserContext)[1]
   // const user = useContext(UserContext)[0]
+  const [splash, setSplash] = useState(true); //splash screen will always render upon initialization
   const [user, setUser] = useContext(UserContext)
   const [state, dispatch] = useReducer(reducer, initialState)
-  const queryUser = async (values) => {
-    await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
-    .then(response => response.json())
-    .then(data => {
-      user.username = data.application_user_username,
-      user.password = data.application_user_password,
-      user.name = data.application_user_name,
-      user.
-    }
-      )
-    .catch(err => console.log(err));
-  }
+  const [validation, setValidation] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setSplash(false), 2000); //after 2 seconds the state will be switched to false
+  }, []);
+  // const queryUser = async (values) => {
+  //   await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     user.username = data.application_user_username,
+  //     user.password = data.application_user_password,
+  //     user.name = data.application_user_name,
+  //     user.
+  //   }
+  //     )
+  //   .catch(err => console.log(err));
+  // }
   return (
     <>
+    {splash === false ? (
+    <div id="login-container">
       <div id="bg">
         <div id="login-card">
           <Formik
@@ -68,15 +83,21 @@ const Login = (props) => {
              * @returns - components of Profile Page.
              */   
             async (values) => {
-              console.log(values)
-              // dispatch()
-              let userResponse = await queryUser(values)
-              console.log("userResponse: " + userResponse)
-              setUser(userResponse)
-              // NEED VALIDATION HERE ?
-              &&
-              // redirect to profile
-              props.history.push('/profile')}
+              await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
+              .then(response => response.json()
+              )
+              .then(data => {
+                user.userId = data.application_user_id
+                user.username = data.application_user_username
+                user.password = data.application_user_password
+                user.name = data.application_user_preferred_name
+                user.points = data.application_user_points
+                user.team = data.team_id
+                &&
+                props.history.push('/profile')
+              })
+              .catch(err => console.log(err) && setValidation(false));
+            }
           }
           initialValues={
             {
@@ -106,7 +127,7 @@ const Login = (props) => {
                 name="username"
                 value={values.username}
                 onChange={handleChange}
-                isValid={touched.username && !errors.username}
+                isValid={validation}
               />
             </Form.Group>
 
@@ -118,12 +139,12 @@ const Login = (props) => {
                 name="password"
                 value={values.password}
                 onChange={handleChange}
-                isValid={touched.password && !errors.password}
+                isValid={validation}
               />
             </Form.Group>
-            {/* {!isValidCredentials ? 
+            {!validation ? 
             <ErrorMessage>That's an incorrect username or password, please try again.</ErrorMessage> : null
-          } */}
+          }
             <Button 
             variant="primary" 
             type="submit">
@@ -134,6 +155,13 @@ const Login = (props) => {
           </Formik>
         </div>
       </div>
+          <Link to="/about-us" id="about-us-link">
+            <p>About the Sprout Team</p>
+          </Link>
+        </div>
+      ) : (
+        <Splash />
+      )}
     </>
   );
 };

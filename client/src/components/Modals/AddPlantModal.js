@@ -8,6 +8,7 @@ import { React, useState } from "react";
 // Bootstrap and styling
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
+import { Formik } from "formik";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import addButton from "./images/addbutton.svg";
@@ -18,8 +19,7 @@ import "./styles/AddPlantModal.css";
 //        Component Code
 // ========================================
 
-
-const AddPlantModal = ({ type, family }) => {
+const AddPlantModal = ({ user, userSprouts, setSprouts, type, family }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -38,30 +38,84 @@ const AddPlantModal = ({ type, family }) => {
         <Modal.Header closeButton>
           <Modal.Title>Add a Sprout</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+          <Formik 
+          onSubmit={
+            (values) => {
+              // console.log(values.wateringInterval) && 
+              fetch('http://localhost:3001/profile/',
+              {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: {
+                  "Content-Type": "application/json"
+                },
+              })
+              .then(result => result.ok ? setSprouts([...userSprouts, values]) : result)
+              .catch(error => console.log('Error creating Sprout: ', error))
+              && console.log("set sprouts nont running" + userSprouts)
+              
+        }
+        }
+          initialValues={
+            { 
+              userId: user.userId,
+              name: '',
+              family: '',
+              type: '',
+              wateringInterval: 0,
+              notes: '',
+              image: ''
+          }
+        }
+          >
+            {
+            ({
+              handleSubmit,
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              isValid,
+              errors
+          }) => (
+            <Form onSubmit={handleSubmit}>
+            <Modal.Body>
           <Form.Group controlId="sproutName">
             <strong>
               <p className="sprout-modal-text">Name*</p>
             </strong>
-            <Form.Control type="text" placeholder="Sprout Name..." required/>
+            <Form.Control 
+            name="name"
+            value={values.name} 
+            onChange={handleChange}
+            type="text" 
+            placeholder="Sprout Name..." 
+            />
           </Form.Group>
           <Form.Group controlId="sproutFamily">
             <strong>
               <p className="sprout-modal-text">Family</p>
             </strong>
-            <Form.Control type="text" placeholder="Sprout Name..." defaultValue={family}/>
+            <Form.Control 
+            value={values.family}
+            onChange={handleChange} name="family" type="text" placeholder="Sprout Name..." />
           </Form.Group>
           <Form.Group controlId="sproutType">
             <strong>
               <p className="sprout-modal-text">Type</p>
             </strong>
-            <Form.Control type="text" placeholder="Sprout Type..." defaultValue={type}/>
+            <Form.Control
+            onChange={handleChange}
+            value={values.type} name="type" type="text" placeholder="Sprout Type..." />
           </Form.Group>
-          <Form.Group controlId="sproutType">
+          <Form.Group controlId="sproutWateringInterval">
             <strong>
               <p className="sprout-modal-text">Watering Interval*</p>
             </strong>
             <Form.Control
+              onChange={handleChange}
+              value={values.wateringInterval}
+              name="wateringInterval"
               type="number"
               placeholder="Number of days between watering..."
               required
@@ -71,7 +125,9 @@ const AddPlantModal = ({ type, family }) => {
             <strong>
               <p className="sprout-modal-text">Additional Notes</p>
             </strong>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control 
+            value={values.notes}
+            onChange={handleChange} name="notes" as="textarea" rows={3} />
           </Form.Group>
           <Form.Group>
             <strong>
@@ -84,11 +140,15 @@ const AddPlantModal = ({ type, family }) => {
           <Button
             variant="primary"
             onClick={handleClose}
+            type="submit"
             className="custom-primary-button"
           >
             Add a New Sprout
           </Button>
         </Modal.Footer>
+        </Form>
+        )}
+        </Formik>
       </Modal>
     </>
   );

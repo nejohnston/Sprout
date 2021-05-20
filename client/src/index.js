@@ -3,7 +3,7 @@
 // React
 import React, { useState, createContext, useReducer } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
 // Components
 import Layout from './components/Layout/Layout';
@@ -66,14 +66,20 @@ const App = () => {
       <Router>
         <Switch>
           <Layout>
-            <Route path='/about-us' component={AboutUsContainer} />
-            <Route path='/alerts' component={AlertsContainer} />
-            <Route path='/join-team' component={JoinTeamContainer} />
-            <Route path='/leaderboards' component={LeaderboardContainer} />
-            <Route exact path='/' component={LoginContainer} />
-            <Route path='/profile' component={ProfileContainer} />
-            <Route path='/search' component={SearchContainer} />
-            <Route path='/plant-profile' component={PlantProfileContainer} />
+            {/* {user === userInitialValue ?
+            <Route path='/*' component={LoginContainer} />
+            :  */}
+            <>
+              <Route path='/about-us' component={AboutUsContainer} />
+              <Route path='/alerts' component={AlertsContainer} />
+              <Route path='/join-team' component={JoinTeamContainer} />
+              <Route path='/leaderboards' component={LeaderboardContainer} />
+              <Route exact path='/' component={LoginContainer} />
+              <Route path='/profile' component={ProfileContainer} />
+              <Route path='/search' component={SearchContainer} />
+              <Route path='/plant-profile' component={PlantProfileContainer} />
+            </>
+            {/* } */}
           </Layout>
         </Switch>
       </Router>

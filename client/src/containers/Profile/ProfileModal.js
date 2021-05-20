@@ -100,6 +100,7 @@ const ProfileModal = ({user, userSprouts, setSprouts}) => {
               name="wateringInterval"
               type="number"
               placeholder="Number of days between watering..."
+              required
             />
           </Form.Group>
           <Form.Group controlId="sproutNotes">

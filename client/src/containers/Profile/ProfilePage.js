@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React from 'react';
+import React, {useState} from 'react';
 
 // Components
 import SproutGallery from '../../components/Profile/SproutGallery';
@@ -26,8 +26,10 @@ import userdata from "./user.json";
  * Return the Profile Page components.
  * @returns - components of Profile Page.
  */
-const ProfilePage = () => {
-
+const ProfilePage = ({ userContext, userSprouts }) => {
+  const [user, setUser] = userContext;
+  const [sprouts, setSprouts] = userSprouts;
+  console.log(sprouts)
   // Set up user data
   let userjson = []
   userjson.push(...userdata);
@@ -36,19 +38,23 @@ const ProfilePage = () => {
   <div id="container">
     <div id="profile-header">
       <h1 id="profile-h1">My Sprouts</h1>
-      <AddPlantModal />
+      <AddPlantModal 
+      user={user} 
+      userSprouts={sprouts}
+      setSprouts={setSprouts}
+      />
     </div>
 
     <hr />
     
     <div id="my-sprouts-user-container">
-      <ProfilePictureModal profilePic={userjson[0]["profile_pic"]}/>
-      <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
+      <ProfilePictureModal profilePic={user.profilePic}/>
+      <h5 id="my-sprouts-user-name">{user.name}</h5>
     </div>
 
-    <Scorebar user={userjson[0]}/>
+    <Scorebar user={user}/>
 
-    <SproutGallery sprouts={userjson[0]["sprouts"]}/>
+    <SproutGallery sprouts={sprouts}/>
     <div id="vector-bg"></div>
   </div>);
 };
