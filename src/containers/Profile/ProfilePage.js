@@ -42,7 +42,7 @@ const ProfilePage = () => {
     <hr />
     
     <div id="my-sprouts-user-container">
-      <ProfilePictureModal profilePic={userjson[0]["profile_pic"]}/>
+      <ProfilePictureModal profilePic={userjson[0]["profile_pic"]} prefName={userjson[0]["name"]}/>
       <h5 id="my-sprouts-user-name">{userjson[0]["name"]}</h5>
     </div>
 
