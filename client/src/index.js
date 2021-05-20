@@ -1,7 +1,7 @@
 /*================== IMPORTS ===================== */
 
 // React
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useReducer } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -19,6 +19,7 @@ import SearchContainer from './containers/Search';
 // Web Vitals and Styling
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import reducer from './components/Layout/GlobalReducer';
 // import userEvent from '@testing-library/user-event';
 // import HomeContainer from './containers/HomeContainer/HomeContainer';
 
@@ -34,6 +35,20 @@ const userInitialValue = {
   team: 0,
   points: 0,
   sprouts: []
+}
+const initialState = {
+  user: {
+  userId: 0,
+  teamId: 0,
+  username: '',
+  password: '',
+  name: '',
+  profilePicture:'',
+  team: 0,
+  points: 0,
+  sprouts: []
+},
+sprouts: []
 }
 
 /*================== APP PATHS AND RENDER ===================== */

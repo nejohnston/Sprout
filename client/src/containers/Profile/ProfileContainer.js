@@ -1,27 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { UserContext } from '../..';
+import reducer from '../../components/Layout/GlobalReducer'
 import Profile from './Profile'
 
 const ProfileContainer = () => {
+
+  const [state, dispatch] = useReducer(reducer, initialState)
   const user = useContext(UserContext);
   const [sprouts, setSprouts] = useState(user[0].sprouts)
-  const querySprouts = async (user) => {
-    console.log(user[0]);
-    await fetch(`http://localhost:3001/sprouts/${user[0].userId}/`)
-    // .then(response => response.json())
-    .then(data => {
-      // console.log("before" + sprouts)
-      // &&
-      setSprouts(sprouts => [...sprouts, data])
-      &&
-      console.log("after" + sprouts)
-    })
-    .catch(err => console.log(err));
-  }
 
-  useEffect(() => {
-    querySprouts(user)
-  }, [])
+  // useEffect(() => {
+  //   querySprouts(user)
+  // }, [])
   return <Profile userContext={user} userSprouts={sprouts} />
 }
 

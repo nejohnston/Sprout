@@ -1,4 +1,4 @@
-const Reducer = (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
       case 'SET_USER':
           return {
@@ -25,4 +25,4 @@ const Reducer = (state, action) => {
   }
 };
 
-export default Reducer;
+export default reducer;
