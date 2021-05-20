@@ -5,6 +5,9 @@
 // React
 import { React, useState } from "react";
 
+// Axios
+import Axios from "axios";
+
 // Bootstrap and styling
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
@@ -20,10 +23,27 @@ import "./styles/AddPlantModal.css";
 
 
 const AddPlantModal = ({ type, family }) => {
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
+
+  const [imageSelected, setImageSelected] = useState("")
+
+  const submitForm = () => {
+    let formData = new FormData()
+    formData.append("file", imageSelected);
+    formData.append("upload_preset", "sproutPlant")
+
+    Axios.post(
+      "https://api.cloudinary.com/v1_1/sprout03/image/upload",
+      formData
+    ).then (res => {
+      console.log(res.secure_url);
+    }).catch (err => console.log(err))
+  }
 
   return (
     <>
@@ -77,13 +97,13 @@ const AddPlantModal = ({ type, family }) => {
             <strong>
               <p className="sprout-modal-text">Upload Sprout Picture</p>
             </strong>
-            <Form.File id="sproutUploadPicture" />
+            <input type="file" id="sproutUploadPicture" onChange={event => setImageSelected(event.target.files[0])}/>
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="primary"
-            onClick={handleClose}
+            onClick={submitForm}
             className="custom-primary-button"
           >
             Add a New Sprout
