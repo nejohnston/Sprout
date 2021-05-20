@@ -14,7 +14,7 @@ const client = new Client({
 });
 
 console.log('not connected')
-// connect to postgres database
+// connect to postgres database using client credentials in previous object
 client.connect();
 console.log('connected')
 
