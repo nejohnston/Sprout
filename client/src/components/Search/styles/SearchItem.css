@@ -1,0 +1,36 @@
+.plant-search-img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+  margin: auto 1.25rem auto 0;
+}
+
+.plant-search-item {
+  display: flex;
+  margin: 1rem 0;
+  background-color: #5ba8a0;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.plant-search-item p {
+  margin-bottom: 0.15rem;
+}
+
+.plant-search-familytype {
+  font-size: 0.85rem;
+}
+
+.is-native {
+  background-color: #3b5284;
+  width: 5.85rem;
+  padding: 0.3rem 0.55rem 0.3rem 0.55rem;
+  border-radius: 0.5rem;
+}
+
+@media only screen and (max-device-width: 767px) {
+  .plant-search-name-div {
+    width: 13.5rem;
+  }
+}

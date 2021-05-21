@@ -1,0 +1,20 @@
+@media only screen and (max-device-width: 767px) {
+  #search-items-container {
+    margin-bottom: 5.5rem;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  #search-items-container {
+    width: 40rem;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-device-width: 1025px) {
+    #search-items-container {
+        width: 50rem;
+        margin: 0 auto;
+      }
+
+}

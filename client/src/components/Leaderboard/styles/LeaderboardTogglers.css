@@ -1,0 +1,76 @@
+#leaderboard-togglers-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.leaderboard-points {
+  color: #3b5284;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.leaderboard-points p {
+  margin-bottom: 0;
+}
+
+.leaderboard-white-bg {
+  background-color: #fff;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50rem;
+}
+
+#leaderboard-white-bg-first {
+  background-color: #fff;
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50rem;
+}
+
+.leaderboard-names {
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+}
+
+.leaderboard-team-lower {
+  margin-top: 2.5rem;
+}
+
+#leaderboard-first {
+  height: 8rem;
+  width: 8rem;
+}
+
+.leaderboard-togglers-points-first {
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  margin-top: -5.5rem;
+  margin-left: 2.35rem;
+  line-height: 70%;
+  color: #3b5284;
+}
+
+@media only screen and (max-device-width: 767px) {
+  #leaderboard-togglers-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+}
+
+@media only screen and (min-device-width: 768px) {
+  #leaderboard-togglers-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+}
