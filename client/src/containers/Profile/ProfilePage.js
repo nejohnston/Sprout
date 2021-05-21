@@ -12,7 +12,7 @@ import Scorebar from '../../components/Profile/Scorebar';
 import AddPlantModal from '../../components/Modals/AddPlantModal'
 
 // Sprout Context from Layout.js Provider
-import { SproutContext } from "../../components/Layout/Layout";
+import { SproutContext, UserContext } from "../../components/Layout/Layout";
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -27,8 +27,8 @@ import './Profile.css'
  * @returns - components of Profile Page.
  */
 const ProfilePage = ({ userContext }) => {
+  const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
-  const user = userContext[0];
 
   return (
   <div id="container">

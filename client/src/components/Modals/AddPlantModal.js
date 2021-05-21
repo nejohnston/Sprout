@@ -14,7 +14,6 @@ import Form from "react-bootstrap/Form";
 import addButton from "./images/addbutton.svg";
 import "./styles/AddPlantModal.css";
 
-
 // ========================================
 //        Component Code
 // ========================================
