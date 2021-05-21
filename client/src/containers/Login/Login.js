@@ -16,8 +16,10 @@ import Splash from "../../Splash";
 import "./Login.css";
 
 const schema = yup.object().shape({
-  username: yup.string().required(),
-  password: yup.string().required()
+  // REGEX statement copied from this article
+  // https://stackoverflow.com/questions/1221985/how-to-validate-a-user-name-with-regex
+  username: yup.string().matches(/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)$/).required(),
+  password: yup.string().matches(/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)$/).required()
 })
 
 const Login = (props) => {
@@ -54,7 +56,6 @@ const Login = (props) => {
                 } 
                 catch {
                   setValidation(false);
-                  // console.log(validation)
                   throw Error(body);
                 }
                 })
@@ -82,10 +83,8 @@ const Login = (props) => {
             ({
               handleSubmit,
               handleChange,
-              handleBlur,
               values,
               touched,
-              isValid,
               errors,
           }) => (
           <Form onSubmit={handleSubmit}>
@@ -99,12 +98,18 @@ const Login = (props) => {
                 name="username"
                 value={values.username}
                 onChange={handleChange}
-                isValid={touched && validation}
                 required
               />
+               {
+               errors.username && touched.username ? (
+               setValidation(false)
+                )
+                : 
+                setValidation(true)
+                }
             </Form.Group>
 
-            <Form.Group controlId="validationFormik02">
+            <Form.Group controlId="validationFormik02" style={!validation ? { marginBottom: 0 } : null}>
               <Form.Label>Password</Form.Label>
               <Form.Control 
                 type="text" 
@@ -112,13 +117,17 @@ const Login = (props) => {
                 name="password"
                 value={values.password}
                 onChange={handleChange}
-                isValid={touched && validation}
                 required
               />
+              {errors.username && touched.username ? (
+               setValidation(false)
+               ) 
+               : 
+               setValidation(true)}
             </Form.Group>
             {!validation ? 
             // That's an incorrect username or password, please try again.
-            <ErrorMessage>{() => <div style={{ color: 'red' }}>That's an incorrect username or password, please try again.</div>}</ErrorMessage> : null
+            <ErrorMessage>{() => <div style={{ color: 'red', margin: 0 }}>Incorrect username or password.</div>}</ErrorMessage> : null
           }
             <Button 
             variant="primary" 
