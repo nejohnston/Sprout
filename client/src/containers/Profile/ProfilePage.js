@@ -31,6 +31,7 @@ const ProfilePage = ({ userContext }) => {
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
   const [display, setDisplay] = useState(true);
+  
   useEffect(() => {
     setTimeout(() => setDisplay(false), 1000); //after 2 seconds the state will be switched to false
   }, []);
