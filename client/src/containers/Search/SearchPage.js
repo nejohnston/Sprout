@@ -16,7 +16,7 @@ import SearchItem from "../../components/Search/SearchItems";
 import SearchBar from "../../components/Search/SearchBar";
 
 // Data (Temp)
-import searchPlantData from "./plants.json";
+import searchPlantData from "../../config/data/plants.json";
 
 
 
@@ -26,29 +26,24 @@ import searchPlantData from "./plants.json";
 
 /**
  * Return components of the Search Page.
+ * 
+ * Search useState and updateInput code adapted from @pradityadhitama from Medium.
+ * 
  * @returns - components of the Search Page.
  */
 const SearchPage = () => {
 
-  // Push data to be used as prop
-  
-  let plantJSON = [];
-  plantJSON.push(...searchPlantData);
-
   // State to track the search input changes as user types. Default empty string
   const [input, setInput] = useState('')
 
-  // State to track the default plant list. Default imported plant database
-  const [plantListDefault, setPlantListDefault] = useState(plantJSON);
-
   // State to track the filtered plant list. Default imported plant database
-  const [plantList, setPlantList] = useState(plantJSON);
+  const [plantList, setPlantList] = useState(searchPlantData);
 
 
   // Function to update the input in the search bar and the filtered plant list based on current input
   const updateInput = input => {
 
-    const filterList = plantListDefault.filter(plant => {   // filter through the default plant list
+    const filterList = searchPlantData.filter(plant => {   // filter through the default plant list
       return plant.PLANT_COMMON_NAME.toLowerCase().includes(input.toLowerCase())  // return only plants w/ common name including input
     })
 
