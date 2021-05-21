@@ -1,6 +1,16 @@
 const express = require('express');
 const cors = require('cors');
-const { getUser, createSprout, getUserSprouts } = require('./pgHelper');
+const { 
+  getUser,
+  createUser,
+  getUserSprouts,
+  createSprout,
+  deleteSprout,
+  updateSproutIsWatered,
+  updateSproutWateringInterval,
+  getAlert,
+  deleteAlert,
+  getPlantInfo } = require('./pgHelper');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
