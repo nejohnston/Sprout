@@ -33,9 +33,9 @@
     transform: scale(2.15) translateX(30%) translateY(140%);
   }
   75% {
-    transform: scale(2.85) translateX(60%) translateY(170%);
+    transform: scale(2.85) translateX(20%) translateY(170%);
   }
   100% {
-    transform: scale(4) translateX(110%) translateY(250%);
+    transform: scale(4) translateX(90%) translateY(250%);
   }
 }
