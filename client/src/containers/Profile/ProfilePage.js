@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 // Components
 import SproutGallery from "../../components/Profile/SproutGallery";
@@ -29,9 +29,15 @@ import "./Profile.css";
 const ProfilePage = ({ userContext }) => {
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
+  const [display, setDisplay] = useState(true);
+  useEffect(() => {
+    setTimeout(() => setDisplay(false), 1000); //after 2 seconds the state will be switched to false
+  }, []);
+  
 
-  console.log(user.profilePicture)
   return (
+    <>
+    {display === false ?(
     <div id="container">
       <div id="profile-header">
         <h1 id="profile-h1">My Sprouts</h1>
@@ -49,7 +55,10 @@ const ProfilePage = ({ userContext }) => {
 
       <SproutGallery sprouts={sprouts} />
       <div id="vector-bg"></div>
-    </div>
+    </div>): (
+        null
+      )}
+    </>
   );
 };
 
