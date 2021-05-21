@@ -2,6 +2,8 @@
     border-radius: 50%;
     border: 5px solid white;
     margin: 0.5em;
+    width: 5rem;
+    height: 5rem;
 }
 
 .custom-primary-button {

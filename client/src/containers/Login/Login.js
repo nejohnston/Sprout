@@ -45,20 +45,19 @@ const Login = (props) => {
              * Return a user's data.
              * @returns - components of Profile Page.
              */   
-            async (values) => {
-              await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
+            (values) => {
+              fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
               .then(response => response.json()
               )
               .then(data => {
                 user.userId = data.application_user_id
                 user.username = data.application_user_username
-                user.password = data.application_user_password
                 user.name = data.application_user_preferred_name
                 user.points = data.application_user_points
                 user.team = data.team_id
-                &&
-                props.history.push('/profile')
+                user.profilePicture = data.application_user_image
               })
+              .then (props.history.push('/profile'))
               .catch(err => console.log(err) && setValidation(false));
             }
           }
