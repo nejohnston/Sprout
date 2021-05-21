@@ -20,6 +20,10 @@
   margin-bottom: 0.25rem;
 }
 
+.easterEgg {
+  height: 100vh;
+}
+
 #under-const-container, #splash-container {
   padding: 2rem;
   display: flex;

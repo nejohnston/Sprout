@@ -20,6 +20,7 @@ import SearchPlantDetailContainer from './containers/SearchPlantDetail'
 // Web Vitals and Styling
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import EasterEgg from './components/Easter/EasterEgg';
 // import reducer from './components/Layout/GlobalReducer';
 
 /*================== APP PATHS AND RENDER ===================== */
@@ -47,6 +48,7 @@ const App = () => {
               <Route path='/search' component={SearchContainer} />
               <Route path='/search-details' component={SearchPlantDetailContainer} />
               <Route path='/plant-profile' component={PlantProfileContainer} />
+              <Route path='/asdfasdfasdfasdfsadfsafdasdf' component={EasterEgg} />
             </>
             {/* } */}
           </Layout>

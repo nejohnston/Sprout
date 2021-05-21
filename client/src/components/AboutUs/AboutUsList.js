@@ -5,6 +5,7 @@
 // React
 import React from 'react';
 
+import {Link} from 'react-router-dom';
 
 // ====================================
 //          REACT COMPONENT
@@ -23,8 +24,13 @@ const TeamList = ({members}) => {
       return(
 
         <div className="member-container" key={member["id"]}>
+          {(member["name"] === 'Patrick Guichon') ? 
+          <Link to='/asdfasdfasdfasdfsadfsafdasdf'>
+            <img className="about-us-avatar" src={member["img"]} alt={member["name"]}/>
+          </Link>
+          :
           <img className="about-us-avatar" src={member["img"]} alt={member["name"]}/>
-
+    }
           <div className="member-description">
           <h3>{member["name"]}</h3>
 

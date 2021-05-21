@@ -40,14 +40,20 @@ const Layout = ({ children }) => {
 
     <UserContext.Provider value={[user, setUser]}>
     <SproutContext.Provider value={[sprouts, setSprouts]}>
-    <div>
-      <div className="appContent">{children}</div>
+      {
+      window.location.pathname === "/asdfasdfasdfasdfsadfsafdasdf" ? 
+      <div className="easterEgg">
+        {children}
+      </div>
+      :
+      <div className="appContent">{children}</div>}
       {window.location.pathname !== "/" &&
       window.location.pathname !== "/join-team" &&
-      window.location.pathname !== "/about-us" ? (
+      window.location.pathname !== "/about-us" &&
+      window.location.pathname !== "/asdfasdfasdfasdfsadfsafdasdf" ? (
         <NavBar />
-      ) : null}
-    </div>
+      ) : null
+      }
       </SproutContext.Provider>
     </UserContext.Provider>
   );
