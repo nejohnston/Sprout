@@ -33,9 +33,9 @@ const ProfilePage = ({ userContext }) => {
   const [display, setDisplay] = useState(true);
   
   useEffect(() => {
-    setTimeout(() => setDisplay(false), 1000); //after 2 seconds the state will be switched to false
+    setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
-  
+
 
   return (
     <>
