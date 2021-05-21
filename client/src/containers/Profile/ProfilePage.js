@@ -27,10 +27,10 @@ import "./Profile.css";
  * @returns - components of Profile Page.
  */
 const ProfilePage = ({ userContext }) => {
+  
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
 
-  console.log(user.profilePicture)
   return (
     <div id="container">
       <div id="profile-header">
