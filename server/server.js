@@ -73,6 +73,5 @@ rootRouter.get('(/*)?', async (req, res, next) => {
 });
 app.use(rootRouter);
 
-app.listen(port, () => {
-  console.log(`App running on port ${port}.`)
-})
+app.listen(process.env.PORT || port, 
+	() => console.log(`Server is listening on ${port}`));
