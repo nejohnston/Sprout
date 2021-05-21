@@ -1,16 +1,16 @@
 {
-  
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "dotenv": "^9.0.2",
     "formik": "^2.2.6",
+    "fslightbox-react": "^1.6.2",
     "lodash": "^4.17.21",
     "pg": "^7.18.1",
     "pg-native": "^3.0.0",
-    "fslightbox-react": "^1.6.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
