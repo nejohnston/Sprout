@@ -12,7 +12,7 @@ const {
   updateSproutWateringInterval,
   getAlert,
   deleteAlert,
-  getPlantInfo } = require('./pgHelper');
+  getPlantInfo } = require('./pghelper');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
