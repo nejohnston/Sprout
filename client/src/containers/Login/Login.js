@@ -54,12 +54,12 @@ const Login = (props) => {
                 user.userId = data.application_user_id
                 user.profilePicture = data.application_user_image
                 user.username = data.application_user_username
-                user.password = data.application_user_password
                 user.name = data.application_user_preferred_name
                 user.points = data.application_user_points
-                user.team = data.team_id                
-
-              }).then(props.history.push('/profile'))
+                user.team = data.team_id
+                user.profilePicture = data.application_user_image
+              })
+              .then (props.history.push('/profile'))
               .catch(err => console.log(err) && setValidation(false));
             }
           }

@@ -30,6 +30,7 @@ let app = express();
 app.get('/login/:username/:password', async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
   response.json(user)
+  console.log(user);
 });
 
 // GET USER SPROUTS
