@@ -1,4 +1,6 @@
 #user-profile-picture {
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     border: 5px solid white;
     margin: 0.5em;

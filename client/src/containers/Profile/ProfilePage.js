@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 // Components
 import SproutGallery from "../../components/Profile/SproutGallery";
@@ -27,9 +27,19 @@ import "./Profile.css";
  * @returns - components of Profile Page.
  */
 const ProfilePage = ({ userContext }) => {
+  
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
+  const [display, setDisplay] = useState(true);
+  
+  useEffect(() => {
+    setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
+  }, []);
+
+
   return (
+    <>
+    {display === false ?(
     <div id="container">
       <div id="profile-header">
         <h1 id="profile-h1">My Sprouts</h1>
@@ -39,7 +49,7 @@ const ProfilePage = ({ userContext }) => {
       <hr />
 
       <div id="my-sprouts-user-container">
-        <ProfilePictureModal profilePic={user.profilePicture} />
+        <ProfilePictureModal profilePic={user.profilePicture} prefName={user.name}/>
         <h5 id="my-sprouts-user-name">{user.name}</h5>
       </div>
 
@@ -47,7 +57,10 @@ const ProfilePage = ({ userContext }) => {
 
       <SproutGallery sprouts={sprouts} />
       <div id="vector-bg"></div>
-    </div>
+    </div>): (
+        null
+      )}
+    </>
   );
 };
 

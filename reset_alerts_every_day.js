@@ -15,7 +15,7 @@ client.connect()
 .then(() => console.log("Connected"))
 .catch(err => console.log(err));
 
-client.query("DELETE FROM ALERTS;UPDATE USER_SPROUTS SET USER_SPROUTS_IS_WATERED = '0'", (err, res) => {
+client.query("TRUNCATE ALERTS RESTART IDENTITY;UPDATE USER_SPROUTS SET USER_SPROUTS_IS_WATERED = '0'", (err, res) => {
     if (!err) {
         console.log(res)
     }

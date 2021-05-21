@@ -14,7 +14,11 @@ const client = new Client({
 });
 
 console.log('not connected')
+<<<<<<< HEAD
 // connect to postgres database using client credentials in previous
+=======
+// connect to postgres database
+>>>>>>> ac1b135dcf292f8a89ebd57cfc59e49840dbcf57
 client.connect();
 console.log('connected')
 
@@ -27,13 +31,38 @@ console.log('connected')
 let getUser = async (username, password) => {
     const query = {
       text: 
-      'SELECT * FROM application_user WHERE application_user_username=$1 AND application_user_password=$2;',
+      `SELECT application_user_id, team_id, application_user_username,
+      convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') as application_user_password,
+      application_user_preferred_name, application_user_points, application_user_image
+      FROM application_user
+      WHERE application_user_username = $1 
+      AND convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') = $2;`,
       values: [username, password]
     }
   return (
     await client
   .query(query)
   .then(res => res.rows[0])
+  .catch(err => console.log(err)))
+}
+
+// CREATE USER
+let createUser = async (userInfo) => {
+  const query = {
+    text: 
+    "INSERT INTO application_user VALUES (DEFAULT, $1, $2, $3, $4, DEFAULT);",
+    values:
+    [
+      userInfo.userTeam,
+      userInfo.userName,
+      userInfo.userPassword,
+      userInfo.userPreferredName
+    ]
+  }
+  return (
+    await client
+  .query(query)
+  .then(res => res.send('User Added Successfully'))
   .catch(err => console.log(err)))
 }
 
@@ -52,7 +81,7 @@ let getUserSprouts = async (userId) => {
 return (
   await client
 .query(query)
-.then(res => res.rows && console.log("res.rows in pghelper" + res.rows))
+.then(res => res.rows[0])
 .catch(err => console.log(err)))
 }
 
@@ -63,17 +92,10 @@ return (
  * @returns - success response.
  */
 let createSprout = async (sprout) => {
+  console.log("waterInterval" + sprout.userId)
   const query = {
     text: 
-      `INSERT INTO USER_SPROUTS(
-        application_user_id, 
-        user_sprouts_given_name,
-        user_sprouts_type,
-        user_sprouts_family,
-        user_sprouts_watering_intervals,
-        user_sprouts_notes
-      ) VALUES (
-        $1, $2, $3, $4, $5, $6)`,
+      `INSERT INTO USER_SPROUTS VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, DEFAULT);`,
     values: [
       sprout.userId,
       sprout.name, 
@@ -81,13 +103,12 @@ let createSprout = async (sprout) => {
       sprout.family,
       sprout.wateringInterval,
       sprout.notes,
-      // sprout.image
     ]
   }
 return (
   await client
 .query(query)
-.then(res => console.log(res))
+.then(res => res.send('Sprout Added Successfully'))
 .catch(err => console.log(err)))
 }
 
@@ -103,8 +124,7 @@ let deleteSprout = async (sprout) => {
       `
       DELETE FROM USER_SPROUTS WHERE
       application_user_id=$1 
-      AND 
-      user_sprouts_given_name=$2
+      AND user_sprouts_given_name=$2;
       `,
     values: [
       sprout.userId,
@@ -118,10 +138,111 @@ return (
 .catch(err => console.log(err)))
 }
 
+// UPDATE IS_WATERED
+let updateSproutIsWatered = async (sprout) => {
+  const query = {
+    text:
+    `UPDATE user_sprouts SET user_sprouts_is_watered = '1' 
+    WHERE application_user_id=$1 
+    AND user_sprouts_given_name=$2;`,
+    values: [
+      sprout.userId,
+      sprout.name
+    ]
+  }
+  return (
+    await client
+  .query(query)
+  .then(res => console.log(res))
+  .catch(err => console.log(err)))
+}
+
+// UPDATE WATERING INTERVAL
+let updateSproutWateringInterval = async (sprout) => {
+  const query = {
+    text:
+    `UPDATE user_sprouts SET user_sprouts_watering_intervals = $1
+    WHERE application_user_id = $2 
+    AND user_sprouts_given_name = $3;`,
+    values: [
+      sprout.newWateringInterval,
+      sprout.userId,
+      sprout.name
+    ]
+  }
+  return (
+    await client
+  .query(query)
+  .then(res => console.log(res))
+  .catch(err => console.log(err)))
+}
+
+// GET ALERT FOR EACH USER
+let getAlert = async (userId) => {
+  const query = {
+    text:
+    `SELECT ALERTS_MESSAGE
+    FROM APPLICATION_USER
+	    JOIN USER_SPROUTS ON APPLICATION_USER.APPLICATION_USER_ID = USER_SPROUTS.APPLICATION_USER_ID
+	    JOIN ALERTS ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
+    WHERE APPLICATION_USER.APPLICATION_USER_ID = $1;`,
+    values: [userId]
+  }
+  return (
+    await client
+  .query(query)
+  .then(res => console.log(res))
+  .catch(err => console.log(err)))
+}
+
+// DELETE ALERT
+let deleteAlert = async (sprout) => {
+  const query = {
+    text:
+    `DELETE FROM ALERTS
+    WHERE USER_SPROUTS_ID = (SELECT USER_SPROUTS.USER_SPROUTS_ID
+                            FROM USER_SPROUTS
+                            JOIN ALERTS
+                            ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
+                            WHERE APPLICATION_USER_ID = $1
+                            AND USER_SPROUTS_GIVEN_NAME = $2);`,
+    values: [
+      sprout.userId,
+      sprout.name
+    ]
+  }
+  return (
+    await client
+  .query(query)
+  .then(res => console.log(res))
+  .catch(err => console.log(err)))
+}
+
+// GET PLANT INFO
+let getPlantInfo = async () => {
+  const query = {
+    text:
+    `SELECT PLANT_COMMON_NAME, PLANT_FAMILY_NAME, PLANT_TYPE, PLANT_IMG_URL,
+    PLANT_ORIGIN, PLANT_SOIL, PLANT_WATER_USE, PLANT_FLOWER_TIME_AT_PEAK, PLANT_FLOWER_COLOR,
+    PLANT_FRUIT_TIME FROM PLANT;`,
+  }
+  return (
+    await client
+  .query(query)
+  .then(res => console.log(res))
+  .catch(err => console.log(err)))
+}
+
 // export modules
 module.exports = {
-  createSprout,
   getUser,
+  createUser,
   getUserSprouts,
-  deleteSprout
+  createSprout,
+  deleteSprout,
+  updateSproutIsWatered,
+  updateSproutWateringInterval,
+  getAlert,
+  deleteAlert,
+  getPlantInfo
 }

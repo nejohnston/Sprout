@@ -48,7 +48,7 @@ const PlantInfo = ({plant}) => {
                     <p className="plant-profile-value1 plant-profile-value">{plant["watering_interval"]} days</p>
 
                     <p className="plant-profile-subhead2 plant-profile-subhead">Last Watered</p>
-                    <p className="plant-profile-value2 plant-profile-value">{plant["last_watered"]}</p>
+                    <p className="plant-profile-value2 plant-profile-value" id="plant-profile-last-watered">{plant["last_watered"]}</p>
                 </div>
             </div>
         </div>

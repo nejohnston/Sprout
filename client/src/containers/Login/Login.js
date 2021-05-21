@@ -57,8 +57,8 @@ const Login = (props) => {
                 let data = JSON.parse(textResponse)
                 setValidation(true)
                 user.userId = data.application_user_id
+                user.profilePicture = data.application_user_image
                 user.username = data.application_user_username
-                user.password = data.application_user_password
                 user.name = data.application_user_preferred_name
                 user.points = data.application_user_points
                 user.team = data.team_id
@@ -143,7 +143,8 @@ const Login = (props) => {
           }
             <Button 
             variant="primary" 
-            type="submit">
+            type="submit"
+            className="custom-primary-button">
               Login or Signup
             </Button>
           </Form>
