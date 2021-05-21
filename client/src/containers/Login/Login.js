@@ -45,8 +45,8 @@ const Login = (props) => {
              * Return a user's data.
              * @returns - components of Profile Page.
              */   
-            (values) => {
-              fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
+            async (values) => {
+              await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
               .then(response => response.json()
               )
               .then(data => {
