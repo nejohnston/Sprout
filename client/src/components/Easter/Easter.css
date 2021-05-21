@@ -2,67 +2,37 @@
   background-image: url("https://imgur.com/4nJZHtj.jpg");
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
-.appContent {
-
-  width: 100%;
-  height: 100%;
+.corgiFly > * {
+  animation: flyCorgiFly 5s linear infinite;
+  pointer-events: none !important;
+  height: 8%;
+  top: 20%;
+  right: 35%;
+  position: absolute;
+  z-index: 999999;
 }
 
-.flier {
-	pointer-events: none;
-}
-
-.flier > * {
-/* Adjust animation duration to change the element’s speed */
-        animation: fly 50s linear infinite;
-        pointer-events: none !important;
-	top: 0;
-	left: 0;
-	transform: translateX(-120%) translateY(-120%) rotateZ(0);
-	position: fixed;
-	animation-delay: 1s;
-	z-index: 999999;
-}
-
- /* Keyframe values control where the element will begin
+/* Keyframe values control where the element will begin
     and end its trajectory across the screen. Each rule
     represents a path the element follows across the screen. */
 
-
-@keyframes fly {
-
-	98.001%, 0% {
-                display: block;
-		transform: translateX(-200%) translateY(100vh) rotateZ(0deg)
-	}
-
-	15% {
-		transform: translateX(100vw) translateY(-100%) rotateZ(180deg)
-	}
-
-	15.001%, 18% {
-		transform: translateX(100vw) translateY(-30%) rotateZ(0deg)
-	}
-
-	40% {
-		transform: translateX(-200%) translateY(3vh) rotateZ(-180deg)
-	}
-
-	40.001%, 43% {
-		transform: translateX(-200%) translateY(-100%) rotateZ(-180deg)
-	}
-
-	65% {
-		transform: translateX(100vw) translateY(50vh) rotateZ(0deg)
-	}
-
-	65.001%, 68% {
-		transform: translateX(20vw) translateY(-200%) rotateZ(180deg)
-	}
-
-	95% {
-		transform: translateX(10vw) translateY(100vh) rotateZ(0deg)
-	}
+@keyframes flyCorgiFly {
+  0% {
+    transform: scale(0.5) translateX(0%) translateY(10%);
+  }
+  25% {
+    transform: scale(1) translateX(-50%) translateY(120%);
+  }
+  50% {
+    transform: scale(1.5) translateX(60%) translateY(120%);
+  }
+  70% {
+    transform: scale(2) translateX(60%) translateY(180%);
+  }
+  100% {
+    transform: scale(3.5) translateX(140%) translateY(270%);
+  }
 }

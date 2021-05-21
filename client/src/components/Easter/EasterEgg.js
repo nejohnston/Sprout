@@ -1,13 +1,12 @@
 import React from 'react';
-import GifPlayer from 'react-gif-player'
 import corgiStill from '../../config/assets/images/Corgiswimflipflip.jpg'
-import corgi from '../../config/assets/images/corgiswim.gif'
+import corgi from '../../config/assets/images/bork_bork_nom_nom.gif'
 import './Easter.css';
 
 const EasterEgg = () => {
   return (
     <div id='guichonRiver'>
-      <div class="flier">
+      <div class="corgiFly">
         <img src={corgi} alt={corgiStill} />
       </div>
     </div>
