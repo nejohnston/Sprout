@@ -27,12 +27,15 @@
     transform: scale(1) translateX(-50%) translateY(120%);
   }
   50% {
-    transform: scale(1.5) translateX(60%) translateY(120%);
+    transform: scale(1.5) translateX(70%) translateY(120%);
   }
-  70% {
-    transform: scale(2) translateX(60%) translateY(180%);
+  60% {
+    transform: scale(2.15) translateX(30%) translateY(140%);
+  }
+  75% {
+    transform: scale(2.85) translateX(60%) translateY(170%);
   }
   100% {
-    transform: scale(3.5) translateX(140%) translateY(270%);
+    transform: scale(4) translateX(110%) translateY(250%);
   }
 }
