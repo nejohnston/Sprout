@@ -110,7 +110,8 @@ const Login = (props) => {
           }
             <Button 
             variant="primary" 
-            type="submit">
+            type="submit"
+            className="custom-primary-button">
               Login or Signup
             </Button>
           </Form>
