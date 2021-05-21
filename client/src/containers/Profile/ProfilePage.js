@@ -49,7 +49,7 @@ const ProfilePage = ({ userContext }) => {
       <hr />
 
       <div id="my-sprouts-user-container">
-        <ProfilePictureModal profilePic={user.profilePicture} />
+        <ProfilePictureModal profilePic={user.profilePicture} prefName={user.name}/>
         <h5 id="my-sprouts-user-name">{user.name}</h5>
       </div>
 
