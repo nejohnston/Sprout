@@ -47,19 +47,28 @@ const Login = (props) => {
              */   
             async (values) => {
               await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
-              .then(response => response.json()
-              )
-              .then(data => {
-                user.userId = data.application_user_id
-                user.username = data.application_user_username
-                user.password = data.application_user_password
-                user.name = data.application_user_preferred_name
-                user.points = data.application_user_points
-                user.team = data.team_id
-                &&
-                props.history.push('/profile')
-              })
-              .catch(err => console.log(err) && setValidation(false));
+              .then(response => response.text())
+              .then(body => {
+                try {
+                  return JSON.parse(body);
+                } 
+                catch {
+                  setValidation(false);
+                  // console.log(validation)
+                  throw Error(body);
+                }
+                })
+                .then(data => {
+                  user.userId = data.application_user_id
+                  user.username = data.application_user_username
+                  user.password = data.application_user_password
+                  user.name = data.application_user_preferred_name
+                  user.points = data.application_user_points
+                  user.team = data.team_id
+                  &&
+                  props.history.push('/profile')
+                })
+              .catch(err => console.log(err));
             }
           }
           initialValues={
@@ -90,7 +99,8 @@ const Login = (props) => {
                 name="username"
                 value={values.username}
                 onChange={handleChange}
-                isValid={validation}
+                isValid={touched && validation}
+                required
               />
             </Form.Group>
 
@@ -102,11 +112,13 @@ const Login = (props) => {
                 name="password"
                 value={values.password}
                 onChange={handleChange}
-                isValid={validation}
+                isValid={touched && validation}
+                required
               />
             </Form.Group>
             {!validation ? 
-            <ErrorMessage>That's an incorrect username or password, please try again.</ErrorMessage> : null
+            // That's an incorrect username or password, please try again.
+            <ErrorMessage>{() => <div style={{ color: 'red' }}>That's an incorrect username or password, please try again.</div>}</ErrorMessage> : null
           }
             <Button 
             variant="primary" 

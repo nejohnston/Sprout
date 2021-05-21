@@ -8,7 +8,7 @@ const EasterEgg = () => {
   return (
     <Link to="/about-us">
     <div id='guichonRiver'>
-      <div class="corgiFly">
+      <div className="corgiFly">
         <img src={corgi} alt={corgiStill} />
       </div>
     </div>
