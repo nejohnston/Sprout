@@ -29,7 +29,6 @@ app.get('/login/:username/:password', async (request, response) => {
  * @returns - sprouts of user.
  */
 app.get('/sprouts/:userId', async (request, response) => {
-  console.log(request.params.userId)
   let userSprouts = await getUserSprouts(request.params.userId);
   response.json(userSprouts)
 });

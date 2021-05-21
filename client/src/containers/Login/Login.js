@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import * as yup from 'yup';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
-import { UserContext } from "../../components/Layout/Layout.js";
+import { UserContext, SproutContext } from "../../components/Layout/Layout.js";
 import { withRouter } from "react-router";
 
 // Splash Screen
@@ -14,6 +14,7 @@ import Splash from "../../Splash";
 
 // Styles
 import "./Login.css";
+import { querySprouts } from "../../api/apiQueries";
 
 const schema = yup.object().shape({
   // REGEX statement copied from this article
@@ -27,6 +28,7 @@ const Login = (props) => {
   const user = useContext(UserContext)[0]
   // const [state, dispatch] = useReducer(reducer, initialState)
   const [validation, setValidation] = useState(true)
+  const [sprouts, setSprouts] = useContext(SproutContext);
 
   useEffect(() => {
     setTimeout(() => setSplash(false), 2000); //after 2 seconds the state will be switched to false
@@ -48,29 +50,25 @@ const Login = (props) => {
              * @returns - components of Profile Page.
              */   
             async (values) => {
-              await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
-              .then(response => response.text())
-              .then(body => {
-                try {
-                  return JSON.parse(body);
-                } 
-                catch {
-                  setValidation(false);
-                  throw Error(body);
-                }
-                })
-                .then(data => {
-                  user.userId = data.application_user_id
-                  user.username = data.application_user_username
-                  user.password = data.application_user_password
-                  user.name = data.application_user_preferred_name
-                  user.points = data.application_user_points
-                  user.team = data.team_id
-                  user.profilePicture = data.application_user_image
-                  &&
-                  props.history.push('/profile')
-                })
-              .catch(err => console.log(err));
+              let response = await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
+              
+              let textResponse = await response.text()
+              try {
+                let data = JSON.parse(textResponse)
+                setValidation(true)
+                user.userId = data.application_user_id
+                user.username = data.application_user_username
+                user.password = data.application_user_password
+                user.name = data.application_user_preferred_name
+                user.points = data.application_user_points
+                user.team = data.team_id
+                user.profilePicture = data.application_user_image
+                props.history.push('/profile')
+              }
+              catch {
+                setValidation(false)
+                throw Error('Incorrect username or password.')
+              }
             }
           }
           initialValues={
@@ -137,7 +135,6 @@ const Login = (props) => {
                setValidation(true)} */}
             </Form.Group>
             {!validation ? 
-            // That's an incorrect username or password, please try again.
             <ErrorMessage>{() => 
             <div style={{ color: 'red', margin: 0 }}>
               Incorrect username or password.

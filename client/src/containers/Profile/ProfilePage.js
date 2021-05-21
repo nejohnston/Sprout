@@ -29,7 +29,6 @@ import "./Profile.css";
 const ProfilePage = ({ userContext }) => {
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
-
   return (
     <div id="container">
       <div id="profile-header">
@@ -40,7 +39,7 @@ const ProfilePage = ({ userContext }) => {
       <hr />
 
       <div id="my-sprouts-user-container">
-        <ProfilePictureModal profilePic={user.profilePic} />
+        <ProfilePictureModal profilePic={user.profilePicture} />
         <h5 id="my-sprouts-user-name">{user.name}</h5>
       </div>
 
