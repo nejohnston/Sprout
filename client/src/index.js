@@ -46,7 +46,7 @@ const App = () => {
               <Route exact path='/' component={LoginContainer} />
               <Route path='/profile' component={ProfileContainer} />
               <Route path='/search' component={SearchContainer} />
-              <Route path='/search-details' component={SearchPlantDetailContainer} />
+              <Route path='/search-details/:plantId' component={SearchPlantDetailContainer} />
               <Route path='/plant-profile' component={PlantProfileContainer} />
               <Route path='/asdfasdfasdfasdfsadfsafdasdf' component={EasterEgg} />
             </>

@@ -17,6 +17,8 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Profile.css";
+// import { getUserSprouts } from "../../../../server/pgHelper";
+
 
 // ====================================
 //           REACT COMPONENT
@@ -35,7 +37,6 @@ const ProfilePage = ({ userContext }) => {
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
-
 
   return (
     <>

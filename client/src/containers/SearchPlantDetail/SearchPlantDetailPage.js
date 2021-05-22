@@ -4,7 +4,7 @@
 
 // React
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // Components
 import plantData from '../../config/data/plants.json';
@@ -29,6 +29,12 @@ const SearchPlantDetailPage = () => {
   let plantJSON = [];
   plantJSON.push(...plantData);
 
+  let plantId = useParams().plantId;
+
+  let this_plant = plantData.filter( plant => plant.PLANT_ID == plantId )[0]
+
+  console.log(this_plant)
+  
 
   /**
    * Return the plant's first common name capitalized.

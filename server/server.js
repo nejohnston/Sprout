@@ -1,3 +1,5 @@
+let plantsJSON = require('./data/plants.json');
+
 const express = require('express');
 const cors = require('cors');
 const { 
@@ -41,7 +43,9 @@ app.get('/login/:username/:password', async (request, response) => {
  */
 app.get('/sprouts/:userId', async (request, response) => {
   let userSprouts = await getUserSprouts(request.params.userId);
-  response.json(userSprouts)
+
+  let textResponse = await userSprouts.text()
+  console.log(textResponse)
 });
 
 // POST NEW USER SPROUT
@@ -58,4 +62,16 @@ app.post('/profile/', async (request, response) => {
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
+})
+
+app.get('/search-details/:plantId', async (request, response) => {
+
+  console.log(request.params.plantId)
+
+
+  let plant = plantsJSON.filter((plant) => { 
+    return plant.PLANT_ID == request.params.plantId});
+
+  response.json(plant);
+  console.log(plant);
 })

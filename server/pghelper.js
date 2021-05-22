@@ -14,11 +14,7 @@ const client = new Client({
 });
 
 console.log('not connected')
-<<<<<<< HEAD
-// connect to postgres database using client credentials in previous
-=======
 // connect to postgres database
->>>>>>> ac1b135dcf292f8a89ebd57cfc59e49840dbcf57
 client.connect();
 console.log('connected')
 

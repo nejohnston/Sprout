@@ -26,7 +26,7 @@ const SearchItem = ({ plantData }) => {
 
   return plantData.map((plant) => (
 
-    <Link to="/search-details" key={plant["PLANT_ID"]}>
+    <Link to={`/search-details/:${plant.PLANT_ID}`} key={plant["PLANT_ID"]}>
       <div className="plant-search-item">
         <img
           src={plant["PLANT_IMG_URL"]}
