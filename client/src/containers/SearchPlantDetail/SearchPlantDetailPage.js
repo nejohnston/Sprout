@@ -54,17 +54,17 @@ const SearchPlantDetailPage = () => {
       <Link to="/search">
           <img src={backbutton} className="back-button" alt="" />
       </Link>
-      <h1 id="profile-h1">{firstCommonName(plantJSON[2])}</h1>
-      <AddPlantModal type={plantJSON[2]['PLANT_TYPE']} family={plantJSON[2]['PLANT_FAMILY_NAME']}/>
+      <h1 id="profile-h1">{firstCommonName(this_plant)}</h1>
+      <AddPlantModal type={this_plant['PLANT_TYPE']} family={this_plant['PLANT_FAMILY_NAME']}/>
     </div>
 
     <hr />
 
     <div id="search-details-img-container">
-    <img id="search-details-img" src={plantJSON[2]['PLANT_IMG_URL']} alt=""></img>
+    <img id="search-details-img" src={this_plant['PLANT_IMG_URL']} alt=""></img>
     </div>
 
-    <DetailCards plantInfo={plantJSON[2]}/>
+    <DetailCards plantInfo={this_plant}/>
   </div>);
 };
 
