@@ -22,31 +22,32 @@ import Form from "react-bootstrap/Form";
  * @returns - the profile image component, with editing profile modal triggered on click.
  */
 function ProfilePictureModal({ props, profilePic, prefName }) {
-
   // States to trigger modal on and off - code from Bootstrap
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   // State to store the image being uploaded
   const [imageSelected, setImageSelected] = useState("");
 
   // Store the image to Cloudinary, and save the URL to database - code adapted from PedroTech (YouTube)
 
-  const uploadImage = () => {
+  const uploadImage = async () => {
     // Create a new formData object for the file to be uploaded
     const imageData = new FormData();
     imageData.append("file", imageSelected);
     imageData.append("upload_preset", "sproutUser"); // Cloudinary image upload presets
-
-    Axios.post(
+    let res1 = await Axios.post(
       "https://api.cloudinary.com/v1_1/sprout03/image/upload/",
       imageData
     )
-      .then((response) => {
-        console.log(response["data"]["secure_url"])
-        console.log(document.getElementById('sprout-display-name-input').value)})
-      .catch((error) => console.log(error));
+      profilePic = res1.data.secure_url;
+      console.log(profilePic);
+      let param = {
+        userName: prefName,
+        profilePic: res1.data.secure_url,
+      };
+      let res = await Axios.put("http://localhost:3001/profile", param);
+      console.log(res);
   };
 
   return (
@@ -78,7 +79,7 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
               />
             </Form.Group>
 
-            <Form.Group controlId="sprout-display-name-input">
+            <Form.Group controlId="sprout-modal-text">
               <Form.Label className="sprout-modal-text">
                 Display Name
               </Form.Label>

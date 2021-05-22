@@ -1,5 +1,3 @@
-let plantsJSON = require('./data/plants.json');
-
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -7,6 +5,7 @@ const rootRouter = express.Router();
 const { 
   getUser,
   createUser,
+  updateUserPic,
   getUserSprouts,
   createSprout,
   deleteSprout,
@@ -42,6 +41,16 @@ app.get('/login/:username/:password', async (request, response) => {
   response.json(user)
 });
 
+app.put('/profile', async (req, res) => {
+  // console.log(req.body);
+let param = {
+  id: req.body.userName,
+  image: req.body.profilePic
+}
+console.log(param);
+  await updateUserPic(param);
+})
+
 // GET USER SPROUTS
 /**
  * @params userId
@@ -50,9 +59,7 @@ app.get('/login/:username/:password', async (request, response) => {
  */
 app.get('/sprouts/:userId', async (request, response) => {
   let userSprouts = await getUserSprouts(request.params.userId);
-
-  let textResponse = await userSprouts.text()
-  console.log(textResponse)
+  response.json(userSprouts)
 });
 
 // POST NEW USER SPROUT
@@ -79,16 +86,4 @@ app.use(rootRouter);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
-})
-
-app.get('/search-details/:plantId', async (request, response) => {
-
-  console.log(request.params.plantId)
-
-
-  let plant = plantsJSON.filter((plant) => { 
-    return plant.PLANT_ID == request.params.plantId});
-
-  response.json(plant);
-  console.log(plant);
 })

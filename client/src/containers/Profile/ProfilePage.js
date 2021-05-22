@@ -17,8 +17,6 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Profile.css";
-// import { getUserSprouts } from "../../../../server/pgHelper";
-
 
 // ====================================
 //           REACT COMPONENT
@@ -38,6 +36,7 @@ const ProfilePage = ({ userContext }) => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
 
+
   return (
     <>
     {display === false ?(
@@ -50,7 +49,7 @@ const ProfilePage = ({ userContext }) => {
       <hr />
 
       <div id="my-sprouts-user-container">
-        <ProfilePictureModal profilePic={user.profilePicture} prefName={user.name}/>
+        <ProfilePictureModal profilePic={user.profilePicture} prefName={user.username}/>
         <h5 id="my-sprouts-user-name">{user.name}</h5>
       </div>
 

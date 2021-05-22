@@ -70,6 +70,26 @@ let createUser = async (userInfo) => {
   .catch(err => console.log(err)))
 }
 
+// UPDATE USER PROFILE PICTURE
+let updateUserPic = async (user) => {
+  console.log(user);
+  const query = {
+    text: 
+    "UPDATE APPLICATION_USER SET APPLICATION_USER_IMAGE = $2 WHERE APPLICATION_USER_USERNAME = $1;",
+    values:
+    [
+      user.id,
+      user.image
+    ]
+  }
+  
+  return (
+    await client
+  .query(query)
+  .then(res => console.log(res))
+  .catch(err => console.log(err)))
+}
+
 // GET USER SPROUTS
 /**
  * @params userId
@@ -241,6 +261,7 @@ let getPlantInfo = async () => {
 module.exports = {
   getUser,
   createUser,
+  updateUserPic,
   getUserSprouts,
   createSprout,
   deleteSprout,
