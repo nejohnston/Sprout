@@ -14,7 +14,6 @@ import Splash from "../../Splash";
 
 // Styles
 import "./Login.css";
-import { querySprouts } from "../../api/apiQueries";
 
 const schema = yup.object().shape({
   // REGEX statement copied from this article
@@ -55,14 +54,30 @@ const Login = (props) => {
               let textResponse = await response.text()
               try {
                 let data = JSON.parse(textResponse)
+                let userData = data[0];
                 setValidation(true)
-                user.userId = data.application_user_id
-                user.profilePicture = data.application_user_image
-                user.username = data.application_user_username
-                user.name = data.application_user_preferred_name
-                user.points = data.application_user_points
-                user.team = data.team_id
-                user.profilePicture = data.application_user_image
+                user.userId = userData.application_user_id
+                user.profilePicture = userData.application_user_image
+                user.username = userData.application_user_username
+                user.name = userData.application_user_preferred_name
+                user.points = userData.application_user_points
+                user.team = userData.team_id
+                user.profilePicture = userData.application_user_image
+                data.forEach(element => {
+                  sprouts.push({
+                    sproutId: element.user_sprouts_id,
+                    userId: element.application_user_id,
+                    name: element.user_sprouts_given_name,
+                    type: element.user_sprouts_type,
+                    family: element.user_sprouts_family,
+                    wateringInterval: element.user_sprouts_watering_interval,
+                    notes: element.user_sprouts_notes,
+                    isWatered: element.user_sprouts_is_watered,
+                    dateAdded: element.user_sprouts_date_added,
+                    lastWatered: element.user_sprouts_last_watered,
+                    nextAlert: element.user_sprouts_next_alert_date
+                  })
+                })
                 props.history.push('/profile')
               }
               catch {
@@ -120,6 +135,7 @@ const Login = (props) => {
               null}>
               <Form.Label>Password</Form.Label>
               <Form.Control 
+                style={{ marginBottom: "0.25rem" }}
                 type="text" 
                 placeholder="Enter Password"
                 name="password"
@@ -136,7 +152,7 @@ const Login = (props) => {
             </Form.Group>
             {!validation ? 
             <ErrorMessage>{() => 
-            <div style={{ color: 'red', margin: 0 }}>
+            <div style={{ color: 'red', marginBottom: "0.25rem" }}>
               Incorrect username or password.
               </div>}
               </ErrorMessage> : null

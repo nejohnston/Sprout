@@ -2,6 +2,8 @@ let plantsJSON = require('./data/plants.json');
 
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+const rootRouter = express.Router();
 const { 
   getUser,
   createUser,
@@ -18,6 +20,11 @@ let app = express();
     app.use(express.urlencoded({extended: true}));
     app.use(cors());
     app.use(express.json())
+    // Serve static files from the React app
+    // Code copied from here, Answer 1
+    // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
+    const buildPath = path.normalize(path.join(__dirname, '../client/build'));
+    app.use(express.static(buildPath));
     
 // ====================================
 //           EXPRESS QUERIES
@@ -31,8 +38,8 @@ let app = express();
  */
 app.get('/login/:username/:password', async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
-  response.json(user)
   console.log(user);
+  response.json(user)
 });
 
 // GET USER SPROUTS
@@ -59,6 +66,16 @@ app.post('/profile/', async (request, response) => {
   response.status(200).send(`200: Sprout added successfully.`);
   // response.status(500).send(`500: server.js could not handle response.`);
 })
+
+// Code copied from here, Answer 1
+// https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
+/* 
+* all other routes go here
+*/
+rootRouter.get('(/*)?', async (req, res, next) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
+app.use(rootRouter);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

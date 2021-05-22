@@ -25,15 +25,9 @@ import backbutton from '../../config/assets/icons/back_button.svg';
  */
 const SearchPlantDetailPage = () => {
 
-  // Receive plant Data
-  let plantJSON = [];
-  plantJSON.push(...plantData);
-
   let plantId = useParams().plantId;
 
   let this_plant = plantData.filter( plant => plant.PLANT_ID == plantId )[0]
-
-  console.log(this_plant)
   
 
   /**

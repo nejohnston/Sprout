@@ -62,22 +62,25 @@ const AddPlantModal = ({ type, family }) => {
           <Modal.Title>Add a Sprout</Modal.Title>
         </Modal.Header>
         <Formik
-          onSubmit={(values) => {
+          onSubmit={
+            (values) => {
+              setSprouts([...sprouts, values])
             // console.log(values.wateringInterval) &&
-            fetch("http://localhost:3001/profile/", {
-              method: "POST",
-              body: JSON.stringify(values),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            })
-              .then((result) =>
-                result.ok
-                  ? setSprouts([...sprouts, values])
-                  : result && console.log(sprouts)
-              )
-              .catch((error) => console.log("Error creating Sprout: ", error));
-          }}
+            // fetch("http://localhost:3001/profile/", {
+            //   method: "POST",
+            //   body: JSON.stringify(values),
+            //   headers: {
+            //     "Content-Type": "application/json",
+            //   },
+            // })
+            //   .then((result) =>
+            //     result.ok
+            //       ? setSprouts([...sprouts, values])
+            //       : result && console.log(sprouts)
+            //   )
+            //   .catch((error) => console.log("Error creating Sprout: ", error));
+          }
+        }
           initialValues={{
             userId: user.userId,
             name: "",

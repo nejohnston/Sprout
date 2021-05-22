@@ -6,6 +6,7 @@ require('dotenv').config();
 // ====================================
 
 // heroku postgres database credentials
+// create new Client object with credentials
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -14,7 +15,7 @@ const client = new Client({
 });
 
 console.log('not connected')
-// connect to postgres database
+// connect to postgres database using client credentials in const client
 client.connect();
 console.log('connected')
 
@@ -27,10 +28,17 @@ console.log('connected')
 let getUser = async (username, password) => {
     const query = {
       text: 
-      `SELECT application_user_id, team_id, application_user_username,
+      `SELECT application_user.application_user_id, team_id, application_user_username,
       convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') as application_user_password,
-      application_user_preferred_name, application_user_points, application_user_image
+      application_user_preferred_name, application_user_points, application_user_image,
+      user_sprouts_date_added, user_sprouts_family, user_sprouts_given_name, user_sprouts_id,
+      user_sprouts_image, user_sprouts_is_watered, user_sprouts_last_watered,
+      user_sprouts_next_alert_date, user_sprouts_notes, user_sprouts_type,
+      user_sprouts_watering_intervals
       FROM application_user
+      JOIN 
+      (SELECT * FROM user_sprouts) AS user_sprouts_result
+      ON user_sprouts_result.application_user_id = application_user.application_user_id
       WHERE application_user_username = $1 
       AND convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') = $2;`,
       values: [username, password]
@@ -38,7 +46,7 @@ let getUser = async (username, password) => {
   return (
     await client
   .query(query)
-  .then(res => res.rows[0])
+  .then(res => res.rows)
   .catch(err => console.log(err)))
 }
 
