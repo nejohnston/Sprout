@@ -1,6 +1,8 @@
 {
   "name": "sprout",
   "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
@@ -17,10 +19,15 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
   },
   "scripts": {
-    "start": "cd server && yarn install && yarn start"
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && yarn && yarn build"
   },
   "engines": {
     "node": "^14.15.1",

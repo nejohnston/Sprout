@@ -49,7 +49,7 @@ const Login = (props) => {
              * @returns - components of Profile Page.
              */   
             async (values) => {
-              let response = await fetch(`http://localhost:3001/login/${values.username}/${values.password}`)
+              let response = await fetch(`/login/${values.username}/${values.password}`)
               
               let textResponse = await response.text()
               try {

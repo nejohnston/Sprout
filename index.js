@@ -13,7 +13,7 @@ const {
   getAlert,
   deleteAlert,
   getPlantInfo } = require('./pghelper');
-const port = 3001;
+const port = 5000;
 let app = express();
     app.use(express.urlencoded({extended: true}));
     app.use(cors());
@@ -21,7 +21,7 @@ let app = express();
     // Serve static files from the React app
     // Code copied from here, Answer 1
     // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
-    const buildPath = path.normalize(path.join(__dirname, '../client/build'));
+    const buildPath = path.normalize(path.join(__dirname, '/client/build'));
     app.use(express.static(buildPath));
     
 // ====================================
@@ -36,7 +36,6 @@ let app = express();
  */
 app.get('/login/:username/:password', async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
-  console.log(user);
   response.json(user)
 });
 
