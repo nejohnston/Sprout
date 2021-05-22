@@ -16,7 +16,7 @@ import SearchItem from "../../components/Search/SearchItems";
 import SearchBar from "../../components/Search/SearchBar";
 
 // Data (Temp)
-import searchPlantData from "../../config/data/plants.json";
+import searchPlantData from "../../config/data/plants_with_bees.json";
 
 
 
