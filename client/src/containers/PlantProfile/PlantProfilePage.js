@@ -24,7 +24,7 @@ import BackButton from "../../config/assets/icons/back_button.svg";
 import plantprofiledata from "./plant_profile.json";
 
 // Sprout and User Context from Layout.js Provider
-import { SproutContext, UserContext } from "../../components/Layout/Layout";
+import { SproutContext } from "../../components/Layout/Layout";
 
 
 // ====================================
@@ -38,7 +38,7 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
 const PlantProfilePage = () => {
 
   // Get the user's sprouts
-  const [sprouts, setSprouts] = useContext(SproutContext);
+  let sprouts = useContext(SproutContext)[0];
 
   // Prepare plant data
   let plantprofilejson = [];
