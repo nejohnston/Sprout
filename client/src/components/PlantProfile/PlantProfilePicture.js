@@ -27,7 +27,7 @@ const PlantProfilePicture = ({ image_url }) => {
   const [toggler, setToggler] = useState(false);
   return (
     <>
-      <img src={image_url} id="plant-profile-picture" alt="" onClick={() => setToggler(!toggler)} />
+      <img src={image_url} id="plant-profile-picture" className="shadow-sm" alt="" onClick={() => setToggler(!toggler)} />
       <FsLightbox toggler={toggler} sources={[<img src={image_url} alt=""/>]} />
     </>
   );

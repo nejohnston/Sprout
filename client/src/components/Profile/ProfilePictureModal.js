@@ -41,13 +41,13 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
       imageData
     )
       profilePic = res1.data.secure_url;
-      console.log(profilePic);
+ 
       let param = {
         userName: prefName,
         profilePic: res1.data.secure_url,
       };
       let res = await Axios.put("http://localhost:3001/profile", param);
-      console.log(res);
+
   };
 
   return (
