@@ -27,7 +27,7 @@ const SearchPlantDetailPage = () => {
 
   let plantId = parseInt(useParams().plantId);
 
-  let this_plant = plantData.filter( plant => plant.PLANT_ID === plantId )[0]
+  let thisPlant = plantData.filter( plant => plant.PLANT_ID === plantId )[0]
   
 
   /**
@@ -48,17 +48,17 @@ const SearchPlantDetailPage = () => {
       <Link to="/search">
           <img src={backbutton} className="back-button" alt="" />
       </Link>
-      <h1 id="profile-h1">{firstCommonName(this_plant)}</h1>
-      <AddPlantModal type={this_plant['PLANT_TYPE']} family={this_plant['PLANT_FAMILY_NAME']}/>
+      <h1 id="profile-h1">{firstCommonName(thisPlant)}</h1>
+      <AddPlantModal type={thisPlant['PLANT_TYPE']} family={thisPlant['PLANT_FAMILY_NAME']}/>
     </div>
 
     <hr />
 
     <div id="search-details-img-container">
-    <img id="search-details-img" src={this_plant['PLANT_IMG_URL']} alt=""></img>
+    <img id="search-details-img" src={thisPlant['PLANT_IMG_URL']} alt=""></img>
     </div>
 
-    <DetailCards plantInfo={this_plant}/>
+    <DetailCards plantInfo={thisPlant}/>
   </div>);
 };
 

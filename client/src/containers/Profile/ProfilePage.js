@@ -11,7 +11,7 @@ import ProfilePictureModal from "../../components/Profile/ProfilePictureModal";
 import Scorebar from "../../components/Profile/Scorebar";
 import AddPlantModal from "../../components/Modals/AddPlantModal";
 
-// Sprout Context from Layout.js Provider
+// Sprout and User Context from Layout.js Provider
 import { SproutContext, UserContext } from "../../components/Layout/Layout";
 
 // Styles
@@ -36,7 +36,7 @@ const ProfilePage = ({ userContext }) => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
 
-  console.log(sprouts)
+  console.log(sprouts);
 
   return (
     <>

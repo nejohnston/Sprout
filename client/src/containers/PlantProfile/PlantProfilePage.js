@@ -3,10 +3,10 @@
 // ====================================
 
 // React
-import React from "react";
+import React, { useContext }from "react";
 
 // Components
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PlantInfo from '../../components/PlantProfile/PlantInfo';
 import PlantNotes from "../../components/PlantProfile/PlantNotes";
 import PlantProfileTopOptions from "../../components/PlantProfile/PlantProfileTopOptions";
@@ -23,6 +23,9 @@ import BackButton from "../../config/assets/icons/back_button.svg";
 // Data (temp)
 import plantprofiledata from "./plant_profile.json";
 
+// Sprout and User Context from Layout.js Provider
+import { SproutContext, UserContext } from "../../components/Layout/Layout";
+
 
 // ====================================
 //           REACT COMPONENT
@@ -34,9 +37,18 @@ import plantprofiledata from "./plant_profile.json";
  */
 const PlantProfilePage = () => {
 
+  const [sprouts, setSprouts] = useContext(SproutContext);
+
   // Prepare plant data
   let plantprofilejson = [];
   plantprofilejson.push(...plantprofiledata);
+
+  // let sprouts = SproutContext
+
+  let sproutParam = parseInt(useParams().sproutId);
+  let thisSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
+
+  console.log(thisSprout)
 
   return (
     <div id="container">
