@@ -70,7 +70,7 @@ const Login = (props) => {
                     name: element.user_sprouts_given_name,
                     type: element.user_sprouts_type,
                     family: element.user_sprouts_family,
-                    wateringInterval: element.user_sprouts_watering_interval,
+                    wateringInterval: element.user_sprouts_watering_intervals,
                     notes: element.user_sprouts_notes,
                     isWatered: element.user_sprouts_is_watered,
                     dateAdded: element.user_sprouts_date_added,

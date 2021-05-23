@@ -37,18 +37,16 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
  */
 const PlantProfilePage = () => {
 
+  // Get the user's sprouts
   const [sprouts, setSprouts] = useContext(SproutContext);
 
   // Prepare plant data
   let plantprofilejson = [];
   plantprofilejson.push(...plantprofiledata);
 
-  // let sprouts = SproutContext
-
+  // Retreve the correct sprout information based on the request parameter
   let sproutParam = parseInt(useParams().sproutId);
   let thisSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
-
-  console.log(thisSprout)
 
   return (
     <div id="container">
@@ -56,14 +54,14 @@ const PlantProfilePage = () => {
         <Link to="/profile">
           <img src={BackButton} className="back-button" alt="" />
         </Link>
-        <h1 id="plant-profile-h1">{plantprofilejson[0]["user_given_name"]}</h1>
-        <EditPlant plant={plantprofilejson[0]}/>
+        <h1 id="plant-profile-h1">{thisSprout["name"]}</h1>
+        <EditPlant plant={thisSprout}/>
       </div>
       <hr />
-      <PlantProfileTopOptions image_url={plantprofilejson[0]["image_url"]} />
-      <PlantInfo plant={plantprofilejson[0]}/>
-      <PlantDateAdded dateAdded={plantprofilejson[0].date_added}/>
-      <PlantNotes plantNotes={plantprofilejson[0].notes}/>
+      <PlantProfileTopOptions image_url={thisSprout["image_url"]} />
+      <PlantInfo plant={thisSprout}/>
+      <PlantDateAdded dateAdded={thisSprout["dateAdded"]}/>
+      <PlantNotes plantNotes={thisSprout["notes"]}/>
 
       <div id="plant-profile-nav-block"></div>
 
