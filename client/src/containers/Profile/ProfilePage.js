@@ -36,7 +36,7 @@ const ProfilePage = ({ userContext }) => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
 
-  console.log(user)
+  console.log(sprouts)
 
   return (
     <>

@@ -22,8 +22,8 @@ const PlantGallery = ({sprouts}) => {
   return sprouts.map((sprout) => (
 
 
-    <div className="plant-list-item" key={sprout.id}>
-      <Link to={`/plant-profile/${sprout["sproutID"]}`}>
+    <div className="plant-list-item" key={sprout["sproutId"]}>
+      <Link to={`/plant-profile/${sprout["sproutId"]}`}>
       <img src={sprout["image_url"]} className="plant-list-img" alt="plant"/>
       </Link>
       <div className="plant-list-name-div">
