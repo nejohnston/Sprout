@@ -27,11 +27,14 @@ import "./Profile.css";
  * @returns - components of Profile Page.
  */
 const ProfilePage = ({ userContext }) => {
+
+
   
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
   const [display, setDisplay] = useState(true);
   
+  console.log(user)
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
@@ -48,7 +51,7 @@ const ProfilePage = ({ userContext }) => {
       <hr />
 
       <div id="my-sprouts-user-container">
-        <ProfilePictureModal profilePic={user.profilePicture} prefName={user.username}/>
+        <ProfilePictureModal profilePic={user.profilePicture} prefName={user.name}/>
         <h5 id="my-sprouts-user-name">{user.name}</h5>
       </div>
 

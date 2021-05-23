@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Axios from "axios";
 
 // Styles
@@ -15,6 +15,9 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+// User Context from Layout.js Provider
+import { SproutContext, UserContext } from "../../components/Layout/Layout";
+
 /**
  * Return the profile image component, with editing profile modal triggered on click.
  * @param {Bootstrap} props - bootstrap props required to vertically center modal.
@@ -22,6 +25,12 @@ import Form from "react-bootstrap/Form";
  * @returns - the profile image component, with editing profile modal triggered on click.
  */
 function ProfilePictureModal({ props, profilePic, prefName }) {
+
+  // Get Auth user Id
+  let authUsername = useContext(UserContext)[0].username;
+
+  console.log(authUsername)
+
   // States to trigger modal on and off - code from Bootstrap
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -40,14 +49,12 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
       "https://api.cloudinary.com/v1_1/sprout03/image/upload/",
       imageData
     )
-      profilePic = res1.data.secure_url;
- 
       let param = {
-        userName: prefName,
+        userName: authUsername,
         profilePic: res1.data.secure_url,
       };
       let res = await Axios.put("http://localhost:3001/profile", param);
-
+      console.log(res);
   };
 
   return (
