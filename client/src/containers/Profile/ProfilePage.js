@@ -36,6 +36,7 @@ const ProfilePage = ({ userContext }) => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
 
+  console.log(user)
 
   return (
     <>
@@ -53,7 +54,7 @@ const ProfilePage = ({ userContext }) => {
         <h5 id="my-sprouts-user-name">{user.name}</h5>
       </div>
 
-      <Scorebar user={user} />
+      <Scorebar user={user} sprouts={sprouts} />
 
       <SproutGallery sprouts={sprouts} />
       <div id="vector-bg"></div>

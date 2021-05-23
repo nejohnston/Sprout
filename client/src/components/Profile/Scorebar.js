@@ -20,7 +20,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
  * @returns - the scorebar component with the user's points and total number of sprouts.
  */
 
-const Scorebar = ({user}) => {
+const Scorebar = ({user, sprouts}) => {
   return (
   <div id="my-sprouts-score-bar" className="shadow-sm">
     <div className="my-sprouts-score-bar-item">
@@ -29,7 +29,7 @@ const Scorebar = ({user}) => {
     </div>
 
     <div className="my-sprouts-score-bar-item">
-    <span className="my-score-bar-item-value">{user.sprouts.length}</span>
+    <span className="my-score-bar-item-value">{sprouts.length}</span>
     <span className="my-score-bar-item-title">Sprouts</span>
     </div>
   </div>);
