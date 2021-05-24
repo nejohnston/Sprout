@@ -4,8 +4,9 @@ const path = require('path');
 const rootRouter = express.Router();
 const { 
   getUser,
+  getUserById,
   createUser,
-  updateUserPic,
+  updateUserProfile,
   getUserSprouts,
   createSprout,
   deleteSprout,
@@ -14,6 +15,7 @@ const {
   getAlert,
   deleteAlert,
   getPlantInfo } = require('./pgHelper');
+const { response } = require('express');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
@@ -41,14 +43,21 @@ app.get('/login/:username/:password', async (request, response) => {
   response.json(user)
 });
 
+// UPDATE USER PROFILE
+/**
+ * returns response with user's Information
+ */
 app.put('/profile', async (req, res) => {
   // console.log(req.body);
 let param = {
-  id: req.body.userName,
-  image: req.body.profilePic
+  id: req.body.userId,
+  imageUrl: req.body.profilePic,
+  userPrefName: req.body.newUserPrefName
 }
 console.log(param);
-  await updateUserPic(param);
+  await updateUserProfile(param);
+let userInfo = await getUserById(req.body.userId);
+res.json(userInfo);
 })
 
 // GET USER SPROUTS

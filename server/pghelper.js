@@ -50,6 +50,25 @@ let getUser = async (username, password) => {
   .catch(err => console.log(err)))
 }
 
+// GET USER BY ID
+/**
+ * @params userId
+ * get a user's information by id
+ * @returns - user's information by user Id.
+ */
+ let getUserById = async (userId) => {
+  const query = {
+    text: 
+    'SELECT * FROM application_user WHERE application_user_id=$1;',
+    values: [userId]
+  }
+return (
+  await client
+.query(query)
+.then(res => res.rows[0])
+.catch(err => console.log(err)))
+}
+
 // CREATE USER
 let createUser = async (userInfo) => {
   const query = {
@@ -70,24 +89,29 @@ let createUser = async (userInfo) => {
   .catch(err => console.log(err)))
 }
 
-// UPDATE USER PROFILE PICTURE
-let updateUserPic = async (user) => {
+// UPDATE USER PROFILE
+/**
+ * Update the user's profile with the given image URL and preferred name values
+ * @param {Object} user - object contains the keys id, imageUrl, and userPrefName as assigned in server.js
+ * @returns - none, queries and updates the user's profile based on given values 
+ */
+let updateUserProfile = async (user) => {
   console.log(user);
   const query = {
     text: 
-    "UPDATE APPLICATION_USER SET APPLICATION_USER_IMAGE = $2 WHERE APPLICATION_USER_USERNAME = $1;",
+    "UPDATE APPLICATION_USER SET APPLICATION_USER_PREFERRED_NAME = $3, APPLICATION_USER_IMAGE = $2 WHERE APPLICATION_USER_ID = $1;",
     values:
     [
       user.id,
-      user.image
+      user.imageUrl,
+      user.userPrefName
     ]
   }
-  
   return (
     await client
   .query(query)
-  .then(res => console.log(res))
-  .catch(err => console.log(err)))
+  .then(res => console.log(res + 'User Profile Updated!'))
+  .catch(err => console.log(err + 'User Profile Update Failed.')))
 }
 
 // GET USER SPROUTS
@@ -261,7 +285,7 @@ let getPlantInfo = async () => {
 module.exports = {
   getUser,
   createUser,
-  updateUserPic,
+  updateUserProfile,
   getUserSprouts,
   createSprout,
   deleteSprout,
@@ -269,5 +293,6 @@ module.exports = {
   updateSproutWateringInterval,
   getAlert,
   deleteAlert,
-  getPlantInfo
+  getPlantInfo,
+  getUserById
 }
