@@ -60,7 +60,7 @@ const PlantProfilePage = () => {
       <hr />
       <PlantProfileTopOptions image_url={thisSprout["image_url"]} />
       <PlantInfo plant={thisSprout}/>
-      <PlantDateAdded dateAdded={thisSprout["dateAdded"]}/>
+      <PlantDateAdded dateAdded={thisSprout["dateAdded"].substring(0, 10)}/>
       <PlantNotes plantNotes={thisSprout["notes"]}/>
 
       <div id="plant-profile-nav-block"></div>
