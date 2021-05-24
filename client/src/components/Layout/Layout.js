@@ -48,6 +48,7 @@ const Layout = ({ children }) => {
       :
       <div className="appContent">{children}</div>}
       {window.location.pathname !== "/" &&
+      window.location.pathname !== "/signup" &&
       window.location.pathname !== "/join-team" &&
       window.location.pathname !== "/about-us" &&
       window.location.pathname !== "/asdfasdfasdfasdfsadfsafdasdf" ? (
