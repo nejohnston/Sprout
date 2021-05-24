@@ -33,16 +33,17 @@ const ProfilePage = ({ userContext }) => {
   const [display, setDisplay] = useState(true);
   const [userPrefNameDisplay, setPrefNameDisplay] = useState(user.name);
 
+  console.log(sprouts)
+
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
 
   let newSprouts = [
     {
-      udateAdded: "2021-05-21T07:00:00.000Z",
+      dateAdded: "2021-05-21T07:00:00.000Z",
       family: "asdf",
-      image_url:
-        "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png",
+      image_url: "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png",
       isWatered: "0",
       lastWatered: null,
       name: "Pikachu",
