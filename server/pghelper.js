@@ -142,7 +142,7 @@ return (
  * delete a user's sprouts.
  * @returns - success message.
  */
-let deleteSprout = async (sprout) => {
+let deleteSprout = async (userId, sproutName) => {
   const query = {
     text: 
       `
@@ -151,9 +151,9 @@ let deleteSprout = async (sprout) => {
       AND user_sprouts_given_name=$2;
       `,
     values: [
-      sprout.userId,
-      sprout.name
-    ]
+      userId,
+      sproutName
+      ]
   }
 return (
   await client
@@ -205,11 +205,13 @@ let updateSproutWateringInterval = async (sprout) => {
 let getAlert = async (userId) => {
   const query = {
     text:
-    `SELECT ALERTS_MESSAGE
+    `
+    SELECT ALERTS_MESSAGE
     FROM APPLICATION_USER
 	    JOIN USER_SPROUTS ON APPLICATION_USER.APPLICATION_USER_ID = USER_SPROUTS.APPLICATION_USER_ID
 	    JOIN ALERTS ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
-    WHERE APPLICATION_USER.APPLICATION_USER_ID = $1;`,
+    WHERE APPLICATION_USER.APPLICATION_USER_ID = $1;
+    `,
     values: [userId]
   }
   return (

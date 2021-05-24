@@ -74,6 +74,18 @@ app.post('/profile/', async (request, response) => {
   // response.status(500).send(`500: server.js could not handle response.`);
 })
 
+// DELETE USER SPROUT
+/**
+ * @params sprout json object
+ * create new user sprout.
+ * @returns - success or fail message.
+ */
+app.delete('/sprouts/delete/:userId/:sproutName', async (request, response) => {
+  await deleteSprout(request.params.userId, request.params.sproutName)
+  response.status(200).send(`200: Sprout deleted successfully.`);
+  // response.status(500).send(`500: server.js could not handle response.`);
+})
+
 // Code copied from here, Answer 1
 // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
 /* 
