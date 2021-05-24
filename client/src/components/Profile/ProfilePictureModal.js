@@ -24,24 +24,24 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
  * @param {String} profilePic - the url to user's profile picture.
  * @returns - the profile image component, with editing profile modal triggered on click.
  */
-function ProfilePictureModal({ props, profilePic, prefName }) {
+function ProfilePictureModal({ props, prefName }) {
 
   // Get Auth user Id
   let authUser = useContext(UserContext)[0];
 
   // States to trigger modal on and off - code from Bootstrap
   const [show, setShow] = useState(false);
-  const [updateState, setUpdateState] = useState(false);
+  const [profilePic, setProfilePic] = useState(authUser.profilePicture);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   // useEffect to sense when profile update has been added
-  useEffect(() => {
-    if (updateState) {
-      console.log('hello')
-      setUpdateState(false);
-    }
-  }, [updateState])
+  // useEffect(() => {
+  //   if (updateState) {
+  //     console.log('hello')
+  //     setUpdateState(false);
+  //   }
+  // }, [updateState])
 
 
   // State to store the image being uploaded
@@ -67,11 +67,9 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
     
     Axios.put("http://localhost:3001/profile", param)
       .then((res) => {
-
-        // console.log(res.data.application_user_image);
-        // console.log(authUser.points)
-        authUser.profilePicture = res.data.application_user_image
-        setUpdateState(true)
+        let newProfilePic = res.data.application_user_image
+        authUser.profilePicture = newProfilePic
+        setProfilePic(newProfilePic)
       });
 
   };
