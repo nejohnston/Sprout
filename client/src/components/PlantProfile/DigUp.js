@@ -3,7 +3,7 @@
 // =====================================
 
 // React
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Assets
@@ -15,6 +15,7 @@ import Modal from "react-bootstrap/Modal";
 
 // Styles
 import "./styles/PlantProfileSmallButtons.css";
+import { UserContext } from "../Layout/Layout";
 
 /**
  * Return a component with modal popup which is triggered by the Dig Up button
@@ -25,7 +26,6 @@ import "./styles/PlantProfileSmallButtons.css";
 
 const DigUp = (props, sprout) => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => {
     fetch(`http://localhost3001/api/deleteSprout/${sprout.userId}/${sprout.name}`)
     .then(response => console.log(response))

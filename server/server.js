@@ -37,7 +37,6 @@ let app = express();
  */
 app.get('/login/:username/:password', async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
-  console.log(user);
   response.json(user)
 });
 
@@ -47,7 +46,6 @@ let param = {
   id: req.body.userName,
   image: req.body.profilePic
 }
-console.log(param);
   await updateUserPic(param);
 })
 
@@ -80,10 +78,9 @@ app.post('/profile/', async (request, response) => {
  * create new user sprout.
  * @returns - success or fail message.
  */
-app.delete('/sprouts/delete/:userId/:sproutName', async (request, response) => {
-  await deleteSprout(request.params.userId, request.params.sproutName)
+app.delete('/api/deleteSprout/:userId/:sproutName', async (request, response) => {
+  await deleteSprout(request.params.userId, request.params.sproutName);
   response.status(200).send(`200: Sprout deleted successfully.`);
-  // response.status(500).send(`500: server.js could not handle response.`);
 })
 
 // Code copied from here, Answer 1

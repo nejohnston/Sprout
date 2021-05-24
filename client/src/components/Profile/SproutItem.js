@@ -18,10 +18,7 @@ import './styles/SproutItem.css'
  * @returns - plant gallery component with each sprout rendered as its own individual component
  */
 
-const PlantGallery = ({sprouts}) => {
-  return sprouts.map((sprout) => (
-
-
+const SproutItem = ({sprout}) => {
     <div className="plant-list-item" key={sprout["sproutId"]}>
       <Link to={`/plant-profile/${sprout["sproutId"]}`}>
       <img src={sprout["image_url"]} className="plant-list-img" alt="plant"/>
@@ -30,9 +27,6 @@ const PlantGallery = ({sprouts}) => {
       <strong><p className="plant-list-name">{sprout["name"]}</p></strong>
       </div>
     </div>
-    
-
-  ));
 };
 
-export default PlantGallery;
+export default SproutItem;
