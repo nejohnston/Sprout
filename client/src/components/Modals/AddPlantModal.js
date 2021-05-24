@@ -14,7 +14,7 @@ import Modal from "react-bootstrap/Modal";
 import { Formik } from "formik";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import addButton from "./images/addbutton.svg";
+import addButton from "../../config/assets/icons/addbutton.svg";
 import "./styles/AddPlantModal.css";
 
 // Other imports
