@@ -53,20 +53,20 @@ function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
       imageData
     )
 
-    let param = {
+    // Put request to profile
+    Axios.put("http://localhost:3001/profile", {
       userId: authUser.userId,
       profilePic: res1.data.secure_url,
       newUserPrefName: userPrefName
-    };
-    
-    Axios.put("http://localhost:3001/profile", param)
+    })
       .then((res) => {
 
-        console.log(res)
+        // Update User Context and page with new profile picture
         let newProfilePic = res.data.application_user_image
         authUser.profilePicture = newProfilePic
         setProfilePic(newProfilePic)
 
+        // Update User Context and page with new profile name
         let newUserPrefName = res.data.application_user_preferred_name
         authUser.name = newUserPrefName;
         setPrefNameDisplay(newUserPrefName);
