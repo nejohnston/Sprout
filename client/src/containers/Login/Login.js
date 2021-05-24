@@ -102,7 +102,7 @@ const Login = (props) => {
               errors,
           }) => (
           <Form onSubmit={handleSubmit}>
-            <h3>Login or Signup</h3>
+            <h3>SPROUT LOGIN</h3>
             <hr />
             <Form.Group controlId="validationFormik01">
               <Form.Label>Username</Form.Label>
@@ -161,8 +161,10 @@ const Login = (props) => {
             variant="primary" 
             type="submit"
             className="custom-primary-button">
-              Login or Signup
+              Login
             </Button>
+            <br/>
+            <p id="login-signup-link">Create an Account</p>
           </Form>
           )}
           </Formik>
