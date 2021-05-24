@@ -24,11 +24,16 @@ import { UserContext, SproutContext } from "../Layout/Layout";
 //        Component Code
 // ========================================
 
-const AddPlantModal = ({ type, family }) => {
+const AddPlantModal = ({ type, family, addSprout, resetSproutState }) => {
   const [show, setShow] = useState(false);
   const [imageSelected, setImageSelected] = useState(""); // image selected states for file input
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const resetModal = () => {
+    addSprout();
+    handleClose();
+    resetSproutState();
+  }
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
   const submitForm = () => {
@@ -62,9 +67,8 @@ const AddPlantModal = ({ type, family }) => {
           <Modal.Title>Add a Sprout</Modal.Title>
         </Modal.Header>
         <Formik
-          onSubmit={
-            (values) => {
-              setSprouts([...sprouts, values])
+          onSubmit={(values) => {
+            setSprouts([...sprouts, values]);
             // console.log(values.wateringInterval) &&
             // fetch("http://localhost:3001/profile/", {
             //   method: "POST",
@@ -79,8 +83,7 @@ const AddPlantModal = ({ type, family }) => {
             //       : result && console.log(sprouts)
             //   )
             //   .catch((error) => console.log("Error creating Sprout: ", error));
-          }
-        }
+          }}
           initialValues={{
             userId: user.userId,
             name: "",
@@ -178,7 +181,7 @@ const AddPlantModal = ({ type, family }) => {
                 </Form.Group>
               </Modal.Body>
               <Modal.Footer>
-                <div onClick={handleClose}>
+                <div onClick={resetModal}>
                   <Button
                     variant="primary"
                     onClick={submitForm}
