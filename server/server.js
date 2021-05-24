@@ -14,6 +14,7 @@ const {
   getAlert,
   deleteAlert,
   getPlantInfo } = require('./pgHelper');
+const { response } = require('express');
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
@@ -41,6 +42,7 @@ app.get('/login/:username/:password', async (request, response) => {
   response.json(user)
 });
 
+// UPDATE USER PROFILE
 app.put('/profile', async (req, res) => {
   // console.log(req.body);
 let param = {
@@ -49,6 +51,7 @@ let param = {
 }
 console.log(param);
   await updateUserPic(param);
+res.status(200).send('profile updated!')
 })
 
 // GET USER SPROUTS

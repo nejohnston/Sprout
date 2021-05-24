@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Axios from "axios";
 
 // Styles
@@ -27,14 +27,23 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
 function ProfilePictureModal({ props, profilePic, prefName }) {
 
   // Get Auth user Id
-  let authUsername = useContext(UserContext)[0].username;
-
-  console.log(authUsername)
+  let authUser = useContext(UserContext)[0];
 
   // States to trigger modal on and off - code from Bootstrap
   const [show, setShow] = useState(false);
+  const [updateState, setUpdateState] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // useEffect to sense when profile update has been added
+  useEffect(() => {
+    if (updateState) {
+      console.log('hello')
+      setUpdateState(false);
+    }
+  }, [updateState])
+
+
   // State to store the image being uploaded
   const [imageSelected, setImageSelected] = useState("");
 
@@ -49,12 +58,18 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
       "https://api.cloudinary.com/v1_1/sprout03/image/upload/",
       imageData
     )
-      let param = {
-        userName: authUsername,
-        profilePic: res1.data.secure_url,
-      };
-      let res = await Axios.put("http://localhost:3001/profile", param);
-      console.log(res);
+
+    let param = {
+      userName: authUser.username,
+      profilePic: res1.data.secure_url
+    };
+    
+    Axios.put("http://localhost:3001/profile", param)
+      .then((res) => {
+        setUpdateState(true)
+        console.log(res.data);
+      });
+
   };
 
   return (
