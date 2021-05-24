@@ -18,3 +18,8 @@
     display: flex;
     flex-flow: row;
 }
+
+#reference {
+    text-align: center;
+    font-size: 12px;
+}
