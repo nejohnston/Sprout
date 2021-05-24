@@ -33,20 +33,24 @@ const ProfilePage = ({ userContext }) => {
   const [display, setDisplay] = useState(true);
 
   console.log(user);
+  console.log(sprouts);
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
 
   let newSprouts = [
     {
-      userId: 1,
+      udateAdded: "2021-05-21T07:00:00.000Z",
+      family: "asdf",
+      image_url: "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png",
+      isWatered: "0",
+      lastWatered: null,
       name: "Pikachu",
-      type: "aloe",
-      family: "succulent",
-      wateringInterval: 2,
-      notes: null,
-      image_url:
-        "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png",
+      nextAlert: "2021-06-02T07:00:00.000Z",
+      notes: "sdfasfa",
+      sproutId: 15,
+      type: "sdaf",
+      wateringInterval: 12,
     },
   ];
 
@@ -66,6 +70,13 @@ const ProfilePage = ({ userContext }) => {
   };
 
   const mountedRef = useMountedRef();
+
+  useEffect(() => {
+    if (mountedRef.current) {
+      setSprouts([...sprouts, ...newSprouts]);
+    }
+  }, [saveSprout]);
+
   const addsprout = () => {
     if (newSprouts) {
       setSaveSprout(true);
@@ -76,12 +87,6 @@ const ProfilePage = ({ userContext }) => {
       setSaveSprout(false);
     }
   };
-
-  useEffect(() => {
-    if (mountedRef.current) {
-      setSprouts([...sprouts, ...newSprouts]);
-    }
-  }, [saveSprout]);
 
   return (
     <>
