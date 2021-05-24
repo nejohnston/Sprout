@@ -50,6 +50,25 @@ let getUser = async (username, password) => {
   .catch(err => console.log(err)))
 }
 
+// GET USER BY ID
+/**
+ * @params userId
+ * get a user's information by id
+ * @returns - user's information by user Id.
+ */
+ let getUserById = async (userId) => {
+  const query = {
+    text: 
+    'SELECT * FROM application_user WHERE application_user_id=$1;',
+    values: [userId]
+  }
+return (
+  await client
+.query(query)
+.then(res => res.rows[0])
+.catch(err => console.log(err)))
+}
+
 // CREATE USER
 let createUser = async (userInfo) => {
   const query = {
@@ -269,5 +288,6 @@ module.exports = {
   updateSproutWateringInterval,
   getAlert,
   deleteAlert,
-  getPlantInfo
+  getPlantInfo,
+  getUserById
 }

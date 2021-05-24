@@ -61,13 +61,17 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
 
     let param = {
       userName: authUser.username,
-      profilePic: res1.data.secure_url
+      profilePic: res1.data.secure_url,
+      userId: authUser.userId
     };
     
     Axios.put("http://localhost:3001/profile", param)
       .then((res) => {
+
+        // console.log(res.data.application_user_image);
+        // console.log(authUser.points)
+        authUser.profilePicture = res.data.application_user_image
         setUpdateState(true)
-        console.log(res.data);
       });
 
   };

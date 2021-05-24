@@ -4,6 +4,7 @@ const path = require('path');
 const rootRouter = express.Router();
 const { 
   getUser,
+  getUserById,
   createUser,
   updateUserPic,
   getUserSprouts,
@@ -43,6 +44,9 @@ app.get('/login/:username/:password', async (request, response) => {
 });
 
 // UPDATE USER PROFILE
+/**
+ * returns response with user's Information
+ */
 app.put('/profile', async (req, res) => {
   // console.log(req.body);
 let param = {
@@ -51,7 +55,8 @@ let param = {
 }
 console.log(param);
   await updateUserPic(param);
-res.status(200).send('profile updated!')
+let userInfo = await getUserById(req.body.userId);
+res.json(userInfo);
 })
 
 // GET USER SPROUTS
