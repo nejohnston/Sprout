@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Axios from "axios";
 
 // Styles
@@ -16,7 +16,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 // User Context from Layout.js Provider
-import { SproutContext, UserContext } from "../../components/Layout/Layout";
+import { UserContext } from "../../components/Layout/Layout";
 
 /**
  * Return the profile image component, with editing profile modal triggered on click.
@@ -39,7 +39,7 @@ function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
   const [userPrefName, setUserPrefName] = useState(prefName);
 
   // State to store the image being uploaded
-  const [imageSelected, setImageSelected] = useState("");
+  const [imageSelected, setImageSelected] = useState(authUser.profilePicture);
 
   // Store the image to Cloudinary, and save the URL to database - code adapted from PedroTech (YouTube)
 
