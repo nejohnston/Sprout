@@ -24,32 +24,26 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
  * @param {String} profilePic - the url to user's profile picture.
  * @returns - the profile image component, with editing profile modal triggered on click.
  */
-function ProfilePictureModal({ props, prefName }) {
+function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
 
   // Get Auth user Id
   let authUser = useContext(UserContext)[0];
 
-  // States to trigger modal on and off - code from Bootstrap
+  // States and functions to trigger modal - code from Bootstrap
   const [show, setShow] = useState(false);
-  const [profilePic, setProfilePic] = useState(authUser.profilePicture);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // useEffect to sense when profile update has been added
-  // useEffect(() => {
-  //   if (updateState) {
-  //     console.log('hello')
-  //     setUpdateState(false);
-  //   }
-  // }, [updateState])
-
+  // Profile editing states
+  const [profilePic, setProfilePic] = useState(authUser.profilePicture);
+  const [userPrefName, setUserPrefName] = useState(prefName);
 
   // State to store the image being uploaded
   const [imageSelected, setImageSelected] = useState("");
 
   // Store the image to Cloudinary, and save the URL to database - code adapted from PedroTech (YouTube)
 
-  const uploadImage = async () => {
+  const editProfile = async () => {
     // Create a new formData object for the file to be uploaded
     const imageData = new FormData();
     imageData.append("file", imageSelected);
@@ -60,16 +54,22 @@ function ProfilePictureModal({ props, prefName }) {
     )
 
     let param = {
-      userName: authUser.username,
+      userId: authUser.userId,
       profilePic: res1.data.secure_url,
-      userId: authUser.userId
+      newUserPrefName: userPrefName
     };
     
     Axios.put("http://localhost:3001/profile", param)
       .then((res) => {
+
+        console.log(res)
         let newProfilePic = res.data.application_user_image
         authUser.profilePicture = newProfilePic
         setProfilePic(newProfilePic)
+
+        let newUserPrefName = res.data.application_user_preferred_name
+        authUser.name = newUserPrefName;
+        setPrefNameDisplay(newUserPrefName);
       });
 
   };
@@ -107,7 +107,7 @@ function ProfilePictureModal({ props, prefName }) {
               <Form.Label className="sprout-modal-text">
                 Display Name
               </Form.Label>
-              <Form.Control type="text" defaultValue={prefName} />
+              <Form.Control type="text" defaultValue={userPrefName} onChange={event => setUserPrefName(event.target.value)}/>
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -117,7 +117,7 @@ function ProfilePictureModal({ props, prefName }) {
             <Button
               variant="primary"
               className="custom-primary-button"
-              onClick={uploadImage}
+              onClick={editProfile}
             >
               Save Changes
             </Button>

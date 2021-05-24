@@ -33,6 +33,7 @@ const ProfilePage = ({ userContext }) => {
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
   const [display, setDisplay] = useState(true);
+  const [userPrefNameDisplay, setPrefNameDisplay] = useState(user.name)
   
   console.log(user)
   useEffect(() => {
@@ -51,8 +52,8 @@ const ProfilePage = ({ userContext }) => {
       <hr />
 
       <div id="my-sprouts-user-container">
-        <ProfilePictureModal prefName={user.name}/>
-        <h5 id="my-sprouts-user-name">{user.name}</h5>
+        <ProfilePictureModal prefName={user.name} setPrefNameDisplay={setPrefNameDisplay}/>
+        <h5 id="my-sprouts-user-name">{userPrefNameDisplay}</h5>
       </div>
 
       <Scorebar user={user} sprouts={sprouts} />

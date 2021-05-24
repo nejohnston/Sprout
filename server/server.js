@@ -6,7 +6,7 @@ const {
   getUser,
   getUserById,
   createUser,
-  updateUserPic,
+  updateUserProfile,
   getUserSprouts,
   createSprout,
   deleteSprout,
@@ -50,11 +50,12 @@ app.get('/login/:username/:password', async (request, response) => {
 app.put('/profile', async (req, res) => {
   // console.log(req.body);
 let param = {
-  id: req.body.userName,
-  image: req.body.profilePic
+  id: req.body.userId,
+  imageUrl: req.body.profilePic,
+  userPrefName: req.body.newUserPrefName
 }
 console.log(param);
-  await updateUserPic(param);
+  await updateUserProfile(param);
 let userInfo = await getUserById(req.body.userId);
 res.json(userInfo);
 })

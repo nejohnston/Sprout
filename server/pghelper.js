@@ -89,16 +89,17 @@ let createUser = async (userInfo) => {
   .catch(err => console.log(err)))
 }
 
-// UPDATE USER PROFILE PICTURE
-let updateUserPic = async (user) => {
+// UPDATE USER PROFILE
+let updateUserProfile = async (user) => {
   console.log(user);
   const query = {
     text: 
-    "UPDATE APPLICATION_USER SET APPLICATION_USER_IMAGE = $2 WHERE APPLICATION_USER_USERNAME = $1;",
+    "UPDATE APPLICATION_USER SET APPLICATION_USER_PREFERRED_NAME = $3, APPLICATION_USER_IMAGE = $2 WHERE APPLICATION_USER_ID = $1;",
     values:
     [
       user.id,
-      user.image
+      user.imageUrl,
+      user.userPrefName
     ]
   }
   
@@ -280,7 +281,7 @@ let getPlantInfo = async () => {
 module.exports = {
   getUser,
   createUser,
-  updateUserPic,
+  updateUserProfile,
   getUserSprouts,
   createSprout,
   deleteSprout,
