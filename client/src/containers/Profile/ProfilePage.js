@@ -17,6 +17,7 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Profile.css";
+import NavItem from "react-bootstrap/esm/NavItem";
 
 // ====================================
 //           REACT COMPONENT
@@ -51,9 +52,10 @@ const ProfilePage = ({ userContext }) => {
 
   const [saveSprout, setSaveSprout] = useState(false);
 
+  // This is to prevent the useEffect hook from firing on each mount of the AddPlant modal
+
   const useMountedRef = () => {
     const mountedRef = useRef(false);
-
     useEffect(() => {
       setTimeout(() => {
         mountedRef.current = true;
@@ -64,12 +66,14 @@ const ProfilePage = ({ userContext }) => {
   };
 
   const mountedRef = useMountedRef();
-  const addsprout = () => setSaveSprout(true);
+  const addsprout = () => {
+    if (newSprouts) {
+      setSaveSprout(true);
+    }
+  };
   const resetsproutstate = () => {
     if (saveSprout === true) {
-      console.log(saveSprout);
       setSaveSprout(false);
-      console.log(saveSprout);
     }
   };
 
@@ -78,9 +82,6 @@ const ProfilePage = ({ userContext }) => {
       setSprouts([...sprouts, ...newSprouts]);
     }
   }, [saveSprout]);
-
-  console.log(sprouts);
-  console.log(saveSprout);
 
   return (
     <>
