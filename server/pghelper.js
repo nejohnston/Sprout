@@ -90,6 +90,11 @@ let createUser = async (userInfo) => {
 }
 
 // UPDATE USER PROFILE
+/**
+ * Update the user's profile with the given image URL and preferred name values
+ * @param {Object} user - object contains the keys id, imageUrl, and userPrefName as assigned in server.js
+ * @returns - none, queries and updates the user's profile based on given values 
+ */
 let updateUserProfile = async (user) => {
   console.log(user);
   const query = {
@@ -102,12 +107,11 @@ let updateUserProfile = async (user) => {
       user.userPrefName
     ]
   }
-  
   return (
     await client
   .query(query)
-  .then(res => console.log(res))
-  .catch(err => console.log(err)))
+  .then(res => console.log(res + 'User Profile Updated!'))
+  .catch(err => console.log(err + 'User Profile Update Failed.')))
 }
 
 // GET USER SPROUTS
