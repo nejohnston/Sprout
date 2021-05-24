@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 
 // Axios
 import Axios from "axios";
@@ -19,6 +19,9 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "./styles/PlantProfileSmallButtons.css";
 
+// User Context from Layout.js Provider
+import { SproutContext, UserContext } from "../../components/Layout/Layout";
+
 
 // ====================================
 //           REACT COMPONENT
@@ -30,7 +33,12 @@ import "./styles/PlantProfileSmallButtons.css";
  * @param {Object} plant - the object representation of the current page's plant.
  * @returns - the edit modal of the current plant displayed on the page.
  */
-const EditPlant = ({props, sprout, updateSproutPage, updateSproutContext}) => {
+const EditPlant = ({props, sprout, updateSproutPage}) => {
+
+  // Get Auth User
+  let authUser = useContext(UserContext)[0];
+
+  let [sprouts, setSprouts] = useContext(SproutContext);
 
   // States for showing and hiding the modal
   const [show, setShow] = useState(false);
@@ -62,11 +70,27 @@ const EditPlant = ({props, sprout, updateSproutPage, updateSproutContext}) => {
       type: inputType,
       wateringInterval: inputWateringInterval,
       notes: inputNotes,
-      imageUrl: uploadRes.data.secure_url
+      imageUrl: uploadRes.data.secure_url,
+
+      userId: authUser.userId
     })
-      .then((res) => {
+      .then(res => {
         console.log(res)
+
+        let updatedSprout = {...sprout,
+          name: res.data.updated.user_sprouts_given_name,
+          family: res.data.updated.user_sprouts_family,
+          type: res.data.updated.user_sprouts_type,
+          wateringInterval: res.data.updated.user_sprouts_watering_intervals,
+          notes: res.data.updated.user_sprouts_notes,
+          image_url: res.data.updated.user_sprouts_image
+        }
+
+        
+
+        updateSproutPage(updatedSprout);
       })
+      
     
   }
 
@@ -142,6 +166,7 @@ const EditPlant = ({props, sprout, updateSproutPage, updateSproutContext}) => {
 
 
         <Modal.Footer>
+        <div onClick={handleClose}>
           <Button
             variant="primary"
             onClick={editSprout}
@@ -149,6 +174,7 @@ const EditPlant = ({props, sprout, updateSproutPage, updateSproutContext}) => {
           >
             Save Changes
           </Button>
+        </div>
         </Modal.Footer>
 
       </Modal>

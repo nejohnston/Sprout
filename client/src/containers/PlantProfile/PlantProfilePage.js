@@ -48,6 +48,8 @@ const PlantProfilePage = () => {
   // Declare state of current sprout
   const [thisSprout, setThisSprout] = useState(currSprout)
 
+  console.log(thisSprout)
+
   return (
     <div id="container">
       <div className="header_backarrow_container">
