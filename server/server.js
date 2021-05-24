@@ -14,6 +14,7 @@ const {
   getAlert,
   deleteAlert,
   getPlantInfo } = require('./pgHelper');
+
 const port = 3001;
 let app = express();
     app.use(express.urlencoded({extended: true}));
@@ -78,8 +79,8 @@ app.post('/profile/', async (request, response) => {
  * create new user sprout.
  * @returns - success or fail message.
  */
-app.delete('/api/deleteSprout/:userId/:sproutName', async (request, response) => {
-  await deleteSprout(request.params.userId, request.params.sproutName);
+app.delete('/api/deleteSprout/:userId/:sproutId', async (request, response) => {
+  await deleteSprout(request.params.userId, request.params.sproutId);
   response.status(200).send(`200: Sprout deleted successfully.`);
 })
 

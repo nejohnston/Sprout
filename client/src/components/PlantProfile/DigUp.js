@@ -26,11 +26,22 @@ import { UserContext } from "../Layout/Layout";
 
 const DigUp = (props, sprout) => {
   const [show, setShow] = useState(false);
+  const [sprouts, setSprouts] = useContext(UserContext);
+  const removeSproutFromContext = (sproutId) => {
+    for (let index = 0; index < sprouts.length; index++) {
+      if (sproutId === sprouts[index].sproutId) {
+        sprouts.splice(index, 1);
+      }
+    }
+    setSprouts(sprouts);
+  }
   const handleClose = () => {
-    fetch(`http://localhost3001/api/deleteSprout/${sprout.userId}/${sprout.name}`)
+    fetch(`http://localhost3001/api/deleteSprout/${sprout.userId}/${sprout.sproutId}`)
     .then(response => console.log(response))
     .catch(error => console.log(error))
-    &&
+    console.log('before removal: ' + sprouts)
+    removeSproutFromContext(sprout.sproutId)
+    console.log('after removal: ' + sprouts)
     setShow(false)};
   const handleShow = () => setShow(true);
 

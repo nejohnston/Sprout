@@ -19,14 +19,16 @@ import './styles/SproutItem.css'
  */
 
 const SproutItem = ({sprout}) => {
-    <div className="plant-list-item" key={sprout["sproutId"]}>
-      <Link to={`/plant-profile/${sprout["sproutId"]}`}>
+  return (
+    <div className="plant-list-item" key={sprout.sproutId}>
+      <Link to={`/plant-profile/${sprout.sproutId}`}>
       <img src={sprout["image_url"]} className="plant-list-img" alt="plant"/>
       </Link>
       <div className="plant-list-name-div">
       <strong><p className="plant-list-name">{sprout["name"]}</p></strong>
       </div>
     </div>
+    )
 };
 
 export default SproutItem;

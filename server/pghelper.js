@@ -75,7 +75,7 @@ let updateUserPic = async (user) => {
   console.log(user);
   const query = {
     text: 
-    "UPDATE APPLICATION_USER SET APPLICATION_USER_IMAGE = $2 WHERE APPLICATION_USER_USERNAME = $1;",
+    "UPDATE APPLICATION_USER SET APPLICATION_USER_IMAGE = $2 WHERE APPLICATION_USER_ID = $1;",
     values:
     [
       user.id,
@@ -142,17 +142,17 @@ return (
  * delete a user's sprouts.
  * @returns - success message.
  */
-let deleteSprout = async (userId, sproutName) => {
+let deleteSprout = async (userId, sproutId) => {
   const query = {
     text: 
       `
       DELETE FROM USER_SPROUTS WHERE
       application_user_id=$1 
-      AND user_sprouts_given_name=$2;
+      AND user_sprouts_id=$2;
       `,
     values: [
       userId,
-      sproutName
+      sproutId
       ]
   }
 return (
