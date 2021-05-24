@@ -18,7 +18,7 @@ import addButton from "../../config/assets/icons/addbutton.svg";
 import "./styles/AddPlantModal.css";
 
 // Other imports
-import { UserContext, SproutContext } from "../Layout/Layout";
+import { NewSproutContext, UserContext, SproutContext } from "../Layout/Layout";
 
 // ========================================
 //        Component Code
@@ -29,13 +29,32 @@ const AddPlantModal = ({ type, family, addSprout, resetSproutState }) => {
   const [imageSelected, setImageSelected] = useState(""); // image selected states for file input
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [user, setUser] = useContext(UserContext);
+  const [sprouts, setSprouts] = useContext(SproutContext);
+  const [newSprouts, setNewSprouts] = useContext(NewSproutContext);
+
   const resetModal = () => {
+    let sproutObject = {
+      dateAdded: Date(),
+      family: document.getElementById("sproutFamily").value,
+      image_url: "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png",
+      isWatered: 0,
+      lastWatered: null,
+      name: document.getElementById("sproutName").value,
+      nextAlert: null,
+      notes: document.getElementById("sproutNotes").value,
+      sproutId: 15,
+      type: document.getElementById("sproutType").value,
+      wateringInterval: document.getElementById("sproutWateringInterval").value,
+    };
+    setSprouts(sprouts.push(sproutObject));
+    console.log("these are sprouts", sprouts);
     addSprout();
     handleClose();
     resetSproutState();
-  }
-  const [user, setUser] = useContext(UserContext);
-  const [sprouts, setSprouts] = useContext(SproutContext);
+  };
+
   const submitForm = () => {
     // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
     let imageData = new FormData();

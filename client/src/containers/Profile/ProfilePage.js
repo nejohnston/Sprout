@@ -12,7 +12,8 @@ import Scorebar from "../../components/Profile/Scorebar";
 import AddPlantModal from "../../components/Modals/AddPlantModal";
 
 // Sprout and User Context from Layout.js Provider
-import { SproutContext, UserContext } from "../../components/Layout/Layout";
+import { NewSproutContext, SproutContext, UserContext } from "../../components/Layout/Layout";
+
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -33,27 +34,11 @@ const ProfilePage = ({ userContext }) => {
   const [display, setDisplay] = useState(true);
   const [userPrefNameDisplay, setPrefNameDisplay] = useState(user.name);
 
-  console.log(sprouts)
-
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
 
-  let newSprouts = [
-    {
-      dateAdded: "2021-05-21T07:00:00.000Z",
-      family: "asdf",
-      image_url: "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png",
-      isWatered: "0",
-      lastWatered: null,
-      name: "Pikachu",
-      nextAlert: "2021-06-02T07:00:00.000Z",
-      notes: "sdfasfa",
-      sproutId: 15,
-      type: "sdaf",
-      wateringInterval: 12,
-    },
-  ];
+  const [newSprouts, setNewSprouts] = useContext(NewSproutContext);
 
   const [saveSprout, setSaveSprout] = useState(false);
 
@@ -74,15 +59,11 @@ const ProfilePage = ({ userContext }) => {
 
   useEffect(() => {
     if (mountedRef.current) {
-      setSprouts([...sprouts, ...newSprouts]);
+      console.log("hello")
     }
   }, [saveSprout]);
 
-  const addsprout = () => {
-    if (newSprouts) {
-      setSaveSprout(true);
-    }
-  };
+  const addsprout = () => setSaveSprout(true);
   const resetsproutstate = () => {
     if (saveSprout === true) {
       setSaveSprout(false);
@@ -105,7 +86,7 @@ const ProfilePage = ({ userContext }) => {
 
           <div id="my-sprouts-user-container">
             <ProfilePictureModal
-              prefName={user.name}
+              prefName={user.name }
               setPrefNameDisplay={setPrefNameDisplay}
             />
             <h5 id="my-sprouts-user-name">{userPrefNameDisplay}</h5>
