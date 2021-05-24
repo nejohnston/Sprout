@@ -44,13 +44,13 @@ const AddPlantModal = ({ type, family, addSprout, resetSproutState }) => {
       name: document.getElementById("sproutName").value,
       nextAlert: null,
       notes: document.getElementById("sproutNotes").value,
-      sproutId: 15,
+      sproutId: 14,
       type: document.getElementById("sproutType").value,
       wateringInterval: document.getElementById("sproutWateringInterval").value,
     };
     setSprouts(sprouts.push(sproutObject));
     console.log("these are sprouts", sprouts);
-    addSprout();
+    // addSprout();
     handleClose();
     resetSproutState();
   };
