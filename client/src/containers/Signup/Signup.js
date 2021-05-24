@@ -18,7 +18,7 @@ import "./Signup.css";
 const Signup = () => {
   return (
     <div id="login-container">
-      <div id="bg">
+      <div id="signup-bg">
         <div id="login-card">
           <Form>
             <h3>Sign Up</h3>
