@@ -75,7 +75,6 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
       userId: authUser.userId
     })
       .then(res => {
-        console.log(res)
 
         let updatedSprout = {...sprout,
           name: res.data.updated.user_sprouts_given_name,
@@ -86,9 +85,13 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
           image_url: res.data.updated.user_sprouts_image
         }
 
-        
+        let sproutIndex = sprouts.findIndex( ({sproutId}) => sproutId === sprout.sproutId)
+        let updatedSprouts = [...sprouts];
+        updatedSprouts[sproutIndex] = updatedSprout;
 
         updateSproutPage(updatedSprout);
+        setSprouts(updatedSprouts);
+
       })
       
     
