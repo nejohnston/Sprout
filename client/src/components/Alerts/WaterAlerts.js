@@ -4,6 +4,7 @@
 
 // React
 import React from 'react';
+import Axios from "axios";
 
 // Assets
 import waterIcon from '../../config/assets/icons/water-icon-circle.svg';
@@ -25,9 +26,10 @@ import './styles/WaterAlerts.css';
  */
 const WaterAlert = ({plants}) => {
 
-    const waterPlant = (plant_id) => {
+    const waterPlant = async (plant_id) => {
 
         console.log('clear!')
+        console.log(plants)
         // search db with plant id
         // update the last water date as today
     }

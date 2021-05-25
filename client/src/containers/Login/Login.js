@@ -81,6 +81,10 @@ const Login = (props) => {
                           nextAlert: element.user_sprouts_next_alert_date,
                         });
                       });
+                      window.sessionStorage.setItem('userId', user.userId);
+                      window.sessionStorage.setItem('userName', user.username);
+                      window.sessionStorage.setItem('userPrefName', user.name);
+                      window.sessionStorage.setItem('teamId', user.team);
                       props.history.push("/profile");
                     } catch {
                       setValidation(false);

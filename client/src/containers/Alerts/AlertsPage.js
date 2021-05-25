@@ -4,6 +4,7 @@
 
 // React
 import React from 'react';
+import Axios from "axios";
 
 // Components
 import SproutTip from '../../components/Alerts/SproutTip';
@@ -27,6 +28,13 @@ import './AlertsPage.css';
  * @returns - the components of Alerts Page.
  */
 const AlertsPage = () => {
+
+  Axios.post('/alerts', {
+    userId: window.sessionStorage.getItem('userId')
+  })
+  .then(res => {
+    console.log(res.data);
+  })
 
   return (
   <div id="container">

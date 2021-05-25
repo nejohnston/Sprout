@@ -270,7 +270,7 @@ let getAlert = async (userId) => {
   return (
     await client
     .query(query)
-    .then(res => console.log(res))
+    .then(res => res.rows)
     .catch(err => console.log(err)))
 }
 
