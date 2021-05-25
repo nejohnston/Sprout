@@ -46,7 +46,6 @@ app.use(express.static(buildPath));
  */
 app.get('/login/:username/:password', async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
-  console.log(user);
   
   if(user.length > 0) {
     response.json(user);
@@ -54,7 +53,14 @@ app.get('/login/:username/:password', async (request, response) => {
   response.redirect('/signup');
 });
 
+let signup = []
 app.post('/signup', async (req, res) => {
+  signup.push(req.body.username);
+  signup.push(req.body.password);
+  res.redirect('/join-team');
+})
+
+app.post('/join-team', async (req, res) => {
   console.log(req.body);
 })
 

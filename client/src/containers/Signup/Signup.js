@@ -30,6 +30,9 @@ const Signup = () => {
       username: inputUsername,
       password: inputPassword
     })
+    .then(res => {
+      window.location = '/join-team'
+    })
   }
 
 
