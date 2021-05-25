@@ -53,7 +53,7 @@ const JoinTeam = () => {
         team: selectedTeam
       })
       .then(res => {
-        window.location = `/login/${res.data.userName}/${res.data.userPassword}`;
+        window.location = '/';
         console.log(res.data.userName);
       })
     }

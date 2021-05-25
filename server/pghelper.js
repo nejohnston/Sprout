@@ -51,6 +51,19 @@ let getUser = async (username, password) => {
     .catch(err => console.log(err)))
 }
 
+let checkUserExist = async (userName) => {
+  const query = {
+    text: `SELECT * FROM APPLICATION_USER WHERE APPLICATION_USER_USERNAME = $1`,
+    values: [userName]
+  }
+  return (
+    await client
+    .query(query)
+    .then(res => res.rows)
+    .catch(err => console.log(err))
+  )
+}
+
 // GET USER BY ID
 /**
  * @params userId
@@ -314,6 +327,7 @@ let getPlantInfo = async () => {
 // export modules
 module.exports = {
   getUser,
+  checkUserExist,
   createUser,
   updateUserProfile,
   getUserSprouts,
