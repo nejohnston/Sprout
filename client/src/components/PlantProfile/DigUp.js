@@ -36,9 +36,11 @@ const DigUp = ( {sprout}, props) => {
     }
     setSprouts(sprouts);
   }
+  
   const handleClose = () => {
     setShow(false)
   };
+
   const handleSubmit = () => {
     fetch(`/sprouts/${user.userId}/${sprout.sproutId}`, {
       method: "DELETE"
@@ -47,6 +49,7 @@ const DigUp = ( {sprout}, props) => {
     .catch(error => console.log(error));
     removeSproutFromContext(sprout.sproutId)
   }
+
   const handleShow = () => setShow(true);
 
   return (
