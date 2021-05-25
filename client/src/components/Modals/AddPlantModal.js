@@ -169,10 +169,7 @@ const AddPlantModal = ({ type, family }) => {
                   <Form.File
                     type="file"
                     id="sproutUploadPicture"
-                    onChange={(event) => {
-
-                      return(
-                      values.image = event.target.files[0])}
+                    onChange={(event) => setImageSelected(event.target.files[0])
                     }
                   />
                 </Form.Group>

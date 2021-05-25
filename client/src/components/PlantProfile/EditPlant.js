@@ -27,7 +27,7 @@ import "./styles/PlantProfileSmallButtons.css";
  * @param {Object} plant - the object representation of the current page's plant.
  * @returns - the edit modal of the current plant displayed on the page.
  */
-const EditPlant = ({props, plant}) => {
+const EditPlant = ({ props, plant }) => {
 
   // States for showing and hiding the modal
   const [show, setShow] = useState(false);

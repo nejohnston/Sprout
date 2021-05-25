@@ -25,7 +25,6 @@ import { SproutContext, UserContext } from "../Layout/Layout";
  */
 
 const DigUp = ( {sprout}, props) => {
-  console.log(sprout.sproutId)
   const [show, setShow] = useState(false);
   const [sprouts, setSprouts] = useContext(SproutContext);
   const user = useContext(UserContext)[0];
@@ -38,13 +37,18 @@ const DigUp = ( {sprout}, props) => {
     setSprouts(sprouts);
   }
   const handleClose = () => {
-    fetch(`http://localhost3001/api/deleteSprout/${user.userId}/${sprout.sproutId}`)
+    fetch(`http://localhost3001/sprouts/${user.userId}/${sprout.sproutId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user.userId, sprout.sproutId)
+    })
     .then(response => console.log(response))
     .catch(error => console.log(error))
-    console.log('before removal: ' + sprouts)
     removeSproutFromContext(sprout.sproutId)
-    console.log('after removal: ' + sprouts)
-    setShow(false)};
+    setShow(false)
+  };
   const handleShow = () => setShow(true);
 
   return (

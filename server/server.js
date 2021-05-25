@@ -80,7 +80,9 @@ app.post('/profile/', async (request, response) => {
  * create new user sprout.
  * @returns - success or fail message.
  */
-app.delete('/api/deleteSprout/:userId/:sproutId', async (request, response) => {
+app.delete('/sprouts/:userId/:sproutId', async (request, response) => {
+  console.log('userID' + request.params.userId)
+  console.log('sproutID' + request.params.sproutId)
   await deleteSprout(request.params.userId, request.params.sproutId);
   response.status(200).send(`200: Sprout deleted successfully.`);
 })
@@ -93,6 +95,7 @@ app.delete('/api/deleteSprout/:userId/:sproutId', async (request, response) => {
 rootRouter.get('(/*)?', async (req, res, next) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
+
 app.use(rootRouter);
 
 app.listen(port, () => {

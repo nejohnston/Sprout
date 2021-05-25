@@ -116,7 +116,6 @@ return (
  * @returns - success response.
  */
 let createSprout = async (sprout) => {
-  console.log("waterInterval" + sprout.userId)
   const query = {
     text: 
       `INSERT INTO USER_SPROUTS VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, DEFAULT);`,
@@ -143,6 +142,8 @@ return (
  * @returns - success message.
  */
 let deleteSprout = async (userId, sproutId) => {
+  console.log("userId pghelper" + userId)
+  console.log("userId pghelper" + sproutId)
   const query = {
     text: 
       `
