@@ -41,11 +41,11 @@ const JoinTeam = () => {
   // Post User's chosen name and team number if the fields are filled in
   const submitUserInfo = () => {
 
-    if (selectedTeam == "" && chosenPreferredName == ""){
+    if (selectedTeam === "" && chosenPreferredName === ""){
       alert("Hold on... you didn't fill this in at all! You thought we wouldn't notice? Please try again.")
-    } else if (selectedTeam == "") {
+    } else if (selectedTeam === "") {
       alert("You didn't choose a team! Please choose a team. :)")
-    } else if (chosenPreferredName == "") {
+    } else if (chosenPreferredName === "") {
       alert("You don't have a name! Please submit a valid preferred name.")
     } else {
       Axios.post('/join-team', {
@@ -62,13 +62,13 @@ const JoinTeam = () => {
       <Form>
         <Form.Group>
           <strong>
-            <p id="name-text">Tell us your Preferred Name</p>
+            <p id="name-text" className="center-p">Tell us your Preferred Name</p>
           </strong>
           <Form.Control type="text" placeholder="Enter your name..." required 
           defaultValue={chosenPreferredName} onChange={e => setChosenPreferredName(e.target.value)}/>
         </Form.Group>
         <hr />
-        <p>
+        <p className="center-p">
           <strong>Join a Sprout team!</strong>
           <br/><span id="team-note">(Choose wisely, this cannot be modified)</span>
         </p>

@@ -42,7 +42,7 @@ input:checked + label {
   color: #4d4d4d;
 }
 
-form p {
+.center-p {
   text-align: center;
 }
 
