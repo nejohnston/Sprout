@@ -24,7 +24,7 @@ const PlantGallery = ({sprouts}) => {
 
     <div className="plant-list-item" key={sprout["sproutId"]}>
       <Link to={`/plant-profile/${sprout["sproutId"]}`}>
-      <img src={sprout["image_url"]} className="plant-list-img" alt="plant"/>
+      <img src={sprout["imageUrl"]} className="plant-list-img" alt="plant"/>
       </Link>
       <div className="plant-list-name-div">
       <strong><p className="plant-list-name">{sprout["name"]}</p></strong>

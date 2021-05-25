@@ -1,8 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
 const rootRouter = express.Router();
-const session = require('express-session');
+const session = require("express-session");
 const {
   getUser,
   getUserById,
@@ -17,24 +17,24 @@ const {
   updateSproutWateringInterval,
   getAlert,
   deleteAlert,
-  getPlantInfo
-} = require('./pgHelper');
-const {
-  response
-} = require('express');
+  getPlantInfo,
+} = require("./pgHelper");
+const { response } = require("express");
 const port = 3001;
 let app = express();
-app.use(express.urlencoded({
-  extended: true
-}));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 // Serve static files from the React app
 // Code copied from here, Answer 1
 // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
-const buildPath = path.normalize(path.join(__dirname, '../client/build'));
+const buildPath = path.normalize(path.join(__dirname, "../client/build"));
 app.use(express.static(buildPath));
-app.use(session({  secret: 'mysecret' }));
+app.use(session({ secret: "mysecret" }));
 
 // ====================================
 //           EXPRESS QUERIES
@@ -46,38 +46,38 @@ app.use(session({  secret: 'mysecret' }));
  * return a user's data.
  * @returns - response from database.
  */
-app.get('/login/:username/:password', async (request, response) => {
+app.get("/login/:username/:password", async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
-  
-  if(user.length > 0) {
+
+  if (user.length > 0) {
     request.session.userId = user[0].application_user_id;
     request.session.userName = user[0].application_user_username;
     request.session.userPrefName = user[0].application_user_preferred_name;
     response.json(user);
   }
-  response.redirect('/signup');
+  response.redirect("/signup");
 });
 
-app.post('/signup', async (req, res) => {
+app.post("/signup", async (req, res) => {
   console.log(req.body);
-})
+});
 
 // UPDATE USER PROFILE
 /**
  * returns response with user's Information
  */
-app.put('/profile', async (req, res) => {
+app.put("/profile", async (req, res) => {
   // console.log(req.body);
   let param = {
     id: req.body.userId,
     imageUrl: req.body.profilePic,
-    userPrefName: req.body.newUserPrefName
-  }
+    userPrefName: req.body.newUserPrefName,
+  };
   console.log(param);
   await updateUserProfile(param);
   let userInfo = await getUserById(req.body.userId);
   res.json(userInfo);
-})
+});
 
 // GET USER SPROUTS
 /**
@@ -85,9 +85,9 @@ app.put('/profile', async (req, res) => {
  * get a user's sprouts.
  * @returns - sprouts of user.
  */
-app.get('/sprouts/:userId', async (request, response) => {
+app.get("/sprouts/:userId", async (request, response) => {
   let userSprouts = await getUserSprouts(request.params.userId);
-  response.json(userSprouts)
+  response.json(userSprouts);
 });
 
 // POST NEW USER SPROUT
@@ -96,31 +96,43 @@ app.get('/sprouts/:userId', async (request, response) => {
  * create new user sprout.
  * @returns - success or fail message.
  */
-app.post('/profile/', async (request, response) => {
-  await createSprout(request.body)
-  response.status(200).send(`200: Sprout added successfully.`);
+app.post("/profile/", async (req, res) => {
+  console.log("THIS IS", req.body);
+
+  let param = {
+    userId: req.body.userId,
+    name: req.body.name,
+    type: req.body.type,
+    family: req.body.family,
+    wateringInterval: req.body.wateringInterval,
+    notes: req.body.notes,
+    imageUrl: req.body.imageUrl,
+  };
+  console.log(param);
+  await createSprout(param);
+  res.status(200).send(`200: Sprout added successfully.`);
   // response.status(500).send(`500: server.js could not handle response.`);
-})
+});
 
 // Code copied from here, Answer 1
 // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
-/* 
+/*
  * all other routes go here
  */
-rootRouter.get('(/*)?', async (req, res, next) => {
-  res.sendFile(path.join(buildPath, 'index.html'));
+rootRouter.get("(/*)?", async (req, res, next) => {
+  res.sendFile(path.join(buildPath, "index.html"));
 });
 app.use(rootRouter);
 
 app.listen(port, () => {
-  console.log(`App running on port ${port}.`)
-})
+  console.log(`App running on port ${port}.`);
+});
 
 // UPDATE EXISTING USER SPROUT
 /**
  * Updates the information of a user's sprout submitted from EditPlant Component.
  */
-app.put('/plant-profile', async (req, res) => {
+app.put("/plant-profile", async (req, res) => {
   let param = {
     id: req.body.sproutId,
     name: req.body.name,
@@ -128,9 +140,9 @@ app.put('/plant-profile', async (req, res) => {
     type: req.body.type,
     wateringInterval: req.body.wateringInterval,
     notes: req.body.notes,
-    imageUrl: req.body.imageUrl
-  }
+    imageUrl: req.body.imageUrl,
+  };
   await updateSprout(param);
   let updatedSprout = await getSproutById(req.body.sproutId);
-  res.json(updatedSprout)
-})
+  res.json(updatedSprout);
+});

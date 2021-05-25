@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React, { useState, useContext, useEffect} from "react";
 
 // Components
 import SproutGallery from "../../components/Profile/SproutGallery";
@@ -12,7 +12,7 @@ import Scorebar from "../../components/Profile/Scorebar";
 import AddPlantModal from "../../components/Modals/AddPlantModal";
 
 // Sprout and User Context from Layout.js Provider
-import { NewSproutContext, SproutContext, UserContext } from "../../components/Layout/Layout";
+import {SproutContext, UserContext } from "../../components/Layout/Layout";
 
 
 // Styles
@@ -81,7 +81,7 @@ const ProfilePage = ({ userContext }) => {
 
           <div id="my-sprouts-user-container">
             <ProfilePictureModal
-              prefName={user.name }
+              prefName={user.name}
               setPrefNameDisplay={setPrefNameDisplay}
             />
             <h5 id="my-sprouts-user-name">{userPrefNameDisplay}</h5>

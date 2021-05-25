@@ -57,7 +57,7 @@ const PlantProfilePage = () => {
         <EditPlant sprout={thisSprout} updateSproutPage={setThisSprout}/>
       </div>
       <hr />
-      <PlantProfileTopOptions image_url={thisSprout["image_url"]} />
+      <PlantProfileTopOptions imageUrl={thisSprout["imageUrl"]} />
       <PlantInfo plant={thisSprout}/>
       <PlantDateAdded dateAdded={thisSprout["dateAdded"].substring(0, 10)}/>
       <PlantNotes plantNotes={thisSprout["notes"]}/>
