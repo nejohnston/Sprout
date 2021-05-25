@@ -162,7 +162,7 @@ const AddPlantModal = ({ type, family }) => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Link to="/profile">
+
             <Button
               variant="primary"
               onClick={submitForm}
@@ -171,7 +171,7 @@ const AddPlantModal = ({ type, family }) => {
             >
               Add a New Sprout
             </Button>
-          </Link>
+
         </Modal.Footer>
       </Modal>
     </>

@@ -50,7 +50,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
   const [inputType, setType] = useState(sprout["type"]);
   const [inputWateringInterval, setWateringInterval] = useState(sprout["wateringInterval"])
   const [inputNotes, setNotes] = useState(sprout["notes"])
-  const [selectedSproutPic, setSelectedSproutPic] = useState(sprout["image_url"]);
+  const [selectedSproutPic, setSelectedSproutPic] = useState(sprout["imageUrl"]);
 
   // Edit Sprout function upon form submission
   const editSprout = async () => {
@@ -73,8 +73,6 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
       wateringInterval: inputWateringInterval,
       notes: inputNotes,
       imageUrl: uploadRes.data.secure_url,
-
-      userId: authUser.userId
     })
       .then(res => {
 
@@ -85,7 +83,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
           type: res.data.user_sprouts_type,
           wateringInterval: res.data.user_sprouts_watering_intervals,
           notes: res.data.user_sprouts_notes,
-          image_url: res.data.user_sprouts_image
+          imageUrl: res.data.user_sprouts_image
         }
 
         // Find the current sprout in SproutContext and update the sprout Object
