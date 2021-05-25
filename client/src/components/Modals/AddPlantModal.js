@@ -14,23 +14,44 @@ import Modal from "react-bootstrap/Modal";
 import { Formik } from "formik";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import addButton from "./images/addbutton.svg";
+import addButton from "../../config/assets/icons/addbutton.svg";
 import "./styles/AddPlantModal.css";
 
 // Other imports
-import { UserContext, SproutContext } from "../Layout/Layout";
+import { NewSproutContext, UserContext, SproutContext } from "../Layout/Layout";
 
 // ========================================
 //        Component Code
 // ========================================
 
-const AddPlantModal = ({ type, family }) => {
+const AddPlantModal = ({ type, family}) => {
   const [show, setShow] = useState(false);
   const [imageSelected, setImageSelected] = useState("https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png"); // image selected states for file input
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  let img_url = "";
+
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
+
+  const addingSprout = () => {
+    let sproutObject = {
+      dateAdded: Date(),
+      family: document.getElementById("sproutFamily").value,
+      isWatered: 0,
+      lastWatered: null,
+      name: document.getElementById("sproutName").value,
+      nextAlert: null,
+      notes: document.getElementById("sproutNotes").value,
+      sproutId: 15,
+      type: document.getElementById("sproutType").value,
+      wateringInterval: document.getElementById("sproutWateringInterval").value,
+    };
+    setTimeout(() => {sproutObject["image_url"] = img_url}, 1000);
+    setTimeout(() => {setSprouts([...sprouts, sproutObject])}, 1100);
+    handleClose();
+  };
+
   const submitForm = () => {
     // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
     let imageData = new FormData();
@@ -43,7 +64,7 @@ const AddPlantModal = ({ type, family }) => {
       imageData
     )
       .then((res) => {
-        console.log(res.data.secure_url);
+        img_url = res.data.secure_url;
       })
       .catch((err) => console.log(err));
   };
@@ -62,23 +83,23 @@ const AddPlantModal = ({ type, family }) => {
           <Modal.Title>Add a Sprout</Modal.Title>
         </Modal.Header>
         <Formik
-          onSubmit={
-            (values) => {
-            fetch("http://localhost:3001/profile/", {
-              method: "POST",
-              body: JSON.stringify(values),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            })
-              .then((result) =>
-                result.ok
-                  ? setSprouts([...sprouts, values])
-                  : result && console.log(sprouts)
-              )
-              .catch((error) => console.log("Error creating Sprout: ", error));
-          }
-        }
+          // onSubmit={(values) => {
+            // setSprouts([...sprouts, values]);
+            // console.log(values.wateringInterval) &&
+            // fetch("http://localhost:3001/profile/", {
+            //   method: "POST",
+            //   body: JSON.stringify(values),
+            //   headers: {
+            //     "Content-Type": "application/json",
+            //   },
+            // })
+            //   .then((result) =>
+            //     result.ok
+            //       ? setSprouts([...sprouts, values])
+            //       : result && console.log(sprouts)
+            //   )
+            //   .catch((error) => console.log("Error creating Sprout: ", error));
+          // }}
           initialValues={{
             userId: user.userId,
             name: "",
@@ -175,7 +196,7 @@ const AddPlantModal = ({ type, family }) => {
                 </Form.Group>
               </Modal.Body>
               <Modal.Footer>
-                <div onClick={handleClose}>
+                <div onClick={addingSprout}>
                   <Button
                     variant="primary"
                     onClick={submitForm}

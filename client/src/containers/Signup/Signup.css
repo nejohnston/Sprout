@@ -3,8 +3,8 @@
     background-color: #94B447;
 }
 
-#login-bg {
-    background-image: url("../../config/assets/images/login-bg.jpg");
+#signup-bg {
+    background-image: url("../../config/assets/images/signup-bg.jpg");
     height: 30rem;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,5 +31,4 @@
 #login-signup-link {
     margin-top: 0.5rem;
     font-size: 0.85rem;
-    color: #5D6E1E;
 }

@@ -16,7 +16,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 // User Context from Layout.js Provider
-import { SproutContext, UserContext } from "../../components/Layout/Layout";
+import { UserContext } from "../../components/Layout/Layout";
 
 /**
  * Return the profile image component, with editing profile modal triggered on click.
@@ -24,23 +24,26 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
  * @param {String} profilePic - the url to user's profile picture.
  * @returns - the profile image component, with editing profile modal triggered on click.
  */
-function ProfilePictureModal({ props, profilePic, prefName }) {
+function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
 
   // Get Auth user Id
-  let authUsername = useContext(UserContext)[0].username;
+  let authUser = useContext(UserContext)[0];
 
-  console.log(authUsername)
-
-  // States to trigger modal on and off - code from Bootstrap
+  // States and functions to trigger modal - code from Bootstrap
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // Profile editing states
+  const [profilePic, setProfilePic] = useState(authUser.profilePicture);
+  const [userPrefName, setUserPrefName] = useState(prefName);
+
   // State to store the image being uploaded
-  const [imageSelected, setImageSelected] = useState("");
+  const [imageSelected, setImageSelected] = useState(authUser.profilePicture);
 
   // Store the image to Cloudinary, and save the URL to database - code adapted from PedroTech (YouTube)
 
-  const uploadImage = async () => {
+  const editProfile = async () => {
     // Create a new formData object for the file to be uploaded
     const imageData = new FormData();
     imageData.append("file", imageSelected);
@@ -49,12 +52,26 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
       "https://api.cloudinary.com/v1_1/sprout03/image/upload/",
       imageData
     )
-      let param = {
-        userName: authUsername,
-        profilePic: res1.data.secure_url,
-      };
-      let res = await Axios.put("http://localhost:3001/profile", param);
-      console.log(res);
+
+    // Put request to profile
+    Axios.put("/profile", {
+      userId: authUser.userId,
+      profilePic: res1.data.secure_url,
+      newUserPrefName: userPrefName
+    })
+      .then((res) => {
+
+        // Update User Context and page with new profile picture
+        let newProfilePic = res.data.application_user_image
+        authUser.profilePicture = newProfilePic
+        setProfilePic(newProfilePic)
+
+        // Update User Context and page with new profile name
+        let newUserPrefName = res.data.application_user_preferred_name
+        authUser.name = newUserPrefName;
+        setPrefNameDisplay(newUserPrefName);
+      });
+
   };
 
   return (
@@ -90,7 +107,7 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
               <Form.Label className="sprout-modal-text">
                 Display Name
               </Form.Label>
-              <Form.Control type="text" defaultValue={prefName} />
+              <Form.Control type="text" defaultValue={userPrefName} onChange={event => setUserPrefName(event.target.value)}/>
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -100,7 +117,7 @@ function ProfilePictureModal({ props, profilePic, prefName }) {
             <Button
               variant="primary"
               className="custom-primary-button"
-              onClick={uploadImage}
+              onClick={editProfile}
             >
               Save Changes
             </Button>

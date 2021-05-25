@@ -35,7 +35,7 @@ const JoinTeam = () => {
       <hr />
       <Form.Group>
         <strong>
-          <p id="name-text">Your Name</p>
+          <p id="name-text">Your Preferred Name</p>
         </strong>
         <Form.Control type="text" placeholder="Enter your name..." />
       </Form.Group>

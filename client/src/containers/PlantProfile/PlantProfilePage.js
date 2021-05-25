@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useContext }from "react";
+import React, { useContext, useState } from "react";
 
 // Components
 import { Link, useParams } from "react-router-dom";
@@ -38,17 +38,19 @@ import { SproutContext } from "../../components/Layout/Layout";
 const PlantProfilePage = () => {
 
   // Get the user's sprouts
-  let sprouts = useContext(SproutContext)[0];
-
-  // Prepare plant data
-  let plantprofilejson = [];
-  plantprofilejson.push(...plantprofiledata);
+  let [sprouts, setSprouts] = useContext(SproutContext);
 
   // Retreve the correct sprout information based on the request parameter
   let sproutName = useParams().sproutName
   console.log("sproutName: "+ sproutName)
-  const thisSprout = sprouts.filter(sprout => sprout.name === sproutName)[0];
-  console.log('thisSprout' + thisSprout.sproutId)
+  const currSprout = sprouts.filter(sprout => sprout.name === sproutName)[0];
+  console.log('thisSprout' + currSprout.sproutId)
+  // let sproutParam = parseInt(useParams().sproutId);
+  // let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
+
+  // Declare state of current sprout
+  const [thisSprout, setThisSprout] = useState(currSprout)
+
   return (
     <div id="container">
       <div className="header_backarrow_container">
@@ -56,12 +58,12 @@ const PlantProfilePage = () => {
           <img src={BackButton} className="back-button" alt="" />
         </Link>
         <h1 id="plant-profile-h1">{thisSprout["name"]}</h1>
-        <EditPlant plant={thisSprout}/>
+        <EditPlant sprout={thisSprout} updateSproutPage={setThisSprout}/>
       </div>
       <hr />
       <PlantProfileTopOptions sprout={thisSprout} />
       <PlantInfo plant={thisSprout}/>
-      <PlantDateAdded dateAdded={thisSprout["dateAdded"]}/>
+      <PlantDateAdded dateAdded={thisSprout["dateAdded"].substring(0, 10)}/>
       <PlantNotes plantNotes={thisSprout["notes"]}/>
 
       <div id="plant-profile-nav-block"></div>

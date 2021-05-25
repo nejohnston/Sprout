@@ -11,6 +11,7 @@ import AboutUsContainer from './containers/AboutUs';
 import AlertsContainer from './containers/Alerts';
 import LeaderboardContainer from './containers/Leaderboards';
 import LoginContainer from './containers/Login';
+import SignupContainer from './containers/Signup';
 import JoinTeamContainer from './containers/JoinTeam';
 import ProfileContainer from './containers/Profile';
 import PlantProfileContainer from './containers/PlantProfile';
@@ -44,6 +45,7 @@ const App = () => {
               <Route path='/join-team' component={JoinTeamContainer} />
               <Route path='/leaderboards' component={LeaderboardContainer} />
               <Route exact path='/' component={LoginContainer} />
+              <Route exact path='/signup' component={SignupContainer} />
               <Route path='/profile' component={ProfileContainer} />
               <Route path='/search' component={SearchContainer} />
               <Route path='/search-details/:plantId' component={SearchPlantDetailContainer} />

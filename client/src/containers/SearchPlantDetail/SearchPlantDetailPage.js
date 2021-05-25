@@ -59,6 +59,7 @@ const SearchPlantDetailPage = () => {
     </div>
 
     <DetailCards plantInfo={thisPlant}/>
+
   </div>);
 };
 
