@@ -84,6 +84,7 @@ const Login = (props) => {
                       props.history.push("/profile");
                     } catch {
                       setValidation(false);
+                      window.location = '/signup'
                       throw Error("Incorrect username or password.");
                     }
                   }
