@@ -50,7 +50,7 @@ const Login = (props) => {
                    */
                   async (values) => {
                     let response = await fetch(
-                      `/login/${values.username}/${values.password}`
+                      `http://localhost:3001/login/${values.username}/${values.password}`
                     );
 
                     let textResponse = await response.text();
@@ -88,7 +88,6 @@ const Login = (props) => {
                       props.history.push("/profile");
                     } catch {
                       setValidation(false);
-                      window.location = '/signup'
                       throw Error("Incorrect username or password.");
                     }
                   }

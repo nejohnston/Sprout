@@ -41,8 +41,12 @@ const PlantProfilePage = () => {
   let [sprouts] = useContext(SproutContext)[0];
 
   // Retreve the correct sprout information based on the request parameter
-  let sproutParam = parseInt(useParams().sproutId);
-  let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
+  let sproutName = useParams().sproutName
+  console.log("sproutName: "+ sproutName)
+  const currSprout = sprouts.filter(sprout => sprout.name === sproutName)[0];
+  // console.log('thisSprout' + currSprout.sproutId)
+  // let sproutParam = parseInt(useParams().sproutId);
+  // let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
 
   // Declare state of current sprout
   const [thisSprout, setThisSprout] = useState(currSprout)
@@ -57,7 +61,7 @@ const PlantProfilePage = () => {
         <EditPlant sprout={thisSprout} updateSproutPage={setThisSprout}/>
       </div>
       <hr />
-      <PlantProfileTopOptions image_url={thisSprout["image_url"]} />
+      <PlantProfileTopOptions sprout={thisSprout} />
       <PlantInfo plant={thisSprout}/>
       <PlantDateAdded dateAdded={thisSprout["dateAdded"].substring(0, 10)}/>
       <PlantNotes plantNotes={thisSprout["notes"]}/>

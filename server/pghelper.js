@@ -135,7 +135,6 @@ let getUserSprouts = async (userId) => {
  * @returns - success response.
  */
 let createSprout = async (sprout) => {
-  console.log("waterInterval" + sprout.userId)
   const query = {
     text: `INSERT INTO USER_SPROUTS VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, DEFAULT);`,
     values: [
@@ -201,23 +200,46 @@ let getSproutById = async (sproutId) => {
  * delete a user's sprouts.
  * @returns - success message.
  */
-let deleteSprout = async (sprout) => {
-  const query = {
+let deleteSprout = async (userId, sproutId) => {
+  console.log("userId pghelper" + userId)
+  console.log("userId pghelper" + sproutId)
+  const queryDeleteUserSproutAlert = {
     text: `
-      DELETE FROM USER_SPROUTS WHERE
-      application_user_id=$1 
-      AND user_sprouts_given_name=$2;
+    DELETE FROM 
+    ALERTS
+    WHERE 
+    USER_SPROUTS_ID = (SELECT USER_SPROUTS.USER_SPROUTS_ID
+      FROM USER_SPROUTS
+      JOIN ALERTS
+      ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
+      WHERE APPLICATION_USER_ID = $1
+      AND ALERTS.USER_SPROUTS_ID = $2);
       `,
     values: [
-      sprout.userId,
-      sprout.name
-    ]
+      userId,
+      sproutId
+      ]
   }
-  return (
+  const queryDeleteUserSprout = {
+    text: `
+      DELETE FROM user_sprouts WHERE
+      application_user_id=$1 
+      AND user_sprouts_id=$2;
+      `,
+    values: [
+      userId,
+      sproutId
+      ]
+    }
     await client
-    .query(query)
+    .query(queryDeleteUserSproutAlert)
     .then(res => console.log(res))
-    .catch(err => console.log(err)))
+    .catch(err => console.log(err))
+
+    await client
+    .query(queryDeleteUserSprout)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
 }
 
 // UPDATE IS_WATERED
@@ -264,7 +286,8 @@ let getAlert = async (userId) => {
     FROM APPLICATION_USER
 	    JOIN USER_SPROUTS ON APPLICATION_USER.APPLICATION_USER_ID = USER_SPROUTS.APPLICATION_USER_ID
 	    JOIN ALERTS ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
-    WHERE APPLICATION_USER.APPLICATION_USER_ID = $1;`,
+    WHERE APPLICATION_USER.APPLICATION_USER_ID = $1;
+    `,
     values: [userId]
   }
   return (
