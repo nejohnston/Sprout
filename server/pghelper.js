@@ -260,7 +260,7 @@ let updateSproutWateringInterval = async (sprout) => {
 // GET ALERT FOR EACH USER
 let getAlert = async (userId) => {
   const query = {
-    text: `SELECT ALERTS.USER_SPROUTS_ID, ALERTS_MESSAGE
+    text: `SELECT ALERTS.USER_SPROUTS_ID, USER_SPROUTS_IMAGE, ALERTS_MESSAGE
     FROM APPLICATION_USER
 	    JOIN USER_SPROUTS ON APPLICATION_USER.APPLICATION_USER_ID = USER_SPROUTS.APPLICATION_USER_ID
 	    JOIN ALERTS ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
@@ -283,7 +283,7 @@ let deleteAlert = async (sprout) => {
                             JOIN ALERTS
                             ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
                             WHERE APPLICATION_USER_ID = $1
-                            AND USER_SPROUTS_GIVEN_NAME = $2);`,
+                            AND USER_SPROUTS_ID = $2);`,
     values: [
       sprout.userId,
       sprout.name

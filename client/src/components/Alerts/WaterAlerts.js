@@ -25,20 +25,24 @@ import './styles/WaterAlerts.css';
  * @returns - a complete set of WaterPlant components, one for each plant object in plant.
  */
 const WaterAlert = ({plants}) => {
+    console.log(plants);
 
     const waterPlant = async (plant_id) => {
 
         console.log('clear!')
-        console.log(plants)
+        Axios.delete('/alerts', {
+            userID: window.sessionStorage.getItem('userId')
+            // user_sprouts_id: plants["user_sprouts_id"]
+        });
         // search db with plant id
         // update the last water date as today
     }
 
     return plants.map( plant => (
 
-        <div className="alert-water" key={plant["plant_id"]}>
-            <img className="alert-water-plant-img" src={plant["PLANT_IMG_URL"]} alt="plant-img"/>
-            <p><strong>{plant["plant_name"]}</strong> needs to be watered!</p>
+        <div className="alert-water" key={plant["user_sprouts_id"]}>
+            <img className="alert-water-plant-img" src={plant["user_sprouts_image"]} alt="plant-img"/>
+            <p><strong>{plant["alerts_message"].split(" needs to be watered")[0]}</strong> needs to be watered!</p>
 
             <img className="alert-water-btn shadow-sm" src={waterIcon} alt="water-icon" onClick={waterPlant}/>
         </div>

@@ -57,6 +57,7 @@ let signup = []
 app.post('/signup', async (req, res) => {
   signup.push(req.body.username);
   signup.push(req.body.password);
+  res.json(signup);
   res.redirect('/join-team');
 })
 
@@ -108,6 +109,10 @@ app.post('/alerts', async (req, res) => {
   let alerts = await getAlert(req.body.userId);
   res.json(alerts);
   // let alerts = await getAlert
+})
+
+app.delete('/alerts', async (req, res) => {
+  console.log(req);
 })
 
 // Code copied from here, Answer 1

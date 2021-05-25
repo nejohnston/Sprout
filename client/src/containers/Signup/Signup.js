@@ -1,4 +1,3 @@
-  
 // =====================================
 //               IMPORTS
 // =====================================
@@ -8,7 +7,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Axios
-import Axios from 'axios';
+import Axios from "axios";
 
 // Bootstrap
 import Form from "react-bootstrap/Form";
@@ -19,23 +18,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Signup.css";
 
 const Signup = () => {
-
   // Form States
-  const [inputUsername, setUsername] = useState("")
-  const[inputPassword, setPassword] = useState("")
-  
+  const [inputUsername, setUsername] = useState("");
+  const [inputPassword, setPassword] = useState("");
+
   // Post to /signup
   const sendAccountInfo = () => {
-    Axios.post('/signup', {
+    Axios.post("/signup", {
       username: inputUsername,
-      password: inputPassword
-    })
-    .then(res => {
-      window.location = '/join-team'
-    })
-  }
-
-
+      password: inputPassword,
+    }).then((res) => {
+      window.sessionStorage.setItem("userName", res.data[0]);
+      window.location = "/join-team";
+    });
+  };
 
   return (
     <div id="login-container">
@@ -46,23 +42,33 @@ const Signup = () => {
             <hr />
             <Form.Group controlId="formUsername">
               <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Enter Username" name="new_user_name"
-              defaultValue={inputUsername} onChange={e => setUsername(e.target.value)}/>
+              <Form.Control
+                type="text"
+                placeholder="Enter Username"
+                name="new_user_name"
+                defaultValue={inputUsername}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group controlId="formPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Enter Password" name="new_user_password"
-              defaultValue={inputPassword} onChange={e => setPassword(e.target.value)}/>
+              <Form.Control
+                type="password"
+                placeholder="Enter Password"
+                name="new_user_password"
+                defaultValue={inputPassword}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </Form.Group>
-              <Button
-                variant="primary"
-                type="button"
-                className="custom-primary-button"
-                onClick={sendAccountInfo}
-              >
-                Create a Sprout Account
-              </Button>
+            <Button
+              variant="primary"
+              type="button"
+              className="custom-primary-button"
+              onClick={sendAccountInfo}
+            >
+              Create a Sprout Account
+            </Button>
           </Form>
         </div>
       </div>
