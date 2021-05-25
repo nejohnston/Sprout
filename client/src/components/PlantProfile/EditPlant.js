@@ -72,9 +72,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
       type: inputType,
       wateringInterval: inputWateringInterval,
       notes: inputNotes,
-      imageUrl: uploadRes.data.secure_url,
-
-      userId: authUser.userId
+      imageUrl: uploadRes.data.secure_url
     })
       .then(res => {
 
@@ -86,10 +84,10 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
           wateringInterval: res.data.user_sprouts_watering_intervals,
           notes: res.data.user_sprouts_notes,
           image_url: res.data.user_sprouts_image
-        }
+        };
 
         // Find the current sprout in SproutContext and update the sprout Object
-        let sproutIndex = sprouts.findIndex( ({sproutId}) => sproutId === sprout.sproutId)
+        let sproutIndex = sprouts.findIndex( ({sproutId}) => sproutId === sprout.sproutId);
         let updatedSprouts = [...sprouts];
         updatedSprouts[sproutIndex] = updatedSprout;
 
