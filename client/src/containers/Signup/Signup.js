@@ -20,7 +20,7 @@ const Signup = () => {
     <div id="login-container">
       <div id="signup-bg">
         <div id="login-card">
-          <Form action='http://localhost:3001/signup/' method='POST'>
+          <Form action='/signup' method='POST'>
             <h3>Sign Up</h3>
             <hr />
             <Form.Group controlId="formUsername">

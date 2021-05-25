@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const rootRouter = express.Router();
-const session = require("express-session");
 const {
   getUser,
   getUserById,
@@ -34,7 +33,6 @@ app.use(express.json());
 // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
 const buildPath = path.normalize(path.join(__dirname, "../client/build"));
 app.use(express.static(buildPath));
-app.use(session({ secret: "mysecret" }));
 
 // ====================================
 //           EXPRESS QUERIES
@@ -48,11 +46,9 @@ app.use(session({ secret: "mysecret" }));
  */
 app.get("/login/:username/:password", async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
-
-  if (user.length > 0) {
-    request.session.userId = user[0].application_user_id;
-    request.session.userName = user[0].application_user_username;
-    request.session.userPrefName = user[0].application_user_preferred_name;
+  console.log(user);
+  
+  if(user.length > 0) {
     response.json(user);
   }
   response.redirect("/signup");
@@ -113,6 +109,12 @@ app.post("/profile/", async (req, res) => {
   res.status(200).send(`200: Sprout added successfully.`);
   // response.status(500).send(`500: server.js could not handle response.`);
 });
+
+app.post('/alerts', async (req, res) => {
+  let alerts = await getAlert(req.body.userId);
+  res.json(alerts);
+  // let alerts = await getAlert
+})
 
 // Code copied from here, Answer 1
 // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs

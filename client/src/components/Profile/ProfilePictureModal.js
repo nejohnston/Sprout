@@ -54,7 +54,7 @@ function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
     )
 
     // Put request to profile
-    Axios.put("http://localhost:3001/profile", {
+    Axios.put("/profile", {
       userId: authUser.userId,
       profilePic: res1.data.secure_url,
       newUserPrefName: userPrefName
