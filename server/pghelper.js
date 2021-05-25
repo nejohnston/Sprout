@@ -128,24 +128,6 @@ let getUserSprouts = async (userId) => {
     .catch(err => console.log(err)))
 }
 
-// GET USER SPROUTS LIST
-/**
- * @params userId
- * get a user's sprouts.
- * @returns - sprouts array.
- */
- let getUserSproutsList = async (userId) => {
-  const query = {
-    text: 'SELECT * FROM user_sprouts WHERE application_user_id=$1;',
-    values: [userId]
-  }
-  return (
-    await client
-    .query(query)
-    .then(res => res.rows)
-    .catch(err => console.log(err)))
-}
-
 // CREATE USER SPROUT
 /**
  * @params sprout
@@ -338,6 +320,5 @@ module.exports = {
   getAlert,
   deleteAlert,
   getPlantInfo,
-  getUserById,
-  getUserSproutsList
+  getUserById
 }

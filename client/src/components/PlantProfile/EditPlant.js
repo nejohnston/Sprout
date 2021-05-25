@@ -54,7 +54,8 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
   const [selectedSproutPic, setSelectedSproutPic] = useState(sprout["image_url"]);
 
   const editSprout = async () => {
-
+    
+    // Upload image to Cloudinary database, code adapted from PedroTech
     const imageData = new FormData();
     imageData.append("file", selectedSproutPic);
     imageData.append("upload_preset", "sproutPlant");
@@ -63,6 +64,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
       imageData
     )
 
+    // Put request to plant profile to update the plant
     Axios.put("http://localhost:3001/plant-profile", {
       sproutId: sprout.sproutId,
       name: inputSproutName,
@@ -77,12 +79,12 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
       .then(res => {
 
         let updatedSprout = {...sprout,
-          name: res.data.updated.user_sprouts_given_name,
-          family: res.data.updated.user_sprouts_family,
-          type: res.data.updated.user_sprouts_type,
-          wateringInterval: res.data.updated.user_sprouts_watering_intervals,
-          notes: res.data.updated.user_sprouts_notes,
-          image_url: res.data.updated.user_sprouts_image
+          name: res.data.user_sprouts_given_name,
+          family: res.data.user_sprouts_family,
+          type: res.data.user_sprouts_type,
+          wateringInterval: res.data.user_sprouts_watering_intervals,
+          notes: res.data.user_sprouts_notes,
+          image_url: res.data.user_sprouts_image
         }
 
         let sproutIndex = sprouts.findIndex( ({sproutId}) => sproutId === sprout.sproutId)

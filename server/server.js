@@ -16,8 +16,7 @@ const {
   updateSproutWateringInterval,
   getAlert,
   deleteAlert,
-  getPlantInfo,
-  getUserSproutsList
+  getPlantInfo
 } = require('./pgHelper');
 const {
   response
@@ -114,12 +113,9 @@ app.put('/plant-profile', async (req, res) => {
     type: req.body.type,
     wateringInterval: req.body.wateringInterval,
     notes: req.body.notes,
-    imageUrl: req.body.imageUrl,
-    userId: req.body.userId
+    imageUrl: req.body.imageUrl
   }
   await updateSprout(param);
   let updatedSprout = await getSproutById(req.body.sproutId);
-  let updatedSproutList = await getUserSproutsList(req.body.userId);
-  console.log(updatedSproutList)
-  res.json({'updated': updatedSprout, 'userSprouts': updatedSproutList})
+  res.json(updatedSprout)
 })
