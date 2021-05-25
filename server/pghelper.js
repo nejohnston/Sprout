@@ -31,8 +31,15 @@ let getUser = async (username, password) => {
   const query = {
     text: `SELECT application_user.application_user_id, team_id, application_user_username,
       convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') as application_user_password,
-      application_user_preferred_name, application_user_points, application_user_image
+      application_user_preferred_name, application_user_points, application_user_image,
+      user_sprouts_date_added, user_sprouts_family, user_sprouts_given_name, user_sprouts_id,
+      user_sprouts_image, user_sprouts_is_watered, user_sprouts_last_watered,
+      user_sprouts_next_alert_date, user_sprouts_notes, user_sprouts_type,
+      user_sprouts_watering_intervals
       FROM application_user
+      JOIN 
+      (SELECT * FROM user_sprouts) AS user_sprouts_result
+      ON user_sprouts_result.application_user_id = application_user.application_user_id
       WHERE application_user_username = $1 
       AND convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') = $2;`,
     values: [username, password]
@@ -117,7 +124,7 @@ let getUserSprouts = async (userId) => {
   return (
     await client
     .query(query)
-    .then(res => res.rows[0])
+    .then(res => res.rows)
     .catch(err => console.log(err)))
 }
 
@@ -128,6 +135,7 @@ let getUserSprouts = async (userId) => {
  * @returns - success response.
  */
 let createSprout = async (sprout) => {
+  console.log("waterInterval" + sprout.userId)
   const query = {
     text: `INSERT INTO USER_SPROUTS VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, DEFAULT);`,
     values: [
@@ -193,46 +201,23 @@ let getSproutById = async (sproutId) => {
  * delete a user's sprouts.
  * @returns - success message.
  */
-let deleteSprout = async (userId, sproutId) => {
-  console.log("userId pghelper" + userId)
-  console.log("userId pghelper" + sproutId)
-  const queryDeleteUserSproutAlert = {
+let deleteSprout = async (sprout) => {
+  const query = {
     text: `
-    DELETE FROM 
-    ALERTS
-    WHERE 
-    USER_SPROUTS_ID = (SELECT USER_SPROUTS.USER_SPROUTS_ID
-      FROM USER_SPROUTS
-      JOIN ALERTS
-      ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
-      WHERE APPLICATION_USER_ID = $1
-      AND ALERTS.USER_SPROUTS_ID = $2);
-      `,
-    values: [
-      userId,
-      sproutId
-      ]
-  }
-  const queryDeleteUserSprout = {
-    text: `
-      DELETE FROM user_sprouts WHERE
+      DELETE FROM USER_SPROUTS WHERE
       application_user_id=$1 
-      AND user_sprouts_id=$2;
+      AND user_sprouts_given_name=$2;
       `,
     values: [
-      userId,
-      sproutId
-      ]
-    }
+      sprout.userId,
+      sprout.name
+    ]
+  }
+  return (
     await client
-    .query(queryDeleteUserSproutAlert)
+    .query(query)
     .then(res => console.log(res))
-    .catch(err => console.log(err))
-
-    await client
-    .query(queryDeleteUserSprout)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    .catch(err => console.log(err)))
 }
 
 // UPDATE IS_WATERED
@@ -279,8 +264,7 @@ let getAlert = async (userId) => {
     FROM APPLICATION_USER
 	    JOIN USER_SPROUTS ON APPLICATION_USER.APPLICATION_USER_ID = USER_SPROUTS.APPLICATION_USER_ID
 	    JOIN ALERTS ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
-    WHERE APPLICATION_USER.APPLICATION_USER_ID = $1;
-    `,
+    WHERE APPLICATION_USER.APPLICATION_USER_ID = $1;`,
     values: [userId]
   }
   return (

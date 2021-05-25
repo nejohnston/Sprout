@@ -65,24 +65,22 @@ const Login = (props) => {
                       user.points = userData.application_user_points;
                       user.team = userData.team_id;
                       user.profilePicture = userData.application_user_image;
-                      let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
-                      // if (userSproutsResponse.length > 0) {
-                      //   userSproutsResponse.forEach((element) => {
-                      //   sprouts.push({
-                      //     sproutId: element.user_sprouts_id,
-                      //     image_url: element.user_sprouts_image,
-                      //     name: element.user_sprouts_given_name,
-                      //     type: element.user_sprouts_type,
-                      //     family: element.user_sprouts_family,
-                      //     wateringInterval:
-                      //       element.user_sprouts_watering_intervals,
-                      //     notes: element.user_sprouts_notes,
-                      //     isWatered: element.user_sprouts_is_watered,
-                      //     dateAdded: element.user_sprouts_date_added,
-                      //     lastWatered: element.user_sprouts_last_watered,
-                      //     nextAlert: element.user_sprouts_next_alert_date,
-                      //   });
-                      // });}
+                      data.forEach((element) => {
+                        sprouts.push({
+                          sproutId: element.user_sprouts_id,
+                          image_url: element.user_sprouts_image,
+                          name: element.user_sprouts_given_name,
+                          type: element.user_sprouts_type,
+                          family: element.user_sprouts_family,
+                          wateringInterval:
+                            element.user_sprouts_watering_intervals,
+                          notes: element.user_sprouts_notes,
+                          isWatered: element.user_sprouts_is_watered,
+                          dateAdded: element.user_sprouts_date_added,
+                          lastWatered: element.user_sprouts_last_watered,
+                          nextAlert: element.user_sprouts_next_alert_date,
+                        });
+                      });
                       props.history.push("/profile");
                     } catch {
                       setValidation(false);
