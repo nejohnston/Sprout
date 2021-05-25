@@ -44,11 +44,8 @@ const PlantProfilePage = () => {
   let sproutParam = parseInt(useParams().sproutId);
   let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
 
-  console.log(currSprout)
   // Declare state of current sprout
   const [thisSprout, setThisSprout] = useState(currSprout)
-
-  console.log(thisSprout)
 
   return (
     <div id="container">
