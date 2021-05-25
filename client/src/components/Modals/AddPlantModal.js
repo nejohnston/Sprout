@@ -26,7 +26,7 @@ import { UserContext, SproutContext } from "../Layout/Layout";
 
 const AddPlantModal = ({ type, family }) => {
   const [show, setShow] = useState(false);
-  const [imageSelected, setImageSelected] = useState(""); // image selected states for file input
+  const [imageSelected, setImageSelected] = useState("https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png"); // image selected states for file input
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [user, setUser] = useContext(UserContext);
@@ -64,21 +64,19 @@ const AddPlantModal = ({ type, family }) => {
         <Formik
           onSubmit={
             (values) => {
-              setSprouts([...sprouts, values])
-            // console.log(values.wateringInterval) &&
-            // fetch("http://localhost:3001/profile/", {
-            //   method: "POST",
-            //   body: JSON.stringify(values),
-            //   headers: {
-            //     "Content-Type": "application/json",
-            //   },
-            // })
-            //   .then((result) =>
-            //     result.ok
-            //       ? setSprouts([...sprouts, values])
-            //       : result && console.log(sprouts)
-            //   )
-            //   .catch((error) => console.log("Error creating Sprout: ", error));
+            fetch("http://localhost:3001/profile/", {
+              method: "POST",
+              body: JSON.stringify(values),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then((result) =>
+                result.ok
+                  ? setSprouts([...sprouts, values])
+                  : result && console.log(sprouts)
+              )
+              .catch((error) => console.log("Error creating Sprout: ", error));
           }
         }
           initialValues={{
@@ -88,7 +86,7 @@ const AddPlantModal = ({ type, family }) => {
             type: "",
             wateringInterval: 0,
             notes: "",
-            image: "",
+            image: imageSelected,
           }}
         >
           {({
@@ -171,8 +169,10 @@ const AddPlantModal = ({ type, family }) => {
                   <Form.File
                     type="file"
                     id="sproutUploadPicture"
-                    onChange={(event) =>
-                      setImageSelected(event.target.files[0])
+                    onChange={(event) => {
+
+                      return(
+                      values.image = event.target.files[0])}
                     }
                   />
                 </Form.Group>

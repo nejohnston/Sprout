@@ -69,6 +69,7 @@ app.get('/sprouts/:userId', async (request, response) => {
  */
 app.post('/profile/', async (request, response) => {
   await createSprout(request.body)
+  console.log(request.body)
   response.status(200).send(`200: Sprout added successfully.`);
   // response.status(500).send(`500: server.js could not handle response.`);
 })

@@ -1,4 +1,4 @@
-// =====================================
+ // =====================================
 //               IMPORT
 // =====================================
 
@@ -15,7 +15,7 @@ import Modal from "react-bootstrap/Modal";
 
 // Styles
 import "./styles/PlantProfileSmallButtons.css";
-import { UserContext } from "../Layout/Layout";
+import { SproutContext, UserContext } from "../Layout/Layout";
 
 /**
  * Return a component with modal popup which is triggered by the Dig Up button
@@ -24,9 +24,11 @@ import { UserContext } from "../Layout/Layout";
  * @returns Dig Up component
  */
 
-const DigUp = (props, sprout) => {
+const DigUp = ( {sprout}, props) => {
+  console.log(sprout.sproutId)
   const [show, setShow] = useState(false);
-  const [sprouts, setSprouts] = useContext(UserContext);
+  const [sprouts, setSprouts] = useContext(SproutContext);
+  const user = useContext(UserContext)[0];
   const removeSproutFromContext = (sproutId) => {
     for (let index = 0; index < sprouts.length; index++) {
       if (sproutId === sprouts[index].sproutId) {
@@ -36,7 +38,7 @@ const DigUp = (props, sprout) => {
     setSprouts(sprouts);
   }
   const handleClose = () => {
-    fetch(`http://localhost3001/api/deleteSprout/${sprout.userId}/${sprout.sproutId}`)
+    fetch(`http://localhost3001/api/deleteSprout/${user.userId}/${sprout.sproutId}`)
     .then(response => console.log(response))
     .catch(error => console.log(error))
     console.log('before removal: ' + sprouts)

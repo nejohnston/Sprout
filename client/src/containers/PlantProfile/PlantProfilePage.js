@@ -45,9 +45,10 @@ const PlantProfilePage = () => {
   plantprofilejson.push(...plantprofiledata);
 
   // Retreve the correct sprout information based on the request parameter
-  let sproutParam = parseInt(useParams().sproutId);
-  let thisSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
-
+  let sproutName = useParams().sproutName
+  console.log("sproutName: "+ sproutName)
+  const thisSprout = sprouts.filter(sprout => sprout.name === sproutName)[0];
+  console.log('thisSprout' + thisSprout.sproutId)
   return (
     <div id="container">
       <div className="header_backarrow_container">
@@ -58,7 +59,7 @@ const PlantProfilePage = () => {
         <EditPlant plant={thisSprout}/>
       </div>
       <hr />
-      <PlantProfileTopOptions image_url={thisSprout["image_url"]} />
+      <PlantProfileTopOptions sprout={thisSprout} />
       <PlantInfo plant={thisSprout}/>
       <PlantDateAdded dateAdded={thisSprout["dateAdded"]}/>
       <PlantNotes plantNotes={thisSprout["notes"]}/>
