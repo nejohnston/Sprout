@@ -19,7 +19,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "./styles/PlantProfileSmallButtons.css";
 
-// User Context from Layout.js Provider
+// Sprout and User Context from Layout.js Provider
 import { SproutContext, UserContext } from "../../components/Layout/Layout";
 
 
@@ -35,17 +35,16 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
  */
 const EditPlant = ({props, sprout, updateSproutPage}) => {
 
-  // Get Auth User
+  // Get Auth User by UserContext and current sprouts by SproutContext
   let authUser = useContext(UserContext)[0];
-
   let [sprouts, setSprouts] = useContext(SproutContext);
 
-  // States for showing and hiding the modal
+  // States for modal from react-bootstrap
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // Form States
+  // Form states
   const [inputSproutName, setSproutName] = useState(sprout["name"]);
   const [inputFamily, setFamily] = useState(sprout["family"]);
   const [inputType, setType] = useState(sprout["type"]);
@@ -53,6 +52,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
   const [inputNotes, setNotes] = useState(sprout["notes"])
   const [selectedSproutPic, setSelectedSproutPic] = useState(sprout["image_url"]);
 
+  // Edit Sprout function upon form submission
   const editSprout = async () => {
     
     // Upload image to Cloudinary database, code adapted from PedroTech
@@ -78,6 +78,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
     })
       .then(res => {
 
+        // Create the updated sprout Object
         let updatedSprout = {...sprout,
           name: res.data.user_sprouts_given_name,
           family: res.data.user_sprouts_family,
@@ -87,10 +88,12 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
           image_url: res.data.user_sprouts_image
         }
 
+        // Find the current sprout in SproutContext and update the sprout Object
         let sproutIndex = sprouts.findIndex( ({sproutId}) => sproutId === sprout.sproutId)
         let updatedSprouts = [...sprouts];
         updatedSprouts[sproutIndex] = updatedSprout;
 
+        // Change the states of the Sprout Profile Page and Sprout Context
         updateSproutPage(updatedSprout);
         setSprouts(updatedSprouts);
 

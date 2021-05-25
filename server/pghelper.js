@@ -154,7 +154,12 @@ let createSprout = async (sprout) => {
     .catch(err => console.log(err)))
 }
 
-// EDIT USER SPROUT
+// UPDATE USER SPROUT
+/**
+ * Update a specific user sprout with the given sprout details.
+ * @param {Object} sprout - new sprout props to be submitted to the database.
+ * @returns - None, updates the database, will console log to confirm update.
+ */
 let updateSprout = async (sprout) => {
   const query = {
     text: `UPDATE USER_SPROUTS 

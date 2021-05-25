@@ -104,7 +104,10 @@ app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })
 
-// EDIT EXISTING USER SPROUT
+// UPDATE EXISTING USER SPROUT
+/**
+ * Updates the information of a user's sprout submitted from EditPlant Component.
+ */
 app.put('/plant-profile', async (req, res) => {
   let param = {
     id: req.body.sproutId,
