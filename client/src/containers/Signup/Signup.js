@@ -31,8 +31,13 @@ const Signup = () => {
       username: inputUsername,
       password: inputPassword,
     }).then((res) => {
-      window.sessionStorage.setItem("userName", res.data[0]);
-      window.location = "/join-team";
+      if (res.data) {
+        window.sessionStorage.setItem("userName", res.data[0]);
+        window.location = "/join-team";
+      }
+      else {
+        
+      }
     });
   };
 
