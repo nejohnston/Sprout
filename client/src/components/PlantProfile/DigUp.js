@@ -37,14 +37,16 @@ const DigUp = ( {sprout}, props) => {
     setSprouts(sprouts);
   }
   const handleClose = () => {
+    setShow(false)
+  };
+  const handleSubmit = () => {
     fetch(`/sprouts/${user.userId}/${sprout.sproutId}`, {
       method: "DELETE"
     })
     .then(response => console.log(response))
     .catch(error => console.log(error));
     removeSproutFromContext(sprout.sproutId)
-    setShow(false)
-  };
+  }
   const handleShow = () => setShow(true);
 
   return (
@@ -77,7 +79,7 @@ const DigUp = ( {sprout}, props) => {
           <Link to="/profile">
           <Button
             variant="primary"
-            onClick={handleClose}
+            onClick={handleSubmit}
             className="custom-primary-button"
           >
             Confirm
