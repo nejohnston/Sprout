@@ -52,6 +52,10 @@ const JoinTeam = () => {
         preferredName: chosenPreferredName,
         team: selectedTeam
       })
+      .then(res => {
+        window.location = `/login/${res.data.userName}/${res.data.userPassword}`;
+        console.log(res.data.userName);
+      })
     }
   }
 

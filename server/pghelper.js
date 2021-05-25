@@ -71,8 +71,9 @@ let getUserById = async (userId) => {
 
 // CREATE USER
 let createUser = async (userInfo) => {
+  console.log(userInfo);
   const query = {
-    text: "INSERT INTO application_user VALUES (DEFAULT, $1, $2, $3, $4, DEFAULT);",
+    text: "INSERT INTO application_user VALUES ((SELECT MAX(APPLICATION_USER_ID) + 1 FROM APPLICATION_USER), $1, $2, $3, $4, DEFAULT, DEFAULT);",
     values: [
       userInfo.userTeam,
       userInfo.userName,
@@ -83,7 +84,7 @@ let createUser = async (userInfo) => {
   return (
     await client
     .query(query)
-    .then(res => res.send('User Added Successfully'))
+    .then(res => userInfo)
     .catch(err => console.log(err)))
 }
 

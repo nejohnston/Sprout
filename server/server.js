@@ -21,6 +21,7 @@ const {
 const {
   response
 } = require('express');
+const { sign } = require('crypto');
 const port = 3001;
 let app = express();
 app.use(express.urlencoded({
@@ -55,6 +56,7 @@ app.get('/login/:username/:password', async (request, response) => {
 
 let signup = []
 app.post('/signup', async (req, res) => {
+  signup = [];
   signup.push(req.body.username);
   signup.push(req.body.password);
   res.json(signup);
@@ -62,7 +64,17 @@ app.post('/signup', async (req, res) => {
 })
 
 app.post('/join-team', async (req, res) => {
-  console.log(req.body);
+  signup.push(req.body.preferredName);
+  signup.push(req.body.team);
+  let userInfo = {
+    userName: signup[0],
+    userPassword: signup[1],
+    userPreferredName: signup[2],
+    userTeam: signup[3],
+  }
+  await createUser(userInfo);
+  res.json(userInfo);
+  res.redirect(`/login/${userInfo.userName}/${userInfo.userPassword}`)
 })
 
 // UPDATE USER PROFILE
