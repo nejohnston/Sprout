@@ -68,7 +68,7 @@ const Login = (props) => {
                       data.forEach((element) => {
                         sprouts.push({
                           sproutId: element.user_sprouts_id,
-                          image_url: element.user_sprouts_image,
+                          imageUrl: element.user_sprouts_image,
                           name: element.user_sprouts_given_name,
                           type: element.user_sprouts_type,
                           family: element.user_sprouts_family,
