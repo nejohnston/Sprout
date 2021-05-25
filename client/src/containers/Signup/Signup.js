@@ -5,7 +5,6 @@
 
 // React
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 // Axios
 import Axios from 'axios';
@@ -17,6 +16,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // Styles
 import "./Signup.css";
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
 
 const Signup = () => {
 
@@ -34,8 +37,6 @@ const Signup = () => {
       window.location = '/join-team'
     })
   }
-
-
 
   return (
     <div id="login-container">
@@ -55,6 +56,7 @@ const Signup = () => {
               <Form.Control type="password" placeholder="Enter Password" name="new_user_password"
               defaultValue={inputPassword} onChange={e => setPassword(e.target.value)}/>
             </Form.Group>
+
               <Button
                 variant="primary"
                 type="button"
