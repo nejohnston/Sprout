@@ -13,10 +13,10 @@ import EditButton from "../../config/assets/icons/pen.svg";
 
 //Bootstrap
 import Button from 'react-bootstrap/Button';
-
-// Styling
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+
+// Styling
 import "./styles/PlantProfileSmallButtons.css";
 
 // Sprout and User Context from Layout.js Provider

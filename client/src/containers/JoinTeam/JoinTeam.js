@@ -1,26 +1,30 @@
 // ====================================
-//            REACT IMPORTS
+//             IMPORT
 // ====================================
-import React from "react";
-import { Link } from "react-router-dom";
 
-// ====================================
-//          BOOTSTRAP IMPORTS
-// ====================================
+// React
+import React, { useState } from "react";
+
+// Axios
+import Axios from "axios";
+
+// Bootstrap
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// ====================================
-//         STYLESHEET IMPORTS
-// ====================================
+// Styling
 import "./JoinTeam.css";
 
-// ====================================
-//          ASSET IMPORTS
-// ====================================
+// Assets
 import team1 from "../../config/assets/icons/team1.svg";
 import team2 from "../../config/assets/icons/team2.svg";
 import team3 from "../../config/assets/icons/team3.svg";
+
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
 
 /**
  * Returns the Join Team page, which is itself a component
@@ -29,55 +33,98 @@ import team3 from "../../config/assets/icons/team3.svg";
  */
 
 const JoinTeam = () => {
+
+  // Form States
+  const [chosenPreferredName, setChosenPreferredName] = useState("");
+  const [selectedTeam, setSelectedTeam] = useState("");
+  
+  // Post User's chosen name and team number if the fields are filled in
+  const submitUserInfo = () => {
+
+    if (selectedTeam == "" && chosenPreferredName == ""){
+      alert("Hold on... you didn't fill this in at all! You thought we wouldn't notice? Please try again.")
+    } else if (selectedTeam == "") {
+      alert("You didn't choose a team! Please choose a team. :)")
+    } else if (chosenPreferredName == "") {
+      alert("You don't have a name! Please submit a valid preferred name.")
+    } else {
+      Axios.post('/join-team', {
+        preferredName: chosenPreferredName,
+        team: selectedTeam
+      })
+    }
+  }
+
   return (
     <div id="container">
-      <h1>Choose Your Team!</h1>
+      <h1>Almost There!</h1>
       <hr />
-      <Form.Group>
-        <strong>
-          <p id="name-text">Your Preferred Name</p>
-        </strong>
-        <Form.Control type="text" placeholder="Enter your name..." />
-      </Form.Group>
-      <hr />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <div id="teams">
-        <div className="team-info">
-          <div className="team-block">
+      <Form>
+        <Form.Group>
+          <strong>
+            <p id="name-text">Tell us your Preferred Name</p>
+          </strong>
+          <Form.Control type="text" placeholder="Enter your name..." required 
+          defaultValue={chosenPreferredName} onChange={e => setChosenPreferredName(e.target.value)}/>
+        </Form.Group>
+        <hr />
+        <p>
+          <strong>Join a Sprout team!</strong>
+          <br/><span id="team-note">(Choose wisely, this cannot be modified)</span>
+        </p>
+
+        <Form.Group controlId="teamSelect" className="teams-form-group">
+          <div id="select-teams">
+          <input type="radio" id="team-1" name="team" required/>
+          <label htmlFor="team-1" onClick={() => setSelectedTeam(1)}>
             <div className="team-pic-bg">
-              <Link to="/profile">
-                <img src={team1} alt="" className="team-pic"></img>
-              </Link>
+              <img src={team1} alt="" className="team-pic"></img>
             </div>
-            <strong>
-              <p>Team 1</p>
-            </strong>
-          </div>
-          <div className="team-block">
+          </label>
+          <strong>
+            <p>Team 1</p>
+          </strong>
+          
+          <input type="radio" id="team-2" name="team" />
+          <label htmlFor="team-2" onClick={() => setSelectedTeam(2)}>
             <div className="team-pic-bg">
-              <Link to="/profile">
-                <img src={team2} alt="" className="team-pic"></img>
-              </Link>
+              <img src={team2} alt="" className="team-pic"></img>
             </div>
-            <strong>
-              <p>Team 2</p>
-            </strong>
-          </div>
-          <div className="team-block">
+          </label>
+          <strong>
+            <p>Team 2</p>
+          </strong>
+
+          <input type="radio" id="team-3" name="team" />
+          <label htmlFor="team-3" onClick={() => setSelectedTeam(3)}>
             <div className="team-pic-bg">
-              <Link to="/profile">
-                <img src={team3} alt="" className="team-pic"></img>
-              </Link>
+              <img src={team3} alt="" className="team-pic"></img>
             </div>
-            <strong>
-              <p>Team 3</p>
-            </strong>
+          </label>
+          <strong>
+            <p>Team 3</p>
+          </strong>
           </div>
+
+        </Form.Group>
+
+        <div id="teams">
+
+
         </div>
-      </div>
+      <div id="submitUser-btn">
+        <Button
+
+          variant="primary"
+          type="button"
+          className="custom-primary-button"
+          onClick={submitUserInfo}
+        >
+          Confirm
+        </Button>
+        </div>
+
+      </Form> 
       <div id="vector-bg"></div>
     </div>
   );

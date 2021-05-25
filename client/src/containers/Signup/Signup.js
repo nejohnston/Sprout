@@ -4,7 +4,6 @@
 
 // React
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 // Axios
 import Axios from "axios";
@@ -16,6 +15,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // Styles
 import "./Signup.css";
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
 
 const Signup = () => {
   // Form States
