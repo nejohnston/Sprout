@@ -44,7 +44,7 @@ const PlantProfilePage = () => {
   let sproutName = useParams().sproutName
   console.log("sproutName: "+ sproutName)
   const currSprout = sprouts.filter(sprout => sprout.name === sproutName)[0];
-  console.log('thisSprout' + currSprout.sproutId)
+  // console.log('thisSprout' + currSprout.sproutId)
   // let sproutParam = parseInt(useParams().sproutId);
   // let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
 

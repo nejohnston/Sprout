@@ -37,15 +37,11 @@ const DigUp = ( {sprout}, props) => {
     setSprouts(sprouts);
   }
   const handleClose = () => {
-    fetch(`http://localhost3001/sprouts/${user.userId}/${sprout.sproutId}`, {
-      method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user.userId, sprout.sproutId)
+    fetch(`/sprouts/${user.userId}/${sprout.sproutId}`, {
+      method: "DELETE"
     })
     .then(response => console.log(response))
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
     removeSproutFromContext(sprout.sproutId)
     setShow(false)
   };

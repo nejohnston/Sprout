@@ -47,11 +47,10 @@ app.use(express.static(buildPath));
 app.get('/login/:username/:password', async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
   console.log(user);
-  
-  if(user.length > 0) {
-    response.json(user);
+  let responseJson = response.json(user)
+  if(responseJson.length > 0) {
+    responseJson;
   }
-  response.redirect('/signup');
 });
 
 app.post('/signup', async (req, res) => {
@@ -63,13 +62,12 @@ app.post('/signup', async (req, res) => {
  * returns response with user's Information
  */
 app.put('/profile', async (req, res) => {
-  // console.log(req.body);
   let param = {
     id: req.body.userId,
     imageUrl: req.body.profilePic,
     userPrefName: req.body.newUserPrefName
   }
-  console.log(param);
+  // console.log(param);
   await updateUserProfile(param);
   let userInfo = await getUserById(req.body.userId);
   res.json(userInfo);
@@ -106,8 +104,8 @@ app.post('/profile/', async (request, response) => {
  * @returns - success or fail message.
  */
 app.delete('/sprouts/:userId/:sproutId', async (request, response) => {
-  console.log('userID' + request.params.userId)
-  console.log('sproutID' + request.params.sproutId)
+  // console.log('userID' + request.params.userId)
+  // console.log('sproutID' + request.params.sproutId)
   await deleteSprout(request.params.userId, request.params.sproutId);
   response.status(200).send(`200: Sprout deleted successfully.`)})
   

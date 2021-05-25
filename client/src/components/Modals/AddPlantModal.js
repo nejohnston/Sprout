@@ -49,6 +49,7 @@ const AddPlantModal = ({ type, family}) => {
     };
     setTimeout(() => {sproutObject["image_url"] = img_url}, 1000);
     setTimeout(() => {setSprouts([...sprouts, sproutObject])}, 1100);
+    
     handleClose();
   };
 
@@ -86,19 +87,19 @@ const AddPlantModal = ({ type, family}) => {
           // onSubmit={(values) => {
             // setSprouts([...sprouts, values]);
             // console.log(values.wateringInterval) &&
-            // fetch("http://localhost:3001/profile/", {
-            //   method: "POST",
-            //   body: JSON.stringify(values),
-            //   headers: {
-            //     "Content-Type": "application/json",
-            //   },
-            // })
-            //   .then((result) =>
-            //     result.ok
-            //       ? setSprouts([...sprouts, values])
-            //       : result && console.log(sprouts)
-            //   )
-            //   .catch((error) => console.log("Error creating Sprout: ", error));
+          //   fetch("http://localhost:3001/profile/", {
+          //     method: "POST",
+          //     body: JSON.stringify(values),
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //   })
+          //     .then((result) =>
+          //       result.ok
+          //         ? setSprouts([...sprouts, values])
+          //         : result && console.log(sprouts)
+          //     )
+          //     .catch((error) => console.log("Error creating Sprout: ", error));
           // }}
           initialValues={{
             userId: user.userId,
