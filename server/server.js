@@ -51,7 +51,7 @@ app.get('/login/:username/:password', async (request, response) => {
   if(user.length > 0) {
     response.json(user);
   }
-  response.redirect('/signup');
+  // response.redirect('/signup');
 });
 
 let signup = []
