@@ -38,37 +38,35 @@ const ProfilePage = ({ userContext }) => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
 
-  const [newSprouts, setNewSprouts] = useContext(NewSproutContext);
-
-  const [saveSprout, setSaveSprout] = useState(false);
+  // const [saveSprout, setSaveSprout] = useState(false);
 
   // This is to prevent the useEffect hook from firing on each mount of the AddPlant modal
 
-  const useMountedRef = () => {
-    const mountedRef = useRef(false);
-    useEffect(() => {
-      setTimeout(() => {
-        mountedRef.current = true;
-      });
-    }, []);
+  // const useMountedRef = () => {
+  //   const mountedRef = useRef(false);
+  //   useEffect(() => {
+  //     setTimeout(() => {
+  //       mountedRef.current = true;
+  //     });
+  //   }, []);
 
-    return mountedRef;
-  };
+  //   return mountedRef;
+  // };
 
-  const mountedRef = useMountedRef();
+  // const mountedRef = useMountedRef();
 
-  useEffect(() => {
-    if (mountedRef.current) {
-      console.log("hello")
-    }
-  }, [saveSprout]);
+  // useEffect(() => {
+  //   if (mountedRef.current) {
+  //     console.log("hello")
+  //   }
+  // }, [saveSprout]);
 
-  const addsprout = () => setSaveSprout(true);
-  const resetsproutstate = () => {
-    if (saveSprout === true) {
-      setSaveSprout(false);
-    }
-  };
+  // const addsprout = () => setSaveSprout(true);
+  // const resetsproutstate = () => {
+  //   if (saveSprout === true) {
+  //     setSaveSprout(false);
+  //   }
+  // };
 
   return (
     <>
@@ -76,10 +74,7 @@ const ProfilePage = ({ userContext }) => {
         <div id="container">
           <div id="profile-header">
             <h1 id="profile-h1">My Sprouts</h1>
-            <AddPlantModal
-              addSprout={addsprout}
-              resetSproutState={resetsproutstate}
-            />
+            <AddPlantModal/>
           </div>
 
           <hr />

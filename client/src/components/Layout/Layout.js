@@ -26,21 +26,17 @@ const initialState = {
     sprouts: [],
   },
   sprouts: [],
-  newSprouts: [],
 };
 // UserContext
 export const UserContext = createContext();
 
 // SproutContext
 export const SproutContext = createContext();
-export const NewSproutContext = createContext();
 const Layout = ({ children }) => {
   const [user, setUser] = useState(initialState.user);
   const [sprouts, setSprouts] = useState(initialState.sprouts);
-  const [newSprouts, setNewSprouts] = useState(initialState.newSprouts);
   return (
     <UserContext.Provider value={[user, setUser]}>
-      <NewSproutContext.Provider value={[newSprouts, setNewSprouts]}>
         <SproutContext.Provider value={[sprouts, setSprouts]}>
           {window.location.pathname === "/asdfasdfasdfasdfsadfsafdasdf" ? (
             <div className="easterEgg">{children}</div>
@@ -55,7 +51,6 @@ const Layout = ({ children }) => {
             <NavBar />
           ) : null}
         </SproutContext.Provider>
-      </NewSproutContext.Provider>
     </UserContext.Provider>
   );
 };
