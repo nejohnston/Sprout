@@ -18,24 +18,40 @@ import addButton from "../../config/assets/icons/addbutton.svg";
 import "./styles/AddPlantModal.css";
 
 // Other imports
-import { UserContext, SproutContext } from "../Layout/Layout";
+import { NewSproutContext, UserContext, SproutContext } from "../Layout/Layout";
 
 // ========================================
 //        Component Code
 // ========================================
 
-const AddPlantModal = ({ type, family, addSprout, resetSproutState }) => {
+const AddPlantModal = ({ type, family}) => {
   const [show, setShow] = useState(false);
   const [imageSelected, setImageSelected] = useState(""); // image selected states for file input
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const resetModal = () => {
-    addSprout();
-    handleClose();
-    resetSproutState();
-  }
+  let img_url = "";
+
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
+
+  const addingSprout = () => {
+    let sproutObject = {
+      dateAdded: Date(),
+      family: document.getElementById("sproutFamily").value,
+      isWatered: 0,
+      lastWatered: null,
+      name: document.getElementById("sproutName").value,
+      nextAlert: null,
+      notes: document.getElementById("sproutNotes").value,
+      sproutId: 15,
+      type: document.getElementById("sproutType").value,
+      wateringInterval: document.getElementById("sproutWateringInterval").value,
+    };
+    setTimeout(() => {sproutObject["image_url"] = img_url}, 1000);
+    setTimeout(() => {setSprouts([...sprouts, sproutObject])}, 1100);
+    handleClose();
+  };
+
   const submitForm = () => {
     // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
     let imageData = new FormData();
@@ -48,7 +64,7 @@ const AddPlantModal = ({ type, family, addSprout, resetSproutState }) => {
       imageData
     )
       .then((res) => {
-        console.log(res.data.secure_url);
+        img_url = res.data.secure_url;
       })
       .catch((err) => console.log(err));
   };
@@ -68,7 +84,7 @@ const AddPlantModal = ({ type, family, addSprout, resetSproutState }) => {
         </Modal.Header>
         <Formik
           onSubmit={(values) => {
-            setSprouts([...sprouts, values]);
+            // setSprouts([...sprouts, values]);
             // console.log(values.wateringInterval) &&
             // fetch("http://localhost:3001/profile/", {
             //   method: "POST",
@@ -181,7 +197,7 @@ const AddPlantModal = ({ type, family, addSprout, resetSproutState }) => {
                 </Form.Group>
               </Modal.Body>
               <Modal.Footer>
-                <div onClick={resetModal}>
+                <div onClick={addingSprout}>
                   <Button
                     variant="primary"
                     onClick={submitForm}
