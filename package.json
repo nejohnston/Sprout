@@ -1,8 +1,11 @@
 {
   "name": "sprout",
   "version": "0.1.0",
-  "private": true,  
+  "private": true,
   "scripts": {
     "start": "cd server && yarn install && yarn start"
+  },
+  "dependencies": {
+    "react-share": "^4.4.0"
   }
 }
