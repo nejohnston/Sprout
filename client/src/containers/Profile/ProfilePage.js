@@ -10,6 +10,7 @@ import SproutGallery from "../../components/Profile/SproutGallery";
 import ProfilePictureModal from "../../components/Profile/ProfilePictureModal";
 import Scorebar from "../../components/Profile/Scorebar";
 import AddPlantModal from "../../components/Modals/AddPlantModal";
+import SocialIcons from "../../components/Profile/SocialIcons"
 
 // Sprout and User Context from Layout.js Provider
 import { SproutContext, UserContext } from "../../components/Layout/Layout";
@@ -92,7 +93,7 @@ const ProfilePage = ({ userContext }) => {
             />
             <h5 id="my-sprouts-user-name">{userPrefNameDisplay}</h5>
           </div>
-
+          <SocialIcons shareUrl={"http://my-sprout.ca/"}/>
           <Scorebar points={points} sprouts={sprouts} />
 
           <SproutGallery sprouts={sprouts} />
