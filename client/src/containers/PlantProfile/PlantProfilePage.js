@@ -41,10 +41,10 @@ const PlantProfilePage = () => {
   let [sprouts, setSprouts] = useContext(SproutContext);
 
   // Retreve the correct sprout information based on the request parameter
-  let sproutName = useParams().sproutName
-  console.log("sproutName: "+ sproutName)
-  const currSprout = sprouts.filter(sprout => sprout.name === sproutName)[0];
-  // console.log('thisSprout' + currSprout.sproutId)
+  let sproutId = useParams().sproutId
+  console.log(sproutId)
+  const currSprout = sprouts.filter(sprout => sprout.sproutId === sproutId)[0];
+  console.log('currSprout' + currSprout)
   // let sproutParam = parseInt(useParams().sproutId);
   // let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
 

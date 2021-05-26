@@ -136,7 +136,7 @@ let getUserSprouts = async (userId) => {
  */
 let createSprout = async (sprout) => {
   const query = {
-    text: `INSERT INTO USER_SPROUTS VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, DEFAULT);`,
+    text: `INSERT INTO USER_SPROUTS VALUES ((SELECT MAX(USER_SPROUTS_ID) + 1 FROM USER_SPROUTS), $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, $7);`,
     values: [
       sprout.userId,
       sprout.name,
@@ -144,12 +144,13 @@ let createSprout = async (sprout) => {
       sprout.family,
       sprout.wateringInterval,
       sprout.notes,
+      sprout.imageUrl
     ]
   }
   return (
     await client
     .query(query)
-    .then(res => res.send('Sprout Added Successfully'))
+    .then(res => console.log(res))
     .catch(err => console.log(err)))
 }
 
