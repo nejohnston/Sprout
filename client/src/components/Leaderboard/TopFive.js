@@ -20,7 +20,7 @@ import './styles/TopFive.css';
  */
 const TopFive = ({ topfive }) => {
     return topfive.map( player => (
-        <div key={player["user_id"]}>
+        <div key={player["application_user_preferred_name"]}>
         <div className="champion-container">
             <img className="champion-img shadow-sm" src={player["application_user_image"]} alt={player["application_user_preferred_name"]}/>
             

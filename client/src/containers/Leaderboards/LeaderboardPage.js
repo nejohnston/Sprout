@@ -6,9 +6,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
-// Data (temp)
+// Data for placeholders
 import teamsData from "./team.json";
-import champions from "./champions1.json";
 
 // Components
 import TopFive from "../../components/Leaderboard/TopFive";
@@ -26,9 +25,12 @@ import "./Leaderboard.css";
  * @returns - the components of the Leaderboard Page.
  */
 const LeaderboardPage = () => {
-  const [topFiveUsers, setTopFiveUsers] = useState([]);
-  const [teamPoints, setTeamPoints] = useState([]);
 
+  // States for the page
+  const [topFiveUsers, setTopFiveUsers] = useState([]);
+  const [teamPoints, setTeamPoints] = useState(teamsData); // requires placeholder teamsData to prevent undefined errors
+
+  // Fetch data on mount of the components/page
   useEffect(() => {
     let isMounted = true;
     getTeamPoints();
@@ -38,38 +40,26 @@ const LeaderboardPage = () => {
     };
   }, []);
 
+  // Fetch top five users
   const getTopFiveUsers = async () => {
     await Axios.get("/leaderboards-topFive")
     .then((res) => {
-      // console.log(res.data);
       setTopFiveUsers(res.data)
     });
   };
 
-console.log(topFiveUsers)
-
+  // Fetch team points
   const getTeamPoints = async () => {
     await Axios.get("/leaderboards-team-points")
     .then((res) => {
-      // console.log(res.data);
       setTeamPoints(res.data)
     });
   }
 
-console.log(teamPoints)
-
-  // Temp teams data
-  let teamsDataJson = [];
-  teamsDataJson.push(...teamsData);
-  // Sort for highest teams
-  teamsDataJson.sort(
+  // Sort for highest teams among team points in order
+  teamPoints.sort(
     (a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"])
   );
-
-  // Temp champions data, should be queried using useState/useEffect
-  let championsJSON = [];
-  championsJSON.push(...champions);
-
   
   return (
     <>
