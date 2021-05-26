@@ -209,23 +209,45 @@ let getSproutById = async (sproutId) => {
  * delete a user's sprouts.
  * @returns - success message.
  */
-let deleteSprout = async (sprout) => {
-  const query = {
+let deleteSprout = async (userId, sproutId) => {
+  const queryDeleteUserSproutAlert = {
     text: `
-      DELETE FROM USER_SPROUTS WHERE
-      application_user_id=$1 
-      AND user_sprouts_given_name=$2;
+    DELETE FROM 
+    ALERTS
+    WHERE 
+    USER_SPROUTS_ID = (SELECT USER_SPROUTS.USER_SPROUTS_ID
+      FROM USER_SPROUTS
+      JOIN ALERTS
+      ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
+      WHERE APPLICATION_USER_ID = $1
+      AND ALERTS.USER_SPROUTS_ID = $2);
       `,
     values: [
-      sprout.userId,
-      sprout.name
-    ]
+      userId,
+      sproutId
+      ]
   }
-  return (
-    await client
-    .query(query)
+  const queryDeleteUserSprout = {
+    text: `
+      DELETE FROM user_sprouts WHERE
+      application_user_id=$1
+      AND user_sprouts_id=$2;
+      
+      `,
+    values: [
+      userId,
+      sproutId
+      ]
+  }
+  await client
+    .query(queryDeleteUserSproutAlert)
     .then(res => console.log(res))
-    .catch(err => console.log(err)))
+    .catch(err => console.log(err))
+
+    await client
+    .query(queryDeleteUserSprout)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
 }
 
 // UPDATE IS_WATERED
