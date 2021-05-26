@@ -36,7 +36,7 @@ const Signup = () => {
       password: inputPassword,
     })
     .then((res) => {
-      if (res.data != "Username exists") {
+      if (res.data !== "Username exists") {
         window.sessionStorage.setItem("userName", res.data[0]);
         setUserExistValidation(true);
         window.location = "/join-team";
