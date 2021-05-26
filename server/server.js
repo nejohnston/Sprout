@@ -50,10 +50,12 @@ app.use(express.static(buildPath));
  */
 app.get("/login/:username/:password", async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
+  console.log(user);
 
   if (user.length > 0) {
     response.json(user);
   }
+  // response.redirect("/signup");
 });
 
 let signup = [];
@@ -118,25 +120,26 @@ app.get("/sprouts/:userId", async (request, response) => {
  * create new user sprout.
  * @returns - success or fail message.
  */
-app.post("/profile/", async (request, response) => {
-  await createSprout(request.body);
-  response.status(200).send(`200: Sprout added successfully.`);
+app.post("/profile/", async (req, res) => {
+  console.log("THIS IS", req.body);
+
+  let param = {
+    userId: req.body.userId,
+    name: req.body.name,
+    type: req.body.type,
+    family: req.body.family,
+    wateringInterval: req.body.wateringInterval,
+    notes: req.body.notes,
+    imageUrl: req.body.imageUrl,
+  };
+  console.log(param);
+  await createSprout(param);
+  res.status(200).send(`200: Sprout added successfully.`);
+  // res.redirect("/profile/");
   // response.status(500).send(`500: server.js could not handle response.`);
 });
 
-// DELETE USER SPROUT
-/**
- * @params sprout json object
- * create new user sprout.
- * @returns - success or fail message.
- */
-app.delete('/sprouts/:userId/:sproutId', async (request, response) => {
-  // console.log('userID' + request.params.userId)
-  // console.log('sproutID' + request.params.sproutId)
-  await deleteSprout(request.params.userId, request.params.sproutId);
-  response.status(200).send(`200: Sprout deleted successfully.`)})
-  
-app.post('/alerts', async (req, res) => {
+app.post("/alerts", async (req, res) => {
   let alerts = await getAlert(req.body.userId);
   res.json(alerts);
   // let alerts = await getAlert
@@ -170,7 +173,6 @@ app.get("/leaderboards-team-points", async (req, res) => {
 rootRouter.get("(/*)?", async (req, res, next) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });
-
 app.use(rootRouter);
 
 app.listen(port, () => {

@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 // Components
 import SproutGallery from "../../components/Profile/SproutGallery";
@@ -12,8 +12,7 @@ import Scorebar from "../../components/Profile/Scorebar";
 import AddPlantModal from "../../components/Modals/AddPlantModal";
 
 // Sprout and User Context from Layout.js Provider
-import { NewSproutContext, SproutContext, UserContext } from "../../components/Layout/Layout";
-
+import { SproutContext, UserContext } from "../../components/Layout/Layout";
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -30,13 +29,20 @@ import NavItem from "react-bootstrap/esm/NavItem";
  */
 const ProfilePage = ({ userContext }) => {
   const user = useContext(UserContext)[0];
+  const [points, setPoints] = useState(user.points);
   const [sprouts, setSprouts] = useContext(SproutContext);
   const [display, setDisplay] = useState(true);
   const [userPrefNameDisplay, setPrefNameDisplay] = useState(user.name);
 
   useEffect(() => {
-    setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
-  }, []);
+
+    setPoints(user.points);
+
+  }, [sprouts])
+
+  useEffect(() => {
+    setTimeout(() => setDisplay(false), 500);
+  }, []); //after 0.5 seconds the state will be switched to false, which will allow the fetch of profile picture to complete
 
   // const [saveSprout, setSaveSprout] = useState(false);
 
@@ -74,20 +80,20 @@ const ProfilePage = ({ userContext }) => {
         <div id="container">
           <div id="profile-header">
             <h1 id="profile-h1">My Sprouts</h1>
-            <AddPlantModal/>
+            <AddPlantModal />
           </div>
 
           <hr />
 
           <div id="my-sprouts-user-container">
             <ProfilePictureModal
-              prefName={user.name }
+              prefName={user.name}
               setPrefNameDisplay={setPrefNameDisplay}
             />
             <h5 id="my-sprouts-user-name">{userPrefNameDisplay}</h5>
           </div>
 
-          <Scorebar user={user} sprouts={sprouts} />
+          <Scorebar points={points} sprouts={sprouts} />
 
           <SproutGallery sprouts={sprouts} />
           <div id="vector-bg"></div>

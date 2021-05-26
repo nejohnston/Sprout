@@ -38,19 +38,17 @@ import { SproutContext } from "../../components/Layout/Layout";
 const PlantProfilePage = () => {
 
   // Get the user's sprouts
-  let [sprouts] = useContext(SproutContext)[0];
+  let sprouts = useContext(SproutContext)[0];
+
+  console.log(sprouts)
 
   // Retreve the correct sprout information based on the request parameter
-  let sproutName = useParams().sproutName
-  console.log("sproutName: "+ sproutName)
-  const currSprout = sprouts.filter(sprout => sprout.name === sproutName)[0];
-  // console.log('thisSprout' + currSprout.sproutId)
-  // let sproutParam = parseInt(useParams().sproutId);
-  // let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
+  let sproutParam = parseInt(useParams().sproutId);
+  let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
 
   // Declare state of current sprout
   const [thisSprout, setThisSprout] = useState(currSprout)
-
+  console.log('sproutParam: ' + sproutParam)
   return (
     <div id="container">
       <div className="header_backarrow_container">

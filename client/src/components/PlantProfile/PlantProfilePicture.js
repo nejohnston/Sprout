@@ -19,16 +19,16 @@ import "./styles/PlantProfilePicture.css";
  * 
  * The image will lightbox, due to the incorporation of FS lightbox
  * 
- * @param {String} image_url - string with the url of the image to be rendered
+ * @param {String} imageUrl - string with the url of the image to be rendered
  * @returns the Plant Profile component
  */
 
-const PlantProfilePicture = ({ image_url }) => {
+const PlantProfilePicture = ({ imageUrl }) => {
   const [toggler, setToggler] = useState(false);
   return (
     <>
-      <img src={image_url} id="plant-profile-picture" className="shadow-sm" alt="" onClick={() => setToggler(!toggler)} />
-      <FsLightbox toggler={toggler} sources={[<img src={image_url} alt=""/>]} />
+      <img src={imageUrl} id="plant-profile-picture" className="shadow-sm" alt="" onClick={() => setToggler(!toggler)} />
+      <FsLightbox toggler={toggler} sources={[<img src={imageUrl} alt=""/>]} />
     </>
   );
 };
