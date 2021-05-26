@@ -36,38 +36,6 @@ const LeaderboardPage = () => {
     getTopFiveUsers();
   }, []);
 
-<<<<<<< HEAD
-  let championsJSON = [];
-  const getTopFiveUsers = async () => {
-    await Axios.get("/leaderboards-topFive")
-    .then((res) => {
-      console.log(res.data);
-      championsJSON.push(res.data)
-    });
-  };
-
-  let teamsDataJson = [];
-  const getTeamPoints = async () => {
-    await Axios.get("/leaderboards-team-points")
-    .then((res) => {
-      console.log(res.data);
-      teamsDataJson.push(res.data)
-    });
-  }
-
-  // Temp teams data
-  // let teamsDataJson = [];
-  // teamsDataJson.push(...teamsData);
-  // // Sort for highest teams
-  // teamsDataJson.sort(
-  //   (a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"])
-  // );
-
-  // Temp champions data, should be queried using useState/useEffect
-  // let championsJSON = [];
-  // championsJSON.push(...champions);
-
-=======
   // Fetch top five users
   const getTopFiveUsers = async () => {
     await Axios.get("/leaderboards-topFive")
@@ -88,7 +56,6 @@ const LeaderboardPage = () => {
   teamPoints.sort(
     (a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"])
   );
->>>>>>> 27fae5ab6574786a9ff21afdae8c289b5686b352
   
   return (
     <>
