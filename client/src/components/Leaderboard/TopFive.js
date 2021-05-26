@@ -22,7 +22,7 @@ const TopFive = ({ topfive }) => {
     return topfive.map( player => (
         <div key={player["user_id"]}>
         <div className="champion-container">
-            <img className="champion-img shadow-sm" src={player["application_user_img"]} alt={player["application_user_preferred_name"]}/>
+            <img className="champion-img shadow-sm" src={player["application_user_image"]} alt={player["application_user_preferred_name"]}/>
             
             <p className="champion-username"><strong>{player["application_user_preferred_name"]}</strong></p>
             <p className="champion-points">{player["application_user_points"]}</p>

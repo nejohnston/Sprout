@@ -76,12 +76,12 @@ const LeaderboardPage = () => {
         </div>
 
         <hr />
-        <LeaderboardTogglers teams={championsJSON} />
+        <LeaderboardTogglers teams={teamPoints} />
       </div>
 
       <div id="top-five-container">
         <p id="top-five-header">Leading Sprout Gardeners</p>
-        <TopFive topfive={teamsDataJson} />
+        <TopFive topfive={topFiveUsers} />
 
         <div id="leaderboard-nav-block"></div>
       </div>
