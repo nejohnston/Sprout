@@ -38,7 +38,9 @@ import { SproutContext } from "../../components/Layout/Layout";
 const PlantProfilePage = () => {
 
   // Get the user's sprouts
-  let [sprouts, setSprouts] = useContext(SproutContext);
+  let sprouts = useContext(SproutContext)[0];
+
+  console.log(sprouts)
 
   // Retreve the correct sprout information based on the request parameter
   let sproutParam = parseInt(useParams().sproutId);

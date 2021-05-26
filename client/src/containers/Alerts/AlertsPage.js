@@ -3,18 +3,21 @@
 // ====================================
 
 // React
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from "axios";
 
 // Components
 import SproutTip from '../../components/Alerts/SproutTip';
 import WaterAlerts from '../../components/Alerts/WaterAlerts';
 
-// Data (temp)
+// Data
 import sproutTips from '../../config/data/sprout-tips.json';
-import alertPlants from './alerts.json';
 
 // Styles
 import './AlertsPage.css';
+
+// Assets
+import plantyDance from '../../config/assets/gifs/planty-dance.gif';
 
 
 
@@ -27,6 +30,22 @@ import './AlertsPage.css';
  * @returns - the components of Alerts Page.
  */
 const AlertsPage = () => {
+
+  const [alertPlants, setAlertPlants] = useState([]);
+  
+  useEffect(() => {
+    let isMounted = true;
+    getAlerts()
+    return () => {isMounted = false};
+  }, []);
+  const getAlerts = async () => {
+    await Axios.post('/alerts', {
+      userId: window.sessionStorage.getItem('userId')
+    })
+    .then(res => {
+      setAlertPlants(res.data);
+    })
+  }
 
   return (
   <div id="container">
@@ -41,7 +60,16 @@ const AlertsPage = () => {
 
     <SproutTip tips={sproutTips}/>
 
-    <WaterAlerts plants={alertPlants}/>
+    {alertPlants.length === 0 && (
+      <div id="empty-alerts">
+      <img src={plantyDance} alt="planty-dance" id="planty-dance"/>
+      <strong>
+        Pat yourself on the back, <br/> all your plants are watered!
+      </strong>
+      </div>
+    )}
+
+    <WaterAlerts plants={alertPlants} setAlerts={setAlertPlants}/>
   
     </div>
 

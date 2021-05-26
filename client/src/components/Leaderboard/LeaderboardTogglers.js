@@ -10,7 +10,7 @@ import "./styles/LeaderboardTogglers.css";
 
 /**
  * Return the top component of the Leaderboard screen
- * 
+ *
  * Based on which team has the most points, the images will be rendered with the appropriate team data
  * @param {Array} teams - a sorted array containing objects with team data (points in descending order), to be used as props
  * @returns the top component of the Leaderboard screen
@@ -24,14 +24,12 @@ const LeaderboardTogglers = ({ teams }) => {
   return (
     <>
       <div id="leaderboard-togglers-container">
-        <div
-          className="team-toggler-container leaderboard-team-lower"
-        >
+        <div className="team-toggler-container leaderboard-team-lower">
           <div className="leaderboard-white-bg">
             <div
               className=""
               style={{
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[1]["img_url"]})`,
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[1]["team_image_url"]})`,
                 backgroundRepeat: "no-repeat",
                 height: "6rem",
                 width: "6rem",
@@ -54,7 +52,7 @@ const LeaderboardTogglers = ({ teams }) => {
             <div
               className=""
               style={{
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[0]["img_url"]})`,
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[0]["team_image_url"]})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 height: "8rem",
@@ -73,14 +71,12 @@ const LeaderboardTogglers = ({ teams }) => {
           <p className="leaderboard-names">{teams[0]["team_name"]}</p>
         </div>
 
-        <div
-          className="team-toggler-container leaderboard-team-lower"
-        >
+        <div className="team-toggler-container leaderboard-team-lower">
           <div className="leaderboard-white-bg">
             <div
               className=""
               style={{
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[2]["img_url"]})`,
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[2]["team_image_url"]})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 height: "6rem",

@@ -2,6 +2,24 @@
     height: 5.5em;
 }
 
+#empty-alerts {
+    padding: 3rem;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#planty-dance {
+    opacity: 95%;
+    width: 7rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
 @media (min-width: 768px) {
     #alerts-container {
         margin: 0em 2.5rem;

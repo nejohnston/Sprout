@@ -13,10 +13,10 @@ import EditButton from "../../config/assets/icons/pen.svg";
 
 //Bootstrap
 import Button from 'react-bootstrap/Button';
-
-// Styling
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+
+// Styling
 import "./styles/PlantProfileSmallButtons.css";
 
 // Sprout and User Context from Layout.js Provider
@@ -72,7 +72,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
       type: inputType,
       wateringInterval: inputWateringInterval,
       notes: inputNotes,
-      imageUrl: uploadRes.data.secure_url,
+      imageUrl: uploadRes.data.secure_url
     })
       .then(res => {
 
@@ -87,7 +87,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
         }
 
         // Find the current sprout in SproutContext and update the sprout Object
-        let sproutIndex = sprouts.findIndex( ({sproutId}) => sproutId === sprout.sproutId)
+        let sproutIndex = sprouts.findIndex( ({sproutId}) => sproutId === sprout.sproutId);
         let updatedSprouts = [...sprouts];
         updatedSprouts[sproutIndex] = updatedSprout;
 
