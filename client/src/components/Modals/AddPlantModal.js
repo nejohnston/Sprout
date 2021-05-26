@@ -85,7 +85,7 @@ const AddPlantModal = ({ type, family }, props) => {
           };
           console.log(sproutObject);
           setSprouts([...sprouts, sproutObject]);
-          if (res.status == 200) {
+          if (res.status === 200) {
             authUser.points += 100;
             handleClose();
             history.push("/profile");

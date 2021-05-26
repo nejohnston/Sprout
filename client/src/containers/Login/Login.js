@@ -66,7 +66,11 @@ const Login = (props) => {
                       user.points = userData.application_user_points;
                       user.team = userData.team_id;
                       user.profilePicture = userData.application_user_image;
-                      data.forEach((element) => {
+                      let userSprouts = await fetch(`http://localhost:3001/sprouts/${user.userId}`).then(response => response.json()).catch(error => console.log(error))
+                      // console.log("userId" + user.userId)
+                      // console.log("userSprouts" + JSON.stringify(userSprouts))
+                      if (userSprouts !== []) {
+                        await userSprouts.forEach((element) => {
                         sprouts.push({
                           sproutId: element.user_sprouts_id,
                           imageUrl: element.user_sprouts_image,
@@ -81,7 +85,7 @@ const Login = (props) => {
                           lastWatered: element.user_sprouts_last_watered,
                           nextAlert: element.user_sprouts_next_alert_date,
                         });
-                      });
+                      });}
                       props.history.push("/profile");
                     } catch {
                       setValidation(false);
