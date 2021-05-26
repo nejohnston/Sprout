@@ -23,7 +23,30 @@ import watercan from '../../config/assets/icons/water-can-slim.svg';
  * @param {Object} plant - is the plant object for the current page. 
  * @returns - the Family and Watering information for the passed plant.
  */
-const PlantInfo = ({plant}) => {
+const PlantInfo = ({plant, wateredDate}) => {
+
+    let getLastDate = date => {
+        if (!date) {
+            return "N/A";
+        } else {
+            // Code snippet below adapted from Abhilash Kakumanu, Stack Abuse 
+            //https://stackabuse.com/javascript-get-number-of-days-between-dates/
+            
+            let today = new Date();
+            let lastWateredDate = new Date(wateredDate);
+
+            // One day in milliseconds
+            const oneDay = 1000 * 60 * 60 * 24;
+
+            // Calculating the time difference between two dates
+            const diffInTime = today.getTime() - lastWateredDate.getTime();
+
+            // Calculating the no. of days between two dates
+            const diffInDays = Math.round(diffInTime / oneDay);
+
+            return `${diffInDays} days ago`;
+        }
+    }
 
     return (
         <>
@@ -48,7 +71,7 @@ const PlantInfo = ({plant}) => {
                     <p className="plant-profile-value1 plant-profile-value">{plant["wateringInterval"]} days</p>
 
                     <p className="plant-profile-subhead2 plant-profile-subhead">Last Watered</p>
-                    <p className="plant-profile-value2 plant-profile-value" id="plant-profile-last-watered">{plant["lastWatered"]}</p>
+                    <p className="plant-profile-value2 plant-profile-value" id="plant-profile-last-watered">{getLastDate(wateredDate)}</p>
                 </div>
             </div>
         </div>

@@ -48,7 +48,8 @@ const PlantProfilePage = () => {
 
   // Declare state of current sprout
   const [thisSprout, setThisSprout] = useState(currSprout)
-  console.log('sproutParam: ' + sproutParam)
+  const [lastWatered, setLastWatered] = useState(thisSprout["lastWatered"])
+
   return (
     <div id="container">
       <div className="header_backarrow_container">
@@ -59,8 +60,8 @@ const PlantProfilePage = () => {
         <EditPlant sprout={thisSprout} updateSproutPage={setThisSprout}/>
       </div>
       <hr />
-      <PlantProfileTopOptions sprout={thisSprout} />
-      <PlantInfo plant={thisSprout}/>
+      <PlantProfileTopOptions sprout={thisSprout} updateLastWatered={setLastWatered}/>
+      <PlantInfo plant={thisSprout} wateredDate={lastWatered}/>
       <PlantDateAdded dateAdded={thisSprout["dateAdded"].substring(0, 10)}/>
       <PlantNotes plantNotes={thisSprout["notes"]}/>
 
