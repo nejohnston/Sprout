@@ -42,7 +42,9 @@ const AddPlantModal = ({ type, family }, props) => {
   const submitForm = async () => {
     if (
       document.getElementById("sproutName").value !== "" &&
-      document.getElementById("sproutWateringInterval").value !== ""
+      document.getElementById("sproutWateringInterval").value !== "" &&
+      document.getElementById("sproutWateringInterval").value > 0 &&
+      document.getElementById("sproutWateringInterval").value % 1 === 0
     ) {
       // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
       let imageData = new FormData();
@@ -98,7 +100,7 @@ const AddPlantModal = ({ type, family }, props) => {
           .catch((err) => console.log(err));
       }, 1500);
     } else {
-      alert("You must fill out all the required fields.")
+      alert("You must fill out all the required fields, and watering interval must be an integer greater than 0.")
     }
   };
 
@@ -157,6 +159,7 @@ const AddPlantModal = ({ type, family }, props) => {
               name="wateringInterval"
               type="number"
               placeholder="Number of days between watering..."
+              min={1}
               required
             />
           </Form.Group>
