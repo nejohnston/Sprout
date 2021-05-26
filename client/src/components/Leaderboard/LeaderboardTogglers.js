@@ -10,7 +10,7 @@ import "./styles/LeaderboardTogglers.css";
 
 /**
  * Return the top component of the Leaderboard screen
- * 
+ *
  * Based on which team has the most points, the images will be rendered with the appropriate team data
  * @param {Array} teams - a sorted array containing objects with team data (points in descending order), to be used as props
  * @returns the top component of the Leaderboard screen
@@ -24,9 +24,7 @@ const LeaderboardTogglers = ({ teams }) => {
   return (
     <>
       <div id="leaderboard-togglers-container">
-        <div
-          className="team-toggler-container leaderboard-team-lower"
-        >
+        <div className="team-toggler-container leaderboard-team-lower">
           <div className="leaderboard-white-bg">
             <div
               className=""
@@ -73,9 +71,7 @@ const LeaderboardTogglers = ({ teams }) => {
           <p className="leaderboard-names">{teams[0]["team_name"]}</p>
         </div>
 
-        <div
-          className="team-toggler-container leaderboard-team-lower"
-        >
+        <div className="team-toggler-container leaderboard-team-lower">
           <div className="leaderboard-white-bg">
             <div
               className=""

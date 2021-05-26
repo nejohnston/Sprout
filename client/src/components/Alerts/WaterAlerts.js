@@ -25,8 +25,7 @@ import './styles/WaterAlerts.css';
  * @returns - a complete set of WaterPlant components, one for each plant object in plant.
  */
 const WaterAlert = ({plants, setAlerts}) => {
-    console.log(plants);
-
+    
     const waterPlant = async (plant_id) => {
         Axios.put('/alerts', {
             userId: window.sessionStorage.getItem('userId'),

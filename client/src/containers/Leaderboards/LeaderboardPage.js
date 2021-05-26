@@ -32,12 +32,8 @@ const LeaderboardPage = () => {
 
   // Fetch data on mount of the components/page
   useEffect(() => {
-    let isMounted = true;
     getTeamPoints();
     getTopFiveUsers();
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
   // Fetch top five users
@@ -70,12 +66,12 @@ const LeaderboardPage = () => {
         </div>
 
         <hr />
-        <LeaderboardTogglers teams={teamPoints} />
+        <LeaderboardTogglers teams={teamsDataJson} />
       </div>
 
       <div id="top-five-container">
         <p id="top-five-header">Leading Sprout Gardeners</p>
-        <TopFive topfive={topFiveUsers} />
+        <TopFive topfive={championsJSON} />
 
         <div id="leaderboard-nav-block"></div>
       </div>
