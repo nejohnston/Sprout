@@ -135,7 +135,7 @@ let getUserSprouts = async (userId) => {
  * @returns - success response.
  */
 let createSprout = async (sprout) => {
-
+  console.log("waterInterval" + sprout.userId)
   const query = {
     text: `INSERT INTO USER_SPROUTS VALUES ((SELECT MAX(USER_SPROUTS_ID) + 1 FROM USER_SPROUTS), $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, $7);`,
     values: [

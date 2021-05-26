@@ -26,7 +26,7 @@ import { UserContext, SproutContext } from "../Layout/Layout";
 
 const AddPlantModal = ({ type, family }, props) => {
   const [show, setShow] = useState(false);
-  const [imageSelected, setImageSelected] = useState(""); // image selected states for file input
+  const [imageSelected, setImageSelected] = useState("https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png"); // image selected states for file input
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   let img_url =
