@@ -83,8 +83,8 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
           type: res.data.user_sprouts_type,
           wateringInterval: res.data.user_sprouts_watering_intervals,
           notes: res.data.user_sprouts_notes,
-          image_url: res.data.user_sprouts_image
-        };
+          imageUrl: res.data.user_sprouts_image
+        }
 
         // Find the current sprout in SproutContext and update the sprout Object
         let sproutIndex = sprouts.findIndex( ({sproutId}) => sproutId === sprout.sproutId);

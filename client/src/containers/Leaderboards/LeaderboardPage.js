@@ -66,7 +66,7 @@ const LeaderboardPage = () => {
         </div>
 
         <hr />
-        <LeaderboardTogglers teams={teamsData} />
+        <LeaderboardTogglers teams={teamPoints} />
       </div>
 
       <div id="top-five-container">
