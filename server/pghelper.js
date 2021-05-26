@@ -259,12 +259,16 @@ let deleteSprout = async (userId, sproutId) => {
 // UPDATE IS_WATERED
 let updateSproutIsWatered = async (sprout) => {
   const query = {
-    text: `UPDATE user_sprouts SET user_sprouts_is_watered = '1' 
-    WHERE application_user_id=$1 
-    AND user_sprouts_given_name=$2;`,
+    text: `DELETE FROM ALERTS
+           WHERE USER_SPROUTS_ID = (SELECT USER_SPROUTS.USER_SPROUTS_ID
+                                    FROM USER_SPROUTS
+                                    JOIN ALERTS
+                                    ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
+                                    WHERE APPLICATION_USER_ID = $1
+                                    AND ALERTS.USER_SPROUTS_ID = $2);`,
     values: [
       sprout.userId,
-      sprout.name
+      sprout.sproutId
     ]
   }
   return (
@@ -320,10 +324,10 @@ let deleteAlert = async (sprout) => {
                             JOIN ALERTS
                             ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
                             WHERE APPLICATION_USER_ID = $1
-                            AND USER_SPROUTS_ID = $2);`,
+                            AND ALERTS.USER_SPROUTS_ID = $2);`,
     values: [
       sprout.userId,
-      sprout.name
+      sprout.userSproutsId
     ]
   }
   return (
