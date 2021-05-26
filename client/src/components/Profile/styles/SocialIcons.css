@@ -1,0 +1,12 @@
+#social-container {
+    display: flex;
+    margin-top: -0.25rem;
+}
+
+#twitter-icon {
+    margin-right: 0.25rem;
+}
+
+#fb-icon {
+    margin-left: 0.25rem;
+}

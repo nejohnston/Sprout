@@ -35,10 +35,8 @@ const ProfilePage = ({ userContext }) => {
   const [userPrefNameDisplay, setPrefNameDisplay] = useState(user.name);
 
   useEffect(() => {
-
     setPoints(user.points);
-
-  }, [sprouts])
+  }, [sprouts]);
 
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500);
@@ -92,7 +90,6 @@ const ProfilePage = ({ userContext }) => {
             />
             <h5 id="my-sprouts-user-name">{userPrefNameDisplay}</h5>
           </div>
-
           <Scorebar points={points} sprouts={sprouts} />
 
           <SproutGallery sprouts={sprouts} />
