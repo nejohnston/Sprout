@@ -3,7 +3,7 @@
 // =====================================
 
 // React
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import Axios from "axios";
 
 // Assets
@@ -15,7 +15,8 @@ import Modal from "react-bootstrap/Modal";
 // Styling
 import "./styles/PlantProfileSmallButtons.css";
 
-
+// Sprout and User Context from Layout.js Provider
+import { SproutContext, UserContext } from "../../components/Layout/Layout";
 
 // ====================================
 //           REACT COMPONENT
@@ -28,16 +29,37 @@ import "./styles/PlantProfileSmallButtons.css";
  * @returns Water component
  */
 
-const WaterPlant = ({ props, sproutId }) => {
+const WaterPlant = ({ props, sprout, updateLastWatered }) => {
+
+  // Context States
+  let [user, setUser] = useContext(UserContext);
+  let [sprouts, setSprouts] = useContext(SproutContext);
+
+  console.log(user)
+  console.log(sprouts)
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   
   const wateringPlant = async () => {
-    await Axios.put(`/plant-profile/${sproutId}`, {
+    await Axios.put(`/plant-profile/${sprout.sproutId}`, {
       userId: window.sessionStorage.getItem('userId')
     })
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+      let newSproutWithLastWatered = {...sprout,
+        lastWatered: res.data.user_sprouts_last_watered
+      }
+
+      let newUserScoreUpdated = {...user,
+        points: user.points + 10
+      }
+
+      console.log(newSproutWithLastWatered);
+      console.log(newUserScoreUpdated);
+
+    })
     .catch(err => console.log(err))
     .finally(handleShow());
   }

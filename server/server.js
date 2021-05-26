@@ -192,7 +192,9 @@ app.put("/plant-profile/:sproutId", async (req, res) => {
     userId: req.body.userId,
     userSproutsId: req.params.sproutId
   }
-  await deleteAlert(param)
+  await deleteAlert(param);
+  let updatedSprout = await getSproutById(req.params.sproutId);
+  res.json(updatedSprout);
 })
 
 
