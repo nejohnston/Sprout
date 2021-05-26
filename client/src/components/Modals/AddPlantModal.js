@@ -64,11 +64,9 @@ const AddPlantModal = ({ type, family }, props) => {
 
       setTimeout(() => {
         Axios.post("http://localhost:3001/profile/", {
-          dateAdded: Date(),
           family: document.getElementById("sproutFamily").value,
           name: document.getElementById("sproutName").value,
           notes: document.getElementById("sproutNotes").value,
-          sproutId: Math.floor(Math.random() * 100000000),
           type: document.getElementById("sproutType").value,
           wateringInterval: document.getElementById("sproutWateringInterval")
             .value,
@@ -76,22 +74,24 @@ const AddPlantModal = ({ type, family }, props) => {
           userId: authUser.userId,
         })
           .then((res) => {
-            console.log(res);
-            let data = JSON.parse(res.config.data);
-            let sproutObject = {
-              dateAdded: data.dateAdded,
-              family: data.family,
-              name: data.name,
-              notes: data.notes,
-              sproutId: data.sproutId,
-              type: data.type,
-              wateringInterval: data.wateringInterval,
-              imageUrl: data.imageUrl,
-              userId: data.userId,
-            };
-            console.log(sproutObject);
-            setSprouts([...sprouts, sproutObject]);
+            let data = res.data;
+            let updatedSprouts = [];
+            for (let i = 0; i < data.length; i++) {
+              let sproutObject = {
+                dateAdded: data[i].user_sprouts_date_added,
+                family: data[i].user_sprouts_family,
+                name: data[i].user_sprouts_given_name,
+                notes: data[i].user_sprouts_notes,
+                sproutId: data[i].user_sprouts_id,
+                type: data[i].user_sprouts_type,
+                wateringInterval: data[i].user_sprouts_watering_intervals,
+                imageUrl: data[i].user_sprouts_image,
+                userId: data[i].application_user_id,
+              };
+              updatedSprouts.push(sproutObject);
+            }
             if (res.status == 200) {
+              setSprouts(updatedSprouts);
               authUser.points += 100;
               handleClose();
               history.push("/profile");
@@ -100,7 +100,9 @@ const AddPlantModal = ({ type, family }, props) => {
           .catch((err) => console.log(err));
       }, 1500);
     } else {
-      alert("You must fill out all the required fields, and watering interval must be an integer greater than 0.")
+      alert(
+        "You must fill out all the required fields, and watering interval must be an integer greater than 0."
+      );
     }
   };
 

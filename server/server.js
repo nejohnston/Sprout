@@ -4,7 +4,6 @@ const path = require("path");
 const rootRouter = express.Router();
 const {
   getUser,
-  checkUserExist,
   getUserById,
   createUser,
   updateUserProfile,
@@ -18,11 +17,8 @@ const {
   getAlert,
   deleteAlert,
   getPlantInfo,
-  getTopFiveUsers,
-  getTeamPoints
 } = require("./pgHelper");
 const { response } = require("express");
-const { sign } = require("crypto");
 const port = 3001;
 let app = express();
 app.use(
@@ -58,32 +54,8 @@ app.get("/login/:username/:password", async (request, response) => {
   // response.redirect("/signup");
 });
 
-let signup = [];
 app.post("/signup", async (req, res) => {
-  signup = [];
-  signup.push(req.body.username);
-  signup.push(req.body.password);
-  let existUser = await checkUserExist(req.body.username);
-  if (existUser.length === 0) {
-    res.json(signup);
-    res.redirect("/join-team");
-  } else if (existUser.length > 0) {
-    res.json("Username exists")
-  }
-});
-
-app.post("/join-team", async (req, res) => {
-  signup.push(req.body.preferredName);
-  signup.push(req.body.team);
-  let userInfo = {
-    userName: signup[0],
-    userPassword: signup[1],
-    userPreferredName: signup[2],
-    userTeam: signup[3],
-  };
-  await createUser(userInfo);
-  res.json(userInfo);
-  res.redirect("/");
+  console.log(req.body);
 });
 
 // UPDATE USER PROFILE
@@ -134,7 +106,9 @@ app.post("/profile/", async (req, res) => {
   };
   console.log(param);
   await createSprout(param);
-  res.status(200).send(`200: Sprout added successfully.`);
+  let newUserSprouts = await getUserSprouts(req.body.userId);
+  // res.status(200).send(`200: Sprout added successfully.`);
+  res.json(newUserSprouts);
   // res.redirect("/profile/");
   // response.status(500).send(`500: server.js could not handle response.`);
 });
@@ -144,26 +118,6 @@ app.post("/alerts", async (req, res) => {
   res.json(alerts);
   // let alerts = await getAlert
 });
-
-app.put("/alerts", async (req, res) => {
-  let param = {
-    userId: req.body.userId,
-    userSproutsId: req.body.user_sprouts_id
-  }
-  await deleteAlert(param)
-  let alerts = await getAlert(req.body.userId);
-  res.json(alerts);
-});
-
-app.get("/leaderboards-topFive", async (req, res) => {
-  let topFiveUsers = await getTopFiveUsers();
-  res.json(topFiveUsers);
-})
-
-app.get("/leaderboards-team-points", async (req, res) => {
-  let teamPoints = await getTeamPoints();
-  res.json(teamPoints);
-})
 
 // Code copied from here, Answer 1
 // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
