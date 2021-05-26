@@ -47,11 +47,11 @@ app.use(express.static(buildPath));
 app.get("/login/:username/:password", async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
   console.log(user);
-  
-  if(user.length > 0) {
+
+  if (user.length > 0) {
     response.json(user);
   }
-  response.redirect("/signup");
+  // response.redirect("/signup");
 });
 
 app.post("/signup", async (req, res) => {
@@ -107,14 +107,15 @@ app.post("/profile/", async (req, res) => {
   console.log(param);
   await createSprout(param);
   res.status(200).send(`200: Sprout added successfully.`);
+  // res.redirect("/profile/");
   // response.status(500).send(`500: server.js could not handle response.`);
 });
 
-app.post('/alerts', async (req, res) => {
+app.post("/alerts", async (req, res) => {
   let alerts = await getAlert(req.body.userId);
   res.json(alerts);
   // let alerts = await getAlert
-})
+});
 
 // Code copied from here, Answer 1
 // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs

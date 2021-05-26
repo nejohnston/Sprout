@@ -137,7 +137,7 @@ let getUserSprouts = async (userId) => {
 let createSprout = async (sprout) => {
 
   const query = {
-    text: `INSERT INTO USER_SPROUTS VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, $7);`,
+    text: `INSERT INTO USER_SPROUTS VALUES ((SELECT MAX(USER_SPROUTS_ID) + 1 FROM USER_SPROUTS), $1, $2, $3, $4, $5, $6, '0', DEFAULT, DEFAULT, DEFAULT, $7);`,
     values: [
       sprout.userId,
       sprout.name,
@@ -151,7 +151,7 @@ let createSprout = async (sprout) => {
   return (
     await client
     .query(query)
-    .then(res => console.log("Hello"))
+    .then(res => console.log(res))
     .catch(err => console.log(err)))
 }
 

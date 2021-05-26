@@ -4,7 +4,7 @@
 
 // React
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // Axios
 import Axios from "axios";
@@ -24,7 +24,7 @@ import { UserContext, SproutContext } from "../Layout/Layout";
 //        Component Code
 // ========================================
 
-const AddPlantModal = ({ type, family }) => {
+const AddPlantModal = ({ type, family }, props) => {
   const [show, setShow] = useState(false);
   const [imageSelected, setImageSelected] = useState(""); // image selected states for file input
   const handleClose = () => setShow(false);
@@ -35,6 +35,7 @@ const AddPlantModal = ({ type, family }) => {
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
   let authUser = useContext(UserContext)[0];
+  let history = useHistory();
 
   const submitForm = async () => {
     // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
@@ -80,9 +81,11 @@ const AddPlantModal = ({ type, family }) => {
             imageUrl: data.imageUrl,
             userId: data.userId,
           };
-
           console.log(sproutObject);
           setSprouts([...sprouts, sproutObject]);
+          if (res.status == 200) {
+            history.push("/profile");
+          }
         })
         .catch((err) => console.log(err));
     }, 1500);
@@ -121,6 +124,7 @@ const AddPlantModal = ({ type, family }) => {
               name="family"
               type="text"
               placeholder="Sprout Name..."
+              defaultValue = {family}
             />
           </Form.Group>
           <Form.Group controlId="sproutType">
@@ -131,6 +135,7 @@ const AddPlantModal = ({ type, family }) => {
               name="type"
               type="text"
               placeholder="Sprout Type..."
+              defaultValue = {type}
             />
           </Form.Group>
           <Form.Group controlId="sproutWateringInterval">
@@ -162,16 +167,14 @@ const AddPlantModal = ({ type, family }) => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-
-            <Button
-              variant="primary"
-              onClick={submitForm}
-              type="submit"
-              className="custom-primary-button"
-            >
-              Add a New Sprout
-            </Button>
-
+          <Button
+            variant="primary"
+            onClick={submitForm}
+            type="submit"
+            className="custom-primary-button"
+          >
+            Add a New Sprout
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
