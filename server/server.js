@@ -13,11 +13,8 @@ const {
   deleteSprout,
   updateSprout,
   getSproutById,
-  updateSproutIsWatered,
-  updateSproutWateringInterval,
   getAlert,
   deleteAlert,
-  getPlantInfo,
   getTopFiveUsers,
   getTeamPoints
 } = require("./pgHelper");
@@ -158,6 +155,7 @@ app.get("/sprouts/:userId", async (request, response) => {
 });
 
 
+
 // ==========================================
 //               PLANT PROFILE
 // ==========================================
@@ -187,7 +185,7 @@ app.get("/sprouts/:userId", async (request, response) => {
  * water user sprout.
  * @returns - nothing
  */
-app.put("/plant-profile/:sproutId", async (req, res) => {
+ app.put("/plant-profile/:sproutId", async (req, res) => {
   let param = {
     userId: req.body.userId,
     userSproutsId: req.params.sproutId
@@ -196,7 +194,6 @@ app.put("/plant-profile/:sproutId", async (req, res) => {
   let updatedSprout = await getSproutById(req.params.sproutId);
   res.json(updatedSprout);
 })
-
 
 // DELETE USER SPROUT
 /**
