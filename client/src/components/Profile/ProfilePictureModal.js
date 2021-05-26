@@ -14,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import SocialIcons from "./SocialIcons";
 
 // User Context from Layout.js Provider
 import { UserContext } from "../../components/Layout/Layout";
@@ -25,7 +26,6 @@ import { UserContext } from "../../components/Layout/Layout";
  * @returns - the profile image component, with editing profile modal triggered on click.
  */
 function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
-
   // Get Auth user Id
   let authUser = useContext(UserContext)[0];
 
@@ -51,27 +51,24 @@ function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
     let res1 = await Axios.post(
       "https://api.cloudinary.com/v1_1/sprout03/image/upload/",
       imageData
-    )
+    );
 
     // Put request to profile
     Axios.put("/profile", {
       userId: authUser.userId,
       profilePic: res1.data.secure_url,
-      newUserPrefName: userPrefName
-    })
-      .then((res) => {
+      newUserPrefName: userPrefName,
+    }).then((res) => {
+      // Update User Context and page with new profile picture
+      let newProfilePic = res.data.application_user_image;
+      authUser.profilePicture = newProfilePic;
+      setProfilePic(newProfilePic);
 
-        // Update User Context and page with new profile picture
-        let newProfilePic = res.data.application_user_image
-        authUser.profilePicture = newProfilePic
-        setProfilePic(newProfilePic)
-
-        // Update User Context and page with new profile name
-        let newUserPrefName = res.data.application_user_preferred_name
-        authUser.name = newUserPrefName;
-        setPrefNameDisplay(newUserPrefName);
-      });
-
+      // Update User Context and page with new profile name
+      let newUserPrefName = res.data.application_user_preferred_name;
+      authUser.name = newUserPrefName;
+      setPrefNameDisplay(newUserPrefName);
+    });
   };
 
   return (
@@ -107,9 +104,17 @@ function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
               <Form.Label className="sprout-modal-text">
                 Display Name
               </Form.Label>
-              <Form.Control type="text" defaultValue={userPrefName} onChange={event => setUserPrefName(event.target.value)}/>
+              <Form.Control
+                type="text"
+                defaultValue={userPrefName}
+                onChange={(event) => setUserPrefName(event.target.value)}
+              />
             </Form.Group>
           </Form>
+          <strong>
+            <p>Share to social media!</p>
+          </strong>
+          <SocialIcons />
         </Modal.Body>
 
         <Modal.Footer>

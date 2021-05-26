@@ -10,16 +10,25 @@ import "./styles/SocialIcons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // React Share
-import { TwitterShareButton, FacebookShareButton } from "react-share";
+// documentation: https://www.npmjs.com/package/react-share
+import { TwitterShareButton, FacebookShareButton, FacebookIcon, TwitterIcon } from "react-share"; 
 
 // ====================================
 //           REACT COMPONENT
 // ====================================
 
-const SocialIcons = (shareUrl) => {
+/**
+ * Return social media icon componen for sharing to a User's social media.
+ * @returns Twitter and FB share icons.
+ */
+
+const SocialIcons = () => {
   return (
     <>
-    <TwitterShareButton url={shareUrl}/>
+    <div id="social-container">
+    <TwitterShareButton url = {"Join Sprout today at www.my-sprout.ca!"}><TwitterIcon size={35} round={true} id="twitter-icon"/> </TwitterShareButton>
+    <FacebookShareButton url = {"www.my-sprout.ca"} quote={"Join Sprout today!"}><FacebookIcon size={35} round={true} id="fb-icon"/> </FacebookShareButton>
+    </div>
     </>
   );
 };
