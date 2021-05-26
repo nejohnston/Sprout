@@ -142,10 +142,12 @@ app.post('/alerts', async (req, res) => {
 
 app.put("/alerts", async (req, res) => {
   let param = {
-    userId: req.body.userID,
+    userId: req.body.userId,
     userSproutsId: req.body.user_sprouts_id
   }
   await deleteAlert(param)
+  let alerts = await getAlert(req.body.userId);
+  res.json(alerts);
 });
 
 // Code copied from here, Answer 1

@@ -28,7 +28,9 @@ import './AlertsPage.css';
  * @returns - the components of Alerts Page.
  */
 const AlertsPage = () => {
+
   const [alertPlants, setAlertPlants] = useState([]);
+  
   useEffect(() => {
     let isMounted = true;
     getAlerts()
@@ -56,7 +58,7 @@ const AlertsPage = () => {
 
     <SproutTip tips={sproutTips}/>
 
-    <WaterAlerts plants={alertPlants}/>
+    <WaterAlerts plants={alertPlants} setAlerts={setAlertPlants}/>
   
     </div>
 

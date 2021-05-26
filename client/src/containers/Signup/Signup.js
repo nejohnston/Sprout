@@ -74,7 +74,6 @@ const Signup = () => {
               />
             </Form.Group>
 
-
             {!userExistValidation && (
                 <div
                 style={{ color: "red", marginBottom: "0.25rem" }}>

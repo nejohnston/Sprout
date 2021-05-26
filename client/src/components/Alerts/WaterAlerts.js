@@ -24,16 +24,16 @@ import './styles/WaterAlerts.css';
  * @param {Array} plants - an array of plant objects that must be watered.
  * @returns - a complete set of WaterPlant components, one for each plant object in plant.
  */
-const WaterAlert = ({plants}) => {
+const WaterAlert = ({plants, setAlerts}) => {
     console.log(plants);
 
     const waterPlant = async (plant_id) => {
 
         console.log('clear!')
         Axios.put('/alerts', {
-            userID: window.sessionStorage.getItem('userId'),
+            userId: window.sessionStorage.getItem('userId'),
             user_sprouts_id: plant_id
-        });
+        }).then(res => setAlerts(res.data));
         // search db with plant id
         // update the last water date as today
     }
