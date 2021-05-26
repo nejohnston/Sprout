@@ -106,7 +106,9 @@ app.post("/profile/", async (req, res) => {
   };
   console.log(param);
   await createSprout(param);
-  res.status(200).send(`200: Sprout added successfully.`);
+  let newUserSprouts = await getUserSprouts(req.body.userId);
+  // res.status(200).send(`200: Sprout added successfully.`);
+  res.json(newUserSprouts);
   // res.redirect("/profile/");
   // response.status(500).send(`500: server.js could not handle response.`);
 });
