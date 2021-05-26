@@ -202,12 +202,10 @@ app.get("/sprouts/:userId", async (request, response) => {
  * delete user sprout.
  * @returns - success or fail message.
  */
- app.delete("/sprouts/:userId/:sproutId", (request, response) => {
-  deleteSprout(request.params.userId, request.params.sproutId);
+ app.delete("/sprouts/:userId/:sproutId", async (request, response) => {
+  await deleteSprout(request.params.userId, request.params.sproutId);
   response.status(200).send(`200: Sprout deleted successfully.`)
 })
-
-
 
 // ==========================================
 //               ALERTS
