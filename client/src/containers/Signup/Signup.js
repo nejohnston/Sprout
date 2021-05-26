@@ -15,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // Styles
 import "./Signup.css";
+import { ErrorMessage } from "formik";
 
 // ====================================
 //           REACT COMPONENT
@@ -25,20 +26,23 @@ const Signup = () => {
   const [inputUsername, setUsername] = useState("");
   const [inputPassword, setPassword] = useState("");
 
+  // Validation Username existence
+  const [userExistValidation, setUserExistValidation] = useState(true);
+
   // Post to /signup
   const sendAccountInfo = () => {
     Axios.post("/signup", {
       username: inputUsername,
       password: inputPassword,
-    }).then((res) => {
-      if (res.data) {
+    })
+    .then((res) => {
+      if (res.data != "Username exists") {
         window.sessionStorage.setItem("userName", res.data[0]);
+        setUserExistValidation(true);
         window.location = "/join-team";
-      }
-      else {
-        
-      }
-    });
+      } else {
+        setUserExistValidation(false);
+      }})
   };
 
   return (
@@ -69,6 +73,15 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
+
+
+            {!userExistValidation && (
+                <div
+                style={{ color: "red", marginBottom: "0.25rem" }}>
+                Username already exists.
+              </div>
+              )}
+
             <Button
               variant="primary"
               type="button"

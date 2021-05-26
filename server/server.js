@@ -63,6 +63,8 @@ app.post("/signup", async (req, res) => {
   if (existUser.length === 0) {
     res.json(signup);
     res.redirect("/join-team");
+  } else if (existUser.length > 0) {
+    res.json("Username exists")
   }
 });
 
