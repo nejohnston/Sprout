@@ -42,6 +42,10 @@ app.use(express.static(buildPath));
 //           EXPRESS QUERIES
 // ====================================
 
+
+// ==========================================
+//                 LOGIN
+// ==========================================
 // GET USER DATA
 /**
  * @params username, password
@@ -58,6 +62,11 @@ app.get("/login/:username/:password", async (request, response) => {
   // response.redirect("/signup");
 });
 
+
+// ==========================================
+//               SIGNUP
+// ==========================================
+// Post user's username and password from /signup
 let signup = [];
 app.post("/signup", async (req, res) => {
   signup = [];
@@ -72,6 +81,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+// Insert the new user into DB on post to /join-team
 app.post("/join-team", async (req, res) => {
   signup.push(req.body.preferredName);
   signup.push(req.body.team);
@@ -85,6 +95,12 @@ app.post("/join-team", async (req, res) => {
   res.json(userInfo);
   res.redirect("/");
 });
+
+
+
+// ==========================================
+//               PROFILE
+// ==========================================
 
 // UPDATE USER PROFILE
 /**
@@ -120,7 +136,7 @@ app.get("/sprouts/:userId", async (request, response) => {
  * create new user sprout.
  * @returns - success or fail message.
  */
-app.post("/profile/", async (req, res) => {
+ app.post("/profile/", async (req, res) => {
   console.log("THIS IS", req.body);
 
   let param = {
@@ -134,64 +150,22 @@ app.post("/profile/", async (req, res) => {
   };
   console.log(param);
   await createSprout(param);
-  res.status(200).send(`200: Sprout added successfully.`);
+  let newUserSprouts = await getUserSprouts(req.body.userId);
+  // res.status(200).send(`200: Sprout added successfully.`);
+  res.json(newUserSprouts);
   // res.redirect("/profile/");
   // response.status(500).send(`500: server.js could not handle response.`);
 });
 
-app.put("/plant-profile/:sproutId", async (req, res) => {
-  let param = {
-    userId: req.body.userId,
-    userSproutsId: req.params.sproutId
-  }
-  await deleteAlert(param)
-})
 
-app.post("/alerts", async (req, res) => {
-  let alerts = await getAlert(req.body.userId);
-  res.json(alerts);
-  // let alerts = await getAlert
-});
-
-app.put("/alerts", async (req, res) => {
-  let param = {
-    userId: req.body.userId,
-    userSproutsId: req.body.user_sprouts_id
-  }
-  await deleteAlert(param)
-  let alerts = await getAlert(req.body.userId);
-  res.json(alerts);
-});
-
-app.get("/leaderboards-topFive", async (req, res) => {
-  let topFiveUsers = await getTopFiveUsers();
-  res.json(topFiveUsers);
-})
-
-app.get("/leaderboards-team-points", async (req, res) => {
-  let teamPoints = await getTeamPoints();
-  res.json(teamPoints);
-})
-
-// Code copied from here, Answer 1
-// https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
-/*
- * all other routes go here
- */
-rootRouter.get("(/*)?", async (req, res, next) => {
-  res.sendFile(path.join(buildPath, "index.html"));
-});
-app.use(rootRouter);
-
-app.listen(port, () => {
-  console.log(`App running on port ${port}.`);
-});
-
+// ==========================================
+//               PLANT PROFILE
+// ==========================================
 // UPDATE EXISTING USER SPROUT
 /**
  * Updates the information of a user's sprout submitted from EditPlant Component.
  */
-app.put("/plant-profile", async (req, res) => {
+ app.put("/plant-profile", async (req, res) => {
   let param = {
     id: req.body.sproutId,
     name: req.body.name,
@@ -204,4 +178,93 @@ app.put("/plant-profile", async (req, res) => {
   await updateSprout(param);
   let updatedSprout = await getSproutById(req.body.sproutId);
   res.json(updatedSprout);
+});
+
+// WATER USER SPROUT
+/**
+ * @params userId
+ * @params sproutId
+ * water user sprout.
+ * @returns - nothing
+ */
+app.put("/plant-profile/:sproutId", async (req, res) => {
+  let param = {
+    userId: req.body.userId,
+    userSproutsId: req.params.sproutId
+  }
+  await deleteAlert(param)
+})
+
+
+// DELETE USER SPROUT
+/**
+ * @params userId
+ * @params sproutId
+ * delete user sprout.
+ * @returns - success or fail message.
+ */
+ app.delete("/sprouts/:userId/:sproutId", (request, response) => {
+  deleteSprout(request.params.userId, request.params.sproutId);
+  response.status(200).send(`200: Sprout deleted successfully.`)
+})
+
+
+
+// ==========================================
+//               ALERTS
+// ==========================================
+
+// Initial get : Alerts from DB
+app.post("/alerts", async (req, res) => {
+  let alerts = await getAlert(req.body.userId);
+  res.json(alerts);
+  // let alerts = await getAlert
+});
+
+// Deleting Alerts
+app.put("/alerts", async (req, res) => {
+  let param = {
+    userId: req.body.userId,
+    userSproutsId: req.body.user_sprouts_id
+  }
+  await deleteAlert(param)
+  let alerts = await getAlert(req.body.userId);
+  res.json(alerts);
+});
+
+
+
+// ==========================================
+//               LEADERBOARD
+// ==========================================
+
+// Initial get : Top Five Sprout Leaders
+app.get("/leaderboards-topFive", async (req, res) => {
+  let topFiveUsers = await getTopFiveUsers();
+  res.json(topFiveUsers);
+})
+
+// Initial get :
+app.get("/leaderboards-team-points", async (req, res) => {
+  let teamPoints = await getTeamPoints();
+  res.json(teamPoints);
+})
+
+
+
+// ==========================================
+//               ROOT ROUTER
+// ==========================================
+// Code copied from here, Answer 1
+// https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
+/*
+ * all other routes go here
+ */
+rootRouter.get("(/*)?", async (req, res, next) => {
+  res.sendFile(path.join(buildPath, "index.html"));
+});
+app.use(rootRouter);
+
+app.listen(port, () => {
+  console.log(`App running on port ${port}.`);
 });
