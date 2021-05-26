@@ -17,7 +17,6 @@ import "./styles/LeaderboardTogglers.css";
  */
 
 const LeaderboardTogglers = ({ teams }) => {
-  console.log(teams)
   // All the styles are inline because they have to accept a prop as a background image url, and there is no way to pass this directly into an external stylesheet. Furthermore, as they need the prop passed in, they also can't be defined at the top of the page above this rendering component. The only way to style was to do it inline.
 
   // Based on the team with the most points, the positions will change, which is why all 3 of the components accept props.
