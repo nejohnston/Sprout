@@ -20,9 +20,6 @@ import "./PlantProfile.css";
 // Assets
 import BackButton from "../../config/assets/icons/back_button.svg";
 
-// Data (temp)
-import plantprofiledata from "./plant_profile.json";
-
 // Sprout and User Context from Layout.js Provider
 import { SproutContext } from "../../components/Layout/Layout";
 
@@ -43,7 +40,7 @@ const PlantProfilePage = () => {
   // Retreve the correct sprout information based on the request parameter
   let sproutParam = parseInt(useParams().sproutId);
   let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
-  console.log(currSprout);
+  console.log(sproutParam);
 
   // Declare state of current sprout
   const [thisSprout, setThisSprout] = useState(currSprout)

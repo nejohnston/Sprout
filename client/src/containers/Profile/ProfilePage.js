@@ -34,6 +34,8 @@ const ProfilePage = ({ userContext }) => {
   const [display, setDisplay] = useState(true);
   const [userPrefNameDisplay, setPrefNameDisplay] = useState(user.name);
 
+  console.log(sprouts)
+
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500); //after 0.5 seconds the state will be switched to false, which will allow the async to complete
   }, []);
