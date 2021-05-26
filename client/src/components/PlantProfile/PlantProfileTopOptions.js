@@ -38,7 +38,7 @@ const PlantProfileTopOptions = ({ sprout }) => {
       <div id="plant-profile-top-container">
         <DigUp sprout={sprout}/>
         <PlantProfilePicture imageUrl={sprout.imageUrl} />
-        <WaterPlant />
+        <WaterPlant sproutId={sprout.sproutId}/>
       </div>
     </>
   );

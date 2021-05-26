@@ -158,7 +158,6 @@ app.get("/sprouts/:userId", async (request, response) => {
 });
 
 
-
 // ==========================================
 //               PLANT PROFILE
 // ==========================================
@@ -180,6 +179,22 @@ app.get("/sprouts/:userId", async (request, response) => {
   let updatedSprout = await getSproutById(req.body.sproutId);
   res.json(updatedSprout);
 });
+
+// WATER USER SPROUT
+/**
+ * @params userId
+ * @params sproutId
+ * water user sprout.
+ * @returns - nothing
+ */
+app.put("/plant-profile/:sproutId", async (req, res) => {
+  let param = {
+    userId: req.body.userId,
+    userSproutsId: req.params.sproutId
+  }
+  await deleteAlert(param)
+})
+
 
 // DELETE USER SPROUT
 /**

@@ -214,11 +214,11 @@ let deleteSprout = async (sprout) => {
     text: `
       DELETE FROM USER_SPROUTS WHERE
       application_user_id=$1 
-      AND user_sprouts_given_name=$2;
+      AND user_sprouts_id=$2;
       `,
     values: [
       sprout.userId,
-      sprout.name
+      sprout.userSproutsId
     ]
   }
   return (
