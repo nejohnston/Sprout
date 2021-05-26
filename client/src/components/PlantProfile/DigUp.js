@@ -1,9 +1,9 @@
- // =====================================
+// =====================================
 //               IMPORT
 // =====================================
 
 // React
-import { React, useContext, useState } from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Assets
@@ -15,7 +15,6 @@ import Modal from "react-bootstrap/Modal";
 
 // Styles
 import "./styles/PlantProfileSmallButtons.css";
-import { SproutContext, UserContext } from "../Layout/Layout";
 
 /**
  * Return a component with modal popup which is triggered by the Dig Up button
@@ -24,32 +23,15 @@ import { SproutContext, UserContext } from "../Layout/Layout";
  * @returns Dig Up component
  */
 
-const DigUp = ( {sprout}, props) => {
+const DigUp = (props, sprout) => {
   const [show, setShow] = useState(false);
-  const [sprouts, setSprouts] = useContext(SproutContext);
-  const user = useContext(UserContext)[0];
-  const removeSproutFromContext = (sproutId) => {
-    for (let index = 0; index < sprouts.length; index++) {
-      if (sproutId === sprouts[index].sproutId) {
-        sprouts.splice(index, 1);
-      }
-    }
-    setSprouts(sprouts);
-  }
-  
+
   const handleClose = () => {
-    setShow(false)
-  };
-
-  const handleSubmit = () => {
-    fetch(`/sprouts/${user.userId}/${sprout.sproutId}`, {
-      method: "DELETE"
-    })
+    fetch(`http://localhost3001/api/deleteSprout/${sprout.userId}/${sprout.name}`)
     .then(response => console.log(response))
-    .catch(error => console.log(error));
-    removeSproutFromContext(sprout.sproutId)
-  }
-
+    .catch(error => console.log(error))
+    &&
+    setShow(false)};
   const handleShow = () => setShow(true);
 
   return (
@@ -82,7 +64,7 @@ const DigUp = ( {sprout}, props) => {
           <Link to="/profile">
           <Button
             variant="primary"
-            onClick={handleSubmit}
+            onClick={handleClose}
             className="custom-primary-button"
           >
             Confirm
