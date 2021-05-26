@@ -124,7 +124,7 @@ let getUserSprouts = async (userId) => {
   return (
     await client
     .query(query)
-    .then(res => res.rows[0])
+    .then(res => res.rows)
     .catch(err => console.log(err)))
 }
 

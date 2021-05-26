@@ -49,7 +49,7 @@ const App = () => {
               <Route path='/profile' component={ProfileContainer} />
               <Route path='/search' component={SearchContainer} />
               <Route path='/search-details/:plantId' component={SearchPlantDetailContainer} />
-              <Route path='/plant-profile/:sproutId' component={PlantProfileContainer} />
+              <Route path='/plant-profile/:sproutName' component={PlantProfileContainer} />
               <Route path='/asdfasdfasdfasdfsadfsafdasdf' component={EasterEgg} />
             </>
             {/* } */}
