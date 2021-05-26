@@ -139,6 +139,14 @@ app.post("/profile/", async (req, res) => {
   // response.status(500).send(`500: server.js could not handle response.`);
 });
 
+app.put("/plant-profile/:sproutId", async (req, res) => {
+  let param = {
+    userId: req.body.userId,
+    userSproutsId: req.params.sproutId
+  }
+  await deleteAlert(param)
+})
+
 app.post("/alerts", async (req, res) => {
   let alerts = await getAlert(req.body.userId);
   res.json(alerts);
