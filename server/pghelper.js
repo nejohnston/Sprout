@@ -354,7 +354,7 @@ let getPlantInfo = async () => {
 // GET TOP 5 USERS
 let getTopFiveUsers = async () => {
   const query = {
-    text: `SELECT application_user_preferred_name, application_user_points
+    text: `SELECT application_user_preferred_name, application_user_points, application_user_image
            FROM application_user
            ORDER BY application_user_points DESC, application_user_preferred_name
            LIMIT 5;`
@@ -370,7 +370,7 @@ let getTopFiveUsers = async () => {
 // GET TEAM POINTS
 let getTeamPoints = async () => {
   const query = {
-    text: `SELECT team_name, team_points
+    text: `SELECT team_name, team_points, team_image_url
            FROM team
            ORDER BY team_points DESC;`
   }

@@ -3,18 +3,19 @@
 // =====================================
 
 // React
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
 // Data (temp)
-import teamsData from './team.json'
-import champions from './champions1.json';
+import teamsData from "./team.json";
+import champions from "./champions1.json";
 
 // Components
-import TopFive from '../../components/Leaderboard/TopFive';
-import LeaderboardTogglers from '../../components/Leaderboard/LeaderboardTogglers'
+import TopFive from "../../components/Leaderboard/TopFive";
+import LeaderboardTogglers from "../../components/Leaderboard/LeaderboardTogglers";
 
 // Styles
-import './Leaderboard.css';
+import "./Leaderboard.css";
 
 // =====================================
 //          REACT COMPONENT
@@ -25,38 +26,65 @@ import './Leaderboard.css';
  * @returns - the components of the Leaderboard Page.
  */
 const LeaderboardPage = () => {
+  const [topFiveUsers, setTopFiveUsers] = useState([]);
+  const [teamPoints, setTeamPoints] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    getTeamPoints();
+    getTopFiveUsers();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const getTopFiveUsers = async () => {
+    await Axios.get("/leaderboards-topFive")
+    .then((res) => {
+      console.log(res.data);
+      setTopFiveUsers(res.data)
+    });
+  };
+
+  const getTeamPoints = async () => {
+    await Axios.get("/leaderboards-team-points")
+    .then((res) => {
+      console.log(res.data);
+      setTeamPoints(res.data)
+    });
+  }
 
   // Temp teams data
   let teamsDataJson = [];
   teamsDataJson.push(...teamsData);
   // Sort for highest teams
-  teamsDataJson.sort((a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"]));
-  
+  teamsDataJson.sort(
+    (a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"])
+  );
+
   // Temp champions data, should be queried using useState/useEffect
   let championsJSON = [];
   championsJSON.push(...champions);
 
+  
   return (
     <>
-    <div id="leaderboard-top-container">
-    <div id="leaderboard-accent-bg"></div>
-    <div id="profile-header">
-    <h1 id="leaderboard-h1">Leaderboard</h1>
-    </div>
+      <div id="leaderboard-top-container">
+        <div id="leaderboard-accent-bg"></div>
+        <div id="profile-header">
+          <h1 id="leaderboard-h1">Leaderboard</h1>
+        </div>
 
-    <hr/>
-   <LeaderboardTogglers teams={teamsDataJson}/>
+        <hr />
+        <LeaderboardTogglers teams={championsJSON} />
+      </div>
 
-   </div>
+      <div id="top-five-container">
+        <p id="top-five-header">Leading Sprout Gardeners</p>
+        <TopFive topfive={teamsDataJson} />
 
-    <div id="top-five-container">
-      <p id="top-five-header">Leading Sprout Gardeners</p>
-      <TopFive topfive={championsJSON}/>
-
-      <div id="leaderboard-nav-block"></div>
-
-    </div>
-
+        <div id="leaderboard-nav-block"></div>
+      </div>
     </>
   );
 };

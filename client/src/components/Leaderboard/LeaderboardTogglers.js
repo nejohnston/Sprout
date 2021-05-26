@@ -17,6 +17,7 @@ import "./styles/LeaderboardTogglers.css";
  */
 
 const LeaderboardTogglers = ({ teams }) => {
+  console.log(teams)
   // All the styles are inline because they have to accept a prop as a background image url, and there is no way to pass this directly into an external stylesheet. Furthermore, as they need the prop passed in, they also can't be defined at the top of the page above this rendering component. The only way to style was to do it inline.
 
   // Based on the team with the most points, the positions will change, which is why all 3 of the components accept props.
@@ -31,7 +32,7 @@ const LeaderboardTogglers = ({ teams }) => {
             <div
               className=""
               style={{
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[1]["img_url"]})`,
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[1]["team_image_url"]})`,
                 backgroundRepeat: "no-repeat",
                 height: "6rem",
                 width: "6rem",
@@ -54,7 +55,7 @@ const LeaderboardTogglers = ({ teams }) => {
             <div
               className=""
               style={{
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[0]["img_url"]})`,
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[0]["team_image_url"]})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 height: "8rem",
@@ -80,7 +81,7 @@ const LeaderboardTogglers = ({ teams }) => {
             <div
               className=""
               style={{
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[2]["img_url"]})`,
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(${teams[2]["team_image_url"]})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 height: "6rem",

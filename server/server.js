@@ -152,6 +152,16 @@ app.put("/alerts", async (req, res) => {
   res.json(alerts);
 });
 
+app.get("/leaderboards-topFive", async (req, res) => {
+  let topFiveUsers = await getTopFiveUsers();
+  res.json(topFiveUsers);
+})
+
+app.get("/leaderboards-team-points", async (req, res) => {
+  let teamPoints = await getTeamPoints();
+  res.json(teamPoints);
+})
+
 // Code copied from here, Answer 1
 // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
 /*
