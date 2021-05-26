@@ -41,18 +41,22 @@ const LeaderboardPage = () => {
   const getTopFiveUsers = async () => {
     await Axios.get("/leaderboards-topFive")
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setTopFiveUsers(res.data)
     });
   };
 
+console.log(topFiveUsers)
+
   const getTeamPoints = async () => {
     await Axios.get("/leaderboards-team-points")
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setTeamPoints(res.data)
     });
   }
+
+console.log(teamPoints)
 
   // Temp teams data
   let teamsDataJson = [];
