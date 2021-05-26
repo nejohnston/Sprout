@@ -58,6 +58,12 @@ const AlertsPage = () => {
 
     <SproutTip tips={sproutTips}/>
 
+    {alertPlants.length === 0 && (
+      <div id="empty-alerts">
+      <p>Pat yourself on the back, all your plants are watered!</p>
+      </div>
+    )}
+
     <WaterAlerts plants={alertPlants} setAlerts={setAlertPlants}/>
   
     </div>
