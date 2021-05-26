@@ -230,11 +230,11 @@ let deleteSprout = async (sprout) => {
 // GET ALERT FOR EACH USER
 let getAlert = async (userId) => {
   const query = {
-    text: `SELECT ALERTS.USER_SPROUTS_ID, USER_SPROUTS_IMAGE, ALERTS_MESSAGE
-    FROM APPLICATION_USER
-	    JOIN USER_SPROUTS ON APPLICATION_USER.APPLICATION_USER_ID = USER_SPROUTS.APPLICATION_USER_ID
-	    JOIN ALERTS ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
-    WHERE APPLICATION_USER.APPLICATION_USER_ID = $1;`,
+    text: `SELECT alerts.user_sprouts_id, user_sprouts_image, alerts_message
+    FROM application_user
+	    JOIN user_sprouts ON application_user.application_user_id = user_sprouts.application_user_id
+	    JOIN alerts ON user_sprouts.user_sprouts_id = alerts.user_sprouts_id
+    WHERE application_user.application_user_id = $1;`,
     values: [userId]
   }
   return (
