@@ -178,6 +178,21 @@ app.get("/sprouts/:userId", async (request, response) => {
   res.json(updatedSprout);
 });
 
+// WATER USER SPROUT
+/**
+ * @params userId
+ * @params sproutId
+ * water user sprout.
+ * @returns - nothing
+ */
+ app.put("/plant-profile/:sproutId", async (req, res) => {
+  let param = {
+    userId: req.body.userId,
+    userSproutsId: req.params.sproutId
+  }
+  await deleteAlert(param)
+})
+
 // DELETE USER SPROUT
 /**
  * @params userId

@@ -170,8 +170,8 @@ let createSprout = async (sprout) => {
 let updateSprout = async (sprout) => {
   const query = {
     text: `UPDATE USER_SPROUTS 
-    SET User_sprouts_given_name = $2, User_sprouts_family = $3, User_sprouts_type = $4, User_sprouts_watering_intervals = $5, User_sprouts_notes = $6, User_sprouts_image = $7
-    WHERE User_sprouts_id = $1;`,
+    SET user_sprouts_given_name = $2, user_sprouts_family = $3, user_sprouts_type = $4, user_sprouts_watering_intervals = $5, user_sprouts_notes = $6, user_sprouts_image = $7
+    WHERE user_sprouts_id = $1;`,
     values: [
       sprout.id,
       sprout.name,
@@ -191,7 +191,7 @@ let updateSprout = async (sprout) => {
 
 let getSproutById = async (sproutId) => {
   const query = {
-    text: 'SELECT * FROM USER_SPROUTS WHERE User_sprouts_id = $1;',
+    text: 'SELECT * FROM user_sprouts WHERE user_sprouts_id = $1;',
     values: [sproutId]
   }
   return (
@@ -211,7 +211,7 @@ let getSproutById = async (sproutId) => {
 let deleteSprout = async (sprout) => {
   const query = {
     text: `
-      DELETE FROM USER_SPROUTS WHERE
+      DELETE FROM user_sprouts WHERE
       application_user_id=$1 
       AND user_sprouts_id=$2;
       `,
