@@ -48,9 +48,9 @@ app.get("/login/:username/:password", async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
   console.log(user);
 
-  if (user.length > 0) {
+  // if (user.length > 0) {
     response.json(user);
-  }
+  // }
   // response.redirect("/signup");
 });
 
