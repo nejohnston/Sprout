@@ -40,60 +40,70 @@ const AddPlantModal = ({ type, family }, props) => {
   let history = useHistory();
 
   const submitForm = async () => {
-    // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
-    let imageData = new FormData();
-    imageData.append("file", imageSelected); // File is current image selected
-    imageData.append("upload_preset", "sproutPlant"); // Cloudinary upload preset
+    if (
+      document.getElementById("sproutName").value !== "" &&
+      document.getElementById("sproutWateringInterval").value !== "" &&
+      document.getElementById("sproutWateringInterval").value > 0 &&
+      document.getElementById("sproutWateringInterval").value % 1 === 0
+    ) {
+      // Instantiate new imageData for Cloudinary - code snippet adapted from PedroTech
+      let imageData = new FormData();
+      imageData.append("file", imageSelected); // File is current image selected
+      imageData.append("upload_preset", "sproutPlant"); // Cloudinary upload preset
 
-    // Reach Sprout Cloudinary API and upload image - code snippet adapted from PedroTech
-    Axios.post(
-      "https://api.cloudinary.com/v1_1/sprout03/image/upload",
-      imageData
-    )
-      .then((res) => {
-        img_url = res.data.secure_url;
-        console.log("Image added to cloudinary");
-      })
-      .catch((err) => console.log(err));
-
-    setTimeout(() => {
-      Axios.post("http://localhost:3001/profile/", {
-        dateAdded: Date(),
-        family: document.getElementById("sproutFamily").value,
-        name: document.getElementById("sproutName").value,
-        notes: document.getElementById("sproutNotes").value,
-        sproutId: Math.floor(Math.random() * 100000000),
-        type: document.getElementById("sproutType").value,
-        wateringInterval: document.getElementById("sproutWateringInterval")
-          .value,
-        imageUrl: img_url,
-        userId: authUser.userId,
-      })
+      // Reach Sprout Cloudinary API and upload image - code snippet adapted from PedroTech
+      Axios.post(
+        "https://api.cloudinary.com/v1_1/sprout03/image/upload",
+        imageData
+      )
         .then((res) => {
-          console.log(res);
-          let data = JSON.parse(res.config.data);
-          let sproutObject = {
-            dateAdded: data.dateAdded,
-            family: data.family,
-            name: data.name,
-            notes: data.notes,
-            sproutId: data.sproutId,
-            type: data.type,
-            wateringInterval: data.wateringInterval,
-            imageUrl: data.imageUrl,
-            userId: data.userId,
-          };
-          console.log(sproutObject);
-          setSprouts([...sprouts, sproutObject]);
-          if (res.status == 200) {
-            authUser.points += 100;
-            handleClose();
-            history.push("/profile");
-          }
+          img_url = res.data.secure_url;
+          console.log("Image added to cloudinary");
         })
         .catch((err) => console.log(err));
-    }, 1500);
-  
+
+      setTimeout(() => {
+        Axios.post("http://localhost:3001/profile/", {
+          family: document.getElementById("sproutFamily").value,
+          name: document.getElementById("sproutName").value,
+          notes: document.getElementById("sproutNotes").value,
+          type: document.getElementById("sproutType").value,
+          wateringInterval: document.getElementById("sproutWateringInterval")
+            .value,
+          imageUrl: img_url,
+          userId: authUser.userId,
+        })
+          .then((res) => {
+            let data = res.data;
+            let updatedSprouts = [];
+            for (let i = 0; i < data.length; i++) {
+              let sproutObject = {
+                dateAdded: data[i].user_sprouts_date_added,
+                family: data[i].user_sprouts_family,
+                name: data[i].user_sprouts_given_name,
+                notes: data[i].user_sprouts_notes,
+                sproutId: data[i].user_sprouts_id,
+                type: data[i].user_sprouts_type,
+                wateringInterval: data[i].user_sprouts_watering_intervals,
+                imageUrl: data[i].user_sprouts_image,
+                userId: data[i].application_user_id,
+              };
+              updatedSprouts.push(sproutObject);
+            }
+            if (res.status == 200) {
+              setSprouts(updatedSprouts);
+              authUser.points += 100;
+              handleClose();
+              history.push("/profile");
+            }
+          })
+          .catch((err) => console.log(err));
+      }, 1500);
+    } else {
+      alert(
+        "You must fill out all the required fields, and watering interval must be an integer greater than 0."
+      );
+    }
   };
 
   return (
@@ -151,6 +161,7 @@ const AddPlantModal = ({ type, family }, props) => {
               name="wateringInterval"
               type="number"
               placeholder="Number of days between watering..."
+              min={1}
               required
             />
           </Form.Group>

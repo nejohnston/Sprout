@@ -51,6 +51,19 @@ let getUser = async (username, password) => {
     .catch(err => console.log(err)))
 }
 
+let checkUserExist = async (userName) => {
+  const query = {
+    text: `SELECT * FROM APPLICATION_USER WHERE APPLICATION_USER_USERNAME = $1`,
+    values: [userName]
+  }
+  return (
+    await client
+    .query(query)
+    .then(res => res.rows)
+    .catch(err => console.log(err))
+  )
+}
+
 // GET USER BY ID
 /**
  * @params userId
@@ -71,8 +84,9 @@ let getUserById = async (userId) => {
 
 // CREATE USER
 let createUser = async (userInfo) => {
+  console.log(userInfo);
   const query = {
-    text: "INSERT INTO application_user VALUES (DEFAULT, $1, $2, $3, $4, DEFAULT);",
+    text: "INSERT INTO application_user VALUES ((SELECT MAX(APPLICATION_USER_ID) + 1 FROM APPLICATION_USER), $1, $2, $3, $4, DEFAULT, DEFAULT);",
     values: [
       userInfo.userTeam,
       userInfo.userName,
@@ -83,7 +97,7 @@ let createUser = async (userInfo) => {
   return (
     await client
     .query(query)
-    .then(res => res.send('User Added Successfully'))
+    .then(res => userInfo)
     .catch(err => console.log(err)))
 }
 
@@ -224,12 +238,16 @@ let deleteSprout = async (sprout) => {
 // UPDATE IS_WATERED
 let updateSproutIsWatered = async (sprout) => {
   const query = {
-    text: `UPDATE user_sprouts SET user_sprouts_is_watered = '1' 
-    WHERE application_user_id=$1 
-    AND user_sprouts_given_name=$2;`,
+    text: `DELETE FROM ALERTS
+           WHERE USER_SPROUTS_ID = (SELECT USER_SPROUTS.USER_SPROUTS_ID
+                                    FROM USER_SPROUTS
+                                    JOIN ALERTS
+                                    ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
+                                    WHERE APPLICATION_USER_ID = $1
+                                    AND ALERTS.USER_SPROUTS_ID = $2);`,
     values: [
       sprout.userId,
-      sprout.name
+      sprout.sproutId
     ]
   }
   return (
@@ -261,7 +279,7 @@ let updateSproutWateringInterval = async (sprout) => {
 // GET ALERT FOR EACH USER
 let getAlert = async (userId) => {
   const query = {
-    text: `SELECT ALERTS_MESSAGE
+    text: `SELECT ALERTS.USER_SPROUTS_ID, USER_SPROUTS_IMAGE, ALERTS_MESSAGE
     FROM APPLICATION_USER
 	    JOIN USER_SPROUTS ON APPLICATION_USER.APPLICATION_USER_ID = USER_SPROUTS.APPLICATION_USER_ID
 	    JOIN ALERTS ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
@@ -271,7 +289,7 @@ let getAlert = async (userId) => {
   return (
     await client
     .query(query)
-    .then(res => console.log(res))
+    .then(res => res.rows)
     .catch(err => console.log(err)))
 }
 
@@ -284,10 +302,10 @@ let deleteAlert = async (sprout) => {
                             JOIN ALERTS
                             ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
                             WHERE APPLICATION_USER_ID = $1
-                            AND USER_SPROUTS_GIVEN_NAME = $2);`,
+                            AND ALERTS.USER_SPROUTS_ID = $2);`,
     values: [
       sprout.userId,
-      sprout.name
+      sprout.userSproutsId
     ]
   }
   return (
@@ -311,9 +329,41 @@ let getPlantInfo = async () => {
     .catch(err => console.log(err)))
 }
 
+// GET TOP 5 USERS
+let getTopFiveUsers = async () => {
+  const query = {
+    text: `SELECT application_user_preferred_name, application_user_points, application_user_image
+           FROM application_user
+           ORDER BY application_user_points DESC, application_user_preferred_name
+           LIMIT 5;`
+  }
+  return (
+    await client
+    .query(query)
+    .then(res => res.rows)
+    .catch(err => console.log(err))
+  )
+}
+
+// GET TEAM POINTS
+let getTeamPoints = async () => {
+  const query = {
+    text: `SELECT team_name, team_points, team_image_url
+           FROM team
+           ORDER BY team_points DESC;`
+  }
+  return (
+    await client
+    .query(query)
+    .then(res => res.rows)
+    .catch(err => console.log(err))
+  )
+}
+
 // export modules
 module.exports = {
   getUser,
+  checkUserExist,
   createUser,
   updateUserProfile,
   getUserSprouts,
@@ -326,5 +376,7 @@ module.exports = {
   getAlert,
   deleteAlert,
   getPlantInfo,
-  getUserById
+  getUserById,
+  getTopFiveUsers,
+  getTeamPoints
 }
