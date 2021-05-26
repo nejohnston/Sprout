@@ -111,6 +111,11 @@ app.post("/profile/", async (req, res) => {
   // response.status(500).send(`500: server.js could not handle response.`);
 });
 
+app.delete("/sprouts/:userId/:sproutId", (request, response) => {
+  deleteSprout(request.params.userId, request.params.sproutId);
+  response.status(200).send(`200: Sprout deleted successfully.`)
+})
+
 app.post("/alerts", async (req, res) => {
   let alerts = await getAlert(req.body.userId);
   res.json(alerts);
