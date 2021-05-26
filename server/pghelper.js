@@ -351,6 +351,37 @@ let getPlantInfo = async () => {
     .catch(err => console.log(err)))
 }
 
+// GET TOP 5 USERS
+let getTopFiveUsers = async () => {
+  const query = {
+    text: `SELECT application_user_preferred_name, application_user_points
+           FROM application_user
+           ORDER BY application_user_points DESC, application_user_preferred_name
+           LIMIT 5;`
+  }
+  return (
+    await client
+    .query(query)
+    .then(res => res.rows)
+    .catch(err => console.log(err))
+  )
+}
+
+// GET TEAM POINTS
+let getTeamPoints = async () => {
+  const query = {
+    text: `SELECT team_name, team_points
+           FROM team
+           ORDER BY team_points DESC;`
+  }
+  return (
+    await client
+    .query(query)
+    .then(res => res.rows)
+    .catch(err => console.log(err))
+  )
+}
+
 // export modules
 module.exports = {
   getUser,
@@ -367,5 +398,7 @@ module.exports = {
   getAlert,
   deleteAlert,
   getPlantInfo,
-  getUserById
+  getUserById,
+  getTopFiveUsers,
+  getTeamPoints
 }

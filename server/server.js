@@ -18,6 +18,8 @@ const {
   getAlert,
   deleteAlert,
   getPlantInfo,
+  getTopFiveUsers,
+  getTeamPoints
 } = require("./pgHelper");
 const { response } = require("express");
 const { sign } = require("crypto");
