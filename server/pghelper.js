@@ -30,12 +30,11 @@ console.log('connected')
 let getUser = async (username, password) => {
   const query = {
     text: `SELECT application_user.application_user_id, team_id, application_user_username,
-      convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') as application_user_password,
       application_user_preferred_name, application_user_points, application_user_image
       FROM application_user
-      WHERE application_user_username = $1 
+      WHERE LOWER(application_user_username) = $1 
       AND convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') = $2;`,
-    values: [username, password]
+    values: [username.toLowerCase(), password]
   }
   return (
     await client
@@ -46,8 +45,8 @@ let getUser = async (username, password) => {
 
 let checkUserExist = async (userName) => {
   const query = {
-    text: `SELECT * FROM APPLICATION_USER WHERE APPLICATION_USER_USERNAME = $1`,
-    values: [userName]
+    text: `SELECT * FROM APPLICATION_USER WHERE LOWER(APPLICATION_USER_USERNAME) = $1`,
+    values: [userName.toLowerCase()]
   }
   return (
     await client
