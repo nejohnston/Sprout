@@ -28,8 +28,6 @@ const WaterAlert = ({plants}) => {
     console.log(plants);
 
     const waterPlant = async (plant_id) => {
-
-        console.log('clear!')
         Axios.put('/alerts', {
             userID: window.sessionStorage.getItem('userId'),
             user_sprouts_id: plant_id
