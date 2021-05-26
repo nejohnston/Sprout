@@ -42,7 +42,7 @@ const DigUp = ( {sprout}, props) => {
   };
 
   const handleSubmit = () => {
-    fetch(`/sprouts/${user.userId}/${sprout.sproutId}`, {
+    fetch(`http://localhost:3001/sprouts/${user.userId}/${sprout.sproutId}`, {
       method: "DELETE"
     })
     .then(response => console.log(response))
