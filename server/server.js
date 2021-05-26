@@ -126,8 +126,12 @@ app.post("/alerts", async (req, res) => {
   // let alerts = await getAlert
 });
 
-app.delete("/alerts", async (req, res) => {
-  console.log(req);
+app.put("/alerts", async (req, res) => {
+  let param = {
+    userId: req.body.userID,
+    userSproutsId: req.body.user_sprouts_id
+  }
+  await deleteAlert(param)
 });
 
 // Code copied from here, Answer 1
