@@ -90,7 +90,7 @@ const AddPlantModal = ({ type, family }, props) => {
               };
               updatedSprouts.push(sproutObject);
             }
-            if (res.status == 200) {
+            if (res.status === 200) {
               setSprouts(updatedSprouts);
               authUser.points += 100;
               handleClose();

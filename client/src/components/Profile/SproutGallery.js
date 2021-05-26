@@ -30,7 +30,7 @@ const SproutGallery = ({ sprouts }) => {
     <Container fluid>
       <Row id="sprout-gallery-container">
         {sprouts.map(
-          sprout => <SproutItem sprout={sprout} />
+          sprout => <SproutItem sprout={sprout} key={sprout.sproutId} />
         )}
       </Row>
     </Container>
