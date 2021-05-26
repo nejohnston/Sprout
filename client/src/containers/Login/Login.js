@@ -56,9 +56,8 @@ const Login = (props) => {
                     let textResponse = await response.text();
                     try {
                       let data = JSON.parse(textResponse);
-                      let userData = data;
-                      let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
-                      console.log(userSproutsResponse)
+                      let userData = data[0];
+                      // let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
                       setValidation(true);
                       user.userId = userData.application_user_id;
                       user.profilePicture = userData.application_user_image;
@@ -88,9 +87,9 @@ const Login = (props) => {
                       setValidation(false);
                       throw Error("Incorrect username or password.");
                     }
-                    let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
+                    // let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
                     // let userSproutsJson = await response.json()
-                      console.log(userSproutsResponse)
+                      // console.log(userSproutsResponse)
                       // if (userSproutsJson.length > 0) {
                       //   userSproutsResponse.forEach((element) => {
                       //   sprouts.push({
