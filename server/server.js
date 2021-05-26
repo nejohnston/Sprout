@@ -47,10 +47,11 @@ app.use(express.static(buildPath));
 app.get('/login/:username/:password', async (request, response) => {
   let user = await getUser(request.params.username, request.params.password);
   console.log(user);
-  let responseJson = response.json(user)
-  if(responseJson.length > 0) {
-    responseJson;
+  
+  if(user.length > 0) {
+    response.json(user);
   }
+  response.redirect('/signup');
 });
 
 app.post('/signup', async (req, res) => {
@@ -62,12 +63,13 @@ app.post('/signup', async (req, res) => {
  * returns response with user's Information
  */
 app.put('/profile', async (req, res) => {
+  // console.log(req.body);
   let param = {
     id: req.body.userId,
     imageUrl: req.body.profilePic,
     userPrefName: req.body.newUserPrefName
   }
-  // console.log(param);
+  console.log(param);
   await updateUserProfile(param);
   let userInfo = await getUserById(req.body.userId);
   res.json(userInfo);
@@ -92,23 +94,10 @@ app.get('/sprouts/:userId', async (request, response) => {
  */
 app.post('/profile/', async (request, response) => {
   await createSprout(request.body)
-  console.log(request.body)
   response.status(200).send(`200: Sprout added successfully.`);
   // response.status(500).send(`500: server.js could not handle response.`);
 })
 
-// DELETE USER SPROUT
-/**
- * @params sprout json object
- * create new user sprout.
- * @returns - success or fail message.
- */
-app.delete('/sprouts/:userId/:sproutId', async (request, response) => {
-  // console.log('userID' + request.params.userId)
-  // console.log('sproutID' + request.params.sproutId)
-  await deleteSprout(request.params.userId, request.params.sproutId);
-  response.status(200).send(`200: Sprout deleted successfully.`)})
-  
 app.post('/alerts', async (req, res) => {
   let alerts = await getAlert(req.body.userId);
   res.json(alerts);
@@ -123,7 +112,6 @@ app.post('/alerts', async (req, res) => {
 rootRouter.get('(/*)?', async (req, res, next) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
-
 app.use(rootRouter);
 
 app.listen(port, () => {

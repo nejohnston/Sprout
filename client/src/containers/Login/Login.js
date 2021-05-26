@@ -56,7 +56,9 @@ const Login = (props) => {
                     let textResponse = await response.text();
                     try {
                       let data = JSON.parse(textResponse);
-                      let userData = data[0];
+                      let userData = data;
+                      let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
+                      console.log(userSproutsResponse)
                       setValidation(true);
                       user.userId = userData.application_user_id;
                       user.profilePicture = userData.application_user_image;
@@ -65,29 +67,35 @@ const Login = (props) => {
                       user.points = userData.application_user_points;
                       user.team = userData.team_id;
                       user.profilePicture = userData.application_user_image;
-                      data.forEach((element) => {
-                        sprouts.push({
-                          sproutId: element.user_sprouts_id,
-                          image_url: element.user_sprouts_image,
-                          name: element.user_sprouts_given_name,
-                          type: element.user_sprouts_type,
-                          family: element.user_sprouts_family,
-                          wateringInterval:
-                            element.user_sprouts_watering_intervals,
-                          notes: element.user_sprouts_notes,
-                          isWatered: element.user_sprouts_is_watered,
-                          dateAdded: element.user_sprouts_date_added,
-                          lastWatered: element.user_sprouts_last_watered,
-                          nextAlert: element.user_sprouts_next_alert_date,
-                        });
-                      });
-                      props.history.push("/profile");
+
                     } catch {
                       setValidation(false);
                       throw Error("Incorrect username or password.");
                     }
-                  }
-                }
+                    let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
+                    // let userSproutsJson = await response.json()
+                      console.log(userSproutsResponse)
+                      // if (userSproutsJson.length > 0) {
+                      //   userSproutsResponse.forEach((element) => {
+                      //   sprouts.push({
+                      //     sproutId: element.user_sprouts_id,
+                      //     image_url: element.user_sprouts_image,
+                      //     name: element.user_sprouts_given_name,
+                      //     type: element.user_sprouts_type,
+                      //     family: element.user_sprouts_family,
+                      //     wateringInterval:
+                      //       element.user_sprouts_watering_intervals,
+                      //     notes: element.user_sprouts_notes,
+                      //     isWatered: element.user_sprouts_is_watered,
+                      //     dateAdded: element.user_sprouts_date_added,
+                      //     lastWatered: element.user_sprouts_last_watered,
+                      //     nextAlert: element.user_sprouts_next_alert_date,
+                      //   });
+                      // });
+                  // }
+                
+                  props.history.push("/profile");
+                }}
                 initialValues={{
                   username: "",
                   password: "",
