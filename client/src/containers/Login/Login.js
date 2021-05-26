@@ -52,11 +52,9 @@ const Login = (props) => {
                     let response = await fetch(
                       `http://localhost:3001/login/${values.username}/${values.password}`
                     );
-
                     let textResponse = await response.text();
                     try {
-                      let data = JSON.parse(textResponse);
-                      let userData = data[0];
+                      let userData = JSON.parse(textResponse);
                       // let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
                       setValidation(true);
                       user.userId = userData.application_user_id;
@@ -66,7 +64,12 @@ const Login = (props) => {
                       user.points = userData.application_user_points;
                       user.team = userData.team_id;
                       user.profilePicture = userData.application_user_image;
-                      data.forEach((element) => {
+                      let userSprouts = 
+                      await fetch(`http://localhost:3001/sprouts/${user.userId}`)
+                      .then(response => response.json())
+                      .catch(error => console.log(error))
+                      if (userSprouts !== []) {
+                        await userSprouts.forEach((element) => {
                         sprouts.push({
                           sproutId: element.user_sprouts_id,
                           imageUrl: element.user_sprouts_image,
@@ -81,7 +84,7 @@ const Login = (props) => {
                           lastWatered: element.user_sprouts_last_watered,
                           nextAlert: element.user_sprouts_next_alert_date,
                         });
-                      });
+                      });}
                       window.sessionStorage.setItem('userId', user.userId);
                       window.sessionStorage.setItem('userName', user.username);
                       window.sessionStorage.setItem('userPrefName', user.name);
