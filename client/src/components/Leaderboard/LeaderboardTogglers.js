@@ -10,7 +10,7 @@ import "./styles/LeaderboardTogglers.css";
 
 /**
  * Return the top component of the Leaderboard screen
- * 
+ *
  * Based on which team has the most points, the images will be rendered with the appropriate team data
  * @param {Array} teams - a sorted array containing objects with team data (points in descending order), to be used as props
  * @returns the top component of the Leaderboard screen
@@ -18,6 +18,7 @@ import "./styles/LeaderboardTogglers.css";
 
 const LeaderboardTogglers = ({ teams }) => {
   console.log(teams)
+
   // All the styles are inline because they have to accept a prop as a background image url, and there is no way to pass this directly into an external stylesheet. Furthermore, as they need the prop passed in, they also can't be defined at the top of the page above this rendering component. The only way to style was to do it inline.
 
   // Based on the team with the most points, the positions will change, which is why all 3 of the components accept props.
@@ -25,9 +26,7 @@ const LeaderboardTogglers = ({ teams }) => {
   return (
     <>
       <div id="leaderboard-togglers-container">
-        <div
-          className="team-toggler-container leaderboard-team-lower"
-        >
+        <div className="team-toggler-container leaderboard-team-lower">
           <div className="leaderboard-white-bg">
             <div
               className=""
@@ -74,9 +73,7 @@ const LeaderboardTogglers = ({ teams }) => {
           <p className="leaderboard-names">{teams[0]["team_name"]}</p>
         </div>
 
-        <div
-          className="team-toggler-container leaderboard-team-lower"
-        >
+        <div className="team-toggler-container leaderboard-team-lower">
           <div className="leaderboard-white-bg">
             <div
               className=""

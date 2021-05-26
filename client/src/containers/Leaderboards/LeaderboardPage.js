@@ -30,41 +30,39 @@ const LeaderboardPage = () => {
   const [teamPoints, setTeamPoints] = useState([]);
 
   useEffect(() => {
-    let isMounted = true;
     getTeamPoints();
     getTopFiveUsers();
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
+  let championsJSON = [];
   const getTopFiveUsers = async () => {
     await Axios.get("/leaderboards-topFive")
     .then((res) => {
       console.log(res.data);
-      setTopFiveUsers(res.data)
+      championsJSON.push(res.data)
     });
   };
 
+  let teamsDataJson = [];
   const getTeamPoints = async () => {
     await Axios.get("/leaderboards-team-points")
     .then((res) => {
       console.log(res.data);
-      setTeamPoints(res.data)
+      teamsDataJson.push(res.data)
     });
   }
 
   // Temp teams data
-  let teamsDataJson = [];
-  teamsDataJson.push(...teamsData);
-  // Sort for highest teams
-  teamsDataJson.sort(
-    (a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"])
-  );
+  // let teamsDataJson = [];
+  // teamsDataJson.push(...teamsData);
+  // // Sort for highest teams
+  // teamsDataJson.sort(
+  //   (a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"])
+  // );
 
   // Temp champions data, should be queried using useState/useEffect
-  let championsJSON = [];
-  championsJSON.push(...champions);
+  // let championsJSON = [];
+  // championsJSON.push(...champions);
 
   
   return (
@@ -76,12 +74,12 @@ const LeaderboardPage = () => {
         </div>
 
         <hr />
-        <LeaderboardTogglers teams={teamPoints} />
+        <LeaderboardTogglers teams={teamsDataJson} />
       </div>
 
       <div id="top-five-container">
         <p id="top-five-header">Leading Sprout Gardeners</p>
-        <TopFive topfive={topFiveUsers} />
+        <TopFive topfive={championsJSON} />
 
         <div id="leaderboard-nav-block"></div>
       </div>
