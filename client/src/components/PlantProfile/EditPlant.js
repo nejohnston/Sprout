@@ -50,7 +50,7 @@ const EditPlant = ({props, sprout, updateSproutPage}) => {
   const [inputType, setType] = useState(sprout["type"]);
   const [inputWateringInterval, setWateringInterval] = useState(sprout["wateringInterval"])
   const [inputNotes, setNotes] = useState(sprout["notes"])
-  const [selectedSproutPic, setSelectedSproutPic] = useState(sprout["image_url"]);
+  const [selectedSproutPic, setSelectedSproutPic] = useState(sprout["imageUrl"]);
 
   // Edit Sprout function upon form submission
   const editSprout = async () => {
