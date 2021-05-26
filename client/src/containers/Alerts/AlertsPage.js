@@ -10,12 +10,14 @@ import Axios from "axios";
 import SproutTip from '../../components/Alerts/SproutTip';
 import WaterAlerts from '../../components/Alerts/WaterAlerts';
 
-// Data (temp)
+// Data
 import sproutTips from '../../config/data/sprout-tips.json';
-// import alertPlants from './alerts.json';
 
 // Styles
 import './AlertsPage.css';
+
+// Assets
+import plantyDance from '../../config/assets/gifs/planty-dance.gif';
 
 
 
@@ -60,7 +62,10 @@ const AlertsPage = () => {
 
     {alertPlants.length === 0 && (
       <div id="empty-alerts">
-      <p>Pat yourself on the back, all your plants are watered!</p>
+      <img src={plantyDance} alt="planty-dance" id="planty-dance"/>
+      <strong>
+        Pat yourself on the back, <br/> all your plants are watered!
+      </strong>
       </div>
     )}
 
