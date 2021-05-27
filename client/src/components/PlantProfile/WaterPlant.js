@@ -71,10 +71,14 @@ const WaterPlant = ({ props, sprout, updateLastWatered, waterDiffDays }) => {
         );
         let updatedSprouts = [...sprouts];
         updatedSprouts[sproutIndex] = newSproutWithLastWatered;
+
+        console.log(newLastWateredDate);
   
         updateLastWatered(newLastWateredDate);
         setSprouts(updatedSprouts);
         user.points = user.points + 10;
+
+        console.log(sprouts)
       })
       .catch(err => console.log(err))
       .finally(handleShow());

@@ -187,6 +187,7 @@ app.get("/profile", async (req, res) => {
       name: value.user_sprouts_given_name,
       family: value.user_sprouts_family,
       type: value.user_sprouts_type,
+      lastWatered: value.user_sprouts_last_watered,
       wateringInterval: value.user_sprouts_watering_intervals,
       notes: value.user_sprouts_notes,
       imageUrl: value.user_sprouts_image,
