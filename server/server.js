@@ -43,7 +43,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       //secure: true,
-      maxAge: 1000 * 60 * 15, //session expires in 15 minutes
+      maxAge: 1000 * 60 * 60, //session expires in 1 hour
     },
   })
 );
@@ -67,14 +67,13 @@ app.post("/login", async (req, res) => {
     password: req.body.password,
   };
   let user = await getUser(param);
-  let userByName = await checkUserExist(param.userName)
+  let userByName = await checkUserExist(param.userName);
   if (userByName === undefined) {
-    res.json("User not found")
+    res.json("User not found");
   }
   if (user === undefined && userByName) {
     res.json("Failed");
-  }
-  else {
+  } else {
     req.session.userId = user.application_user_id;
     res.json(user);
   }
@@ -192,8 +191,8 @@ app.get("/profile", async (req, res) => {
       notes: value.user_sprouts_notes,
       imageUrl: value.user_sprouts_image,
       dateAdded: value.user_sprouts_date_added,
-    })
-  })
+    });
+  });
   res.json(result);
 });
 
@@ -229,12 +228,12 @@ app.put("/plant-profile", async (req, res) => {
 app.put("/plant-profile/:sproutId", async (req, res) => {
   let param = {
     userId: req.body.userId,
-    userSproutsId: req.params.sproutId
-  }
+    userSproutsId: req.params.sproutId,
+  };
   await deleteAlert(param);
   let updatedSprout = await getSproutById(req.params.sproutId);
   res.json(updatedSprout);
-})
+});
 
 // DELETE USER SPROUT
 /**
@@ -268,7 +267,7 @@ app.put("/alerts", async (req, res) => {
   await deleteAlert(param);
   let alerts = await getAlert(req.body.userId);
   let updatedSprout = await getSproutById(req.body.user_sprouts_id);
-  res.json({"alerts": alerts, "updatedSprout": updatedSprout});
+  res.json({ alerts: alerts, updatedSprout: updatedSprout });
 });
 
 // ==========================================
