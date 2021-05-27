@@ -16,7 +16,7 @@ import Splash from "../../Splash";
 // Styles
 import "./Login.css";
 
-Axios.defaults.withCredentials = true;
+Axios.defaults.withCredentials = false;
 
 const schema = yup.object().shape({
   // REGEX statement copied from this article
@@ -99,7 +99,7 @@ const Login = (props) => {
                       <Form.Label>Password</Form.Label>
                       <Form.Control
                         style={{ marginBottom: "0.25rem" }}
-                        type="text"
+                        type="password"
                         placeholder="Enter Password"
                         name="password"
                         value={values.password}
