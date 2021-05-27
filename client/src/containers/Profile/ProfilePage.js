@@ -61,7 +61,6 @@ const ProfilePage = ({ userContext }) => {
       user.profilePicture = res.data.profilePicture;
       user.sprouts = res.data.sprouts;
       setSprouts(res.data.sprouts);
-      window.sessionStorage.setItem('userSprouts', res.data.sprouts);
     });
   };
 

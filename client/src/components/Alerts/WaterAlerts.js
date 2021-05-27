@@ -67,7 +67,7 @@ const WaterAlert = ({plants, setAlerts}) => {
 
         <div className="alert-water" key={plant["user_sprouts_id"]}>
             <img className="alert-water-plant-img" src={plant["user_sprouts_image"]} alt="plant-img"/>
-            <p><strong>{plant["alerts_message"].split(" needs to be watered")[0]}</strong> needs to be watered!</p>
+            <p><strong>{plant["user_sprouts_given_name"]}</strong> needs to be watered!</p>
 
             <img className="alert-water-btn shadow-sm" src={waterIcon} alt="water-icon" onClick={() => waterPlant(plant["user_sprouts_id"])} />
         </div>

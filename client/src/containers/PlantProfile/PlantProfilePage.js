@@ -34,25 +34,26 @@ import { SproutContext } from "../../components/Layout/Layout";
  * @returns - the components of the Plant Profile Page.
  */
 const PlantProfilePage = () => {
+  const [display, setDisplay] = useState(true);
 
   // Get the user's sprouts
-  let sprouts = useContext(SproutContext)[0];
+  let [sprouts, setSprouts] = useContext(SproutContext);
 
   // Retreve the correct sprout information based on the request parameter
   let sproutParam = parseInt(useParams().sproutId);
   let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
 
   // Declare state of current sprout
-  const [thisSprout, setThisSprout] = useState(currSprout);
+  const [thisSprout, setThisSprout] = useState();
 
   // Set last watered date
   const [lastWatered, setLastWatered] = useState(null);
   const [diffDays, setDiffDays] = useState();
 
   // Fetch data on mount of the components/page
-  useEffect(() => {
-    getLastWateredDate(currSprout.lastWatered);
-  }, []);
+  // useEffect(() => {
+  //   getLastWateredDate(currSprout.lastWatered);
+  // }, []);
 
   // Calculate the different in days from last watered to current date
   let getDiffDay = date => {
@@ -97,21 +98,46 @@ const PlantProfilePage = () => {
 
   useEffect(() => {
     let isMounted = true;
+    getSprouts();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
     plantProfile();
     return () => {
       isMounted = false;
     };
   }, []);
 
-  const plantProfile = async () => {
-    await Axios.get(`/plant-profile/${thisSprout.sproutId}`)
-  .then(res => {
-    setThisSprout(res.data);
-    console.log(thisSprout);
-  });
+  useEffect(() => {
+    setTimeout(() => setDisplay(false), 500);
+  }, []);
+
+  const getSprouts = async () => {
+    await Axios.post('/get-sprouts', {
+      userId: window.sessionStorage.getItem('userId')
+    })
+    .then(res => {
+      console.log(res.data);
+      setSprouts(res.data)
+    })
   }
 
+  const plantProfile = async () => {
+    console.log(sproutParam);
+    await Axios.get(`/plant-profile/${sproutParam}`)
+  .then(res => {
+    setThisSprout(res.data);
+  });
+  }
+  console.log(thisSprout);
+
   return (
+    <>
+    {display === false ? (
     <div id="container">
       <div className="header_backarrow_container">
         <Link to="/profile">
@@ -129,6 +155,8 @@ const PlantProfilePage = () => {
       <div id="plant-profile-nav-block"></div>
 
     </div>
+    ) : null}
+    </>
   );
 };
 

@@ -47,6 +47,7 @@ app.use(
     },
   })
 );
+app.set("etag", false);
 
 // ====================================
 //           EXPRESS QUERIES
@@ -200,11 +201,13 @@ app.get("/profile", async (req, res) => {
 /**
  * Updates the information of a user's sprout submitted from EditPlant Component.
  */
+app.post('/get-sprouts', async (req, res) => {
+  let userSprouts = await getUserSprouts(req.body.userId);
+  res.json(userSprouts);
+})
+
 app.get("/plant-profile/:sproutId", async (req, res) => {
-  let userSprouts = window.sessionStorage.getItem('userSprouts');
-  console.log(userSprouts);
-  let currentSprout = req.session.userSprouts.filter(sprout => sprout.sproutId == req.params.sproutId)[0]
-  let sprout = await getSproutById(currentSprout.sproutId);
+  let sprout = await getSproutById(req.params.sproutId);
   let result = {
     sproutId: sprout.user_sprouts_id,
       name: sprout.user_sprouts_given_name,
