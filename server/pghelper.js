@@ -249,47 +249,6 @@ let deleteSprout = async (userId, sproutId) => {
     .catch(err => console.log(err))
 }
 
-// UPDATE IS_WATERED
-let updateSproutIsWatered = async (sprout) => {
-  const query = {
-    text: `DELETE FROM ALERTS
-           WHERE USER_SPROUTS_ID = (SELECT USER_SPROUTS.USER_SPROUTS_ID
-                                    FROM USER_SPROUTS
-                                    JOIN ALERTS
-                                    ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
-                                    WHERE APPLICATION_USER_ID = $1
-                                    AND ALERTS.USER_SPROUTS_ID = $2);`,
-    values: [
-      sprout.userId,
-      sprout.sproutId
-    ]
-  }
-  return (
-    await client
-    .query(query)
-    .then(res => console.log(res))
-    .catch(err => console.log(err)))
-}
-
-// UPDATE WATERING INTERVAL
-let updateSproutWateringInterval = async (sprout) => {
-  const query = {
-    text: `UPDATE user_sprouts SET user_sprouts_watering_intervals = $1
-    WHERE application_user_id = $2 
-    AND user_sprouts_given_name = $3;`,
-    values: [
-      sprout.newWateringInterval,
-      sprout.userId,
-      sprout.name
-    ]
-  }
-  return (
-    await client
-    .query(query)
-    .then(res => console.log(res))
-    .catch(err => console.log(err)))
-}
-
 // GET ALERT FOR EACH USER
 let getAlert = async (userId) => {
   const query = {

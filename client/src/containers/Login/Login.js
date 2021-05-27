@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import Axios from 'axios';
 import { Link } from "react-router-dom";
 import { Formik, ErrorMessage } from "formik";
 import Form from "react-bootstrap/Form";
@@ -14,6 +15,8 @@ import Splash from "../../Splash";
 
 // Styles
 import "./Login.css";
+
+Axios.defaults.withCredentials = true;
 
 const schema = yup.object().shape({
   // REGEX statement copied from this article
@@ -50,7 +53,7 @@ const Login = (props) => {
                    */
                   async (values) => {
                     let response = await fetch(
-                      `http://localhost:3001/login/${values.username}/${values.password}`
+                      `/login/${values.username}/${values.password}`
                     );
                     let textResponse = await response.text();
                     try {
@@ -65,7 +68,7 @@ const Login = (props) => {
                       user.team = userData.team_id;
                       user.profilePicture = userData.application_user_image;
                       let userSprouts = 
-                      await fetch(`http://localhost:3001/sprouts/${user.userId}`)
+                      await fetch(`/sprouts/${user.userId}`)
                       .then(response => response.json())
                       .catch(error => console.log(error))
                       if (userSprouts !== []) {
@@ -86,9 +89,6 @@ const Login = (props) => {
                         });
                       });}
                       window.sessionStorage.setItem('userId', user.userId);
-                      window.sessionStorage.setItem('userName', user.username);
-                      window.sessionStorage.setItem('userPrefName', user.name);
-                      window.sessionStorage.setItem('teamId', user.team);
                       props.history.push("/profile");
                     } catch {
                       setValidation(false);
