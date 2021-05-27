@@ -18,12 +18,12 @@ import './styles/NoResults.css';
 
 const NoResults = () => {
     return (
-        <div id="welcome-div" className="text-muted">
+        <div id="found-none-div" className="text-muted">
 
             <h5>No Matching Plants Found</h5>
 
             <h6>Suggest a New Plant</h6> 
-            <p>Add your plant from My Sprouts and <a href="/about-us/#contact" className="link">submit a request</a> if you'd like to see a plant added to our database</p>
+            <p>Add your plant from My Sprouts and submit a request by finding us in our About Us page if you'd like to see a plant added to our database</p>
         </div>
     )
 }

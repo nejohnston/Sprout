@@ -1,9 +1,9 @@
-#welcome-div {
+#found-none-div {
     width: 15rem;
     text-align: center;
     margin: 2rem auto 0rem auto;
 }
 
-#welcome-div h5 {
+#found-none-div h5 {
     margin-bottom: 2rem;
 }

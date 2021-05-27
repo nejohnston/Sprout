@@ -6,7 +6,7 @@ import './styles/Welcome.css';
 
 const Welcome = () => {
     return (
-        <div id="welcome-div" className="text-muted">
+        <div id="found-none-div" className="text-muted">
             <h5>Looks like you don't have any Sprouts!</h5>
 
             <h6>Sprout Starter:</h6> 
