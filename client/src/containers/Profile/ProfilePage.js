@@ -4,6 +4,7 @@
 
 // React
 import React, { useState, useContext, useEffect } from "react";
+import Axios from "axios";
 
 // Components
 import SproutGallery from "../../components/Profile/SproutGallery";
@@ -40,8 +41,33 @@ const ProfilePage = ({ userContext }) => {
   }, [sprouts]);
 
   useEffect(() => {
+    let isMounted = true;
+    getSprouts();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
     setTimeout(() => setDisplay(false), 500);
-  }, []); //after 0.5 seconds the state will be switched to false, which will allow the fetch of profile picture to complete
+  }, []);
+
+  const getSprouts = async () => {
+    await Axios.get("/profile").then((res) => {
+      console.log(res);
+      user.userId = res.data.userId;
+      user.username = res.data.username;
+      setPrefNameDisplay(res.data.name);
+      user.points = res.data.points;
+      user.team = res.data.team;
+      user.profilePicture = res.data.profilePicture;
+      user.sprouts = res.data.sprouts;
+      setSprouts(res.data.sprouts);
+      console.log(res.data);
+    });
+  };
+
+  //after 0.5 seconds the state will be switched to false, which will allow the fetch of profile picture to complete
 
   // const [saveSprout, setSaveSprout] = useState(false);
 

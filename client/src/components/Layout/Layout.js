@@ -16,9 +16,7 @@ import NavBar from "./NavBar";
 const initialState = {
   user: {
     userId: 0,
-    teamId: 0,
     username: "",
-    password: "",
     name: "",
     profilePicture: "",
     team: 0,

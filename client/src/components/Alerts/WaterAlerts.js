@@ -40,7 +40,6 @@ const WaterAlert = ({plants, setAlerts}) => {
         }).then(res => {
 
             console.log(res);
-
             let currSprout = sprouts.filter(sprout => sprout.sproutId === plant_id)[0];
 
             let wateredSprout = {...currSprout,

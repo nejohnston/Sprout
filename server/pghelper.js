@@ -27,15 +27,15 @@ console.log('connected')
  * return a user's data.
  * @returns - user object.
  */
-let getUser = async (username, password) => {
+let getUser = async (user) => {
+  console.log(user);
   const query = {
     text: `SELECT application_user.application_user_id, team_id, application_user_username,
-      convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') as application_user_password,
       application_user_preferred_name, application_user_points, application_user_image
       FROM application_user
-      WHERE application_user_username = $1 
+      WHERE LOWER(application_user_username) = $1 
       AND convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') = $2;`,
-    values: [username, password]
+    values: [user.userName.toLowerCase(), user.password]
   }
   return (
     await client
@@ -46,8 +46,8 @@ let getUser = async (username, password) => {
 
 let checkUserExist = async (userName) => {
   const query = {
-    text: `SELECT * FROM APPLICATION_USER WHERE APPLICATION_USER_USERNAME = $1`,
-    values: [userName]
+    text: `SELECT * FROM APPLICATION_USER WHERE LOWER(APPLICATION_USER_USERNAME) = $1`,
+    values: [userName.toLowerCase()]
   }
   return (
     await client
@@ -171,8 +171,8 @@ let createSprout = async (sprout) => {
 let updateSprout = async (sprout) => {
   const query = {
     text: `UPDATE USER_SPROUTS 
-    SET User_sprouts_given_name = $2, User_sprouts_family = $3, User_sprouts_type = $4, User_sprouts_watering_intervals = $5, User_sprouts_notes = $6, User_sprouts_image = $7
-    WHERE User_sprouts_id = $1;`,
+    SET user_sprouts_given_name = $2, user_sprouts_family = $3, user_sprouts_type = $4, user_sprouts_watering_intervals = $5, user_sprouts_notes = $6, user_sprouts_image = $7
+    WHERE user_sprouts_id = $1;`,
     values: [
       sprout.id,
       sprout.name,
@@ -192,7 +192,7 @@ let updateSprout = async (sprout) => {
 
 let getSproutById = async (sproutId) => {
   const query = {
-    text: 'SELECT * FROM USER_SPROUTS WHERE User_sprouts_id = $1;',
+    text: 'SELECT * FROM user_sprouts WHERE user_sprouts_id = $1;',
     values: [sproutId]
   }
   return (
@@ -250,47 +250,6 @@ let deleteSprout = async (userId, sproutId) => {
     .catch(err => console.log(err))
 }
 
-// UPDATE IS_WATERED
-let updateSproutIsWatered = async (sprout) => {
-  const query = {
-    text: `DELETE FROM ALERTS
-           WHERE USER_SPROUTS_ID = (SELECT USER_SPROUTS.USER_SPROUTS_ID
-                                    FROM USER_SPROUTS
-                                    JOIN ALERTS
-                                    ON USER_SPROUTS.USER_SPROUTS_ID = ALERTS.USER_SPROUTS_ID
-                                    WHERE APPLICATION_USER_ID = $1
-                                    AND ALERTS.USER_SPROUTS_ID = $2);`,
-    values: [
-      sprout.userId,
-      sprout.sproutId
-    ]
-  }
-  return (
-    await client
-    .query(query)
-    .then(res => console.log(res))
-    .catch(err => console.log(err)))
-}
-
-// UPDATE WATERING INTERVAL
-let updateSproutWateringInterval = async (sprout) => {
-  const query = {
-    text: `UPDATE user_sprouts SET user_sprouts_watering_intervals = $1
-    WHERE application_user_id = $2 
-    AND user_sprouts_given_name = $3;`,
-    values: [
-      sprout.newWateringInterval,
-      sprout.userId,
-      sprout.name
-    ]
-  }
-  return (
-    await client
-    .query(query)
-    .then(res => console.log(res))
-    .catch(err => console.log(err)))
-}
-
 // GET ALERT FOR EACH USER
 let getAlert = async (userId) => {
   const query = {
@@ -322,20 +281,6 @@ let deleteAlert = async (sprout) => {
       sprout.userId,
       sprout.userSproutsId
     ]
-  }
-  return (
-    await client
-    .query(query)
-    .then(res => console.log(res))
-    .catch(err => console.log(err)))
-}
-
-// GET PLANT INFO
-let getPlantInfo = async () => {
-  const query = {
-    text: `SELECT PLANT_COMMON_NAME, PLANT_FAMILY_NAME, PLANT_TYPE, PLANT_IMG_URL,
-    PLANT_ORIGIN, PLANT_SOIL, PLANT_WATER_USE, PLANT_FLOWER_TIME_AT_PEAK, PLANT_FLOWER_COLOR,
-    PLANT_FRUIT_TIME FROM PLANT;`,
   }
   return (
     await client
@@ -386,11 +331,8 @@ module.exports = {
   deleteSprout,
   updateSprout,
   getSproutById,
-  updateSproutIsWatered,
-  updateSproutWateringInterval,
   getAlert,
   deleteAlert,
-  getPlantInfo,
   getUserById,
   getTopFiveUsers,
   getTeamPoints
