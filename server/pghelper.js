@@ -27,14 +27,15 @@ console.log('connected')
  * return a user's data.
  * @returns - user object.
  */
-let getUser = async (username, password) => {
+let getUser = async (user) => {
+  console.log(user);
   const query = {
     text: `SELECT application_user.application_user_id, team_id, application_user_username,
       application_user_preferred_name, application_user_points, application_user_image
       FROM application_user
       WHERE LOWER(application_user_username) = $1 
       AND convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') = $2;`,
-    values: [username.toLowerCase(), password]
+    values: [user.userName.toLowerCase(), user.password]
   }
   return (
     await client
