@@ -69,7 +69,8 @@ const AboutUs = () => {
 
     <div className="about-us-content">
     <h2 className="about-us-h2" id="contact">Reach Out</h2>
-    <p>As students and new programmers, we are always open to questions or feedback. Please feel free to reach out to us.</p>
+    <p>As students and new programmers, we are always open to questions or feedback. <br/>
+    Please feel free to reach out to us and offer suggestions.</p>
     
     <a href="mailto:sprout.team.3@gmail.com" id="contact-btn">
     <Button type="button" className="primary" 
