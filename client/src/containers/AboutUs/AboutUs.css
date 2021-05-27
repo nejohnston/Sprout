@@ -57,6 +57,13 @@
     font-weight: bold;
 }
 
+#contact-btn {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*---AVATAR---*/
 .about-us-avatar {
     width: 250px;
@@ -93,7 +100,8 @@
 }
 
 #about-us-nav-block {
-    height: 5.5em;
+    background-color: #94B447;
+    height: 2.5em;
 }
 
 @media (min-width: 1025px) {
