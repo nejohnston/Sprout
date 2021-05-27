@@ -40,7 +40,7 @@ const WaterPlant = ({ props, sprout, updateLastWatered, waterDiffDays }) => {
   const handleShow = () => setShow(true);
 
   const isWaterTime = () => {
-    if (waterDiffDays === -1 || waterDiffDays >= sprout.wateringInterval) {
+    if (waterDiffDays >= sprout.wateringInterval) {
       return true;
     } else {
       return false;
@@ -49,7 +49,7 @@ const WaterPlant = ({ props, sprout, updateLastWatered, waterDiffDays }) => {
   
   const wateringPlant = async () => {
 
-    if (!sprout.LastWatered || !isWaterTime()) {
+    if (!isWaterTime()) {
       alert("It's not time to water your plant yet!")
     } else {
       await Axios.put(`/plant-profile/${sprout.sproutId}`, {
