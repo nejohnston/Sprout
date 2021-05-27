@@ -23,7 +23,7 @@ import watercan from '../../config/assets/icons/water-can-slim.svg';
  * @param {Object} plant - is the plant object for the current page. 
  * @returns - the Family and Watering information for the passed plant.
  */
-const PlantInfo = ({plant}) => {
+const PlantInfo = ({plant, wateredDate}) => {
 
     return (
         <>
@@ -45,10 +45,10 @@ const PlantInfo = ({plant}) => {
                 <img src={watercan} className="plant-profile-icon" alt="leaf-icon"></img>
                 <div className="plant-profile-info-section">
                     <p className="plant-profile-subhead1 plant-profile-subhead">Water Interval</p>
-                    <p className="plant-profile-value1 plant-profile-value" id="plant-profile-watering">{plant["wateringInterval"]} days</p>
+                    <p className="plant-profile-value1 plant-profile-value">{plant["wateringInterval"]} days</p>
 
                     <p className="plant-profile-subhead2 plant-profile-subhead">Last Watered</p>
-                    <p className="plant-profile-value2 plant-profile-value" id="plant-profile-last-watered">{plant["lastWatered"]}</p>
+                    <p className="plant-profile-value2 plant-profile-value" id="plant-profile-last-watered">{wateredDate}</p>
                 </div>
             </div>
         </div>
