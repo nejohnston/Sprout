@@ -201,26 +201,41 @@ app.get("/profile", async (req, res) => {
 /**
  * Updates the information of a user's sprout submitted from EditPlant Component.
  */
-app.post('/get-sprouts', async (req, res) => {
+app.post("/get-sprouts", async (req, res) => {
   let userSprouts = await getUserSprouts(req.body.userId);
-  res.json(userSprouts);
-})
+  let result = [];
+  userSprouts.forEach((value) => {
+    result.push({
+      sproutId: value.user_sprouts_id,
+      name: value.user_sprouts_given_name,
+      family: value.user_sprouts_family,
+      type: value.user_sprouts_type,
+      lastWatered: value.user_sprouts_last_watered,
+      wateringInterval: value.user_sprouts_watering_intervals,
+      notes: value.user_sprouts_notes,
+      imageUrl: value.user_sprouts_image,
+      dateAdded: value.user_sprouts_date_added,
+    });
+  });
+  console.log(result);
+  res.json(result);
+});
 
-app.get("/plant-profile/:sproutId", async (req, res) => {
-  let sprout = await getSproutById(req.params.sproutId);
+app.post("/plant-profile-get-this-sprouts", async (req, res) => {
+  let sprout = await getSproutById(req.body.sproutId);
   let result = {
     sproutId: sprout.user_sprouts_id,
-      name: sprout.user_sprouts_given_name,
-      family: sprout.user_sprouts_family,
-      type: sprout.user_sprouts_type,
-      wateringInterval: sprout.user_sprouts_watering_intervals,
-      notes: sprout.user_sprouts_notes,
-      imageUrl: sprout.user_sprouts_image,
-      dateAdded: sprout.user_sprouts_date_added,
-      lastWatered: sprout.user_sprouts_last_watered
-  }
+    name: sprout.user_sprouts_given_name,
+    family: sprout.user_sprouts_family,
+    type: sprout.user_sprouts_type,
+    wateringInterval: sprout.user_sprouts_watering_intervals,
+    notes: sprout.user_sprouts_notes,
+    imageUrl: sprout.user_sprouts_image,
+    dateAdded: sprout.user_sprouts_date_added,
+    lastWatered: sprout.user_sprouts_last_watered,
+  };
   res.json(result);
-})
+});
 
 app.put("/plant-profile-edit/:sproutId", async (req, res) => {
   let param = {

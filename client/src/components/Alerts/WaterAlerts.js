@@ -40,8 +40,6 @@ const WaterAlert = ({plants, setAlerts}) => {
             userId: window.sessionStorage.getItem('userId'),
             user_sprouts_id: plant_id
         }).then(res => {
-
-            console.log(res);
             
             let currSprout = sprouts.filter(sprout => sprout.sproutId === plant_id)[0];
 
@@ -54,7 +52,6 @@ const WaterAlert = ({plants, setAlerts}) => {
               );
             let updatedSprouts = [...sprouts];
             updatedSprouts[sproutIndex] = wateredSprout;
-            console.log(updatedSprouts);
 
             setSprouts(updatedSprouts);
             setAlerts(res.data.alerts);

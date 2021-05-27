@@ -33,15 +33,17 @@ import { SproutContext } from "../../components/Layout/Layout";
  * Return the components of the Plant Profile Page.
  * @returns - the components of the Plant Profile Page.
  */
+
 const PlantProfilePage = () => {
   const [display, setDisplay] = useState(true);
 
   // Get the user's sprouts
-  let [sprouts, setSprouts] = useContext(SproutContext);
+  const [sprouts, setSprouts] = useContext(SproutContext);
 
   // Retreve the correct sprout information based on the request parameter
-  let sproutParam = parseInt(useParams().sproutId);
-  let currSprout = () => {
+  const sproutParam = parseInt(useParams().sproutId);
+
+  const currSprout = () => {
     return sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
   }
 
@@ -99,23 +101,21 @@ const PlantProfilePage = () => {
   useEffect(() => {
     let isMounted = true;
     getSprouts();
-    return () => {
-      isMounted = false;
-    };
+    isMounted = false;
+    return isMounted;
   }, []);
 
   useEffect(() => {
     let isMounted = true;
     plantProfile();
-    return () => {
-      isMounted = false;
-    };
+    isMounted = false;
+    return isMounted;
   }, []);
 
   useEffect(() => {
-    setTimeout(() => setDisplay(false), 500);
-    setTimeout(() => currSprout(), 500);
-    setTimeout(() => getLastWateredDate(currSprout.lastWatered), 510);
+    setTimeout(() => setDisplay(false), 1000);
+    // setTimeout(() => currSprout(), 500);
+    setTimeout(() => getLastWateredDate(thisSprout.lastWatered), 510);
   }, []);
 
   // Fetch data on mount of the components/page
@@ -134,11 +134,13 @@ const PlantProfilePage = () => {
   }
 
   const plantProfile = async () => {
-    console.log(sproutParam);
-    await Axios.get(`/plant-profile/${sproutParam}`)
+    await Axios.post('/plant-profile-get-this-sprouts', {
+      sproutId: sproutParam
+    })
   .then(res => {
+    console.log(res.data);
     setThisSprout(res.data);
-    console.log(currSprout);
+    console.log(thisSprout);
   });
   }
 

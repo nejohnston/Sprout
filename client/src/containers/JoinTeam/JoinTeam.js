@@ -86,7 +86,7 @@ const JoinTeam = () => {
             </div>
           </label>
           <strong>
-            <p>Team 1</p>
+            <p>Forest</p>
           </strong>
           
           <input type="radio" id="team-2" name="team" />
@@ -96,7 +96,7 @@ const JoinTeam = () => {
             </div>
           </label>
           <strong>
-            <p>Team 2</p>
+            <p>Garden</p>
           </strong>
 
           <input type="radio" id="team-3" name="team" />
@@ -106,7 +106,7 @@ const JoinTeam = () => {
             </div>
           </label>
           <strong>
-            <p>Team 3</p>
+            <p>Fields</p>
           </strong>
           </div>
 

@@ -18,7 +18,6 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Profile.css";
-import NavItem from "react-bootstrap/esm/NavItem";
 
 // ====================================
 //           REACT COMPONENT
