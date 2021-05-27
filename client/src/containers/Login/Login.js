@@ -61,7 +61,7 @@ const Login = (props) => {
                         setValidation(false)
                       }
                       else {
-                        window.sessionStorage.setItem('userId', res.data.userId);
+                        window.sessionStorage.setItem('userId', res.data.application_user_id);
                         window.location = '/profile'
                       }
                     })
