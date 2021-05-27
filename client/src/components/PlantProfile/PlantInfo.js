@@ -45,7 +45,7 @@ const PlantInfo = ({plant}) => {
                 <img src={watercan} className="plant-profile-icon" alt="leaf-icon"></img>
                 <div className="plant-profile-info-section">
                     <p className="plant-profile-subhead1 plant-profile-subhead">Water Interval</p>
-                    <p className="plant-profile-value1 plant-profile-value">{plant["wateringInterval"]} days</p>
+                    <p className="plant-profile-value1 plant-profile-value" id="plant-profile-watering">{plant["wateringInterval"]} days</p>
 
                     <p className="plant-profile-subhead2 plant-profile-subhead">Last Watered</p>
                     <p className="plant-profile-value2 plant-profile-value" id="plant-profile-last-watered">{plant["lastWatered"]}</p>
