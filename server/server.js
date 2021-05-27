@@ -47,6 +47,7 @@ app.use(
     },
   })
 );
+
 // ====================================
 //           EXPRESS QUERIES
 // ====================================
@@ -126,7 +127,6 @@ app.put("/profile", async (req, res) => {
     userPrefName: req.body.newUserPrefName,
   };
 
-  console.log(param);
   await updateUserProfile(param);
   let userInfo = await getUserById(req.body.userId);
   res.json(userInfo);
@@ -150,8 +150,6 @@ app.get("/sprouts/:userId", async (request, response) => {
  * @returns - success or fail message.
  */
 app.post("/profile/", async (req, res) => {
-  console.log("THIS IS", req.body);
-
   let param = {
     userId: req.body.userId,
     name: req.body.name,
@@ -161,17 +159,14 @@ app.post("/profile/", async (req, res) => {
     notes: req.body.notes,
     imageUrl: req.body.imageUrl,
   };
-  console.log(param);
   await createSprout(param);
   let newUserSprouts = await getUserSprouts(req.body.userId);
   res.json(newUserSprouts);
 });
 
 app.get("/profile", async (req, res) => {
-  console.log(req.session);
   let user = await getUserById(req.session.userId);
   let sprout = await getUserSprouts(req.session.userId);
-  console.log(user);
   let result = {
     userId: user.application_user_id,
     team: user.team_id,
@@ -193,6 +188,7 @@ app.get("/profile", async (req, res) => {
       dateAdded: value.user_sprouts_date_added,
     });
   });
+  console.log(user);
   res.json(result);
 });
 
@@ -203,9 +199,27 @@ app.get("/profile", async (req, res) => {
 /**
  * Updates the information of a user's sprout submitted from EditPlant Component.
  */
-app.put("/plant-profile", async (req, res) => {
+app.get("/plant-profile/:sproutId", async (req, res) => {
+  let userSprouts = window.sessionStorage.getItem('userSprouts');
+  console.log(userSprouts);
+  let currentSprout = req.session.userSprouts.filter(sprout => sprout.sproutId == req.params.sproutId)[0]
+  let sprout = await getSproutById(currentSprout.sproutId);
+  let result = {
+    sproutId: sprout.user_sprouts_id,
+      name: sprout.user_sprouts_given_name,
+      family: sprout.user_sprouts_family,
+      type: sprout.user_sprouts_type,
+      wateringInterval: sprout.user_sprouts_watering_intervals,
+      notes: sprout.user_sprouts_notes,
+      imageUrl: sprout.user_sprouts_image,
+      dateAdded: sprout.user_sprouts_date_added,
+  }
+  res.json(result);
+})
+
+app.put("/plant-profile-edit/:sproutId", async (req, res) => {
   let param = {
-    id: req.body.sproutId,
+    id: req.params.sproutId,
     name: req.body.name,
     family: req.body.family,
     type: req.body.type,
@@ -214,7 +228,7 @@ app.put("/plant-profile", async (req, res) => {
     imageUrl: req.body.imageUrl,
   };
   await updateSprout(param);
-  let updatedSprout = await getSproutById(req.body.sproutId);
+  let updatedSprout = await getSproutById(req.params.sproutId);
   res.json(updatedSprout);
 });
 

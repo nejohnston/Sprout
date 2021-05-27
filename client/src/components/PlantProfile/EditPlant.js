@@ -66,14 +66,11 @@ const EditPlant = ({ props, sprout, updateSproutPage }) => {
       const imageData = new FormData();
       imageData.append("file", selectedSproutPic);
       imageData.append("upload_preset", "sproutPlant");
-      let uploadRes = await Axios.post(
-        "https://api.cloudinary.com/v1_1/sprout03/image/upload/",
-        imageData
+      let uploadRes = await Axios.post("https://api.cloudinary.com/v1_1/sprout03/image/upload/", imageData
+        // headers: {"Access-Control-Allow-Origin": "*"}
       );
-
       // Put request to plant profile to update the plant
-      Axios.put("/plant-profile", {
-        sproutId: sprout.sproutId,
+      Axios.put(`/plant-profile-edit/${sprout.sproutId}`, {
         name: inputSproutName,
         family: inputFamily,
         type: inputType,
@@ -81,6 +78,7 @@ const EditPlant = ({ props, sprout, updateSproutPage }) => {
         notes: inputNotes,
         imageUrl: uploadRes.data.secure_url,
       }).then((res) => {
+        console.log(res);
         // Create the updated sprout Object
         let updatedSprout = {
           ...sprout,

@@ -16,7 +16,7 @@ import Splash from "../../Splash";
 // Styles
 import "./Login.css";
 
-Axios.defaults.withCredentials = true;
+Axios.defaults.withCredentials = false;
 
 const schema = yup.object().shape({
   // REGEX statement copied from this article

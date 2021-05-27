@@ -19,7 +19,6 @@ import './styles/SproutItem.css'
  */
 
 const SproutItem = ({sprout}) => {
-  console.log(sprout)
   return (
     <div className="plant-list-item" key={sprout["sproutId"]}>
       <Link to={`/plant-profile/${sprout["sproutId"]}`}  onClick={() => console.log(sprout.sproutId)}>

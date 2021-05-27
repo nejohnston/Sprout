@@ -53,7 +53,6 @@ const ProfilePage = ({ userContext }) => {
 
   const getSprouts = async () => {
     await Axios.get("/profile").then((res) => {
-      console.log(res);
       user.userId = res.data.userId;
       user.username = res.data.username;
       setPrefNameDisplay(res.data.name);
@@ -62,41 +61,9 @@ const ProfilePage = ({ userContext }) => {
       user.profilePicture = res.data.profilePicture;
       user.sprouts = res.data.sprouts;
       setSprouts(res.data.sprouts);
-      console.log(res.data);
+      window.sessionStorage.setItem('userSprouts', res.data.sprouts);
     });
   };
-
-  //after 0.5 seconds the state will be switched to false, which will allow the fetch of profile picture to complete
-
-  // const [saveSprout, setSaveSprout] = useState(false);
-
-  // This is to prevent the useEffect hook from firing on each mount of the AddPlant modal
-
-  // const useMountedRef = () => {
-  //   const mountedRef = useRef(false);
-  //   useEffect(() => {
-  //     setTimeout(() => {
-  //       mountedRef.current = true;
-  //     });
-  //   }, []);
-
-  //   return mountedRef;
-  // };
-
-  // const mountedRef = useMountedRef();
-
-  // useEffect(() => {
-  //   if (mountedRef.current) {
-  //     console.log("hello")
-  //   }
-  // }, [saveSprout]);
-
-  // const addsprout = () => setSaveSprout(true);
-  // const resetsproutstate = () => {
-  //   if (saveSprout === true) {
-  //     setSaveSprout(false);
-  //   }
-  // };
 
   return (
     <>

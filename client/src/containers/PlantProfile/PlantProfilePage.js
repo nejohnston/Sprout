@@ -4,6 +4,7 @@
 
 // React
 import React, { useContext, useState, useEffect } from "react";
+import Axios from 'axios';
 
 // Components
 import { Link, useParams } from "react-router-dom";
@@ -53,7 +54,6 @@ const PlantProfilePage = () => {
     getLastWateredDate(currSprout.lastWatered);
   }, []);
 
-
   // Calculate the different in days from last watered to current date
   let getDiffDay = date => {
     if (!date) {
@@ -93,6 +93,22 @@ const PlantProfilePage = () => {
     } else {
       setLastWatered(`${diffInDays} days ago`)
     }
+  }
+
+  useEffect(() => {
+    let isMounted = true;
+    plantProfile();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const plantProfile = async () => {
+    await Axios.get(`/plant-profile/${thisSprout.sproutId}`)
+  .then(res => {
+    setThisSprout(res.data);
+    console.log(thisSprout);
+  });
   }
 
   return (
