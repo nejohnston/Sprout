@@ -217,6 +217,7 @@ app.get("/plant-profile/:sproutId", async (req, res) => {
       notes: sprout.user_sprouts_notes,
       imageUrl: sprout.user_sprouts_image,
       dateAdded: sprout.user_sprouts_date_added,
+      lastWatered: sprout.user_sprouts_last_watered
   }
   res.json(result);
 })

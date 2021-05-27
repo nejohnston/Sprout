@@ -41,7 +41,9 @@ const PlantProfilePage = () => {
 
   // Retreve the correct sprout information based on the request parameter
   let sproutParam = parseInt(useParams().sproutId);
-  let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
+  let currSprout = () => {
+    return sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
+  }
 
   // Declare state of current sprout
   const [thisSprout, setThisSprout] = useState();
@@ -49,11 +51,6 @@ const PlantProfilePage = () => {
   // Set last watered date
   const [lastWatered, setLastWatered] = useState(null);
   const [diffDays, setDiffDays] = useState();
-
-  // Fetch data on mount of the components/page
-  // useEffect(() => {
-  //   getLastWateredDate(currSprout.lastWatered);
-  // }, []);
 
   // Calculate the different in days from last watered to current date
   let getDiffDay = date => {
@@ -64,6 +61,7 @@ const PlantProfilePage = () => {
       //https://stackabuse.com/javascript-get-number-of-days-between-dates/
       
       let today = new Date();
+
       let lastWateredDate = new Date(date);
 
       // One day in milliseconds
@@ -78,6 +76,8 @@ const PlantProfilePage = () => {
       return diffInDays;
     }
   }
+
+
 
   // Get last watered and set the last watered date
   let getLastWateredDate = date => {
@@ -114,7 +114,14 @@ const PlantProfilePage = () => {
 
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500);
+    setTimeout(() => currSprout(), 500);
+    setTimeout(() => getLastWateredDate(currSprout.lastWatered), 510);
   }, []);
+
+  // Fetch data on mount of the components/page
+  // useEffect(() => {
+  //   getLastWateredDate(currSprout.lastWatered);
+  // }, []);
 
   const getSprouts = async () => {
     await Axios.post('/get-sprouts', {
@@ -122,7 +129,7 @@ const PlantProfilePage = () => {
     })
     .then(res => {
       console.log(res.data);
-      setSprouts(res.data)
+      setSprouts(res.data);
     })
   }
 
@@ -131,9 +138,9 @@ const PlantProfilePage = () => {
     await Axios.get(`/plant-profile/${sproutParam}`)
   .then(res => {
     setThisSprout(res.data);
+    console.log(currSprout);
   });
   }
-  console.log(thisSprout);
 
   return (
     <>
