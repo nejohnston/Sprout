@@ -33,6 +33,7 @@ const AlertsPage = () => {
 
   const [alertPlants, setAlertPlants] = useState([]);
   
+  // Load Alerts
   useEffect(() => {
     let isMounted = true;
     getAlerts()

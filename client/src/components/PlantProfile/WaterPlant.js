@@ -58,8 +58,7 @@ const WaterPlant = ({ props, sprout, updateLastWatered, waterDiffDays }) => {
         userId: window.sessionStorage.getItem('userId')
       })
       .then(res => {
-        console.log(res)
-  
+
         let newLastWateredDate = res.data.user_sprouts_last_watered;
   
         let newSproutWithLastWatered = {...sprout,

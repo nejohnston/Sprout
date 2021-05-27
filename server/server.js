@@ -226,7 +226,8 @@ app.put("/alerts", async (req, res) => {
   }
   await deleteAlert(param)
   let alerts = await getAlert(req.body.userId);
-  res.json(alerts);
+  let updatedSprout = await getSproutById(req.body.user_sprouts_id);
+  res.json({"alerts": alerts, "updatedSprout": updatedSprout});
 });
 
 
