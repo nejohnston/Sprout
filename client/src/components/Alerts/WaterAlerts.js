@@ -28,6 +28,7 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
  * @returns - a complete set of WaterPlant components, one for each plant object in plant.
  */
 const WaterAlert = ({plants, setAlerts}) => {
+    console.log(plants);
 
   // Context States
   let user = useContext(UserContext)[0];
