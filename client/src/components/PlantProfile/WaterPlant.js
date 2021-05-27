@@ -32,7 +32,7 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
 const WaterPlant = ({ props, sprout, updateLastWatered }) => {
 
   // Context States
-  let [user, setUser] = useContext(UserContext);
+  let user = useContext(UserContext)[0];
   let [sprouts, setSprouts] = useContext(SproutContext);
 
   const [show, setShow] = useState(false);

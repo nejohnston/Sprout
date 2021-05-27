@@ -20,9 +20,6 @@ import "./PlantProfile.css";
 // Assets
 import BackButton from "../../config/assets/icons/back_button.svg";
 
-// Data (temp)
-import plantprofiledata from "./plant_profile.json";
-
 // Sprout and User Context from Layout.js Provider
 import { SproutContext } from "../../components/Layout/Layout";
 
@@ -51,20 +48,20 @@ const PlantProfilePage = () => {
 
   // Fetch data on mount of the components/page
   useEffect(() => {
-    getLastWateredDate(currSprout.lastWatered);
+    getLastWateredDate();
   }, []);
 
 
   // Get last watered date difference
-  let getLastWateredDate = date => {
-    if (!date) {
+  let getLastWateredDate = () => {
+    if (!currSprout.lastWatered) {
       setLastWatered(`N/A`);
     } else {
         // Code snippet below adapted from Abhilash Kakumanu, Stack Abuse 
         //https://stackabuse.com/javascript-get-number-of-days-between-dates/
         
         let today = new Date();
-        let lastWateredDate = new Date(date);
+        let lastWateredDate = new Date(currSprout.lastWatered);
 
         // One day in milliseconds
         const oneDay = 1000 * 60 * 60 * 24;
@@ -75,9 +72,9 @@ const PlantProfilePage = () => {
         // Calculating the no. of days between two dates
         const diffInDays = Math.round(diffInTime / oneDay);
 
-        if (diffInDays == 1) {
+        if (diffInDays === 1) {
           setLastWatered(`yesterday`)
-        } else if (diffInDays == 0) {
+        } else if (diffInDays === 0) {
           setLastWatered(`today`)
         } else {
           setLastWatered(`${diffInDays} days ago`)
