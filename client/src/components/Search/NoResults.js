@@ -1,16 +1,25 @@
+// =====================================
+//               IMPORTS
+// =====================================
+
+// React
 import React from "react";
 
+// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// Styling
 import './styles/NoResults.css';
 
-import notFound from '../../config/assets/icons/404-sprout.svg'
+
+// ====================================
+//           REACT COMPONENT
+// ====================================
 
 const NoResults = () => {
     return (
         <div id="welcome-div" className="text-muted">
 
-            <img src={notFound} alt="" id="no-results-img"/>
             <h5>No Matching Plants Found</h5>
 
             <h6>Suggest a New Plant</h6> 
