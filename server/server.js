@@ -225,15 +225,15 @@ app.put("/plant-profile", async (req, res) => {
  * water user sprout.
  * @returns - nothing
  */
-app.put("/plant-profile/:sproutId", async (req, res) => {
+ app.put("/plant-profile/:sproutId", async (req, res) => {
   let param = {
     userId: req.body.userId,
-    userSproutsId: req.params.sproutId,
-  };
+    userSproutsId: req.params.sproutId
+  }
   await deleteAlert(param);
   let updatedSprout = await getSproutById(req.params.sproutId);
   res.json(updatedSprout);
-});
+})
 
 // DELETE USER SPROUT
 /**
@@ -267,8 +267,9 @@ app.put("/alerts", async (req, res) => {
   await deleteAlert(param);
   let alerts = await getAlert(req.body.userId);
   let updatedSprout = await getSproutById(req.body.user_sprouts_id);
-  res.json({ alerts: alerts, updatedSprout: updatedSprout });
+  res.json({"alerts": alerts, "updatedSprout": updatedSprout});
 });
+
 
 // ==========================================
 //               LEADERBOARD

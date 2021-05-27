@@ -253,7 +253,7 @@ let deleteSprout = async (userId, sproutId) => {
 // GET ALERT FOR EACH USER
 let getAlert = async (userId) => {
   const query = {
-    text: `SELECT alerts.user_sprouts_id, user_sprouts_image, alerts_message
+    text: `SELECT alerts.user_sprouts_id, user_sprouts_image, user_sprouts_given_name
     FROM application_user
 	    JOIN user_sprouts ON application_user.application_user_id = user_sprouts.application_user_id
 	    JOIN alerts ON user_sprouts.user_sprouts_id = alerts.user_sprouts_id

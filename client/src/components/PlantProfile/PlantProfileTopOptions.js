@@ -31,7 +31,7 @@ import PlantProfilePicture from "./PlantProfilePicture";
  * @returns the parent container object for the Plant Profile's top components
  */
 
-const PlantProfileTopOptions = ({ sprout, updateLastWatered, waterDiffDays }) => {
+ const PlantProfileTopOptions = ({ sprout, updateLastWatered, waterDiffDays }) => {
 
   return (
     <>

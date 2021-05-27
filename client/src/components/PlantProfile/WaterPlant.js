@@ -40,14 +40,12 @@ const WaterPlant = ({ props, sprout, updateLastWatered, waterDiffDays }) => {
   const handleShow = () => setShow(true);
 
   const isWaterTime = () => {
-    if (waterDiffDays === -1 || waterDiffDays >= sprout.wateringInterval) {
+    if (waterDiffDays >= sprout.wateringInterval) {
       return true;
     } else {
       return false;
     }
   }
-
-  console.log(isWaterTime())
   
   const wateringPlant = async () => {
 

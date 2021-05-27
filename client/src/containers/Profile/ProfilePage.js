@@ -11,6 +11,7 @@ import SproutGallery from "../../components/Profile/SproutGallery";
 import ProfilePictureModal from "../../components/Profile/ProfilePictureModal";
 import Scorebar from "../../components/Profile/Scorebar";
 import AddPlantModal from "../../components/Modals/AddPlantModal";
+import Welcome from "../../components/Profile/Welcome";
 
 // Sprout and User Context from Layout.js Provider
 import { SproutContext, UserContext } from "../../components/Layout/Layout";
@@ -117,6 +118,8 @@ const ProfilePage = ({ userContext }) => {
             <h5 id="my-sprouts-user-name">{userPrefNameDisplay}</h5>
           </div>
           <Scorebar points={points} sprouts={sprouts} />
+
+          { sprouts.length === 0 && <Welcome/>}
 
           <SproutGallery sprouts={sprouts} />
           <div id="vector-bg"></div>

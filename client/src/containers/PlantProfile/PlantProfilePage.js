@@ -84,10 +84,8 @@ const PlantProfilePage = () => {
     let diffInDays = getDiffDay(date);
     setDiffDays(diffInDays);
 
-    if (diffInDays === 1) {
-      setLastWatered(`yesterday`)
-    } else if (diffInDays === 0) {
-      setLastWatered(`today`)
+    if (diffInDays === 1 || diffInDays === 0) {
+      setLastWatered(`recently`)
     } else if (diffInDays === -1) {
       setLastWatered("N/A")
     } else {

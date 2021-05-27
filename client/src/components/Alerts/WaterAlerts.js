@@ -16,7 +16,6 @@ import './styles/WaterAlerts.css';
 // Sprout and User Context from Layout.js Provider
 import { SproutContext, UserContext } from "../../components/Layout/Layout";
 
-
 // ====================================
 //          REACT COMPONENT
 // ====================================
@@ -29,9 +28,9 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
  */
 const WaterAlert = ({plants, setAlerts}) => {
 
-  // Context States
-  let user = useContext(UserContext)[0];
-  let [sprouts, setSprouts] = useContext(SproutContext);
+    // Context States
+    let user = useContext(UserContext)[0];
+    let [sprouts, setSprouts] = useContext(SproutContext);
     
     const waterPlant = async (plant_id) => {
 
@@ -41,7 +40,6 @@ const WaterAlert = ({plants, setAlerts}) => {
         }).then(res => {
 
             console.log(res);
-            
             let currSprout = sprouts.filter(sprout => sprout.sproutId === plant_id)[0];
 
             let wateredSprout = {...currSprout,
@@ -66,7 +64,7 @@ const WaterAlert = ({plants, setAlerts}) => {
 
         <div className="alert-water" key={plant["user_sprouts_id"]}>
             <img className="alert-water-plant-img" src={plant["user_sprouts_image"]} alt="plant-img"/>
-            <p><strong>{plant["alerts_message"].split(" needs to be watered")[0]}</strong> needs to be watered!</p>
+            <p><strong>{plant["user_sprouts_given_name"]}</strong> needs to be watered!</p>
 
             <img className="alert-water-btn shadow-sm" src={waterIcon} alt="water-icon" onClick={() => waterPlant(plant["user_sprouts_id"])} />
         </div>
