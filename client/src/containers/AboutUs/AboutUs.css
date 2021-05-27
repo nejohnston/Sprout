@@ -33,6 +33,7 @@
 .about-us-content {
     margin-top: 1.5em;
     margin-bottom: 5em;
+    text-align: center;
 }
 
 /* TEAM-MEMBERS */
@@ -55,6 +56,13 @@
 .about-us-my-sprout {
     color: #5D6E1E;
     font-weight: bold;
+}
+
+#contact-btn {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*---AVATAR---*/
@@ -93,7 +101,8 @@
 }
 
 #about-us-nav-block {
-    height: 5.5em;
+    background-color: #94B447;
+    height: 2.5em;
 }
 
 @media (min-width: 1025px) {
@@ -105,6 +114,12 @@
 
     #about-us-main-title {
         font-size: 3.5em;
+    }
+
+    .about-us-content {
+        width: 50rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
 }
