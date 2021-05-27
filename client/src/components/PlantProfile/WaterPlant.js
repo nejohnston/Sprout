@@ -83,7 +83,7 @@ const WaterPlant = ({ props, sprout, updateLastWatered, waterDiffDays }) => {
     <>
       <div className="plant-profile-small-button-container plant-profile-small-button-height-fix">
         <div id="dig-up-button">
-          <img src={WaterButton} id="dig-up-icon" onClick={wateringPlant} alt=""/>
+          <img src={WaterButton} id="dig-up-icon" onClick={wateringPlant} className="water-button" alt=""/>
         </div>
         <strong>
           <p className="plant-profile-small-button-text">Water</p>
