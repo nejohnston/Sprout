@@ -29,7 +29,7 @@ import { SproutContext, UserContext } from "../../components/Layout/Layout";
  * @returns Water component
  */
 
-const WaterPlant = ({ props, sprout, updateLastWatered }) => {
+const WaterPlant = ({ props, sprout, updateLastWatered, waterDiffDays }) => {
 
   // Context States
   let user = useContext(UserContext)[0];
@@ -38,33 +38,48 @@ const WaterPlant = ({ props, sprout, updateLastWatered }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const isWaterTime = () => {
+    if (waterDiffDays === -1 || waterDiffDays >= sprout.wateringInterval) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  console.log(isWaterTime())
   
   const wateringPlant = async () => {
-    await Axios.put(`/plant-profile/${sprout.sproutId}`, {
-      userId: window.sessionStorage.getItem('userId')
-    })
-    .then(res => {
-      console.log(res)
 
-      let newLastWateredDate = res.data.user_sprouts_last_watered;
-
-      let newSproutWithLastWatered = {...sprout,
-        lastWatered: newLastWateredDate
-      };
-
-      // Find the current sprout in SproutContext and update the sprout Object
-      let sproutIndex = sprouts.findIndex(
-        ({ sproutId }) => sproutId === sprout.sproutId
-      );
-      let updatedSprouts = [...sprouts];
-      updatedSprouts[sproutIndex] = newSproutWithLastWatered;
-
-      updateLastWatered(newLastWateredDate);
-      setSprouts(updatedSprouts);
-      user.points = user.points + 10;
-    })
-    .catch(err => console.log(err))
-    .finally(handleShow());
+    if (!isWaterTime()) {
+      alert("It's not time to water your plant yet!")
+    } else {
+      await Axios.put(`/plant-profile/${sprout.sproutId}`, {
+        userId: window.sessionStorage.getItem('userId')
+      })
+      .then(res => {
+        console.log(res)
+  
+        let newLastWateredDate = res.data.user_sprouts_last_watered;
+  
+        let newSproutWithLastWatered = {...sprout,
+          lastWatered: newLastWateredDate
+        };
+  
+        // Find the current sprout in SproutContext and update the sprout Object
+        let sproutIndex = sprouts.findIndex(
+          ({ sproutId }) => sproutId === sprout.sproutId
+        );
+        let updatedSprouts = [...sprouts];
+        updatedSprouts[sproutIndex] = newSproutWithLastWatered;
+  
+        updateLastWatered(newLastWateredDate);
+        setSprouts(updatedSprouts);
+        user.points = user.points + 10;
+      })
+      .catch(err => console.log(err))
+      .finally(handleShow());
+    }
   }
 
   return (

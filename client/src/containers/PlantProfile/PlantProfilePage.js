@@ -42,43 +42,56 @@ const PlantProfilePage = () => {
   let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
 
   // Declare state of current sprout
-  const [thisSprout, setThisSprout] = useState(currSprout)
+  const [thisSprout, setThisSprout] = useState(currSprout);
+
   // Set last watered date
-  const [lastWatered, setLastWatered] = useState("N/A")
+  const [lastWatered, setLastWatered] = useState(null);
+  const [diffDays, setDiffDays] = useState();
 
   // Fetch data on mount of the components/page
   useEffect(() => {
-    getLastWateredDate();
+    getLastWateredDate(currSprout.lastWatered);
   }, []);
 
 
-  // Get last watered date difference
-  let getLastWateredDate = () => {
-    if (!currSprout.lastWatered) {
-      setLastWatered(`N/A`);
+  // Calculate the different in days from last watered to current date
+  let getDiffDay = date => {
+    if (!date) {
+      return -1;
     } else {
-        // Code snippet below adapted from Abhilash Kakumanu, Stack Abuse 
-        //https://stackabuse.com/javascript-get-number-of-days-between-dates/
-        
-        let today = new Date();
-        let lastWateredDate = new Date(currSprout.lastWatered);
+      // Code snippet below adapted from Abhilash Kakumanu, Stack Abuse 
+      //https://stackabuse.com/javascript-get-number-of-days-between-dates/
+      
+      let today = new Date();
+      let lastWateredDate = new Date(date);
 
-        // One day in milliseconds
-        const oneDay = 1000 * 60 * 60 * 24;
+      // One day in milliseconds
+      const oneDay = 1000 * 60 * 60 * 24;
 
-        // Calculating the time difference between two dates
-        const diffInTime = today.getTime() - lastWateredDate.getTime();
+      // Calculating the time difference between two dates
+      const diffInTime = today.getTime() - lastWateredDate.getTime();
 
-        // Calculating the no. of days between two dates
-        const diffInDays = Math.round(diffInTime / oneDay);
+      // Calculating the no. of days between two dates
+      const diffInDays = Math.round(diffInTime / oneDay);
 
-        if (diffInDays === 1) {
-          setLastWatered(`yesterday`)
-        } else if (diffInDays === 0) {
-          setLastWatered(`today`)
-        } else {
-          setLastWatered(`${diffInDays} days ago`)
-        }
+      return diffInDays;
+    }
+  }
+
+  // Get last watered and set the last watered date
+  let getLastWateredDate = date => {
+
+    let diffInDays = getDiffDay(date);
+    setDiffDays(diffInDays);
+
+    if (diffInDays === 1) {
+      setLastWatered(`yesterday`)
+    } else if (diffInDays === 0) {
+      setLastWatered(`today`)
+    } else if (diffInDays === -1) {
+      setLastWatered("N/A")
+    } else {
+      setLastWatered(`${diffInDays} days ago`)
     }
   }
 
@@ -92,7 +105,7 @@ const PlantProfilePage = () => {
         <EditPlant sprout={thisSprout} updateSproutPage={setThisSprout}/>
       </div>
       <hr />
-      <PlantProfileTopOptions sprout={thisSprout} updateLastWatered={getLastWateredDate}/>
+      <PlantProfileTopOptions sprout={thisSprout} updateLastWatered={getLastWateredDate} waterDiffDays={diffDays}/>
       <PlantInfo plant={thisSprout} wateredDate={lastWatered}/>
       <PlantDateAdded dateAdded={thisSprout["dateAdded"].substring(0, 10)}/>
       <PlantNotes plantNotes={thisSprout["notes"]}/>
