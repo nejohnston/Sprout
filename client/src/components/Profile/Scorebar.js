@@ -24,12 +24,12 @@ const Scorebar = ({points, sprouts}) => {
   return (
   <div id="my-sprouts-score-bar" className="shadow-sm">
     <div className="my-sprouts-score-bar-item">
-    <span className="my-score-bar-item-value">{points}</span>
+    <span className="my-score-bar-item-value" id="points-number">{points}</span>
     <span className="my-score-bar-item-title">Points</span>
     </div>
 
     <div className="my-sprouts-score-bar-item">
-    <span className="my-score-bar-item-value">{sprouts.length}</span>
+    <span className="my-score-bar-item-value" id="sprouts-number">{sprouts.length}</span>
     <span className="my-score-bar-item-title">Sprouts</span>
     </div>
   </div>);

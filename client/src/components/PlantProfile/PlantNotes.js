@@ -25,7 +25,7 @@ const PlantNotes = ({plantNotes}) => {
 
         <div className="plant-profile-notes-card">
             <p id="plant-profile-subhead">Notes</p>
-            <p>{plantNotes}</p>
+            <p id="plant-profile-notes">{plantNotes}</p>
         </div>
 
     )
