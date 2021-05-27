@@ -35,9 +35,6 @@ const WaterPlant = ({ props, sprout, updateLastWatered }) => {
   let [user, setUser] = useContext(UserContext);
   let [sprouts, setSprouts] = useContext(SproutContext);
 
-  console.log(user)
-  console.log(sprouts)
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -48,17 +45,23 @@ const WaterPlant = ({ props, sprout, updateLastWatered }) => {
     })
     .then(res => {
       console.log(res)
+
+      let newLastWateredDate = res.data.user_sprouts_last_watered;
+
       let newSproutWithLastWatered = {...sprout,
-        lastWatered: res.data.user_sprouts_last_watered
-      }
+        lastWatered: newLastWateredDate
+      };
 
-      let newUserScoreUpdated = {...user,
-        points: user.points + 10
-      }
+      // Find the current sprout in SproutContext and update the sprout Object
+      let sproutIndex = sprouts.findIndex(
+        ({ sproutId }) => sproutId === sprout.sproutId
+      );
+      let updatedSprouts = [...sprouts];
+      updatedSprouts[sproutIndex] = newSproutWithLastWatered;
 
-      console.log(newSproutWithLastWatered);
-      console.log(newUserScoreUpdated);
-
+      updateLastWatered(newLastWateredDate);
+      setSprouts(updatedSprouts);
+      user.points = user.points + 10;
     })
     .catch(err => console.log(err))
     .finally(handleShow());

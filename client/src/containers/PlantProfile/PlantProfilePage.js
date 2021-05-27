@@ -3,7 +3,7 @@
 // ====================================
 
 // React
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 // Components
 import { Link, useParams } from "react-router-dom";
@@ -40,15 +40,50 @@ const PlantProfilePage = () => {
   // Get the user's sprouts
   let sprouts = useContext(SproutContext)[0];
 
-  console.log(sprouts)
-
   // Retreve the correct sprout information based on the request parameter
   let sproutParam = parseInt(useParams().sproutId);
   let currSprout = sprouts.filter(sprout => sprout.sproutId === sproutParam)[0];
 
   // Declare state of current sprout
   const [thisSprout, setThisSprout] = useState(currSprout)
-  const [lastWatered, setLastWatered] = useState(thisSprout["lastWatered"])
+  // Set last watered date
+  const [lastWatered, setLastWatered] = useState("N/A")
+
+  // Fetch data on mount of the components/page
+  useEffect(() => {
+    getLastWateredDate(currSprout.lastWatered);
+  }, []);
+
+
+  // Get last watered date difference
+  let getLastWateredDate = date => {
+    if (!date) {
+      setLastWatered(`N/A`);
+    } else {
+        // Code snippet below adapted from Abhilash Kakumanu, Stack Abuse 
+        //https://stackabuse.com/javascript-get-number-of-days-between-dates/
+        
+        let today = new Date();
+        let lastWateredDate = new Date(date);
+
+        // One day in milliseconds
+        const oneDay = 1000 * 60 * 60 * 24;
+
+        // Calculating the time difference between two dates
+        const diffInTime = today.getTime() - lastWateredDate.getTime();
+
+        // Calculating the no. of days between two dates
+        const diffInDays = Math.round(diffInTime / oneDay);
+
+        if (diffInDays == 1) {
+          setLastWatered(`yesterday`)
+        } else if (diffInDays == 0) {
+          setLastWatered(`today`)
+        } else {
+          setLastWatered(`${diffInDays} days ago`)
+        }
+    }
+  }
 
   return (
     <div id="container">
@@ -60,7 +95,7 @@ const PlantProfilePage = () => {
         <EditPlant sprout={thisSprout} updateSproutPage={setThisSprout}/>
       </div>
       <hr />
-      <PlantProfileTopOptions sprout={thisSprout} updateLastWatered={setLastWatered}/>
+      <PlantProfileTopOptions sprout={thisSprout} updateLastWatered={getLastWateredDate}/>
       <PlantInfo plant={thisSprout} wateredDate={lastWatered}/>
       <PlantDateAdded dateAdded={thisSprout["dateAdded"].substring(0, 10)}/>
       <PlantNotes plantNotes={thisSprout["notes"]}/>

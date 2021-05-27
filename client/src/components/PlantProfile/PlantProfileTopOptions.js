@@ -32,7 +32,7 @@ import PlantProfilePicture from "./PlantProfilePicture";
  */
 
 const PlantProfileTopOptions = ({ sprout, updateLastWatered }) => {
-  console.log('plantprofiletop: ', sprout)
+
   return (
     <>
       <div id="plant-profile-top-container">
