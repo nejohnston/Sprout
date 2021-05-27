@@ -25,7 +25,6 @@ const Signup = () => {
   // Form States
   const [inputUsername, setUsername] = useState("");
   const [inputPassword, setPassword] = useState("");
-
   // Validation Username existence
   const [userExistValidation, setUserExistValidation] = useState(true);
 
@@ -81,6 +80,19 @@ const Signup = () => {
               </div>
               )}
 
+              { inputUsername.length === 0 ? (
+                  <div
+                  style={{ color: "red", marginBottom: "0.25rem" }}>
+                  Must enter a valid username.
+                </div>
+                ) 
+                :
+                (inputPassword.length === 0 ? (
+                  <div
+                  style={{ color: "red", marginBottom: "0.25rem" }}>
+                  Must enter a valid password.
+                </div>) : null)
+                }
             <Button
               variant="primary"
               type="button"
