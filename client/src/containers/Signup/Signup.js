@@ -31,18 +31,25 @@ const Signup = () => {
 
   // Post to /signup
   const sendAccountInfo = () => {
-    Axios.post("/signup", {
-      username: inputUsername,
-      password: inputPassword,
-    })
-    .then((res) => {
-      if (res.data !== "Username exists") {
-        window.sessionStorage.setItem("userName", res.data[0]);
-        setUserExistValidation(true);
-        window.location = "/join-team";
-      } else {
-        setUserExistValidation(false);
-      }})
+    if (
+      document.getElementById("formUsername").value !== "" &&
+      document.getElementById("formPassword").value != ""
+    ) {
+      Axios.post("/signup", {
+        username: inputUsername,
+        password: inputPassword,
+      }).then((res) => {
+        if (res.data !== "Username exists") {
+          window.sessionStorage.setItem("userName", res.data[0]);
+          setUserExistValidation(true);
+          window.location = "/join-team";
+        } else {
+          setUserExistValidation(false);
+        }
+      });
+    } else {
+      alert("Invalid username or password, try again.");
+    }
   };
 
   return (
@@ -75,11 +82,10 @@ const Signup = () => {
             </Form.Group>
 
             {!userExistValidation && (
-                <div
-                style={{ color: "red", marginBottom: "0.25rem" }}>
+              <div style={{ color: "red", marginBottom: "0.25rem" }}>
                 Username already exists.
               </div>
-              )}
+            )}
 
             <Button
               variant="primary"
