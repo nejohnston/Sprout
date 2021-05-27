@@ -15,7 +15,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // Styles
 import "./Signup.css";
-import { ErrorMessage } from "formik";
 
 // ====================================
 //           REACT COMPONENT
@@ -83,14 +82,14 @@ const Signup = () => {
               { inputUsername.length === 0 ? (
                   <div
                   style={{ color: "red", marginBottom: "0.25rem" }}>
-                  Must enter a valid username.
+                  Please enter a username.
                 </div>
                 ) 
                 :
                 (inputPassword.length === 0 ? (
                   <div
                   style={{ color: "red", marginBottom: "0.25rem" }}>
-                  Must enter a valid password.
+                  Please enter a password.
                 </div>) : null)
                 }
             <Button
