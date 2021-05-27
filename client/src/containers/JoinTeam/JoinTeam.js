@@ -17,9 +17,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./JoinTeam.css";
 
 // Assets
-import team1 from "../../config/assets/icons/team1.svg";
-import team2 from "../../config/assets/icons/team2.svg";
-import team3 from "../../config/assets/icons/team3.svg";
+import soil from "../../config/assets/images/soil.jpg";
+import water from "../../config/assets/images/water.jpg";
+import sunshine from "../../config/assets/images/sunshine.jpg";
 
 
 // ====================================
@@ -82,31 +82,31 @@ const JoinTeam = () => {
           <input type="radio" id="team-1" name="team" required/>
           <label htmlFor="team-1" onClick={() => setSelectedTeam(1)}>
             <div className="team-pic-bg">
-              <img src={team1} alt="" className="team-pic"></img>
+              <img src={soil} alt="" className="team-pic"></img>
             </div>
           </label>
           <strong>
-            <p>Team 1</p>
+            <p>Soil</p>
           </strong>
           
           <input type="radio" id="team-2" name="team" />
           <label htmlFor="team-2" onClick={() => setSelectedTeam(2)}>
             <div className="team-pic-bg">
-              <img src={team2} alt="" className="team-pic"></img>
+              <img src={water} alt="" className="team-pic"></img>
             </div>
           </label>
           <strong>
-            <p>Team 2</p>
+            <p>Water</p>
           </strong>
 
           <input type="radio" id="team-3" name="team" />
           <label htmlFor="team-3" onClick={() => setSelectedTeam(3)}>
             <div className="team-pic-bg">
-              <img src={team3} alt="" className="team-pic"></img>
+              <img src={sunshine} alt="" className="team-pic"></img>
             </div>
           </label>
           <strong>
-            <p>Team 3</p>
+            <p>Sun</p>
           </strong>
           </div>
 

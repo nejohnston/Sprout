@@ -31,14 +31,14 @@ import PlantProfilePicture from "./PlantProfilePicture";
  * @returns the parent container object for the Plant Profile's top components
  */
 
-const PlantProfileTopOptions = ({ sprout }) => {
-  console.log('plantprofiletop: ', sprout)
+ const PlantProfileTopOptions = ({ sprout, updateLastWatered, waterDiffDays }) => {
+
   return (
     <>
       <div id="plant-profile-top-container">
         <DigUp sprout={sprout}/>
         <PlantProfilePicture imageUrl={sprout.imageUrl} />
-        <WaterPlant />
+        <WaterPlant sprout={sprout} updateLastWatered={updateLastWatered} waterDiffDays={waterDiffDays}/>
       </div>
     </>
   );
