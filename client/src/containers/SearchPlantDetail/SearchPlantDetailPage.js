@@ -7,7 +7,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 // Components
-import plantData from '../../config/data/plants_with_bees.json';
+import plantData from '../../config/resources/plants_with_bees.json';
 import DetailCards from '../../components/SearchPlantDetail/DetailCards'
 import AddPlantModal from '../../components/Modals/AddPlantModal';
 

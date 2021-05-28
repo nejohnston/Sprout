@@ -73,7 +73,7 @@ Content of the project folder:
 ├── Procfile                            # Basic command for Heroku
 ├── yarn.lock                           # Managing dependencies
 ├── reset_alerts_every_day.js           # A JavaScript file that triggers the scheduler
-└── README.md                           # woah, you're reading this now!
+└── README.md                           # You're reading this now!
 
 It has the following subfolders and files:
 📂 /
@@ -94,7 +94,7 @@ It has the following subfolders and files:
 ┃    ┃     └── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail component
 ┃    ├─── 📂 config                      # Folder for the static data
 ┃    ┃     ├── 📂 assets                 # Folder for the image files used in the project
-┃    ┃     └── 📂 data                   # Folder for the JSON files used in the project                
+┃    ┃     └── 📂 data                   # (AKA RESOURCES) Folder for the JSON files used in the project                
 ┃    ├─── 📂 containers                  # Folder for the React containers
 ┃    ┃     ├── 📂 AboutUs                # Folder for the AboutUs page
 ┃    ┃     ├── 📂 Alerts                 # Folder for the Alerts page
