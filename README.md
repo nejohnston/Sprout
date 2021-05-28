@@ -4,8 +4,9 @@
 * ✏ [Design](#design)
 * 🗃 [Databases](#databases)
 * 📝[Testing](#testing)
-* [:running: Install Steps](#Install-steps)
 * 📁 [Content](#content)
+* [:running: Install Steps](#Install-steps)
+
 
 ## ⭐ General Info
 SPROUT connects gardeners of all ages and expertise with resources on the best native and bee-friendly plants for their local area. Users will join community teams and earn points while learning and engaging in sustainable gardening.
@@ -51,34 +52,6 @@ We use Cloudinary to store and manage all user's image uploads. To upload an ima
 
 ## 📝Testing
 You can find our initial testing plan here: https://docs.google.com/spreadsheets/d/1VK1SMwL3B4feiTA7hIC6xo1Rk5iDve64pFtSdyGjAUQ/edit?usp=sharing
-
-## Install Steps
-1. Clone the repository to your local device.   
-<img src="./client/src/config/assets/images/1-Cloning.png" width="100%" title="cloning" alt="cloning"></img>
-2. Open your Visual Studio Code(VSC) and open a terminal.   
-<img src="./client/src/config/assets/images/2-OpenVSC.png" width="100%" title="openVSC" alt="openVSC"></img>
- 
-3. Type ***cd server***, ***yarn install***, and ***yarn start*** consequently.   
-<img src="./client/src/config/assets/images/3-Go-to-server.png" width="100%" title="go-to-server" alt="server"></img>   
-<img src="./client/src/config/assets/images/4-yarn-install.png" width="100%" title="server-yarnInstall" alt="server-yarn-install"></img>   
-<img src="./client/src/config/assets/images/5-yarn-start.png" width="100%" title="server-yarnStart" alt="server-yarn-start"></img>
-      
-    ![](https://img.shields.io/badge/Note-yellow)
-   
-   Once you run ***yarn install***, you do not need to run that again from the next time.
-4. Open another terminal by clicking ```+``` button on the top-right in the terminal.    
-<img src="./client/src/config/assets/images/6-open-another-terminal.png" width="100%" title="open-another-terminal" alt="open-another-terminal"></img>
-5. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently.   
-<img src="./client/src/config/assets/images/7-Go-to-client.png" width="100%" title="go-to-client" alt="client"></img>   
-<img src="./client/src/config/assets/images/8-yarn-install.png" width="100%" title="client-yarnInstall" alt="client-yarn-install"></img>   
-<img src="./client/src/config/assets/images/9-yarn-start.png" width="100%" title="client-yarnStart" alt="client-yarn-start"></img>
-    
-    ![](https://img.shields.io/badge/Note-yellow)
-   
-   Once you run ***yarn install***, you do not need to run that again from the next time.
-
-Then you will see the home page of Sprout!   
-<img src="./client/src/config/assets/images/10-home-page.png" width="30%" title="sprout" alt="sprout"></img>   
 
 ## 📁 Content
 Content of the project folder:
@@ -140,3 +113,31 @@ It has the following subfolders and files:
      └─── yarn.lock                      # Managing dependencies
 
 ```
+
+## Install Steps
+1. Clone the repository to your local device.   
+<img src="./client/src/config/assets/images/1-Cloning.png" width="100%" title="cloning" alt="cloning"></img>
+2. Open your Visual Studio Code(VSC) and open a terminal.   
+<img src="./client/src/config/assets/images/2-OpenVSC.png" width="100%" title="openVSC" alt="openVSC"></img>
+ 
+3. Type ***cd server***, ***yarn install***, and ***yarn start*** consequently.   
+<img src="./client/src/config/assets/images/3-Go-to-server.png" width="100%" title="go-to-server" alt="server"></img>   
+<img src="./client/src/config/assets/images/4-yarn-install.png" width="100%" title="server-yarnInstall" alt="server-yarn-install"></img>   
+<img src="./client/src/config/assets/images/5-yarn-start.png" width="100%" title="server-yarnStart" alt="server-yarn-start"></img>
+      
+    ![](https://img.shields.io/badge/Note-yellow)
+   
+   Once you run ***yarn install***, you do not need to run that again from the next time.
+4. Open another terminal by clicking ```+``` button on the top-right in the terminal.    
+<img src="./client/src/config/assets/images/6-open-another-terminal.png" width="100%" title="open-another-terminal" alt="open-another-terminal"></img>
+5. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently.   
+<img src="./client/src/config/assets/images/7-Go-to-client.png" width="100%" title="go-to-client" alt="client"></img>   
+<img src="./client/src/config/assets/images/8-yarn-install.png" width="100%" title="client-yarnInstall" alt="client-yarn-install"></img>   
+<img src="./client/src/config/assets/images/9-yarn-start.png" width="100%" title="client-yarnStart" alt="client-yarn-start"></img>
+    
+    ![](https://img.shields.io/badge/Note-yellow)
+   
+   Once you run ***yarn install***, you do not need to run that again from the next time.
+
+Then you will see the home page of Sprout!   
+<img src="./client/src/config/assets/images/10-home-page.png" width="30%" title="sprout" alt="sprout"></img>   
