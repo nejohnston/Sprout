@@ -23,6 +23,7 @@ import { UserContext } from "../../components/Layout/Layout";
  * Return the profile image component, with editing profile modal triggered on click.
  * @param {Bootstrap} props - bootstrap props required to vertically center modal.
  * @param {String} profilePic - the url to user's profile picture.
+ * @param {state} setPrefNameDisplay - state passed from parent object, Profile
  * @returns - the profile image component, with editing profile modal triggered on click.
  */
 function ProfilePictureModal({ props, prefName, setPrefNameDisplay }) {
