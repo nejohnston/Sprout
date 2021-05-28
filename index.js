@@ -55,7 +55,7 @@ app.use(
  * @returns - response from database.
  */
 
-app.post("/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
   let param = {
     userName: req.body.userName,
     password: req.body.password,
@@ -78,7 +78,7 @@ app.post("/login", async (req, res) => {
 // ==========================================
 // Post user's username and password from /signup
 let signup = [];
-app.post("/signup", async (req, res) => {
+app.post("/api/signup", async (req, res) => {
   signup = [];
   signup.push(req.body.username);
   signup.push(req.body.password);
@@ -91,7 +91,7 @@ app.post("/signup", async (req, res) => {
 });
 
 // Insert the new user into DB on post to /join-team
-app.post("/join-team", async (req, res) => {
+app.post("/api/join-team", async (req, res) => {
   signup.push(req.body.preferredName);
   signup.push(req.body.team);
   let userInfo = {
@@ -112,7 +112,7 @@ app.post("/join-team", async (req, res) => {
 /**
  * returns response with user's Information
  */
-app.put("/profile", async (req, res) => {
+app.put("/api/profile", async (req, res) => {
   let param = {
     id: req.body.userId,
     imageUrl: req.body.profilePic,
@@ -129,7 +129,7 @@ app.put("/profile", async (req, res) => {
  * get a user's sprouts.
  * @returns - sprouts of user.
  */
-app.get("/sprouts/:userId", async (request, response) => {
+app.get("/api/sprouts/:userId", async (request, response) => {
   let userSprouts = await getUserSprouts(request.params.userId);
   response.json(userSprouts);
 });
@@ -140,7 +140,7 @@ app.get("/sprouts/:userId", async (request, response) => {
  * create new user sprout.
  * @returns - success or fail message.
  */
-app.post("/profile/", async (req, res) => {
+app.post("/api/profile/", async (req, res) => {
   let param = {
     userId: req.body.userId,
     name: req.body.name,
@@ -155,7 +155,7 @@ app.post("/profile/", async (req, res) => {
   res.json(newUserSprouts);
 });
 
-app.get("/profile", async (req, res) => {
+app.get("/api/profile/", async (req, res) => {
   let user = await getUserById(req.session.userId);
   let sprout = await getUserSprouts(req.session.userId);
   let result = {
@@ -189,7 +189,7 @@ app.get("/profile", async (req, res) => {
 /**
  * Updates the information of a user's sprout submitted from EditPlant Component.
  */
-app.put("/plant-profile", async (req, res) => {
+app.put("/api/plant-profile", async (req, res) => {
   let param = {
     id: req.body.sproutId,
     name: req.body.name,
@@ -211,7 +211,7 @@ app.put("/plant-profile", async (req, res) => {
  * water user sprout.
  * @returns - nothing
  */
- app.put("/plant-profile/:sproutId", async (req, res) => {
+ app.put("/api/plant-profile/:sproutId", async (req, res) => {
   let param = {
     userId: req.body.userId,
     userSproutsId: req.params.sproutId
@@ -228,7 +228,7 @@ app.put("/plant-profile", async (req, res) => {
  * delete user sprout.
  * @returns - success or fail message.
  */
-app.delete("/sprouts/:userId/:sproutId", async (request, response) => {
+app.delete("/api/sprouts/:userId/:sproutId", async (request, response) => {
   await deleteSprout(request.params.userId, request.params.sproutId);
   response.status(200).send(`200: Sprout deleted successfully.`);
 });
@@ -238,14 +238,14 @@ app.delete("/sprouts/:userId/:sproutId", async (request, response) => {
 // ==========================================
 
 // Initial get : Alerts from DB
-app.post("/alerts", async (req, res) => {
+app.post("/api/alerts", async (req, res) => {
   let alerts = await getAlert(req.body.userId);
   res.json(alerts);
   // let alerts = await getAlert
 });
 
 // Deleting Alerts
-app.put("/alerts", async (req, res) => {
+app.put("/api/alerts", async (req, res) => {
   let param = {
     userId: req.body.userId,
     userSproutsId: req.body.user_sprouts_id,
@@ -262,13 +262,13 @@ app.put("/alerts", async (req, res) => {
 // ==========================================
 
 // Initial get : Top Five Sprout Leaders
-app.get("/leaderboards-topFive", async (req, res) => {
+app.get("/api/leaderboards-topFive", async (req, res) => {
   let topFiveUsers = await getTopFiveUsers();
   res.json(topFiveUsers);
 });
 
 // Initial get :
-app.get("/leaderboards-team-points", async (req, res) => {
+app.get("/api/leaderboards-team-points", async (req, res) => {
   let teamPoints = await getTeamPoints();
   res.json(teamPoints);
 });

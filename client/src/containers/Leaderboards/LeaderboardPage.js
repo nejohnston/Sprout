@@ -38,7 +38,7 @@ const LeaderboardPage = () => {
 
   // Fetch top five users
   const getTopFiveUsers = async () => {
-    await Axios.get("/leaderboards-topFive")
+    await Axios.get("/api/leaderboards-topFive")
     .then((res) => {
       setTopFiveUsers(res.data)
     });
@@ -46,7 +46,7 @@ const LeaderboardPage = () => {
 
   // Fetch team points
   const getTeamPoints = async () => {
-    await Axios.get("/leaderboards-team-points")
+    await Axios.get("/api/leaderboards-team-points")
     .then((res) => {
       setTeamPoints(res.data)
     });

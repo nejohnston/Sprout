@@ -52,7 +52,7 @@ const WaterPlant = ({ props, sprout, updateLastWatered, waterDiffDays }) => {
     if (!isWaterTime()) {
       alert("It's not time to water your plant yet!")
     } else {
-      await Axios.put(`/plant-profile/${sprout.sproutId}`, {
+      await Axios.put(`/api/plant-profile/${sprout.sproutId}`, {
         userId: window.sessionStorage.getItem('userId')
       })
       .then(res => {

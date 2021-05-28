@@ -33,7 +33,7 @@ const Signup = () => {
       document.getElementById("formUsername").value !== "" &&
       document.getElementById("formPassword").value !== ""
     ) {
-      Axios.post("/signup", {
+      Axios.post("/api/signup", {
         username: inputUsername,
         password: inputPassword,
       }).then((res) => {

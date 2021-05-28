@@ -48,7 +48,7 @@ const JoinTeam = () => {
     } else if (chosenPreferredName === "") {
       alert("You don't have a name! Please submit a valid preferred name.")
     } else {
-      Axios.post('/join-team', {
+      Axios.post('/api/join-team', {
         preferredName: chosenPreferredName,
         team: selectedTeam
       })

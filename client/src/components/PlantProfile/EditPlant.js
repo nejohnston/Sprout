@@ -72,7 +72,7 @@ const EditPlant = ({ props, sprout, updateSproutPage }) => {
       );
 
       // Put request to plant profile to update the plant
-      Axios.put("/plant-profile", {
+      Axios.put("/api/plant-profile", {
         sproutId: sprout.sproutId,
         name: inputSproutName,
         family: inputFamily,

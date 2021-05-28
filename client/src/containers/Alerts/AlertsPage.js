@@ -40,7 +40,7 @@ const AlertsPage = () => {
     return () => {isMounted = false};
   }, []);
   const getAlerts = async () => {
-    await Axios.post('/alerts', {
+    await Axios.post('/api/alerts', {
       userId: window.sessionStorage.getItem('userId')
     })
     .then(res => {

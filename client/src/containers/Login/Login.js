@@ -48,7 +48,7 @@ const Login = (props) => {
                    * @returns - components of Profile Page.
                    */
                   async (values) => {
-                    Axios.post('/login', {
+                    Axios.post('/api/login', {
                       userName: values.username,
                       password: values.password
                     })

@@ -52,7 +52,7 @@ const ProfilePage = ({ userContext }) => {
   }, []);
 
   const getSprouts = async () => {
-    await Axios.get("/profile").then((res) => {
+    await Axios.get("/api/profile").then((res) => {
       user.userId = res.data.userId;
       user.username = res.data.username;
       setPrefNameDisplay(res.data.name);
