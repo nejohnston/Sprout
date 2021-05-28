@@ -6,7 +6,6 @@ import Profile from '../Profile/Profile';
 
 const HomeContainer = (props) => {
   const user = useContext(UserContext)[0]
-  console.log(user)
   return ((user.userId !== 0) ? <Profile/> : <Login />)
 }
 

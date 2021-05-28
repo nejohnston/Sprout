@@ -3,18 +3,18 @@
 // =====================================
 
 // React
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
-// Data (temp)
-import teamsData from './team.json'
-import champions from './champions1.json';
+// Data for placeholders
+import teamsData from "./team.json";
 
 // Components
-import TopFive from '../../components/Leaderboard/TopFive';
-import LeaderboardTogglers from '../../components/Leaderboard/LeaderboardTogglers'
+import TopFive from "../../components/Leaderboard/TopFive";
+import LeaderboardTogglers from "../../components/Leaderboard/LeaderboardTogglers";
 
 // Styles
-import './Leaderboard.css';
+import "./Leaderboard.css";
 
 // =====================================
 //          REACT COMPONENT
@@ -26,37 +26,55 @@ import './Leaderboard.css';
  */
 const LeaderboardPage = () => {
 
-  // Temp teams data
-  let teamsDataJson = [];
-  teamsDataJson.push(...teamsData);
-  // Sort for highest teams
-  teamsDataJson.sort((a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"]));
-  
-  // Temp champions data, should be queried using useState/useEffect
-  let championsJSON = [];
-  championsJSON.push(...champions);
+  // States for the page
+  const [topFiveUsers, setTopFiveUsers] = useState([]);
+  const [teamPoints, setTeamPoints] = useState(teamsData); // requires placeholder teamsData to prevent undefined errors
 
+  // Fetch data on mount of the components/page
+  useEffect(() => {
+    getTeamPoints();
+    getTopFiveUsers();
+  }, []);
+
+  // Fetch top five users
+  const getTopFiveUsers = async () => {
+    await Axios.get("/leaderboards-topFive")
+    .then((res) => {
+      setTopFiveUsers(res.data)
+    });
+  };
+
+  // Fetch team points
+  const getTeamPoints = async () => {
+    await Axios.get("/leaderboards-team-points")
+    .then((res) => {
+      setTeamPoints(res.data)
+    });
+  }
+
+  // Sort for highest teams among team points in order
+  teamPoints.sort(
+    (a, b) => parseInt(b["team_points"]) - parseInt(a["team_points"])
+  );
+  
   return (
     <>
-    <div id="leaderboard-top-container">
-    <div id="leaderboard-accent-bg"></div>
-    <div id="profile-header">
-    <h1 id="leaderboard-h1">Leaderboard</h1>
-    </div>
+      <div id="leaderboard-top-container">
+        <div id="leaderboard-accent-bg"></div>
+        <div id="profile-header">
+          <h1 id="leaderboard-h1">Leaderboard</h1>
+        </div>
 
-    <hr/>
-   <LeaderboardTogglers teams={teamsDataJson}/>
+        <hr />
+        <LeaderboardTogglers teams={teamPoints} />
+      </div>
 
-   </div>
+      <div id="top-five-container">
+        <p id="top-five-header">Leading Sprout Gardeners</p>
+        <TopFive topfive={topFiveUsers} />
 
-    <div id="top-five-container">
-      <p id="top-five-header">Leading Sprout Gardeners</p>
-      <TopFive topfive={championsJSON}/>
-
-      <div id="leaderboard-nav-block"></div>
-
-    </div>
-
+        <div id="leaderboard-nav-block"></div>
+      </div>
     </>
   );
 };

@@ -14,9 +14,10 @@ import './Search.css'
 // Components
 import SearchItem from "../../components/Search/SearchItems";
 import SearchBar from "../../components/Search/SearchBar";
+import NoResults from "../../components/Search/NoResults";
 
 // Data (Temp)
-import searchPlantData from "../../config/data/plants.json";
+import searchPlantData from "../../config/data/plants_with_bees.json";
 
 
 
@@ -62,6 +63,8 @@ const SearchPage = () => {
 
       <SearchBar input_keyword={input} updateInputKeyword={updateInput}/>
       <div id="search-items-container">
+
+      {plantList.length === 0 && <NoResults/>}
       <SearchItem plantData={plantList} />
       </div>
     </div>

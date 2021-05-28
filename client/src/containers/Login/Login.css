@@ -3,7 +3,7 @@
     background-color: #94B447;
 }
 
-#bg {
+#login-bg {
     background-image: url("../../config/assets/images/login-bg.jpg");
     height: 30rem;
     background-position: center;
@@ -17,7 +17,7 @@
 
     background-color: #FFF;
     width: 21rem;
-    height: 22rem;
+    height: 22.5rem;
     padding: 2rem;
     margin-top: 14rem;
     box-shadow: 0 0.1rem 0.5rem 0 rgba(0, 0, 0, 0.2);
@@ -26,4 +26,10 @@
 .custom-primary-button {
     background-color: #5D6E1E !important;
     border-style: none !important;
+}
+
+#login-signup-link {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #5D6E1E;
 }

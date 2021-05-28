@@ -27,17 +27,18 @@ import PlantProfilePicture from "./PlantProfilePicture";
  * 
  * Pass the image url prop down into the child Plant Profile Picture component
  * 
- * @param {String} image_url - the url where the image of the plant is stored
+ * @param {String} imageUrl - the url where the image of the plant is stored
  * @returns the parent container object for the Plant Profile's top components
  */
 
-const PlantProfileTopOptions = ({ image_url }) => {
+ const PlantProfileTopOptions = ({ sprout, updateLastWatered, waterDiffDays }) => {
+
   return (
     <>
       <div id="plant-profile-top-container">
-        <DigUp />
-        <PlantProfilePicture image_url={image_url} />
-        <WaterPlant />
+        <DigUp sprout={sprout}/>
+        <PlantProfilePicture imageUrl={sprout.imageUrl} />
+        <WaterPlant sprout={sprout} updateLastWatered={updateLastWatered} waterDiffDays={waterDiffDays}/>
       </div>
     </>
   );

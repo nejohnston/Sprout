@@ -115,7 +115,9 @@ const DetailCards = ({ plantInfo }) => {
               {plantInfo["PLANT_FRUIT_TIME"]}
             </p>
           </div>
+          
         </div>
+        <p id="reference">Kwantlen Polytechnic University, School of Horticulture (2015).</p>
       </div>
     </div>
   );

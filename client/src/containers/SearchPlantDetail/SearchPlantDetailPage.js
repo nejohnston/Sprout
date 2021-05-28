@@ -4,10 +4,10 @@
 
 // React
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // Components
-import plantData from '../../config/data/plants.json';
+import plantData from '../../config/data/plants_with_bees.json';
 import DetailCards from '../../components/SearchPlantDetail/DetailCards'
 import AddPlantModal from '../../components/Modals/AddPlantModal';
 
@@ -25,10 +25,10 @@ import backbutton from '../../config/assets/icons/back_button.svg';
  */
 const SearchPlantDetailPage = () => {
 
-  // Receive plant Data
-  let plantJSON = [];
-  plantJSON.push(...plantData);
+  let plantId = parseInt(useParams().plantId);
 
+  let thisPlant = plantData.filter( plant => plant.PLANT_ID === plantId )[0]
+  
 
   /**
    * Return the plant's first common name capitalized.
@@ -48,17 +48,18 @@ const SearchPlantDetailPage = () => {
       <Link to="/search">
           <img src={backbutton} className="back-button" alt="" />
       </Link>
-      <h1 id="profile-h1">{firstCommonName(plantJSON[2])}</h1>
-      <AddPlantModal type={plantJSON[2]['PLANT_TYPE']} family={plantJSON[2]['PLANT_FAMILY_NAME']}/>
+      <h1 id="profile-h1">{firstCommonName(thisPlant)}</h1>
+      <AddPlantModal type={thisPlant['PLANT_TYPE']} family={thisPlant['PLANT_FAMILY_NAME']}/>
     </div>
 
     <hr />
 
     <div id="search-details-img-container">
-    <img id="search-details-img" src={plantJSON[2]['PLANT_IMG_URL']} alt=""></img>
+    <img id="search-details-img" src={thisPlant['PLANT_IMG_URL']} alt=""></img>
     </div>
 
-    <DetailCards plantInfo={plantJSON[2]}/>
+    <DetailCards plantInfo={thisPlant}/>
+
   </div>);
 };
 

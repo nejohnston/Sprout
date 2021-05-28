@@ -26,7 +26,7 @@ const SearchItem = ({ plantData }) => {
 
   return plantData.map((plant) => (
 
-    <Link to="/search-details" key={plant["PLANT_ID"]}>
+    <Link to={`/search-details/${plant.PLANT_ID}`} key={plant["PLANT_ID"]}>
       <div className="plant-search-item">
         <img
           src={plant["PLANT_IMG_URL"]}
@@ -51,7 +51,13 @@ const SearchItem = ({ plantData }) => {
 
             {plant["PLANT_ORIGIN"] != null && plant["PLANT_ORIGIN"].includes("B.C") && (
               <p className="is-native" id={"plant" + plant["PLANT_ID"]}>
-                Native Plant
+                Native
+              </p>
+            )}
+
+            {plant["PLANT_BEE_FRIENDLY"] && (
+              <p className="bee-friendly" id={"plant" + plant["PLANT_ID"]}>
+                Bee-Friendly
               </p>
             )}
           </div>

@@ -24,6 +24,13 @@
 
 .is-native {
   background-color: #3b5284;
+  width: 3.75rem;
+  padding: 0.3rem 0.55rem 0.3rem 0.55rem;
+  border-radius: 0.5rem;
+}
+
+.bee-friendly {
+  background-color: #ac3fc7;
   width: 5.85rem;
   padding: 0.3rem 0.55rem 0.3rem 0.55rem;
   border-radius: 0.5rem;

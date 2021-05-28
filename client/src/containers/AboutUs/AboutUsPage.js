@@ -14,6 +14,9 @@ import teamMembers from '../../config/data/teamList.json';
 // Styling
 import './AboutUs.css';
 
+// Bootstrap
+import Button from "react-bootstrap/Button";
+
 
 // ====================================
 //          REACT COMPONENT
@@ -59,11 +62,22 @@ const AboutUs = () => {
     <p>Our team would like to sincerely thank Kwantlen Polytechnic University's School of Horticulture for 
       allowing us to reference from their very complete and fantastic <a className="link" href="https://plantdatabase.kpu.ca/">Plant Database</a> for this project.
       <br/><br/>
-      We would also like to thank Patrick Guichon, our supervisor, for addressing our gitflow workflow anxieties, and supporting this project to completion.
+      We would also like to thank Patrick Guichon, our supervisor, for addressing our git-mergencies, workflow anxieties, and supporting this project to completion.
       He provided us endless helpful support and feedback that was perfect for a team of sapling programmers! Thanks for helping us 'grow'!
-
-
     </p>
+    </div>
+
+    <div className="about-us-content">
+    <h2 className="about-us-h2" id="contact">Reach Out</h2>
+    <p>As students and new programmers, we are always open to questions or feedback. <br/>
+    Please feel free to reach out to us and offer suggestions.</p>
+    
+    <a href="mailto:sprout.team.3@gmail.com" id="contact-btn">
+    <Button type="button" className="primary" 
+    className="custom-primary-button" variant="primary">
+      Contact Team Sprout
+    </Button>
+    </a>
     </div>
     </section>
 
