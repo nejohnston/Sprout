@@ -137,6 +137,10 @@ It has the following subfolders and files:
 ┃          ├─── package-lock.json              # Managing dependencies
 ┃          ├─── package.json                   # Metadata relevant to the project
 ┃          └─── yarn.lock                      # Managing dependencies
+
+
+The following folder also exists within the top-level project folder on dev, but not on main branch:
+
 └── 📂 server                            # Folder for the back end
      ├─── 📂 data                        # Folder for the static data
      ├─── 📂 database                    # Folder for showing how the database looks
@@ -166,8 +170,7 @@ Password: BCITcomp2800!
 ```
 echo DATABASE_URL=postgres://sshovcjpdbiske:cfa4366c3ca29896322ecbd08a53592f6ad794280dffd387466954d7a40956f8@ec2-35-170-85-206.compute-1.amazonaws.com:5432/daama3hr9d0osj > .env
 ```
-4. Type ***yarn install*** and ***yarn start*** consequently.   
-<img src="./client/src/config/assets/images/3-Go-to-server.png" width="100%" title="go-to-server" alt="server"></img>   
+4. Type ***yarn install*** and ***yarn start*** consequently.     
 <img src="./client/src/config/assets/images/4-yarn-install.png" width="100%" title="server-yarnInstall" alt="server-yarn-install"></img>   
 <img src="./client/src/config/assets/images/5-yarn-start.png" width="100%" title="server-yarnStart" alt="server-yarn-start"></img>
       
