@@ -29,6 +29,10 @@ import { SproutContext, UserContext } from "../Layout/Layout";
  * @returns Dig Up component
  */
 
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
 const DigUp = ( {sprout}, props) => {
 
   // Bootstrap modal
