@@ -17,6 +17,10 @@ import "./styles/SearchItem.css";
  * @returns Search Items components
  */
 
+// ====================================
+//           REACT COMPONENT
+// ====================================
+
 const SearchItem = ({ plantData }) => {
 
   // Convert plant's name to titlecase
