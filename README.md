@@ -42,57 +42,59 @@ Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres 
 Content of the project folder:
 ```
  Top level of project folder: 
+📂 /
 ├── .gitignore                          # Git ignore file
-└── package.json                        # Metadata relevant to the project
-└── Procfile                            # Basic command for Heroku
-└── yarn.lock                           # Managing dependencies
-└── reset_alerts_every_day.js           # A JavaScript file that triggers the scheduler
+├── package.json                        # Metadata relevant to the project
+├── Procfile                            # Basic command for Heroku
+├── yarn.lock                           # Managing dependencies
+├── reset_alerts_every_day.js           # A JavaScript file that triggers the scheduler
 └── README.md                           # woah, you're reading this now!
 
 It has the following subfolders and files:
-├── client                              # Folder for the front end
-        /src                            # Folder for the source files
-            /components                 # Folder for the React components
-                /AboutUs                # Folder for the AboutUs component
-                /Alerts                 # Folder for the Alerts component
-                /Easter                 # Folder for the Easter component
-                /JoinTeam               # Folder for the JoinTeam component
-                /Layout                 # Folder for the Layout component
-                /Leaderboard            # Folder for the Leaderboard component
-                /List                   # Folder for the List component
-                /Modals                 # Folder for the Modals component
-                /PlantProfile           # Folder for the PlantProfile component
-                /Profile                # Folder for the Profile component
-                /Search                 # Folder for the Search component
-                /SearchPlantDetail      # Folder for the SearchPlantDetail component
-            /config                     # Folder for the static data
-                /assets                 # Folder for the image files used in the project
-                /data                   # Folder for the JSON files used in the project
-            /containers                 # Folder for the React containers
-                /AboutUs                # Folder for the AboutUs page
-                /Alerts                 # Folder for the Alerts page
-                /HomeContainer          # Folder for the Home page
-                /JoinTeam               # Folder for the JoinTeam page
-                /Leaderboards           # Folder for the Leaderboards page
-                /Login                  # Folder for the Login page
-                /PlantProfile           # Folder for the PlantProfile page
-                /Profile                # Folder for the Profile page
-                /Search                 # Folder for the Search page
-                /SearchPlantDetail      # Folder for the SearchPlantDetail page
-                /Signup                 # Folder for the Signup page
-            /index.css                  # A CSS file for the root page
-            /index.js                   # A JavaScript file for the root page
-            /Splash.js                  # A JavaScript file for loading the page
-        /package-lock.json              # Managing dependencies
-        /package.json                   # Metadata relevant to the project
-        /yarn.lock                      # Managing dependencies
-├── server                              # Folder for the back end
-        /data                           # Folder for the static data
-        /database                       # Folder for showing how the database looks
-        /package-lock.json              # Managing dependencies
-        /package.json                   # Metadata relevant to the project
-        /pghelper.js                    # A JavaScript file for quering from the database
-        /server.js                      # A JavaScript file for connecting to the server
-        /yarn.lock                      # Managing dependencies
+📂 /
+├── 📂 client                            # Folder for the front end
+┃    ├─── 📂 src                         # Folder for the source files
+┃    ┃     ├── 📂 components             # Folder for the React components
+┃    ┃     ├── 📂 AboutUs                # Folder for the AboutUs component
+┃    ┃     ├── 📂 Alerts                 # Folder for the Alerts component
+┃    ┃     ├── 📂 Easter                 # Folder for the Easter component
+┃    ┃     ├── 📂 JoinTeam               # Folder for the JoinTeam component
+┃    ┃     ├── 📂 Layout                 # Folder for the Layout component
+┃    ┃     ├── 📂 Leaderboard            # Folder for the Leaderboard component
+┃    ┃     ├── 📂 List                   # Folder for the List component
+┃    ┃     ├── 📂 Modals                 # Folder for the Modals component
+┃    ┃     ├── 📂 PlantProfile           # Folder for the PlantProfile component
+┃    ┃     ├── 📂 Profile                # Folder for the Profile component
+┃    ┃     ├── 📂 Search                 # Folder for the Search component
+┃    ┃     └── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail component
+┃    ├─── 📂 config                      # Folder for the static data
+┃    ┃     ├── 📂 assets                 # Folder for the image files used in the project
+┃    ┃     └── 📂 data                   # Folder for the JSON files used in the project                
+┃    ├─── 📂 containers                  # Folder for the React containers
+┃    ┃     ├── 📂 AboutUs                # Folder for the AboutUs page
+┃    ┃     ├── 📂 Alerts                 # Folder for the Alerts page
+┃    ┃     ├── 📂 HomeContainer          # Folder for the Home page
+┃    ┃     ├── 📂 JoinTeam               # Folder for the JoinTeam page
+┃    ┃     ├── 📂 Leaderboards           # Folder for the Leaderboards page
+┃    ┃     ├── 📂 Login                  # Folder for the Login page
+┃    ┃     ├── 📂 PlantProfile           # Folder for the PlantProfile page
+┃    ┃     ├── 📂 Profile                # Folder for the Profile page
+┃    ┃     ├── 📂 Search                 # Folder for the Search page
+┃    ┃     ├── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail page
+┃    ┃     └── 📂 Signup                 # Folder for the Signup page             
+┃    ├─── index.css                      # A CSS file for the root page
+┃    ├─── index.js                       # A JavaScript file for the root page
+┃    ├─── Splash.js                      # A JavaScript file for loading the page
+┃    ├─── package-lock.json              # Managing dependencies
+┃    ├─── package.json                   # Metadata relevant to the project
+┃    └─── yarn.lock                      # Managing dependencies
+└── 📂 server                            # Folder for the back end
+     ├─── 📂 data                        # Folder for the static data
+     ├─── 📂 database                    # Folder for showing how the database looks
+     ├─── package-lock.json              # Managing dependencies
+     ├─── package.json                   # Metadata relevant to the project
+     ├─── pghelper.js                    # A JavaScript file for quering from the database
+     ├─── server.js                      # A JavaScript file for connecting to the server
+     └─── yarn.lock                      # Managing dependencies
 
 ```
