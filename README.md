@@ -48,12 +48,22 @@ Heroku is a container-based cloud platform as a service (PaaS). Heroku allows de
 Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres offers features such as rollback, high availability, and continuous protection, as well as followers, data clips, and forks.
 
 ### Cloudinary
-We use Cloudinary to store and manage all user's image uploads. To upload an image to Cloudinary, a POST request must be made to: "https://api.cloudinary.com/v1_1/sprout03/image/upload/" with an image preset of either sproutPlant or sproutUser. If you would like to create more image presets please notify the github owner, Nicholas.
+We use Cloudinary to store and manage all user's image uploads. To upload an image to Cloudinary, a POST request must be made Sprout's Cloudinary with an image preset of either sproutPlant or sproutUser. You can see credentials in **Configurations**. If you would like to create more image presets please notify the github owner, Nicholas.
 
 ## 📝Testing
 You can find our initial testing plan here: https://docs.google.com/spreadsheets/d/1VK1SMwL3B4feiTA7hIC6xo1Rk5iDve64pFtSdyGjAUQ/edit?usp=sharing
 
 ## 📁 Content
+The repo is organized in a fashion that abides by React structures. First, the repo is split into two sides: client and server.
+
+**Server** contains all related files to the server side of the application. This includes a file for pghelpers, the server.js, and other database-related files.
+
+**Client** contains the application's root folder, components, assets, front-end tests, and containers for the entire web app.
+
+**Containers** folder within the client folder is where you will find the pages that contain components, categorized by each page. Each folder contains 3-4 files. There should be the Page React component, the Page Container, and index.js, and a Styling .css file for each container.
+**Components** folder within the client folder is where you will find the smaller components that are used, categorized by the page it is used in. Within this folder, there is also a styles folder for each component.
+
+
 Content of the project folder:
 ```
  Top level of project folder: 
@@ -65,7 +75,7 @@ Content of the project folder:
 ├── Procfile                            # Basic command for Heroku
 ├── yarn.lock                           # Managing dependencies
 ├── reset_alerts_every_day.js           # A JavaScript file that triggers the scheduler
-└── README.md                           # woah, you're reading this now!
+└── README.md                           # You're reading this now!
 
 It has the following subfolders and files:
 📂 /
@@ -86,7 +96,7 @@ It has the following subfolders and files:
 ┃    ┃     └── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail component
 ┃    ├─── 📂 config                      # Folder for the static data
 ┃    ┃     ├── 📂 assets                 # Folder for the image files used in the project
-┃    ┃     └── 📂 data                   # Folder for the JSON files used in the project                
+┃    ┃     └── 📂 data                   # (AKA RESOURCES) Folder for the JSON files used in the project                
 ┃    ├─── 📂 containers                  # Folder for the React containers
 ┃    ┃     ├── 📂 AboutUs                # Folder for the AboutUs page
 ┃    ┃     ├── 📂 Alerts                 # Folder for the Alerts page
@@ -119,11 +129,22 @@ It has the following subfolders and files:
 ┃    ├─── package-lock.json              # Managing dependencies
 ┃    ├─── package.json                   # Metadata relevant to the project
 ┃    └─── yarn.lock                      # Managing dependencies
+└── 📂 server                            # Folder for the back end
+     ├─── 📂 data                        # Folder for the static data
+     ├─── 📂 database                    # Folder for showing how the database looks
+     ├─── package-lock.json              # Managing dependencies
+     ├─── package.json                   # Metadata relevant to the project
+     ├─── pghelper.js                    # A JavaScript file for querying from the database
+     ├─── server.js                      # A JavaScript file for connecting to the server
+     └─── yarn.lock                      # Managing dependencies
 
 ```
 ## Configurations
 # Heroku
-# 
+# Cloudinary
+Any upload to images must be a POST request to: https://api.cloudinary.com/v1_1/sprout03/image/upload/
+Username: sprout.team.3@gmail.com
+Password: BCITcomp2800!
 
 ## Install Steps
 1. Clone the repository to your local device.   
