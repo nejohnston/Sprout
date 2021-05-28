@@ -60,7 +60,7 @@ const AddPlantModal = ({ type, family }, props) => {
         .catch((err) => console.log(err));
 
       setTimeout(() => {
-        Axios.post("http://localhost:3001/profile/", {
+        Axios.post("/profile/", {
           family: document.getElementById("sproutFamily").value,
           name: document.getElementById("sproutName").value,
           notes: document.getElementById("sproutNotes").value,

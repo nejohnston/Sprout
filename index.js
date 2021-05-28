@@ -18,7 +18,7 @@ const {
   deleteAlert,
   getTopFiveUsers,
   getTeamPoints,
-} = require("./pgHelper.js");
+} = require('./pgHelper');
 const port = 5000;
 let app = express();
     app.use(express.urlencoded({extended: true}));
