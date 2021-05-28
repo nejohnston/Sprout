@@ -27,8 +27,8 @@ let app = express();
     // Serve static files from the React app
     // Code copied from here, Answer 1
     // https://stackoverflow.com/questions/44684461/how-to-serve-reactjs-static-files-with-expressjs
-    const buildPath = path.normalize(path.join(__dirname, '/client/build'));
-    app.use(express.static(buildPath));
+    // const buildPath = path.normalize(path.join(__dirname, '/client/build'));
+    // app.use(express.static(buildPath));
 app.use(
   session({
     secret: "WzTYezYhje",
@@ -281,10 +281,15 @@ app.get("/api/leaderboards-team-points", async (req, res) => {
 /*
  * all other routes go here
  */
-rootRouter.get("(/*)?", async (req, res, next) => {
-  res.sendFile(path.join(buildPath, "index.html"));
+// rootRouter.get("(/*)?", async (req, res, next) => {
+//   res.sendFile(path.join(buildPath, "index.html"));
+// });
+// app.use(rootRouter);
+app.use(express.static(path.join(__dirname, '/client/build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
-app.use(rootRouter);
 
 app.listen(process.env.PORT || port, 
 	() => console.log(`Server is listening on ${port}`));
