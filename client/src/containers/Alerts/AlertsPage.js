@@ -32,7 +32,6 @@ import plantyDance from '../../config/assets/gifs/planty-dance.gif';
 const AlertsPage = () => {
 
   const [alertPlants, setAlertPlants] = useState([]);
-  
   // Load Alerts
   useEffect(() => {
     let isMounted = true;
