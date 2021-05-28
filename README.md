@@ -1,6 +1,6 @@
 ## 🌱 Sprout
 * ⭐ [General Info](#general-info)
-* 🌿 [Team Sprout] (#Team-Sprout)
+* 🌿 [Team Sprout](#Team-Sprout)
 * ⚙ [Technologies](#technologies)
 * ✏ [Design](#design)
 * 🗃 [Databases](#databases)
