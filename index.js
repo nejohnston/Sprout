@@ -162,32 +162,32 @@ app.post("/api/profile/", async (req, res) => {
   res.json(newUserSprouts);
 });
 
-app.get("/api/profile/", async (req, res) => {
-  let user = await getUserById(req.session.userId);
-  let sprout = await getUserSprouts(req.session.userId);
-  let result = {
-    userId: user.application_user_id,
-    team: user.team_id,
-    username: user.application_user_username,
-    name: user.application_user_preferred_name,
-    profilePicture: user.application_user_image,
-    points: user.application_user_points,
-    sprouts: [],
-  };
-  sprout.forEach((value) => {
-    result.sprouts.push({
-      sproutId: value.user_sprouts_id,
-      name: value.user_sprouts_given_name,
-      family: value.user_sprouts_family,
-      type: value.user_sprouts_type,
-      wateringInterval: value.user_sprouts_watering_intervals,
-      notes: value.user_sprouts_notes,
-      imageUrl: value.user_sprouts_image,
-      dateAdded: value.user_sprouts_date_added,
-    });
-  });
-  res.json(result);
-});
+// app.get("/api/profile/", async (req, res) => {
+//   let user = await getUserById(req.session.userId);
+//   let sprout = await getUserSprouts(req.session.userId);
+//   let result = {
+//     userId: user.application_user_id,
+//     team: user.team_id,
+//     username: user.application_user_username,
+//     name: user.application_user_preferred_name,
+//     profilePicture: user.application_user_image,
+//     points: user.application_user_points,
+//     sprouts: [],
+//   };
+//   sprout.forEach((value) => {
+//     result.sprouts.push({
+//       sproutId: value.user_sprouts_id,
+//       name: value.user_sprouts_given_name,
+//       family: value.user_sprouts_family,
+//       type: value.user_sprouts_type,
+//       wateringInterval: value.user_sprouts_watering_intervals,
+//       notes: value.user_sprouts_notes,
+//       imageUrl: value.user_sprouts_image,
+//       dateAdded: value.user_sprouts_date_added,
+//     });
+//   });
+//   res.json(result);
+// });
 
 // ==========================================
 //               PLANT PROFILE

@@ -39,30 +39,30 @@ const ProfilePage = ({ userContext }) => {
     setPoints(user.points);
   }, [sprouts]);
 
-  useEffect(() => {
-    let isMounted = true;
-    getSprouts();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  // useEffect(() => {
+  //   let isMounted = true;
+  //   getSprouts();
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, []);
 
   useEffect(() => {
     setTimeout(() => setDisplay(false), 500);
   }, []);
 
-  const getSprouts = async () => {
-    await Axios.get("/api/profile").then((res) => {
-      user.userId = res.data.userId;
-      user.username = res.data.username;
-      setPrefNameDisplay(res.data.name);
-      user.points = res.data.points;
-      user.team = res.data.team;
-      user.profilePicture = res.data.profilePicture;
-      user.sprouts = res.data.sprouts;
-      setSprouts(res.data.sprouts);
-    });
-  };
+  // const getSprouts = async () => {
+  //   await Axios.get("/api/profile").then((res) => {
+  //     user.userId = res.data.userId;
+  //     user.username = res.data.username;
+  //     setPrefNameDisplay(res.data.name);
+  //     user.points = res.data.points;
+  //     user.team = res.data.team;
+  //     user.profilePicture = res.data.profilePicture;
+  //     user.sprouts = res.data.sprouts;
+  //     setSprouts(res.data.sprouts);
+  //   });
+  // };
 
   //after 0.5 seconds the state will be switched to false, which will allow the fetch of profile picture to complete
 
