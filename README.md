@@ -1,5 +1,6 @@
 ## 🌱 Sprout
 * ⭐ [General Info](#general-info)
+* 🌿 [Team Sprout] (#Team-Sprout)
 * ⚙ [Technologies](#technologies)
 * ✏ [Design](#design)
 * 🗃 [Databases](#databases)
@@ -10,6 +11,12 @@
 
 ## ⭐ General Info
 SPROUT connects gardeners of all ages and expertise with resources on the best native and bee-friendly plants for their local area. Users will join community teams and earn points while learning and engaging in sustainable gardening.
+
+## 🌿 Team Sprout
+* Mike Hwang
+* Sally Poon
+* Nicholas Johnston
+* Susan Li
 
 ## ⚙ Technologies
 Technologies/languages used for this project:
@@ -53,6 +60,8 @@ We use Cloudinary to store and manage all user's image uploads. To upload an ima
 ## 📝Testing
 You can find our initial testing plan here: https://docs.google.com/spreadsheets/d/1VK1SMwL3B4feiTA7hIC6xo1Rk5iDve64pFtSdyGjAUQ/edit?usp=sharing
 
+To navitage to our test files, from the root folder go to client > tests. A map of our repo is in the **Contents** section.
+
 ## 📁 Content
 The repo is organized in a fashion that abides by React structures. First, the repo is split into two sides: client and server.
 
@@ -80,55 +89,54 @@ Content of the project folder:
 It has the following subfolders and files:
 📂 /
 ├── 📂 client                            # Folder for the front end
-┃    ├─── 📂 src                         # Folder for the source files
-┃    ┃     ├── 📂 components             # Folder for the React components
-┃    ┃     ├── 📂 AboutUs                # Folder for the AboutUs component
-┃    ┃     ├── 📂 Alerts                 # Folder for the Alerts component
-┃    ┃     ├── 📂 Easter                 # Folder for the Easter component
-┃    ┃     ├── 📂 JoinTeam               # Folder for the JoinTeam component
-┃    ┃     ├── 📂 Layout                 # Folder for the Layout component
-┃    ┃     ├── 📂 Leaderboard            # Folder for the Leaderboard component
-┃    ┃     ├── 📂 List                   # Folder for the List component
-┃    ┃     ├── 📂 Modals                 # Folder for the Modals component
-┃    ┃     ├── 📂 PlantProfile           # Folder for the PlantProfile component
-┃    ┃     ├── 📂 Profile                # Folder for the Profile component
-┃    ┃     ├── 📂 Search                 # Folder for the Search component
-┃    ┃     └── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail component
-┃    ├─── 📂 config                      # Folder for the static data
-┃    ┃     ├── 📂 assets                 # Folder for the image files used in the project
-┃    ┃     └── 📂 data                   # (AKA RESOURCES) Folder for the JSON files used in the project                
-┃    ├─── 📂 containers                  # Folder for the React containers
-┃    ┃     ├── 📂 AboutUs                # Folder for the AboutUs page
-┃    ┃     ├── 📂 Alerts                 # Folder for the Alerts page
-┃    ┃     ├── 📂 HomeContainer          # Folder for the Home page
-┃    ┃     ├── 📂 JoinTeam               # Folder for the JoinTeam page
-┃    ┃     ├── 📂 Leaderboards           # Folder for the Leaderboards page
-┃    ┃     ├── 📂 Login                  # Folder for the Login page
-┃    ┃     ├── 📂 PlantProfile           # Folder for the PlantProfile page
-┃    ┃     ├── 📂 Profile                # Folder for the Profile page
-┃    ┃     ├── 📂 Search                 # Folder for the Search page
-┃    ┃     ├── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail page
-┃    ┃     └── 📂 Signup                 # Folder for the Signup page
-┃    ├─── 📂 components                  # Folder for the React components for each respective page
-┃    ┃     ├── 📂 AboutUs                # Folder for the AboutUs page
-┃    ┃     ├── 📂 Alerts                 # Folder for the Alerts page
-┃    ┃     ├── 📂 HomeContainer          # Folder for the Home page
-┃    ┃     ├── 📂 JoinTeam               # Folder for the JoinTeam page
-┃    ┃     ├── 📂 Leaderboards           # Folder for the Leaderboards page
-┃    ┃     ├── 📂 Login                  # Folder for the Login page
-┃    ┃     ├── 📂 Modals                 # Folder for shared Modals across pages
-┃    ┃     ├── 📂 PlantProfile           # Folder for the PlantProfile page
-┃    ┃     ├── 📂 Profile                # Folder for the Profile page
-┃    ┃     ├── 📂 Search                 # Folder for the Search page
-┃    ┃     ├── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail page
-┃    ┃     └── 📂 Signup                 # Folder for the Signup page     
-┃    ├─── 📂 tests                      # Folder for client-side tests        
-┃    ├─── index.css                      # A CSS file for the root page
-┃    ├─── index.js                       # A JavaScript file for the root page
-┃    ├─── Splash.js                      # A JavaScript file for loading the page
-┃    ├─── package-lock.json              # Managing dependencies
-┃    ├─── package.json                   # Metadata relevant to the project
-┃    └─── yarn.lock                      # Managing dependencies
+┃    └─── 📂 src                         # Folder for the source files
+┃          ├── 📂 components             # Folder for the React components
+┃          ┃    ├── 📂 AboutUs                # Folder for the AboutUs component
+┃          ┃    ├── 📂 Alerts                 # Folder for the Alerts component
+┃          ┃    ├── 📂 Easter                 # Folder for the Easter component
+┃          ┃    ├── 📂 Layout                 # Folder for the Layout component
+┃          ┃    ├── 📂 Leaderboard            # Folder for the Leaderboard component
+┃          ┃    ├── 📂 List                   # Folder for the List component
+┃          ┃    ├── 📂 Modals                 # Folder for the Modals component
+┃          ┃    ├── 📂 PlantProfile           # Folder for the PlantProfile component
+┃          ┃    ├── 📂 Profile                # Folder for the Profile component
+┃          ┃    ├── 📂 Search                 # Folder for the Search component
+┃          ┃    └── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail component
+┃          ├─── 📂 config                      # Folder for the static data
+┃          ┃    ├── 📂 assets                 # Folder for the image files used in the project
+┃          ┃    └── 📂 data                   # (AKA RESOURCES) Folder for the JSON files used in the project                
+┃          ├─── 📂 containers                  # Folder for the React containers
+┃          ┃    ├── 📂 AboutUs                # Folder for the AboutUs page
+┃          ┃    ├── 📂 Alerts                 # Folder for the Alerts page
+┃          ┃    ├── 📂 HomeContainer          # Folder for the Home page
+┃          ┃    ├── 📂 JoinTeam               # Folder for the JoinTeam page
+┃          ┃    ├── 📂 Leaderboards           # Folder for the Leaderboards page
+┃          ┃    ├── 📂 Login                  # Folder for the Login page
+┃          ┃    ├── 📂 PlantProfile           # Folder for the PlantProfile page
+┃          ┃    ├── 📂 Profile                # Folder for the Profile page
+┃          ┃    ├── 📂 Search                 # Folder for the Search page
+┃          ┃    ├── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail page
+┃          ┃    └── 📂 Signup                 # Folder for the Signup page
+┃          ├─── 📂 components                  # Folder for the React components for each respective page
+┃          ┃    ├── 📂 AboutUs                # Folder for the AboutUs page
+┃          ┃    ├── 📂 Alerts                 # Folder for the Alerts page
+┃          ┃    ├── 📂 HomeContainer          # Folder for the Home page
+┃          ┃    ├── 📂 JoinTeam               # Folder for the JoinTeam page
+┃          ┃    ├── 📂 Leaderboards           # Folder for the Leaderboards page
+┃          ┃    ├── 📂 Login                  # Folder for the Login page
+┃          ┃    ├── 📂 Modals                 # Folder for shared Modals across pages
+┃          ┃    ├── 📂 PlantProfile           # Folder for the PlantProfile page
+┃          ┃    ├── 📂 Profile                # Folder for the Profile page
+┃          ┃    ├── 📂 Search                 # Folder for the Search page
+┃          ┃    ├── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail page
+┃          ┃    └── 📂 Signup                 # Folder for the Signup page     
+┃          ├─── 📂 tests                      # Folder for client-side tests        
+┃          ├─── index.css                      # A CSS file for the root page
+┃          ├─── index.js                       # A JavaScript file for the root page
+┃          ├─── Splash.js                      # A JavaScript file for loading the page
+┃          ├─── package-lock.json              # Managing dependencies
+┃          ├─── package.json                   # Metadata relevant to the project
+┃          └─── yarn.lock                      # Managing dependencies
 └── 📂 server                            # Folder for the back end
      ├─── 📂 data                        # Folder for the static data
      ├─── 📂 database                    # Folder for showing how the database looks
@@ -140,8 +148,11 @@ It has the following subfolders and files:
 
 ```
 ## Configurations
-# Heroku
-# Cloudinary
+
+### Heroku
+The Heroku account we used is Nicholas' personal account. For account details, please contact him.
+
+### Cloudinary
 Any upload to images must be a POST request to: https://api.cloudinary.com/v1_1/sprout03/image/upload/
 Username: sprout.team.3@gmail.com
 Password: BCITcomp2800!
