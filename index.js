@@ -54,7 +54,7 @@ app.use(
  * @returns - response from database.
  */
 
-app.post("/api/login", async (req, res) => {
+app.get("/api/login", async (req, res) => {
   let param = {
     userName: req.body.userName,
     password: req.body.password,

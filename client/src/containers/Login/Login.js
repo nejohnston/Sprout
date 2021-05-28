@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Axios from 'axios';
 import { Link } from "react-router-dom";
 import { Formik, ErrorMessage } from "formik";
@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.css";
 import { withRouter } from "react-router";
 
+import { UserContext, SproutContext } from "../../components/Layout/Layout.js";
 // Splash Screen
 import Splash from "../../Splash";
 
@@ -27,7 +28,9 @@ const schema = yup.object().shape({
 const Login = (props) => {
   const [splash, setSplash] = useState(true); //splash screen will always render upon initialization
   const [validation, setValidation] = useState(true);
+  const user = useContext(UserContext)[0];
 
+  const [sprouts, setSprouts] = useContext(SproutContext);
   useEffect(() => {
     setTimeout(() => setSplash(false), 2000); //after 2 seconds the state will be switched to false
   }, []);
@@ -47,23 +50,75 @@ const Login = (props) => {
                    * Return a user's data.
                    * @returns - components of Profile Page.
                    */
-                  async (values) => {
-                    Axios.post('/api/login', {
-                      userName: values.username,
-                      password: values.password
-                    })
-                    .then(res => {
-                      if (res.data === "User not found") {
-                        window.location = "/signup"
-                      }
-                      else if (res.data === "Failed"){
-                        setValidation(false)
-                      }
-                      else {
-                        window.sessionStorage.setItem('userId', res.data.application_user_id);
-                        window.location = '/profile'
-                      }
-                    })
+                   async (values) => {
+                    let response = await fetch(
+                      `http://localhost:3001/login/${values.username}/${values.password}`
+                    );
+                    let textResponse = await response.text();
+                    try {
+                      let userData = JSON.parse(textResponse);
+                      // let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
+                      setValidation(true);
+                      user.userId = userData.application_user_id;
+                      user.profilePicture = userData.application_user_image;
+                      user.username = userData.application_user_username;
+                      user.name = userData.application_user_preferred_name;
+                      user.points = userData.application_user_points;
+                      user.team = userData.team_id;
+                      user.profilePicture = userData.application_user_image;
+                      let userSprouts = 
+                      await fetch(`http://localhost:3001/sprouts/${user.userId}`)
+                      .then(response => response.json())
+                      .catch(error => console.log(error))
+                      if (userSprouts !== []) {
+                        await userSprouts.forEach((element) => {
+                        sprouts.push({
+                          sproutId: element.user_sprouts_id,
+                          imageUrl: element.user_sprouts_image,
+                          name: element.user_sprouts_given_name,
+                          type: element.user_sprouts_type,
+                          family: element.user_sprouts_family,
+                          wateringInterval:
+                            element.user_sprouts_watering_intervals,
+                          notes: element.user_sprouts_notes,
+                          isWatered: element.user_sprouts_is_watered,
+                          dateAdded: element.user_sprouts_date_added,
+                          lastWatered: element.user_sprouts_last_watered,
+                          nextAlert: element.user_sprouts_next_alert_date,
+                        });
+                      });}
+                      window.sessionStorage.setItem('userId', user.userId);
+                      window.sessionStorage.setItem('userName', user.username);
+                      window.sessionStorage.setItem('userPrefName', user.name);
+                      window.sessionStorage.setItem('teamId', user.team);
+                      props.history.push("/profile");
+                    } catch {
+                      setValidation(false);
+                      throw Error("Incorrect username or password.");
+                    }
+                    // let userSproutsResponse = await fetch(`http://localhost:3001/sprouts/${user.userId}`)
+                    // let userSproutsJson = await response.json()
+                      // console.log(userSproutsResponse)
+                      // if (userSproutsJson.length > 0) {
+                      //   userSproutsResponse.forEach((element) => {
+                      //   sprouts.push({
+                      //     sproutId: element.user_sprouts_id,
+                      //     image_url: element.user_sprouts_image,
+                      //     name: element.user_sprouts_given_name,
+                      //     type: element.user_sprouts_type,
+                      //     family: element.user_sprouts_family,
+                      //     wateringInterval:
+                      //       element.user_sprouts_watering_intervals,
+                      //     notes: element.user_sprouts_notes,
+                      //     isWatered: element.user_sprouts_is_watered,
+                      //     dateAdded: element.user_sprouts_date_added,
+                      //     lastWatered: element.user_sprouts_last_watered,
+                      //     nextAlert: element.user_sprouts_next_alert_date,
+                      //   });
+                      // });
+                  // }
+                
+                  props.history.push("/profile");
                 }}
                 initialValues={{
                   username: "",
