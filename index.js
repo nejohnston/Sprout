@@ -16,10 +16,9 @@ const {
   getSproutById,
   getAlert,
   deleteAlert,
-  getPlantInfo,
   getTopFiveUsers,
   getTeamPoints,
-} = require("./pgHelper");
+} = require("./pgHelper.js");
 const port = 5000;
 let app = express();
     app.use(express.urlencoded({extended: true}));
