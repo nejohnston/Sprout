@@ -46,7 +46,7 @@ Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres 
  
 3. Type ***cd server***, ***yarn install***, and ***yarn start*** consequently.   
 <img src="./client/src/config/assets/images/3-Go-to-server.png" width="100%" title="go-to-server" alt="server"></img>   
-<img src="./client/src/config/assets/images/4-yarn-install" width="100%" title="server-yarnInstall" alt="server-yarn-install"></img>  
+<img src="./client/src/config/assets/images/4-yarn-install.png" width="100%" title="server-yarnInstall" alt="server-yarn-install"></img>   
 <img src="./client/src/config/assets/images/5-yarn-start.png" width="100%" title="server-yarnStart" alt="server-yarn-start"></img>
       
     ![](https://img.shields.io/badge/Note-yellow)
@@ -56,8 +56,8 @@ Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres 
 <img src="./client/src/config/assets/images/6-open-another-terminal.png" width="100%" title="open-another-terminal" alt="open-another-terminal"></img>
 5. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently.   
 <img src="./client/src/config/assets/images/7-Go-to-client.png" width="100%" title="go-to-client" alt="client"></img>   
-   <img src="./client/src/config/assets/images/8-yarn-install.png" width="100%" title="client-yarnInstall" alt="client-yarn-install"></img>   
-   <img src="./client/src/config/assets/images/9-yarn-start.png" width="100%" title="client-yarnStart" alt="client-yarn-start"></img>
+<img src="./client/src/config/assets/images/8-yarn-install.png" width="100%" title="client-yarnInstall" alt="client-yarn-install"></img>   
+<img src="./client/src/config/assets/images/9-yarn-start.png" width="100%" title="client-yarnStart" alt="client-yarn-start"></img>
     
     ![](https://img.shields.io/badge/Note-yellow)
    
