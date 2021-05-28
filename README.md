@@ -64,7 +64,7 @@ Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres 
    Once you run ***yarn install***, you do not need to run that again from the next time.
 
 Then you will see the home page of Sprout!   
-<img src="./client/src/config/assets/images/10-home-page.png" width="100%" title="sprout" alt="sprout"></img>   
+<img src="./client/src/config/assets/images/10-home-page.png" width="30%" title="sprout" alt="sprout"></img>   
 
 ## 📁 Content
 Content of the project folder:
