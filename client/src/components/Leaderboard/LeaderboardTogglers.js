@@ -16,6 +16,10 @@ import "./styles/LeaderboardTogglers.css";
  * @returns the top component of the Leaderboard screen
  */
 
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
 const LeaderboardTogglers = ({ teams }) => {
   // All the styles are inline because they have to accept a prop as a background image url, and there is no way to pass this directly into an external stylesheet. Furthermore, as they need the prop passed in, they also can't be defined at the top of the page above this rendering component. The only way to style was to do it inline.
 
