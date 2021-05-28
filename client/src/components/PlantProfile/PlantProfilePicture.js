@@ -23,6 +23,10 @@ import "./styles/PlantProfilePicture.css";
  * @returns the Plant Profile component
  */
 
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
 const PlantProfilePicture = ({ imageUrl }) => {
   const [toggler, setToggler] = useState(false);
   return (

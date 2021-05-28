@@ -13,10 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Styles
 import "./styles/SproutGallery.css";
 
-// =====================================
-//          REACT COMPONENT
-// =====================================
-
+// Components
 import SproutItem from "./SproutItem";
 
 /**
@@ -24,6 +21,10 @@ import SproutItem from "./SproutItem";
  * @param {Array} sprouts - an array of objects containing the user's plant (sprout) information
  * @returns the parent container of the user's sprouts (Sprout Items)
  */
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
 
 const SproutGallery = ({ sprouts }) => {
   return (

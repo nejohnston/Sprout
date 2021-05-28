@@ -11,6 +11,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Styling
 import './styles/NoResults.css';
 
+/**
+ * Return placeholder text if there are no search results
+ * @returns a placeholder if search results are empty.
+ */
 
 // ====================================
 //           REACT COMPONENT

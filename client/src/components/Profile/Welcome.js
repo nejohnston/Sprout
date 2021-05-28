@@ -1,8 +1,21 @@
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
+// React
 import React from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
+// Styles
 import './styles/Welcome.css';
+
+/**
+ * Return placeholder text if there are no sprouts in the user's gallery.
+ * @returns a placeholder if plant gallery is empty.
+ */
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
 
 const Welcome = () => {
     return (
