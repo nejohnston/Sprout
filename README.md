@@ -48,12 +48,22 @@ Heroku is a container-based cloud platform as a service (PaaS). Heroku allows de
 Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres offers features such as rollback, high availability, and continuous protection, as well as followers, data clips, and forks.
 
 ### Cloudinary
-We use Cloudinary to store and manage all user's image uploads. To upload an image to Cloudinary, a POST request must be made Sprout's Cloudinary with an image preset of either sproutPlant or sproutUser. You can see credentials in #Configurations. If you would like to create more image presets please notify the github owner, Nicholas.
+We use Cloudinary to store and manage all user's image uploads. To upload an image to Cloudinary, a POST request must be made Sprout's Cloudinary with an image preset of either sproutPlant or sproutUser. You can see credentials in **Configurations**. If you would like to create more image presets please notify the github owner, Nicholas.
 
 ## 📝Testing
 You can find our initial testing plan here: https://docs.google.com/spreadsheets/d/1VK1SMwL3B4feiTA7hIC6xo1Rk5iDve64pFtSdyGjAUQ/edit?usp=sharing
 
 ## 📁 Content
+The repo is organized in a fashion that abides by React structures. First, the repo is split into two sides: client and server.
+
+**Server** contains all related files to the server side of the application. This includes a file for pghelpers, the server.js, and other database-related files.
+
+**Client** contains the application's root folder, components, assets, front-end tests, and containers for the entire web app.
+
+**Containers** folder within the client folder is where you will find the pages that contain components, categorized by each page. Each folder contains 3-4 files. There should be the Page React component, the Page Container, and index.js, and a Styling .css file for each container.
+**Components** folder within the client folder is where you will find the smaller components that are used, categorized by the page it is used in. Within this folder, there is also a styles folder for each component.
+
+
 Content of the project folder:
 ```
  Top level of project folder: 
