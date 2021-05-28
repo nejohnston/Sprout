@@ -58,6 +58,8 @@ Content of the project folder:
 ```
  Top level of project folder: 
 📂 /
+├── index.js                            # Express file which statically hosts the client/build folder
+├── pgHelper.js                         # Postgres file containing the connection object to postgres, and all of our queries
 ├── .gitignore                          # Git ignore file
 ├── package.json                        # Metadata relevant to the project
 ├── Procfile                            # Basic command for Heroku
@@ -117,14 +119,6 @@ It has the following subfolders and files:
 ┃    ├─── package-lock.json              # Managing dependencies
 ┃    ├─── package.json                   # Metadata relevant to the project
 ┃    └─── yarn.lock                      # Managing dependencies
-└── 📂 server                            # Folder for the back end
-     ├─── 📂 data                        # Folder for the static data
-     ├─── 📂 database                    # Folder for showing how the database looks
-     ├─── package-lock.json              # Managing dependencies
-     ├─── package.json                   # Metadata relevant to the project
-     ├─── pghelper.js                    # A JavaScript file for quering from the database
-     ├─── server.js                      # A JavaScript file for connecting to the server
-     └─── yarn.lock                      # Managing dependencies
 
 ```
 ## Configurations
@@ -136,8 +130,11 @@ It has the following subfolders and files:
 <img src="./client/src/config/assets/images/1-Cloning.png" width="100%" title="cloning" alt="cloning"></img>
 2. Open your Visual Studio Code(VSC) and open a terminal.   
 <img src="./client/src/config/assets/images/2-OpenVSC.png" width="100%" title="openVSC" alt="openVSC"></img>
- 
-3. Type ***cd server***, ***yarn install***, and ***yarn start*** consequently.   
+3. In the terminal, in the project's root directory, copy and paste this piece of code.
+```
+echo DATABASE_URL=postgres://sshovcjpdbiske:cfa4366c3ca29896322ecbd08a53592f6ad794280dffd387466954d7a40956f8@ec2-35-170-85-206.compute-1.amazonaws.com:5432/daama3hr9d0osj > .env
+```
+4. Type ***yarn install*** and ***yarn start*** consequently.   
 <img src="./client/src/config/assets/images/3-Go-to-server.png" width="100%" title="go-to-server" alt="server"></img>   
 <img src="./client/src/config/assets/images/4-yarn-install.png" width="100%" title="server-yarnInstall" alt="server-yarn-install"></img>   
 <img src="./client/src/config/assets/images/5-yarn-start.png" width="100%" title="server-yarnStart" alt="server-yarn-start"></img>
@@ -145,9 +142,9 @@ It has the following subfolders and files:
     ![](https://img.shields.io/badge/Note-yellow)
    
    Once you run ***yarn install***, you do not need to run that again from the next time.
-4. Open another terminal by clicking ```+``` button on the top-right in the terminal.    
+5. Open another terminal by clicking ```+``` button on the top-right in the terminal.    
 <img src="./client/src/config/assets/images/6-open-another-terminal.png" width="100%" title="open-another-terminal" alt="open-another-terminal"></img>
-5. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently. This will automatically install all of Sprout's dependencies on your local computer. To see a list of all these dependencies, you may read package.json.
+6. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently. This will automatically install all of Sprout's dependencies on your local computer. To see a list of all these dependencies, you may read package.json.
 <img src="./client/src/config/assets/images/7-Go-to-client.png" width="100%" title="go-to-client" alt="client"></img>   
 <img src="./client/src/config/assets/images/8-yarn-install.png" width="100%" title="client-yarnInstall" alt="client-yarn-install"></img>   
 <img src="./client/src/config/assets/images/9-yarn-start.png" width="100%" title="client-yarnStart" alt="client-yarn-start"></img>
