@@ -1,4 +1,15 @@
+// ====================================
+//            IMPORTS
+// ====================================
+
+// React
 import React from 'react';
+
+/**
+ * Maps each object (team member) in the members array to a styled component.
+ * @param {Array} members: an array containing objects representing each member of the Sprout team.
+ * @returns an array of styled team member objects.
+ */
 
 const TeamList = ({members}) => {
 

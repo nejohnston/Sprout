@@ -23,11 +23,11 @@ import PlantProfilePicture from "./PlantProfilePicture";
 // =====================================
 
 /**
- * Return the parent container object for the Plant Profile's top components
+ * Return the parent container object for the Plant Profile's top components: dig up, plant profile picture, and water plant.
  * 
- * Pass the image url prop down into the child Plant Profile Picture component
- * 
- * @param {String} imageUrl - the url where the image of the plant is stored
+ * @param {object} sprout: an object representing the plant's data
+ * @param {state} updateLastWatered: a state passed from the parent object, Profile Picture
+ * @param {state} waterDiffDays: a state passed from the parent object, Profile Picture
  * @returns the parent container object for the Plant Profile's top components
  */
 

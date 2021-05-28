@@ -11,7 +11,7 @@ import SproutTip from '../../components/Alerts/SproutTip';
 import WaterAlerts from '../../components/Alerts/WaterAlerts';
 
 // Data
-import sproutTips from '../../config/data/sprout-tips.json';
+import sproutTips from '../../config/resources/sprout-tips.json';
 
 // Styles
 import './AlertsPage.css';

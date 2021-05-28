@@ -1,6 +1,6 @@
-// ========================================
-//        Import Statements
-// ========================================
+// ====================================
+//            IMPORTS
+// ====================================
 
 // React
 import React, { useContext, useState } from "react";
@@ -20,27 +20,44 @@ import "./styles/AddPlantModal.css";
 // Other imports
 import { UserContext, SproutContext } from "../Layout/Layout";
 
-// ========================================
-//        Component Code
-// ========================================
+/**
+ * Returns the add plant modal, which allows users to add plants to their garden.
+ * 
+ * Axios is used to handle API requests, such as to Cloudinary and the server.
+ * 
+ * @param {string} type prop denoting the type of the plant, passed from the parent object.
+ * @param {string} family prop denoting the family of the plant, passed from the parent object.
+ * @returns The add plant modal component.
+ */
 
-const AddPlantModal = ({ type, family }, props) => {
-  const [show, setShow] = useState(false);
-  const [imageSelected, setImageSelected] = useState(
-    "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png"
-  ); // image selected states for file input
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  let img_url =
-    "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png";
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
+const AddPlantModal = ({ type, family }) => {
 
   const [user, setUser] = useContext(UserContext);
   const [sprouts, setSprouts] = useContext(SproutContext);
   let authUser = useContext(UserContext)[0];
   let history = useHistory();
 
+  // Bootstrap states
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // default state of the image being uploaded, setImageSelected will overwrite this to a local image path
+  const [imageSelected, setImageSelected] = useState(
+    "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png"
+  );
+
+  // Starts off as the default url, but will get overwritten to Cloudinary url after async event completes - used for POST request to the database
+  let img_url =
+    "https://res.cloudinary.com/sprout03/image/upload/v1621536166/default_sprout_qlbudo.png";
+
   const submitForm = async () => {
     if (
+      // User cannot submit if these conditions are not met
       document.getElementById("sproutName").value !== "" &&
       document.getElementById("sproutWateringInterval").value !== "" &&
       document.getElementById("sproutWateringInterval").value > 0 &&
@@ -57,12 +74,15 @@ const AddPlantModal = ({ type, family }, props) => {
         imageData
       )
         .then((res) => {
+
+          // Overwrite img_url to the Cloudinary URL
           img_url = res.data.secure_url;
-          console.log("Image added to cloudinary");
         })
         .catch((err) => console.log(err));
 
       setTimeout(() => {
+
+        // Set timeout to wait for async to complete first, then use Axios to perform POST request
         Axios.post("http://localhost:3001/profile/", {
           family: document.getElementById("sproutFamily").value,
           name: document.getElementById("sproutName").value,
@@ -74,8 +94,12 @@ const AddPlantModal = ({ type, family }, props) => {
           userId: authUser.userId,
         })
           .then((res) => {
+
+            // response is the array of updated Sprouts after the current one is added to the database
             let data = res.data;
+
             let updatedSprouts = [];
+
             for (let i = 0; i < data.length; i++) {
               let sproutObject = {
                 dateAdded: data[i].user_sprouts_date_added,
@@ -91,6 +115,8 @@ const AddPlantModal = ({ type, family }, props) => {
               updatedSprouts.push(sproutObject);
             }
             if (res.status === 200) {
+
+              // If success, then overwrite sprout contextm update points context on the front end manually, redirect to profile page (if user is adding from Search)
               setSprouts(updatedSprouts);
               authUser.points += 100;
               handleClose();

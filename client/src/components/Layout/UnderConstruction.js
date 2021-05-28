@@ -1,11 +1,21 @@
-/* React imports */
+// ====================================
+//            IMPORTS
+// ====================================
+
+// React
 import React from 'react';
 
-/* Bootstrap imports */
-import "bootstrap/dist/css/bootstrap.min.css";
-
-/* Component imports */
+// Assets
 import sproutLogo from './images/sprout_logo_textless.png';
+
+/**
+ * Return the Under Construction page to be used for pages that are not yet implemented, as a placeholder.
+ * @returns the Under Construction page.
+ */
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
 
 const UnderConstruction = () => {
 

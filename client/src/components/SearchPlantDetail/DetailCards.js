@@ -15,6 +15,11 @@ import fruit from '../../config/assets/icons/fruit.svg';
 // Styling
 import './styles/DetailCards.css'
 
+/**
+ * Return the card components rendering the plant's info to be used in search details.
+ * @param {object} plantInfo: an object containing the specific plant's information
+ * @returns the card components rendering the plant's info
+ */
 
 // ======================================
 //            React Component
@@ -22,11 +27,6 @@ import './styles/DetailCards.css'
 
 const DetailCards = ({ plantInfo }) => {
 
-  /**
-   * Title case a given string.
-   * @param {String} title - a string, the title
-   * @returns - a string title-cased
-   */
   const titleCase = (title) => title.charAt(0).toUpperCase() + title.slice(1);
 
   return (
