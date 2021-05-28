@@ -1,12 +1,32 @@
+// ====================================
+//            IMPORTS
+// ====================================
+
+// React
 import React from "react";
+import { Link } from "react-router-dom";
+
+// Bootstrap
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { Link } from "react-router-dom";
+
+//Assets
 import SproutsIcon from "./images/my-sprouts_icon.svg";
 import SearchIcon from "./images/search_icon.svg";
 import AlertsIcon from "./images/alerts_icon.svg";
 import LeaderboardsIcon from "./images/leaderboard_icon.svg";
+
+// Styles
 import "./styles.css";
+
+/**
+ * Return the navbar component to be used in the app's skeleton/layout.
+ * @returns navbar with links to the major pages of the app.
+ */
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
 
 const NavBar = () => {
   return (
