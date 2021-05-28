@@ -2,6 +2,8 @@
 * ⭐ [General Info](#general-info)
 * ⚙ [Technologies](#technologies)
 * ✏ [Design](#design)
+* 🗃 [Databases](#databases)
+* 📝[Testing](#testing)
 * [:running: Install Steps](#Install-steps)
 * 📁 [Content](#content)
 
