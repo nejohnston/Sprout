@@ -96,7 +96,21 @@ It has the following subfolders and files:
 ┃    ┃     ├── 📂 Profile                # Folder for the Profile page
 ┃    ┃     ├── 📂 Search                 # Folder for the Search page
 ┃    ┃     ├── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail page
-┃    ┃     └── 📂 Signup                 # Folder for the Signup page             
+┃    ┃     └── 📂 Signup                 # Folder for the Signup page
+┃    ├─── 📂 components                  # Folder for the React components for each respective page
+┃    ┃     ├── 📂 AboutUs                # Folder for the AboutUs page
+┃    ┃     ├── 📂 Alerts                 # Folder for the Alerts page
+┃    ┃     ├── 📂 HomeContainer          # Folder for the Home page
+┃    ┃     ├── 📂 JoinTeam               # Folder for the JoinTeam page
+┃    ┃     ├── 📂 Leaderboards           # Folder for the Leaderboards page
+┃    ┃     ├── 📂 Login                  # Folder for the Login page
+┃    ┃     ├── 📂 Modals                 # Folder for shared Modals across pages
+┃    ┃     ├── 📂 PlantProfile           # Folder for the PlantProfile page
+┃    ┃     ├── 📂 Profile                # Folder for the Profile page
+┃    ┃     ├── 📂 Search                 # Folder for the Search page
+┃    ┃     ├── 📂 SearchPlantDetail      # Folder for the SearchPlantDetail page
+┃    ┃     └── 📂 Signup                 # Folder for the Signup page     
+┃    ├─── 📂 tests                      # Folder for client-side tests        
 ┃    ├─── index.css                      # A CSS file for the root page
 ┃    ├─── index.js                       # A JavaScript file for the root page
 ┃    ├─── Splash.js                      # A JavaScript file for loading the page
@@ -113,6 +127,9 @@ It has the following subfolders and files:
      └─── yarn.lock                      # Managing dependencies
 
 ```
+## Configurations
+# Heroku
+# 
 
 ## Install Steps
 1. Clone the repository to your local device.   
@@ -130,7 +147,7 @@ It has the following subfolders and files:
    Once you run ***yarn install***, you do not need to run that again from the next time.
 4. Open another terminal by clicking ```+``` button on the top-right in the terminal.    
 <img src="./client/src/config/assets/images/6-open-another-terminal.png" width="100%" title="open-another-terminal" alt="open-another-terminal"></img>
-5. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently.   
+5. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently. This will automatically install all of Sprout's dependencies on your local computer. To see a list of all these dependencies, you may read package.json.
 <img src="./client/src/config/assets/images/7-Go-to-client.png" width="100%" title="go-to-client" alt="client"></img>   
 <img src="./client/src/config/assets/images/8-yarn-install.png" width="100%" title="client-yarnInstall" alt="client-yarn-install"></img>   
 <img src="./client/src/config/assets/images/9-yarn-start.png" width="100%" title="client-yarnStart" alt="client-yarn-start"></img>
@@ -138,6 +155,7 @@ It has the following subfolders and files:
     ![](https://img.shields.io/badge/Note-yellow)
    
    Once you run ***yarn install***, you do not need to run that again from the next time.
+   There are also no 
 
 Then you will see the home page of Sprout!   
 <img src="./client/src/config/assets/images/10-home-page.png" width="30%" title="sprout" alt="sprout"></img>   
