@@ -14,9 +14,13 @@ import './styles/SproutItem.css'
 
 /**Return the plant gallery of the user's sprouts
  * 
- * @param {Array} sprouts - an array of sprout objects belonging to a user
+ * @param {object} sprout - an object representing the plant's data
  * @returns - plant gallery component with each sprout rendered as its own individual component
  */
+
+// ====================================
+//          REACT COMPONENT
+// ====================================
 
 const SproutItem = ({sprout}) => {
   return (

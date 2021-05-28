@@ -9,7 +9,7 @@ import React from 'react';
 import TeamList from '../../components/AboutUs/AboutUsList.js';
 
 // Data
-import teamMembers from '../../config/data/teamList.json';
+import teamMembers from '../../config/resources/teamList.json';
 
 // Styling
 import './AboutUs.css';

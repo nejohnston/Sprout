@@ -15,19 +15,35 @@ import Modal from "react-bootstrap/Modal";
 
 // Styles
 import "./styles/PlantProfileSmallButtons.css";
+
+// Other Imports
 import { SproutContext, UserContext } from "../Layout/Layout";
 
 /**
  * Return a component with modal popup which is triggered by the Dig Up button
  * 
+ * This button deletes a sprout from the database and removes it from the sprout context as well.
+ * 
  * @param {*} props - Bootstrap import
+ * @param {object} sprout - an object containing the sprout's data.
  * @returns Dig Up component
  */
 
+// ====================================
+//          REACT COMPONENT
+// ====================================
+
 const DigUp = ( {sprout}, props) => {
+
+  // Bootstrap modal
   const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [sprouts, setSprouts] = useContext(SproutContext);
   const user = useContext(UserContext)[0];
+
+  // Remove the sprout from sprout context
   const removeSproutFromContext = (sproutId) => {
     for (let index = 0; index < sprouts.length; index++) {
       if (sproutId === sprouts[index].sproutId) {
@@ -36,11 +52,8 @@ const DigUp = ( {sprout}, props) => {
     }
     setSprouts(sprouts);
   }
-  
-  const handleClose = () => {
-    setShow(false)
-  };
 
+  // Fetch request to server to delete sprout from database
   const handleSubmit = () => {
     fetch(`/api/sprouts/${user.userId}/${sprout.sproutId}`, {
       method: "DELETE"
@@ -49,8 +62,6 @@ const DigUp = ( {sprout}, props) => {
     .catch(error => console.log(error));
     removeSproutFromContext(sprout.sproutId)
   }
-
-  const handleShow = () => setShow(true);
 
   return (
     <>
