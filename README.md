@@ -184,7 +184,6 @@ echo DATABASE_URL=postgres://sshovcjpdbiske:cfa4366c3ca29896322ecbd08a53592f6ad7
     ![](https://img.shields.io/badge/Note-yellow)
    
    Once you run ***yarn install***, you do not need to run that again from the next time.
-   There are also no 
 
 Then you will see the home page of Sprout!   
 <img src="./client/src/config/assets/images/10-home-page.png" width="30%" title="sprout" alt="sprout"></img>   
