@@ -1,10 +1,11 @@
 ## 🌱 Sprout
-* [General Info](#general-info)
-* [Technologies](#technologies)
-* [Content](#content)
+* [⭐ General Info](#general-info)
+* [⚙ Technologies](#technologies)
+* [📁 Content](#content)
 
 ## ⭐ General Info
-1-2 sentence about our project
+Sprout is a gardening app targeting hobbyist gardeners. Sprout allows a user can learn about native-plant and bee-friendly species and engage with the community by splitting into teams.
+
 
 ## ⚙ Technologies
 Technologies/languages used for this project:
