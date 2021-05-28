@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const rootRouter = express.Router();
+const session = require('express-session')
 const {
   getUser,
   checkUserExist,
