@@ -1,7 +1,7 @@
 ## 🌱 Sprout
-* [General info](#general-info)
+* [General Info](#general-info)
 * [Technologies](#technologies)
-* [Contents](#content)
+* [Content](#content)
 
 ## ⭐ General Info
 1-2 sentence about our project
