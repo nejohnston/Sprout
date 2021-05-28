@@ -1,11 +1,12 @@
 ## 🌱 Sprout
 * ⭐ [General Info](#general-info)
 * ⚙ [Technologies](#technologies)
+* ✏ [Design](#design)
 * [:running: Install Steps](#Install-steps)
 * 📁 [Content](#content)
 
 ## ⭐ General Info
-Sprout is a gardening app targeting hobbyist gardeners.   Sprout allows a user can learn about native-plant and bee-friendly species and engage with the community by splitting into teams.
+SPROUT connects gardeners of all ages and expertise with resources on the best native and bee-friendly plants for their local area. Users will join community teams and earn points while learning and engaging in sustainable gardening.
 
 ## ⚙ Technologies
 Technologies/languages used for this project:
@@ -21,7 +22,7 @@ React is a flexible, agile, Javascript framework used to make UI Interfaces. It 
 
 For our implementation of React, we will be relying on React Hooks rather than the decprecated Class methods. The two Hooks we will be working with for this development will be the useState and useEffect Hooks. This will us to control our components based on dynamic variable handling, and will ensure that they retain maximum flexibility without bloat.
 
-### Design
+## ✏ Design
 For containers, the design we will be using is an encompassing component surrounding a single component. This makes passing props simple and building a page much easier as it separates.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -32,12 +33,22 @@ State is built in to React Components. Using state we can add value attributes t
 ### React Component Lifecycles
 Working hand in hand with state management is the useEffect hook, which we will be using to maintain and control our component lifecycles. The useEffect hook simply executes events depending on the current state, on mounting/unmounting a component, or if a specific state is changed. Furthermore, it allows us to clean up code (like event handlers) after a function is fired off, which prevents the application from crashing!
 
+### React Bootstrap
+We borrow from the React Bootstrap library for some of our design components. More can be found here (https://react-bootstrap.github.io/)
+
 ### Heroku
 Heroku is a container-based cloud platform as a service (PaaS). Heroku allows developers to deploy, manage, and extend the applications.
 
+## 🗃 Databases
 
 ### Heroku PostgreSQL
 Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres offers features such as rollback, high availability, and continuous protection, as well as followers, data clips, and forks.
+
+### Cloudinary
+We use Cloudinary to store and manage all user's image uploads. To upload an image to Cloudinary, a POST request must be made to: "https://api.cloudinary.com/v1_1/sprout03/image/upload/" with an image preset of either sproutPlant or sproutUser. If you would like to create more image presets please notify the github owner, Nicholas.
+
+## 📝Testing
+You can find our initial testing plan here: https://docs.google.com/spreadsheets/d/1VK1SMwL3B4feiTA7hIC6xo1Rk5iDve64pFtSdyGjAUQ/edit?usp=sharing
 
 ## Install Steps
 1. Clone the repository to your local device.   
