@@ -40,31 +40,31 @@ Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres 
 
 ## Install Steps
 1. Clone the repository to your local device.   
-<img src="./client/src/config/assets/images/1-Cloning.png" width="80%" title="cloning" alt="cloning"></img>
+<img src="./client/src/config/assets/images/1-Cloning.png" width="100%" title="cloning" alt="cloning"></img>
 2. Open your Visual Studio Code(VSC) and open a terminal.   
-<img src="./client/src/config/assets/images/2-OpenVSC.png" width="80%" title="openVSC" alt="openVSC"></img>
+<img src="./client/src/config/assets/images/2-OpenVSC.png" width="100%" title="openVSC" alt="openVSC"></img>
  
 3. Type ***cd server***, ***yarn install***, and ***yarn start*** consequently.   
-<img src="./client/src/config/assets/images/3-Go-to-server.png" width="600px" title="go-to-server" alt="server"></img>   
-   <img src="./client/src/config/assets/images/4-yarn-install" width="600px" title="server-yarnInstall" alt="server-yarn-install"></img>  
-   <img src="./client/src/config/assets/images/5-yarn-start.png" width="600px" title="server-yarnStart" alt="server-yarn-start"></img>
+<img src="./client/src/config/assets/images/3-Go-to-server.png" width="100%" title="go-to-server" alt="server"></img>   
+<img src="./client/src/config/assets/images/4-yarn-install" width="100%" title="server-yarnInstall" alt="server-yarn-install"></img>  
+<img src="./client/src/config/assets/images/5-yarn-start.png" width="100%" title="server-yarnStart" alt="server-yarn-start"></img>
       
     ![](https://img.shields.io/badge/Note-yellow)
    
    Once you run ***yarn install***, you do not need to run that again from the next time.
 4. Open another terminal by clicking ```+``` button on the top-right in the terminal.    
-<img src="./client/src/config/assets/images/6-open-another-terminal.png" width="80%" title="open-another-terminal" alt="open-another-terminal"></img>
+<img src="./client/src/config/assets/images/6-open-another-terminal.png" width="100%" title="open-another-terminal" alt="open-another-terminal"></img>
 5. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently.   
-<img src="./client/src/config/assets/images/7-Go-to-client.png" width="600px" title="go-to-client" alt="client"></img>   
-   <img src="./client/src/config/assets/images/8-yarn-install.png" width="600px" title="client-yarnInstall" alt="client-yarn-install"></img>   
-   <img src="./client/src/config/assets/images/9-yarn-start.png" width="600px" title="client-yarnStart" alt="client-yarn-start"></img>
+<img src="./client/src/config/assets/images/7-Go-to-client.png" width="100%" title="go-to-client" alt="client"></img>   
+   <img src="./client/src/config/assets/images/8-yarn-install.png" width="100%" title="client-yarnInstall" alt="client-yarn-install"></img>   
+   <img src="./client/src/config/assets/images/9-yarn-start.png" width="100%" title="client-yarnStart" alt="client-yarn-start"></img>
     
     ![](https://img.shields.io/badge/Note-yellow)
    
    Once you run ***yarn install***, you do not need to run that again from the next time.
 
 Then you will see the home page of Sprout!   
-<img src="./client/src/config/assets/images/10-home-page.png" width="60%" title="sprout" alt="sprout"></img>   
+<img src="./client/src/config/assets/images/10-home-page.png" width="100%" title="sprout" alt="sprout"></img>   
 
 ## 📁 Content
 Content of the project folder:
