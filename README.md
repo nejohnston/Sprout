@@ -1,6 +1,7 @@
 ## 🌱 Sprout
 * [⭐ General Info](#general-info)
 * [⚙ Technologies](#technologies)
+* [:running: Install Steps](#Install-steps)
 * [📁 Content](#content)
 
 ## ⭐ General Info
