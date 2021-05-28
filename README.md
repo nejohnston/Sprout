@@ -4,11 +4,13 @@
 * [📁 Content](#content)
 
 ## ⭐ General Info
-Sprout is a gardening app targeting hobbyist gardeners. Sprout allows a user can learn about native-plant and bee-friendly species and engage with the community by splitting into teams.
-
+Sprout is a gardening app targeting hobbyist gardeners.   Sprout allows a user can learn about native-plant and bee-friendly species and engage with the community by splitting into teams.
 
 ## ⚙ Technologies
 Technologies/languages used for this project:
+
+### VSC (Visual Studio Code)
+Visual Studio Code is a source-code editor that is compatible with a variety of programming languages, including Java, JavaScript, Go, Node.js, Python and C++.
 
 ### JSX
 JSX allows us to render JS objects in HTML. This makes it easier to write React components and leverage props and states within the component's HTML.
@@ -29,15 +31,40 @@ State is built in to React Components. Using state we can add value attributes t
 ### React Component Lifecycles
 Working hand in hand with state management is the useEffect hook, which we will be using to maintain and control our component lifecycles. The useEffect hook simply executes events depending on the current state, on mounting/unmounting a component, or if a specific state is changed. Furthermore, it allows us to clean up code (like event handlers) after a function is fired off, which prevents the application from crashing!
 
-### Redux
-Redux is a state manager for React. Simply put, Redux dispatches actions that update the state. The state is stored in what is called the store. The store is where we 'store' states from across the application. To tie actions and store together we use reducers. Reducers are simply functions that take in an action and state and return the new state.
-
 ### Heroku
 Heroku is a container-based cloud platform as a service (PaaS). Heroku allows developers to deploy, manage, and extend the applications.
 
 
 ### Heroku PostgreSQL
 Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres offers features such as rollback, high availability, and continuous protection, as well as followers, data clips, and forks.
+
+## Install Steps
+1. Clone the repository to your local device.   
+<img src="./client/src/config/assets/images/1-Cloning.png" width="80%" title="cloning" alt="cloning"></img>
+2. Open your Visual Studio Code(VSC) and open a terminal.   
+<img src="./client/src/config/assets/images/2-OpenVSC.png" width="80%" title="openVSC" alt="openVSC"></img>
+ 
+3. Type ***cd server***, ***yarn install***, and ***yarn start*** consequently.   
+<img src="./client/src/config/assets/images/3-Go-to-server.png" width="600px" title="go-to-server" alt="server"></img>   
+   <img src="./client/src/config/assets/images/4-yarn-install" width="600px" title="server-yarnInstall" alt="server-yarn-install"></img>  
+   <img src="./client/src/config/assets/images/5-yarn-start.png" width="600px" title="server-yarnStart" alt="server-yarn-start"></img>
+      
+    ![](https://img.shields.io/badge/Note-yellow)
+   
+   Once you run ***yarn install***, you do not need to run that again from the next time.
+4. Open another terminal by clicking ```+``` button on the top-right in the terminal.    
+<img src="./client/src/config/assets/images/6-open-another-terminal.png" width="80%" title="open-another-terminal" alt="open-another-terminal"></img>
+5. Type ***cd client***, ***yarn install***, and ***yarn start*** consequently.   
+<img src="./client/src/config/assets/images/7-Go-to-client.png" width="600px" title="go-to-client" alt="client"></img>   
+   <img src="./client/src/config/assets/images/8-yarn-install.png" width="600px" title="client-yarnInstall" alt="client-yarn-install"></img>   
+   <img src="./client/src/config/assets/images/9-yarn-start.png" width="600px" title="client-yarnStart" alt="client-yarn-start"></img>
+    
+    ![](https://img.shields.io/badge/Note-yellow)
+   
+   Once you run ***yarn install***, you do not need to run that again from the next time.
+
+Then you will see the home page of Sprout!   
+<img src="./client/src/config/assets/images/10-home-page.png" width="60%" title="sprout" alt="sprout"></img>   
 
 ## 📁 Content
 Content of the project folder:
