@@ -15,9 +15,10 @@ const client = new Client({
     rejectUnauthorized: false
   }
 });
-
+console.log("Not connected to postgres client.")
 // connect to postgres database using client credentials in const client
 client.connect();
+console.log("Connected to postgres client.")
 
 // GET USER
 /**
@@ -25,20 +26,29 @@ client.connect();
  * return a user's data.
  * @returns - user object.
  */
-let getUser = async (user) => {
+ let getUser = async (username, password) => {
   const query = {
-    text: `SELECT application_user.application_user_id, team_id, application_user_username,
-      application_user_preferred_name, application_user_points, application_user_image
-      FROM application_user
-      WHERE LOWER(application_user_username) = $1 
-      AND convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') = $2;`,
-    values: [user.userName.toLowerCase(), user.password]
+    text: 
+    `SELECT application_user.application_user_id, team_id, application_user_username,
+    convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') as application_user_password,
+    application_user_preferred_name, application_user_points, application_user_image,
+    user_sprouts_date_added, user_sprouts_family, user_sprouts_given_name, user_sprouts_id,
+    user_sprouts_image, user_sprouts_is_watered, user_sprouts_last_watered,
+    user_sprouts_next_alert_date, user_sprouts_notes, user_sprouts_type,
+    user_sprouts_watering_intervals
+    FROM application_user
+    JOIN 
+    (SELECT * FROM user_sprouts) AS user_sprouts_result
+    ON user_sprouts_result.application_user_id = application_user.application_user_id
+    WHERE application_user_username = $1 
+    AND convert_from(decrypt(decode(application_user_password,'hex'),'ENC_KEY','aes'),'utf8') = $2;`,
+    values: [username, password]
   }
-  return (
-    await client
-    .query(query)
-    .then(res => res.rows[0])
-    .catch(err => console.log(err)))
+return (
+  await client
+.query(query)
+.then(res => res.rows)
+.catch(err => console.log(err)))
 }
 
 let checkUserExist = async (userName) => {

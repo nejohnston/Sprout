@@ -18,7 +18,7 @@ const {
   deleteAlert,
   getTopFiveUsers,
   getTeamPoints,
-} = require('./postGres/pgHelper.js');
+} = require('./pgHelper.js');
 let app = express();
     app.use(express.urlencoded({extended: true}));
     app.use(cors());
@@ -54,22 +54,30 @@ app.use(
  * @returns - response from database.
  */
 
-app.get("/api/login", async (req, res) => {
-  let param = {
-    userName: req.body.userName,
-    password: req.body.password,
-  };
-  let user = await getUser(param);
-  let userByName = await checkUserExist(param.userName);
-  if (userByName === undefined) {
-    res.json("User not found");
-  }
-  if (user === undefined && userByName) {
-    res.json("Failed");
-  } else {
-    req.session.userId = user.application_user_id;
-    res.json(user);
-  }
+// app.get("/api/login", async (req, res) => {
+//   let param = {
+//     userName: req.body.userName,
+//     password: req.body.password,
+//   };
+//   let user = await getUser(param);
+//   let userByName = await checkUserExist(param.userName);
+//   if (userByName === undefined) {
+//     res.json("User not found");
+//   }
+//   if (user === undefined && userByName) {
+//     res.json("Failed");
+//   } else {
+//     // req.session.userId = user.application_user_id;
+//     res.json(user);
+//   }
+// });
+
+app.get('/api/login/:username/:password', async (request, response) => {
+  let user = await getUser(request.params.username, request.params.password);
+  console.log(`request.params.username: ${request.params.username}`)
+  console.log(`request.params.password: ${request.params.password}`)
+  console.log(`user: ${user}`)
+  response.json(user)
 });
 
 // ==========================================
