@@ -48,7 +48,7 @@ Heroku is a container-based cloud platform as a service (PaaS). Heroku allows de
 Heroku PostgreSQL is a PostgreSQL-based cloud database service. Heroku Postgres offers features such as rollback, high availability, and continuous protection, as well as followers, data clips, and forks.
 
 ### Cloudinary
-We use Cloudinary to store and manage all user's image uploads. To upload an image to Cloudinary, a POST request must be made to: "https://api.cloudinary.com/v1_1/sprout03/image/upload/" with an image preset of either sproutPlant or sproutUser. If you would like to create more image presets please notify the github owner, Nicholas.
+We use Cloudinary to store and manage all user's image uploads. To upload an image to Cloudinary, a POST request must be made Sprout's Cloudinary with an image preset of either sproutPlant or sproutUser. You can see credentials in #Configurations. If you would like to create more image presets please notify the github owner, Nicholas.
 
 ## 📝Testing
 You can find our initial testing plan here: https://docs.google.com/spreadsheets/d/1VK1SMwL3B4feiTA7hIC6xo1Rk5iDve64pFtSdyGjAUQ/edit?usp=sharing
@@ -122,14 +122,17 @@ It has the following subfolders and files:
      ├─── 📂 database                    # Folder for showing how the database looks
      ├─── package-lock.json              # Managing dependencies
      ├─── package.json                   # Metadata relevant to the project
-     ├─── pghelper.js                    # A JavaScript file for quering from the database
+     ├─── pghelper.js                    # A JavaScript file for querying from the database
      ├─── server.js                      # A JavaScript file for connecting to the server
      └─── yarn.lock                      # Managing dependencies
 
 ```
 ## Configurations
 # Heroku
-# 
+# Cloudinary
+Any upload to images must be a POST request to: https://api.cloudinary.com/v1_1/sprout03/image/upload/
+Username: sprout.team.3@gmail.com
+Password: BCITcomp2800!
 
 ## Install Steps
 1. Clone the repository to your local device.   
