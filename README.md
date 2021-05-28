@@ -1,8 +1,8 @@
 ## 🌱 Sprout
-* [⭐ General Info](#general-info)
-* [⚙ Technologies](#technologies)
+* ⭐ [General Info](#general-info)
+* ⚙ [Technologies](#technologies)
 * [:running: Install Steps](#Install-steps)
-* [📁 Content](#content)
+* 📁 [Content](#content)
 
 ## ⭐ General Info
 Sprout is a gardening app targeting hobbyist gardeners.   Sprout allows a user can learn about native-plant and bee-friendly species and engage with the community by splitting into teams.
