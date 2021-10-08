@@ -158,8 +158,6 @@ The Heroku account we used is Nicholas' personal account. For account details, p
 
 ### Cloudinary
 Any upload to images must be a POST request to: https://api.cloudinary.com/v1_1/sprout03/image/upload/
-Username: sprout.team.3@gmail.com
-Password: BCITcomp2800!
 
 ## Install Steps
 1. Clone the repository to your local device.   
